@@ -1,0 +1,767 @@
+!/CLEAR 
+/INPUT,'para_gear122','txt','D:\abc\APDL0320\',, 0   !路径  
+/CWD,filepath   
+/FILNAME,jobname,0  
+/PREP7  
+pi=3.14159265358979 
+r=0.5*m*z   
+rb=r*cos(angle1)
+ra1=0.5*(z*m+2*ha1) 
+rf1=0.5*(z*m-2*c1)  
+ra2=0.5*(z*m-2*ha2) 
+rf2=0.5*(z*m+2*c2)  
+angle2=180.0/z  
+angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   
+angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   
+    
+!距离   
+/prep7  
+csys,4  
+wprot,-angle3,0,0   
+K,1,0,0 
+    
+*do,t,0,1,0.01  
+*SET,x,rb*(cos(t)+t*sin(t)) 
+*SET,y,rb*(sin(t)-t*cos(t)) 
+k,,x,y,0
+*enddo  
+    
+flst,3,101,3
+*do,t,2,102 
+fitem,3,t   
+*enddo  
+bsplin,,p51x
+    
+KDELE,3,101,1   
+NUMCMP,KP   
+    
+LGEN,2,1, , ,0,0,10, ,0 
+CSYS,1  
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线
+LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0   
+LDELE,1,2 ,1 ,1 
+NUMCMP,KP   
+NUMCMP,line 
+circle,1,ra2
+LSBL,1,6
+LDELE,3,5,1 ,1  
+circle,1,ra2
+LSBL,2,5
+LDELE,1, , ,1   
+LDELE,3,4,1 ,1  
+LDELE,6,7,1 ,1  
+NUMCMP,KP   
+NUMCMP,line 
+csys,1  
+gky1=ky(4)  
+gky2=ky(5)  
+gky=gky1-gky2   
+LDELE,1,2,1,1   
+!建立内毂模型   
+WPCSYS,-1,0 
+csys,4  
+wprot,-angle3,0,0   
+K,1,0,0 
+    
+*do,t,0,1,0.01  
+*SET,x,rb*(cos(t)+t*sin(t)) 
+*SET,y,rb*(sin(t)-t*cos(t)) 
+k,,x,y,0
+*enddo  
+    
+flst,3,101,3
+*do,t,2,102 
+fitem,3,t   
+*enddo  
+bsplin,,p51x
+    
+KDELE,3,101,1   
+NUMCMP,KP   
+    
+!用于调整齿侧间隙   
+LGEN,2,1, , ,0,0,10, ,0 
+csys,1  
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0
+ldele,1,2,1 
+kdele,2,5,1 
+NUMCMP,KP   
+NUMCMP,line 
+    
+CSYS,4  
+wprot,angle4,0,0
+LSYMM,Y,1, , , ,0,0 
+    
+circle,1,ra1
+LSBL,1,6
+LSBL,2,3
+ldele,4 
+ldele,5 
+ldele,6 
+ldele,8 
+kdele,6,9,1 
+kdele,3 
+kdele,5 
+NUMCMP,line 
+NUMCMP,KP   
+    
+circle,1,rf1
+LSBL,1,3
+LSBL,2,6
+ldele,4 
+ldele,5 
+ldele,1 
+ldele,7 
+kdele,7,9,1 
+kdele,2 
+kdele,3 
+NUMCMP,line 
+NUMCMP,KP   
+    
+larc,2,3,1,ra1  
+LGEN,2,1, 3,1 , , , , ,0
+ldele,1,3,1,1   
+NUMCMP,line 
+NUMCMP,KP   
+    
+circle,1,rf1
+circle,1,rd1
+circle,1,rf1-1.2    !齿部基体分离线 
+LSTR,       5,       1  
+LSTR,       1,       3  
+LSBL,       4,      16  
+LSBL,       7,      17  
+LDELE,4, , ,1   
+LDELE,18, , ,1  
+CSYS,1  
+LSEL,S,LOC,Y,20,50  
+WPCSYS,-1,0 
+wpro,,90.000000,
+wprot,,,180/z   
+LSBW,all
+ALLSEL,ALL  
+CSYS,1  
+LSEL,S,LOC,Y,-20,-50
+WPCSYS,-1,0 
+wpro,,90.000000,
+wprot,,,-180/z  
+LSBW,all
+ALLSEL,ALL  
+CSYS,1  
+LSEL,S,LOC,Y,30,330 
+LDELE,all, , ,1 
+ALLSEL,ALL  
+NUMCMP,line 
+NUMCMP,KP   
+LCOMB,6, 7,0
+LCOMB,8, 9,0
+lfillt,2,4,rff1 
+lfillt,1,5,rff1 
+LSTR,1,9
+LSTR,9,6
+LSTR,11,12  
+LSTR,12,10  
+CSYS,1  
+LSEL,U,LOC,X,rd1-1,rf1-2
+AL,ALL  
+ALLSEL,ALL  
+LPLOT   
+LSEL,U,LOC,X,rf1-1,ra1+1
+AL,ALL  
+ALLSEL,ALL  
+CSYS,4  
+WPCSYS,-1,0 
+VOFFST,1,-b1
+VOFFST,2,b1 
+BOPTN,KEEP,0
+BOPTN,NWARN,0   
+BOPTN,VERS,RV52 
+BTOL,1e-004,
+VGLUE,ALL   
+NUMCMP,line 
+NUMCMP,KP   
+NUMCMP,AREA 
+NUMCMP,VOLU 
+VGEN,2,1, 2,1 , , , , ,0 !复制，重排线号
+Vdele,1,2,1,1   
+NUMCMP,line 
+NUMCMP,KP   
+NUMCMP,VOLU 
+*do,t,1,2,1          !阵列成三个齿  
+wprot,-angle2,0,0   
+VSYMM,Y,1, 2,1 , ,0,0   
+*enddo  
+VGLUE,ALL   
+NUMCMP,KP   
+NUMCMP,line 
+NUMCMP,AREA 
+NUMCMP,VOLU 
+    
+!建立摩擦片 
+    
+VSEL,U, , ,ALL  
+ALLSEL,BELOW,VOLU   
+K, ,,,, 
+*GET,kzx,kp,,NUM,MIN
+KSEL,U, , , kzx 
+WPCSYS,-1,0 
+wprot,-angle3,0,0   
+*do,t,0,1,0.01  
+*SET,x,rb*(cos(t)+t*sin(t)) 
+*SET,y,rb*(sin(t)-t*cos(t)) 
+k,,x,y,0
+*enddo  
+*GET,kpnub1,kp,,NUM,MIN 
+*GET,kpnub2,kp,,NUM,Max 
+flst,3,101,3
+*do,t,kpnub1,kpnub2 
+fitem,3,t   
+*enddo  
+bsplin,,p51x
+KDELE,kpnub1+1,kpnub2-1,1   
+NUMCMP,KP   
+*GET,lnub,line,,NUM,max 
+CSYS,1  
+LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0
+ldele,lnub  
+kdele,kpnub1,kpnub1+1,1 
+NUMCMP,KP   
+NUMCMP,line 
+CSYS,4  
+wprot,angle4,0,0
+LSYMM,Y,lnub, , , ,0,0  
+KSEL,A, , , kzx 
+circle,kzx,ra2  
+LSBL,lnub,lnub+5
+LSBL,lnub+1,lnub+2  
+ldele,lnub  
+ldele,lnub+6
+ldele,lnub+3
+ldele,lnub+4
+kdele,kpnub1+5,kpnub1+7,1   
+kdele,kpnub1+2  
+kdele,kpnub1
+NUMCMP,line 
+NUMCMP,KP   
+circle,kzx,rf2  
+LSBL,lnub,lnub+2
+LSBL,lnub+1,lnub+5  
+ldele,lnub  
+ldele,lnub+6
+ldele,lnub+3
+ldele,lnub+4
+ldele,1 
+ldele,7 
+kdele,kpnub1+5,kpnub1+7,1   
+kdele,kpnub1+1  
+kdele,kpnub1
+NUMCMP,line 
+NUMCMP,KP   
+larc,kpnub1+2,kpnub1+3,kzx,rf2  
+LGEN,2,lnub,lnub+2,1 , , , , ,0 
+ldele,lnub,lnub+2,1,1   
+NUMCMP,line 
+NUMCMP,KP   
+wprot,angle2,0,0
+LSYMM,Y,lnub,lnub+2,1 , ,0,0
+circle,kzx,rdc  
+circle,kzx,rd2  
+CSYS,1  
+LSEL,S,LOC,X,rf2
+LSEL,R,LOC,Y,0,0.1  
+WPCSYS,-1,0 
+wpro,,90.000000,
+LSBW,lnub+2     !出错LSBW,all   
+ALLSEL,ALL  
+*GET,VMN1,VOLU,,NUM,MIN 
+*GET,VMX1,VOLU,,NUM,Max 
+CSYS,1  
+LSEL,S,LOC,X,rf2
+LSEL,A,LOC,X,rdc
+LSEL,A,LOC,X,rdc+1.2
+LSEL,A,LOC,X,rd2
+LSEL,R,LOC,Y,angle4,60  
+WPCSYS,-1,0 
+wprot,2*angle2,0,0  
+wpro,,90.000000,
+LSBW,lnub+5     !出错LSBW,all   
+LSBW,lnub+6 
+LSBW,lnub+10
+ALLSEL,ALL  
+NUMCMP,line 
+NUMCMP,KP   
+LSEL,S,,,lnub,lnub+23,1 
+CSYS,1  
+LSEL,U,LOC,Y,0,2*angle2 
+LDELE,all, , ,1 
+NUMCMP,line 
+NUMCMP,KP   
+LSEL,S,,,lnub,lnub+6,1  
+larc,kpnub1,kpnub1+2,kzx,ra2
+lfillt,lnub,lnub+4,rff2     !倒角   
+lfillt,lnub+1,lnub+5,rff2   
+LSTR,kpnub1+7,kpnub1+8  
+LSTR,kpnub1+8,kpnub1+9  
+LSTR,kpnub1+5,kpnub1+4  
+LSTR,kpnub1+4,kpnub1+6  
+CSYS,1  
+LSEL,R,LOC,X,ra2,rdc
+AL,ALL    !已定义的线生成面 
+ALLSEL,ALL  !选择所有实体：点线面体 
+LSEL,s,LOC,X,rdc,rd2
+AL,ALL  
+ALLSEL,ALL  
+CSYS,1  
+    
+ASEL,s,LOC,X,rdc,rd2
+*GET,AC2,AREA,,NUM,MIN  
+VOFFST,AC2,-(bx+bc) 
+*if,bc,ne,0,then
+VOFFST,AC2,bc   
+*endif  
+    
+ALLSEL,ALL  
+ASEL,s,LOC,X,rf2-1,rd2  
+*GET,AC1,AREA,,NUM,MIN  
+ALLSEL,ALL  
+CSYS,4  
+WPCSYS,-1,0 
+VOFFST,AC2-1,bx 
+ALLSEL,ALL  
+CSYS,1  
+VSEL,s,LOC,X,ra2,rd2
+VSEL,R,VOLU, ,VMX1+1,VMX1+3 
+ALLSEL,BELOW,VOLU   
+wpoff,,,bx  
+VSBW,ALL
+VGLUE,ALL   
+VGEN, ,ALL, , , , ,BC+0.5, , ,1 
+NUMCMP,line 
+NUMCMP,KP   
+NUMCMP,AREA 
+NUMCMP,VOLU 
+*GET,VMN2,VOLU,,NUM,MIN 
+*GET,VMX2,VOLU,,NUM,Max 
+    
+!定义单元类型   
+ET,1,SOLID185   
+ET,10,SHELL181  
+    
+!定义内毂材料参数   
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,EX,1,,ex1
+MPDATA,PRXY,1,,prxy1
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,DENS,1,,dens1
+    
+!定义芯板材料参数   
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,EX,2,,ex2
+MPDATA,PRXY,2,,prxy2
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,DENS,2,,dens2
+    
+!定义摩擦层材料参数 
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,EX,3,,ex3
+MPDATA,PRXY,3,,prxy3
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,DENS,3,,dens3
+    
+!定义镀层材料参数   
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,EX,4,,ex4
+MPDATA,PRXY,4,,prxy4
+MPTEMP,,,,,,,,  
+MPTEMP,1,0  
+MPDATA,DENS,4,,dens4
+    
+!!!对内毂进行网格划分   
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+CSYS,1  
+LSEL,R,LOC,X,rf1-1,ra1+1
+LESIZE,ALL,0.5, , , ,1, , ,1,   
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+LSEL,R,LOC,X,rf1-1.2
+LESIZE,ALL,1, , , ,1, , ,1, 
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+LSEL,R,LOC,X,0,rd1+1
+LESIZE,ALL,3, , , ,1, , ,1, 
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+LSEL,R,LOC,X,rd1+1,rf1-1.3  
+LESIZE,ALL,2, , , ,1, , ,1, 
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+LSEL,R,LOC,Z,0.001,b1-0.001 
+LESIZE,ALL,1.2, , , ,1, , ,1,   
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+    
+TYPE,   10  
+MAT,       1
+ASEL,S,LOC,X,rd1+1,rf1-1.3  
+ASEL,R,LOC,Z,0  
+AMESH,ALL   
+    
+TYPE,   1   !指定单元类型号 
+MAT,       1    !指定单元材料编号   
+VSWEEP,1
+VSWEEP,2
+VSWEEP,3
+VSWEEP,4
+VSWEEP,5
+VSWEEP,6
+    
+!对摩擦片进行网格划分   
+ALLSEL,ALL          !网格划分尺寸设定   
+VSEL,U, , ,1 ,VMX1,1
+ALLSEL,BELOW,VOLU   
+CSYS,1  
+LSEL,R,LOC,X,ra2-1,rdc-0.1  
+LESIZE,ALL,0.5, , , ,1, , ,1,      !齿部
+ALLSEL,ALL  
+VSEL,U, , ,1,VMX1,1 
+ALLSEL,BELOW,VOLU   
+CSYS,1  
+LSEL,R,LOC,X,rdc-0.01,rdc+0.01  
+LESIZE,ALL,0.5, , , ,1, , ,1,      !摩擦层内径  
+ALLSEL,ALL  
+VSEL,U, , ,1 ,VMX1,1
+ALLSEL,BELOW,VOLU   
+CSYS,1  
+LSEL,R,LOC,X,rd2
+LESIZE,ALL,0.5, , , ,1, , ,1,       !外径处 
+ALLSEL,ALL  
+VSEL,U, , ,1 ,VMX1,1
+ALLSEL,BELOW,VOLU   
+LSEL,R,LOC,X,rdc+1,rd2-1
+LESIZE,ALL,1, , , ,1, , ,1,          !基体  
+    
+ALLSEL,ALL  
+VSEL,U, , ,1 ,VMX1,1
+ALLSEL,BELOW,VOLU   
+CSYS,1  
+LSEL,R,LOC,Z,bc+0.6,bc+bx+0.4   
+LESIZE,ALL,1.2, , , ,1, , ,1,        !齿宽  
+TYPE,   1   
+MAT,       2
+VSWEEP,VMN2 
+VSEL,R,LOC,Z,bc+0.6,bc+bx+0.4   
+ALLSEL,BELOW,VOLU   
+VSEL,R,LOC,X,rdc,rd2
+ALLSEL,BELOW,VOLU   
+ASEL,R,LOC,Z,bc+bx+0.5  
+TYPE,   10  
+REAL,       1   
+MAT,       2
+AMESH,ALL   
+ALLSEL,ALL  
+VSEL,U, , ,1 ,VMX1,1
+ALLSEL,BELOW,VOLU   
+TYPE,   1   
+MAT,       2
+*if,bc,ne,0,then
+VSWEEP,VMX2-1   
+*else   
+ VSWEEP,VMX2
+*endif  
+*if,bc,ne,0,then
+TYPE,   1   
+MAT,       3
+VSWEEP,VMX2 
+VSWEEP,VMN2+1   
+*endif  
+ALLSEL,ALL  
+VSEL,S,,,VMN2,VMX2,1
+ALLSEL,BELOW,VOLU   
+CSYS,4  
+WPCSYS,-1,0 
+VSYMM,Y,VMN2,VMX2,1 , ,0,0  
+wprot,-2*angle2,0,0 
+VSYMM,Y,VMN2,VMX2+10,1 , ,0,0   
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+CSYS,1  
+VGEN, ,1,6, 1, ,gky, , , ,1 
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+CSYS,4  
+VGEN, ,1,6, 1, , ,BC+0.5-(B1-BX)/2, , ,1
+    
+!创建内毂约束节点集合   
+ALLSEL,ALL  
+ALLSEL,BELOW,VOLU   
+NSEL,S,LOC,x,rd1
+CM,FORCE,NODE   
+!创建摩擦片约束节点集合      !约束删除  
+!ALLSEL,ALL 
+!ALLSEL,BELOW,VOLU  
+!ASEL,S,LOC,x,rd2   
+!NSLA,S,1   
+!CM,yueshu,NODE 
+!创建内毂齿面节点集合   
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+ASEL,S,,,26,27,1
+ASEL,A,,,1,2,1  
+ASEL,A,,,18,19,1
+NSLA,S,1
+CM,NEIGU_CHIMIAN,NODE   
+!创建摩擦片齿面节点集合 
+ALLSEL,ALL  
+VSEL,U,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+*if,bc,ne,0,then
+ASEL,S,,,61,62,1
+ASEL,A,,,94,95,1
+ASEL,A,,,142,143,1  
+*else   
+ASEL,S,,,55,56,1
+ASEL,A,,,79,80,1
+ASEL,A,,,107,108,1  
+*endif  
+NSLA,S,1
+CM,mocapian_CHIMIAN,NODE
+!!!边界条件设置 
+!建立接触   
+CM,_NODECM,NODE 
+CM,_ELEMCM,ELEM 
+CM,_KPCM,KP 
+CM,_LINECM,LINE 
+CM,_AREACM,AREA 
+CM,_VOLUCM,VOLU 
+/GSAV,cwz,gsav,,temp
+MP,MU,1,
+MAT,1   
+R,3 
+REAL,3  
+ET,2,170
+ET,3,174
+KEYOPT,3,9,0
+KEYOPT,3,10,2   
+R,3,
+RMORE,  
+RMORE,,0
+RMORE,0 
+! Generate the target surface   
+NSEL,S,,,NEIGU_CHIMIAN  
+CM,_TARGET,NODE 
+TYPE,2  
+ESLN,S,0
+ESURF   
+CMSEL,S,_ELEMCM 
+! Generate the contact surface  
+NSEL,S,,,MOCAPIAN_CHIMIAN   
+CM,_CONTACT,NODE
+TYPE,3  
+ESLN,S,0
+ESURF   
+ALLSEL  
+ESEL,ALL
+ESEL,S,TYPE,,2  
+ESEL,A,TYPE,,3  
+ESEL,R,REAL,,3  
+/PSYMB,ESYS,1   
+/PNUM,TYPE,1
+/NUM,1  
+EPLOT   
+ESEL,ALL
+ESEL,S,TYPE,,2  
+ESEL,A,TYPE,,3  
+ESEL,R,REAL,,3  
+CMSEL,A,_NODECM 
+CMDEL,_NODECM   
+CMSEL,A,_ELEMCM 
+CMDEL,_ELEMCM   
+CMSEL,S,_KPCM   
+CMDEL,_KPCM 
+CMSEL,S,_LINECM 
+CMDEL,_LINECM   
+CMSEL,S,_AREACM 
+CMDEL,_AREACM   
+CMSEL,S,_VOLUCM 
+CMDEL,_VOLUCM   
+/GRES,cwz,gsav  
+CMDEL,_TARGET   
+CMDEL,_CONTACT  
+/MREP,EPLOT 
+    
+!*  
+KEYOPT,3,1,0
+KEYOPT,3,2,0
+KEYOPT,3,4,0
+KEYOPT,3,5,0
+KEYOPT,3,6,0
+KEYOPT,3,7,0
+KEYOPT,3,8,0
+KEYOPT,3,9,3
+KEYOPT,3,10,2   
+KEYOPT,3,11,0   
+KEYOPT,3,12,0   
+KEYOPT,3,14,0   
+KEYOPT,3,15,0   
+KEYOPT,3,16,0   
+!*  
+R,3,0,0,0, 0,0,0
+RMORE,0,0,0, 0.005,0,0  
+RMORE,0,,, ,,   
+RMORE,,,0, 0,0, 
+RMORE,,,,,, 
+RMORE,,,,,  
+    
+!摩擦片约束的施加   
+!CMSEL,S,YUESHU     !约束删除   
+!D,ALL,ALL  
+ALLSEL,ALL  
+VSEL,S,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+ASEL,S,,,16 
+ASEL,A,,,25 
+ASEL,A,,,28 
+ASEL,A,,,33 
+NSLA,S,1
+CSYS,1  
+NROTAT,ALL  
+D,ALL, , , , , ,UX,UZ, , , ,
+    
+ALLSEL,ALL  
+VSEL,U,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+*if,bc,ne,0,then !约束改变  
+ASEL,S,,,50 
+ASEL,A,,,101
+ASEL,A,,,155
+ASEL,A,,,128
+ASEL,A,,,108
+ASEL,A,,,135
+ASEL,A,,,81 
+ASEL,A,,,55 
+*else   
+ASEL,S,,,50 
+ASEL,A,,,66 
+ASEL,A,,,100
+ASEL,A,,,83 
+ASEL,A,,,49 
+ASEL,A,,,65 
+ASEL,A,,,99 
+ASEL,A,,,82 
+*endif  
+NSLA,S,1
+D,ALL,ALL   
+ALLSEL,ALL  
+!内毂施加载荷   
+CMSEL,S,FORCE   
+CSYS,1  
+NROTAT,ALL  
+*GET,NGNUM,NODE,,COUNT  
+F,ALL,FY,3*Fc*Z*m/2/rd1/NGNUM   
+D,ALL, , , , , ,UX,UZ, , , ,
+ALLSEL,ALL  
+    
+ESEL,S,TYPE,,10 
+ACLEAR,ALL  
+ETDEL,10
+ALLSEL,ALL  
+    
+VSEL,U,,,1,6,1  
+ALLSEL,BELOW,VOLU   
+EPLOT   
+NUMMRG,NODE, ,0.1, ,LOW 
+ALLSEL,ALL  
+SAVE
+FINISH  
+    
+!求解   
+/SOLU   
+SOLVE   
+FINISH  
+/RGB,INDEX,100,100,100, 0   
+/RGB,INDEX, 80, 80, 80,13   
+/RGB,INDEX, 60, 60, 60,14   
+/RGB,INDEX, 0, 0, 0,15  
+/REPLOT 
+FINISH  
+    
+!!!后处理   
+/POST1  
+/DSCALE,ALL,1.0 
+/EFACET,1   
+/GRAPHICS,POWER 
+/show,jpeg,,
+PLNSOL, S,EQV, 0,1.0     !等效应力显示  
+/show,close 
+/RENAME,%jobname%000.JPG,,,danchiyingliyuntu.jpeg   
+    
+ALLSEL,ALL  
+RSYS,1     !以柱坐标输出结果
+AVPRIN,0
+AVRES,2,
+/EFACET,1   
+LAYER,0 
+FORCE,TOTAL 
+!*  
+/DSCALE,ALL,1.0 
+/EFACET,1   
+/GRAPHICS,POWER 
+/show,jpeg,,
+PLNSOL, U,Y, 0,1.0       !周向位移显示  
+/show,close 
+/RENAME,%jobname%000.JPG,,,danchiweiyiyuntu.jpeg
+!*  
+!CMSEL,S,FORCE  
+!/MREP,EPLOT
+!NPLOT  
+!*  
+!/PAGE,,,100000 
+!PRNSOL,UY  
+FINISH  
+    
+/POST1  
+WPCSYS,-1,0 
+CSYS,4  
+ALLSEL,BELOW,VOLU   
+NSEL,R,LOC,z,0.5+bx+bc  
+*GET,Nnod,NODE,0,COUNT　　　　　  　!得到所选择的节点总数   
+*DIM,Xyz,ARRAY,NNOD,5               !定义数组   
+*GET,Nd,NODE,0,NUM,MIN              !得到最小的节点编号 
+*cfopen,nodexyz,txt,,append 
+*do,t,1,Nnod,1                      !对节点数进行循环   
+Xyz(t,1)=Nd                           !提取节点编号 
+Xyz(t,2)=NX(Nd)                     !取出节点的X坐标
+Xyz(t,3)=NY(Nd)                    !取出节点的Y坐标 
+Xyz(t,4)=NZ(Nd) 
+*GET,Xyz(t,5),NODE,ND,S,EQV 
+unn=Xyz(t,1)                     !取出节点的Z坐标   
+uxn=Xyz(t,2)                  !  读取节点 t 的 Ux，下同 
+uyn=Xyz(t,3)
+uzn=Xyz(t,4)
+sss=Xyz(t,5)
+*vwrite,unn, uxn, uyn, uzn, sss 
+(F10.0,3F15.4,3F15.4)   
+Nd=NDNEXT(Nd)                   !读出下一个节点编号 
+*enddo  
+*cfclos 
+save
+    
+    
+    
+    
+    

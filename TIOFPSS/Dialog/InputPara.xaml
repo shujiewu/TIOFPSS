@@ -1,0 +1,544 @@
+﻿<UserControl x:Class="TIOFPSS.Dialog.InputPara"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:avalon="http://schemas.xceed.com/wpf/xaml/avalondock"
+             mc:Ignorable="d" Width="Auto" Height="Auto"
+                          d:DesignHeight="1600"
+             d:DesignWidth="1800">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="WhiteSmoke"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontFamily" Value="微软雅黑"/>
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="TextBlock.Foreground" Value="Black"/>
+            <Setter Property="TextBlock.FontFamily" Value="微软雅黑"/>
+        </Style>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
+
+
+        <!--呈现的关键-->
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Auto"  VerticalScrollBarVisibility="Auto" Height="440">-->
+        <StackPanel Name="firstLayer" Orientation="Vertical" Margin="30,0,0,0" >
+            <StackPanel Name="projectName" Orientation="Horizontal">
+                <Image Source="pack://application:,,,/TIOFPSS;component/Images/projectIcon.png" Height="40" Width="40" Margin="0,10,0,0"/>
+                <TextBlock Text="{Binding Path=UserProject.ProjectName, Mode=TwoWay}" FontSize="25" TextWrapping="Wrap"  Padding="10,15,0,0" FontFamily="微软雅黑" Width="300"></TextBlock>
+                <TextBlock Text="摩擦片参数" Height="50" FontSize="35" FontWeight="Medium" FontFamily="微软雅黑"
+                                                        Margin="100,10,0,0" IsEnabled="False"></TextBlock>
+            </StackPanel>
+            <StackPanel Name="secondLayer" Orientation="Horizontal" Background="LightBlue" Margin="0,12,0,0">
+                <Path Data="M10,5 L20,14 10,23 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                <TextBlock Text="摩擦片设计参数" Height="32" FontSize="20" Margin="10,0,0,0"/>
+               
+            </StackPanel>
+
+            <StackPanel Name="secondLayer2" Orientation="Horizontal" >
+
+                <StackPanel Name="thirdLayer2" Orientation="Vertical"  >
+                    <StackPanel Name="forthLayer" Orientation="Horizontal">
+
+                        <TextBlock Text="齿数" Height="30" Width="80" FontSize="15" Name="ChiShu"
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Text="模数(mm)" Name="MoShu" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="压力角(°)" Name="YaLiJiao" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿顶高(mm)" Name="McpChiDingGao" Height="30" Width="90" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿根高(mm)" Name="McpChiGenGao" Height="30" Width="90"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿根圆角(mm)" Name="McpChiGenYuanJiao" Height="30" Width="120"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="外径(mm)" Name="WaiJing" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="公法线长度公差(mm)" Name="McpGFXDGC" Height="30" Width="150"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="厚度(mm)" Name="McpHouDu" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿侧间隙(mm)" Name="ChiCeJianXi" Height="30" Width="120"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Name="te" Height="30" Width="120"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="forthLayer2" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.ChiShu}" Name="txtChiShu" Height="30" Width="{Binding ElementName=ChiShu, Path=Width}" Background="White"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.MoShu, Mode=TwoWay}" Name="txtMoShu" Height="30" Width="{Binding ElementName=MoShu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.YaLiJiao}" Name="txtYaLiJiao" Height="30" Width="{Binding ElementName=YaLiJiao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpChiDingGao}" Name="txtMcpChiDingGao" Height="30" Width="{Binding ElementName=McpChiDingGao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpChiGenGao}" Name="txtMcpChiGenGao" Height="30" Width="{Binding ElementName=McpChiGenGao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpChiGenYuanJiao}" Name="txtMcpChiGenYuanJiao" Height="30" Width="{Binding ElementName=McpChiGenYuanJiao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.WaiJing}" Name="txtWaiJing" Height="30" Width="{Binding ElementName=WaiJing, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpGFXDGC}" Name="txtMcpGFXDGC" Height="30" Width="{Binding ElementName=McpGFXDGC, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpHouDu}" Name="txtMcpHouDu" Height="30" Width="{Binding ElementName=McpHouDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.ChiCeJianXi}" Name="txtChiCeJianXi" Height="30" Width="{Binding ElementName=ChiCeJianXi, Path=Width}" Background="white"></TextBox>
+                        <TextBlock Text="" Name="te1"  Height="30" Width="120"  FontSize="15" Background="White"
+                                                                                                   TextAlignment="Center" Margin="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Name="ItemLayer" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0">
+                <Path Data="M10,5 L20,14 10,23 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                <TextBlock Text="内毂设计参数" Height="32" FontSize="20" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Name="DataLayer" Orientation="Horizontal" >
+
+                <StackPanel Name="paraLayer" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer" Orientation="Horizontal">
+
+                        <TextBlock Text="齿数" Height="30" Width="80" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Text="模数(mm)" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+                        <TextBlock Text="压力角(°)"  Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿顶高(mm)" Name="NgChiDingGao" Height="30" Width="90" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿根高(mm)" Name="NgChiGenGao" Height="30" Width="90" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="齿根圆角(mm)" Name="NgChiGenYuanJiao" Height="30" Width="120"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="孔径(mm)" Name="KongJing" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="公法线长度公差(mm)" Name="NgGFXCDGC"  Height="30" Width="150"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="厚度(mm)" Name="NgHouDu"  Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Name="layer2"  Height="30" Width="240" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding ElementName=txtChiShu, Path=Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30" Width="{Binding ElementName=ChiShu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding ElementName=txtMoShu, Path=Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30" Width="{Binding ElementName=ChiShu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding ElementName=txtYaLiJiao, Path=Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30" Width="{Binding ElementName=ChiShu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgChiDingGao}" Name="txtNgChiDingGao" Height="30" Width="{Binding ElementName=NgChiDingGao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgChiGenGao}" Name="txtNgChiGenGao" Height="30" Width="{Binding ElementName=NgChiGenGao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgChiGenYuanJiao}" Name="txtNgChiGenYuanJiao" Height="30" Width="{Binding ElementName=NgChiGenYuanJiao, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.KongJing}" Name="txtKongJing" Height="30" Width="{Binding ElementName=KongJing, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgGFXCDGC}" Name="txtNgGFXCDGC" Height="30" Width="{Binding ElementName=NgGFXCDGC, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgHouDu}" Name="txtNgHouDu" Height="30" Width="{Binding ElementName=NgHouDu, Path=Width}" Background="white"></TextBox>
+                        <TextBlock Text="" Height="30" Width="240" Background="White" Padding="0"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel Name="paraLayer2" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0">
+                <Path Data="M10,5 L20,14 10,23 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                <TextBlock Text="摩擦片强化参数" Height="32" FontSize="20" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Name="DataLayer2" Orientation="Horizontal" >
+
+                <StackPanel Name="ItemLayer2" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer2" Orientation="Horizontal">
+
+                        <TextBlock Name="MccHouDu" Text="摩擦层厚度(mm)" Height="30" FontSize="15" Width="150"
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="MccJingKuan" Text="摩擦层径宽(mm)" Height="30" Width="140"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+                        <TextBlock Name="DuCengHouDu" Text="镀层厚度(mm)" Height="30" Width="130" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Height="30" Width="670" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer2" Orientation="Horizontal">
+
+                        <TextBox Name="txtMccHouDu" Text="{Binding Path=UserProject.MccHouDu}" Height="30" Width="{Binding ElementName=MccHouDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Name="txtMccJingKuan" Text="{Binding Path=UserProject.MccJingKuan}" Height="30" Width="{Binding ElementName=MccJingKuan, Path=Width}" Background="white"></TextBox>
+                        <TextBox Name="txtDuCengHouDu" Text="{Binding Path=UserProject.DuCengHouDu}" Height="30" Width="{Binding ElementName=DuCengHouDu, Path=Width}" Background="white"></TextBox>
+                        <TextBlock Text="" Height="30" Width="670" Background="White" Padding="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel Name="ItemLayer3" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0">
+                <Path Data="M10,5 L20,14 10,23 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                <TextBlock Text="材料参数" Height="32" FontSize="20" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Name="DataLayer3" Orientation="Horizontal" >
+                <StackPanel Name="NameLayer" Orientation="Vertical" Background="#ffd2e7f4">
+
+                    <TextBlock Text="摩擦片" Width="90" Height="60" 
+                                                                                               FontSize="18"  Padding="18"  />
+                </StackPanel>
+
+                <StackPanel Name="paraLayer3" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer3" Orientation="Horizontal">
+
+                        <TextBlock Name="McpTXML" Text="弹性模量(GPa)" Height="30" Width="120" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="McpCLMD" Text="材料密度(kg/m^3)" Height="30" Width="140" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="McpBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="KangLaQDJX" Text="抗拉强度极限(MPa)" Height="30" Width="150"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="PiLaoJiXian" Text="疲劳极限(MPa)" Height="30" Width="130"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Height="30" Width="380" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer3" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.McpTXML}" Name="txtMcpTXML" Height="30" Width="{Binding ElementName=McpTXML, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpCLMD}" Name="txtMcpCLMD" Height="30" Width="{Binding ElementName=McpCLMD, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpBSB}" Name="txtMcpBSB" Height="30" Width="{Binding ElementName=McpBSB, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.KangLaQDJX}" Name="txtKangLaQDJX" Height="30" Width="{Binding ElementName=KangLaQDJX, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.PiLaoJiXian}" Name="txtPiLaoJiXian" Height="30" Width="{Binding ElementName=PiLaoJiXian, Path=Width}" Background="white"></TextBox>
+                        <TextBlock Text="" Height="30" Width="380" Background="White" Padding="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+
+
+            <StackPanel Name="DataLayer4" Orientation="Horizontal" >
+                <StackPanel Name="NameLayer4" Orientation="Vertical" Background="#ffd2e7f4"
+                                                >
+
+                    <TextBlock Text="内毂" Width="90" Height="60"
+                                                                                               FontSize="18"  Padding="25,15"  />
+                </StackPanel>
+                <StackPanel Name="paraLayer4" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer4" Orientation="Horizontal">
+
+                        <TextBlock Name="NgTXML" Text="弹性模量(GPa)" Height="30" Width="120" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="NgCLMD" Text="材料密度(kg/m^3)" Height="30" Width="140" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="NgBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Height="30" Width="660" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer4" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.NgTXML}" Name="txtNgTXML" Height="30" Width="{Binding ElementName=NgTXML, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgCLMD}" Name="txtNgCLMD" Height="30" Width="{Binding ElementName=NgCLMD, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgBSB}" Name="txtNgBSB" Height="30" Width="{Binding ElementName=NgBSB, Path=Width}" Background="white"></TextBox>
+                        <TextBlock Text="" Height="30" Width="660" Background="White" Padding="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Name="DataLayer5" Orientation="Horizontal" >
+                <StackPanel Name="NameLayer5" Orientation="Vertical" Background="#ffd2e7f4" >
+
+                    <TextBlock Text="摩擦层" Width="90" Height="60"
+                                                                                               FontSize="18"  Padding="18"  />
+                </StackPanel>
+                <StackPanel Name="paraLayer5" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer5" Orientation="Horizontal">
+
+                        <TextBlock Name="MccTXML" Text="弹性模量(GPa)" Height="30" Width="120"  FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="MccCLMD" Text="材料密度(kg/m^3)" Height="30" Width="140" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="MccBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Height="30" Width="660" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer5" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.MccTXML}" Name="txtMccTXML" Height="30" Width="{Binding ElementName=MccTXML, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.MccCLMD}" Name="txtMccCLMD" Height="30" Width="{Binding ElementName=MccCLMD, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.MccBSB}" Name="txtMccBSB" Height="30" Width="{Binding ElementName=MccBSB, Path=Width}" Background="white"></TextBox>
+                        <TextBlock Text="" Height="30" Width="660" Background="White" Padding="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Name="DataLayer6" Orientation="Horizontal" >
+                <StackPanel Name="NameLayer6" Orientation="Vertical" Background="#ffd2e7f4"
+                                                                                           >
+
+                    <TextBlock Text="镀层" Width="90" Height="60"
+                                                                                               FontSize="18"  Padding="25,15"  />
+                </StackPanel>
+                <StackPanel Name="paraLayer6" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer6" Orientation="Horizontal">
+
+                        <TextBlock Name="DcTXML" Text="弹性模量(GPa)" Height="30" Width="120" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="DcCLMD" Text="材料密度(kg/m^3)" Height="30" Width="140"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="DcBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Text="" Height="30" Width="660" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer6" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.DcTXML}" Name="txtDcTXML" Height="30" Width="{Binding ElementName=DcTXML, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.DcCLMD}" Name="txtDcCLMD" Height="30" Width="{Binding ElementName=DcCLMD, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.DcBSB}" Name="txtDcBSB" Height="30" Width="{Binding ElementName=DcBSB, Path=Width}" Background="white"></TextBox>
+
+                        <TextBlock Text="" Height="30" Width="660" Background="White" Padding="0"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Name="ItemLayer7" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0">
+                <Path Data="M10,5 L20,14 10,23 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                <TextBlock Text="仿真参数" Height="32" FontSize="20" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Name="DataLayer7" Orientation="Horizontal" >
+                <StackPanel Name="NameLayer7" Orientation="Vertical" Background="#ffd2e7f4">
+
+                    <TextBlock Text="初始条件" Width="90" Height="60"
+                                                                                               FontSize="18"  Padding="10,15"  />
+                </StackPanel>
+
+                <StackPanel Name="paraLayer7" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer7" Orientation="Horizontal">
+
+                        <TextBlock Name="_NgChuShiJiaoWeiYi" Text="内毂初始角位移(rad)" Height="30" Width="155" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="NgChuShiSuDu" Text="内毂初始速度(rad/s)" Height="30" Width="155" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="McpChuShiJiaoWeiYi" Text="摩擦片初始角位移(rad)" Height="30" Width="170" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="McpChuShiSuDu" Text="摩擦片初始速度(rad/s)" Height="30" Width="170" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="YouMoHouDu" Text="油膜厚度(mm)" Height="30" Width="130" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="YouYeNianDu" Text="油膜粘度(Pa.s)" Height="30" Width="120" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="WenDu" Text="  温度(℃)" Height="30" Width="98" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Justify" Padding="4"/>
+
+                    </StackPanel>
+                    <StackPanel Name="TextLayer7" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.NgChuShiJiaoWeiYi}" Name="txtNgChuShiJiaoWeiYi" Height="30" Width="{Binding ElementName=_NgChuShiJiaoWeiYi, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgChuShiSuDu}" Name="txtNgChuShiSuDu" Height="30" Width="{Binding ElementName=NgChuShiSuDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpChuShiJiaoWeiYi}" Name="txtMcpChuShiJiaoWeiYi" Height="30" Width="{Binding ElementName=McpChuShiJiaoWeiYi, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpChuShiSuDu}" Name="txtMcpChuShiSuDu" Height="30" Width="{Binding ElementName=McpChuShiSuDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.YouMoHouDu}" Name="txtYouMoHouDu" Height="30" Width="{Binding ElementName=YouMoHouDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.YouYeNianDu}" Name="txtYouYeNianDu" Height="30" Width="{Binding ElementName=YouYeNianDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.WenDu}" Name="txtWenDu" Height="30" Width="{Binding ElementName=WenDu, Path=Width}" Background="white"></TextBox>
+
+
+                    </StackPanel>
+
+                </StackPanel>
+
+
+
+            </StackPanel>
+
+            <StackPanel Name="DataLayer8" Orientation="Horizontal" >
+
+                <StackPanel Name="NameLayer8" Orientation="Vertical" Background="#ffd2e7f4">
+
+                    <TextBlock Text="计算条件" Width="90" Height="120" 
+                                                                                               FontSize="18"  Padding="10,50"/>
+                </StackPanel>
+
+                <StackPanel Name="paraLayer8" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer8" Orientation="Horizontal">
+
+                        <TextBlock Name="ShiJiJieChuChiShu" Text="实际接触齿数" Height="30" Width="100" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="FanTanXiShu" Text="反弹系数" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="NgZhuanSu" Text="内毂转速(r/min)" Height="30" Width="120" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="NgZhenFu" Text="内毂振幅(rad/s)" Height="30" Width="120"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="NgZhenPin" Text="内毂振频(Hz)" Height="30" Width="100" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="JieGouZuNi" Text="结构阻尼(N/(m/s))" Height="30" Width="131"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="McpZhuanDongGuanLiang" Text="摩擦片转动惯量(kg*m^2)" Height="30" Width="180" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="NgZhuanDongGuanLiang" Text="内毂转动惯量(kg*m^2)" Height="30" Width="168" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+
+                    </StackPanel>
+                    <StackPanel Name="TextLayer8" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.ShiJiJieChuChiShu}" Name="txtShiJiJieChuChiShu" Height="30" Width="{Binding ElementName=ShiJiJieChuChiShu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.FanTanXiShu}" Name="txtFanTanXiShu" Height="30" Width="{Binding ElementName=FanTanXiShu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgZhuanSu}" Name="txtNgZhuanSu" Height="30" Width="{Binding ElementName=NgZhuanSu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgZhenFu}" Name="txtNgZhenFu" Height="30" Width="{Binding ElementName=NgZhenFu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgZhenPin}" Name="txtNgZhenPin" Height="30" Width="{Binding ElementName=NgZhenPin, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.JieGouZuNi}" Name="txtJieGouZuNi" Height="30" Width="{Binding ElementName=JieGouZuNi, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.McpZhuanDongGuanLiang}" Name="txtMcpZhuanDongGuanLiang" Height="30" Width="{Binding ElementName=McpZhuanDongGuanLiang, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.NgZhuanDongGuanLiang}" Name="txtNgZhuanDongGuanLiang" Height="30" Width="{Binding ElementName=NgZhuanDongGuanLiang, Path=Width}" Background="white"></TextBox>
+
+
+                    </StackPanel>
+                    <StackPanel Name="BlockLayer81" Orientation="Horizontal">
+
+                        <TextBlock Name="JieChuQuJinXiangChuangDu" Text="接触区径向长度(mm)" Height="30" Width="150" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+                        <TextBlock Name="JieChuQuZhouXiangChangDu" Text="接触区轴向长度(mm)" Height="30" Width="150" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="ZuNiCaoChang" Text="阻尼槽长(mm)" Height="30" Width="110" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="ZuNiCaoKuan" Text="阻尼槽宽(mm)" Height="30" Width="110" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="ZuNiCaoBanJing" Text="阻尼槽半径(mm)" Height="30" Width="120" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="QiDongShiJian" Text="启动时间(s)" Height="30" Width="90"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="ZengSuShiJian" Text="增速时间(s)" Height="30" Width="90" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="WenDingShiJian" Text="稳定时间(s)" Height="30" Width="90"  FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="TingZhiShiJIan" Text="停止时间(s)" Height="30" Width="90" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+
+                    </StackPanel>
+                    <StackPanel Name="TextLayer81" Orientation="Horizontal">
+                        <TextBox Text="{Binding Path=UserProject.JieChuQuJinXiangChuangDu}" Name="txtJieChuQuJinXiangChuangDu" Height="30" Width="{Binding ElementName=JieChuQuJinXiangChuangDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.JieChuQuZhouXiangChangDu}" Name="txtJieChuQuZhouXiangChangDu" Height="30" Width="{Binding ElementName=JieChuQuZhouXiangChangDu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.ZuNiCaoChang}" Name="txtZuNiCaoChang" Height="30" Width="{Binding ElementName=ZuNiCaoChang, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.ZuNiCaoKuan}" Name="txtZuNiCaoKuan" Height="30" Width="{Binding ElementName=ZuNiCaoKuan, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.ZuNiCaoBanJing}" Name="txtZuNiCaoBanJing" Height="30" Width="{Binding ElementName=ZuNiCaoBanJing, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.QiDongShiJian}" Name="txtQiDongShiJian" Height="30" Width="{Binding ElementName=QiDongShiJian, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.ZengSuShiJian}" Name="txtZengSuShiJian" Height="30" Width="{Binding ElementName=ZengSuShiJian, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.WenDingShiJian}" Name="txtWenDingShiJian" Height="30" Width="{Binding ElementName=WenDingShiJian, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.TingZhiShiJIan}" Name="txtTingZhiShiJIan" Height="30" Width="{Binding ElementName=TingZhiShiJIan, Path=Width}" Background="white"></TextBox>
+
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Name="DataLayer9" Orientation="Horizontal" >
+                <StackPanel Name="NameLayer9" Orientation="Vertical" Background="#ffd2e7f4">
+
+                    <TextBlock Text="误差条件" Width="90" Height="60"
+                                                                                               FontSize="18"  Padding="10,15"  />
+                </StackPanel>
+
+                <StackPanel Name="paraLayer9" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer9" Orientation="Horizontal">
+
+                        <TextBlock Name="PianXinJu" Text="偏心距(mm)" Height="30" Width="100" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="JieJuZuiDaWuCha" Text="节距最大误差(mm)" Height="30" Width="140" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+                        <TextBlock Name="JieJuZuiXiaoWuCha" Text="节距最小误差(mm)" Height="30" Width="140" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+                        <TextBlock Text="" Height="30" Width="620" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer9" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.PianXinJu}" Name="txtPianXinJu" Height="30" Width="{Binding ElementName=PianXinJu, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.JieJuZuiDaWuCha}" Name="txtJieJuZuiDaWuCha" Height="30" Width="{Binding ElementName=JieJuZuiDaWuCha, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.JieJuZuiXiaoWuCha}" Name="txtJieJuZuiXiaoWuCha" Height="30" Width="{Binding ElementName=JieJuZuiXiaoWuCha, Path=Width}" Background="white"></TextBox>
+
+                        <TextBlock Text="" Height="30" Width="620" Background="White" Padding="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Name="ItemLayer10" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0" >
+                <Path Data="M10,5 L20,14 10,23 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                <TextBlock Text="实验数据标定与转换系数" Height="32" FontSize="20" Margin="10,0,0,0"/>
+            </StackPanel>
+            
+            <StackPanel Name="DataLayer10" Orientation="Horizontal" >
+
+                <StackPanel Name="paraLayer10" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer10" Orientation="Horizontal">
+
+                        <TextBlock Name="CaiYangPinLv" Text="采样频率(Hz)" Height="30" Width="120" FontSize="15" 
+                                                                                                   Background="WhiteSmoke" 
+                                                                                                   TextAlignment="Center" Padding="4" />
+
+
+                        <TextBlock Name="YinLiYingBianZhuanHuanXiShu" Text="应力应变转换系数(rad/s)" Height="30" Width="180" FontSize="15" Background="WhiteSmoke"
+                                                                                                   TextAlignment="Center" Padding="4"/>
+
+                        <TextBlock Text="" Height="30" Width="790" Background="WhiteSmoke" Padding="0"/>
+                    </StackPanel>
+                    <StackPanel Name="TextLayer10" Orientation="Horizontal">
+
+                        <TextBox Text="{Binding Path=UserProject.CaiYangPinLv}" Name="txtCaiYangPinLv" Height="30" Width="{Binding ElementName=CaiYangPinLv, Path=Width}" Background="white"></TextBox>
+                        <TextBox Text="{Binding Path=UserProject.YinLiYingBianZhuanHuanXiShu}" Name="txtYinLiYingBianZhuanHuanXiShu" Height="30" Width="{Binding ElementName=YinLiYingBianZhuanHuanXiShu, Path=Width}" Background="white"></TextBox>
+
+
+                        <TextBlock Text="" Height="30" Width="790" Background="White" Padding="0"/>
+
+                    </StackPanel>
+
+                </StackPanel>
+
+
+
+            </StackPanel>
+        </StackPanel>
+        <!--</ScrollViewer>-->
+    </ScrollViewer>
+
+</UserControl>

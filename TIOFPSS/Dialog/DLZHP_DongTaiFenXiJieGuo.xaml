@@ -1,0 +1,126 @@
+﻿<Window x:Class="TIOFPSS.Dialog.DLZHP_DongTaiFenXiJieGuo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="480" Width="600" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="当量载荷谱分析-动态分析结果文件选择">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="文件路径" Grid.Row="0" Margin="5">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="选择文件路径：" 
+                       Margin="10,5,5,5"/>
+                <Button Click="OnFindClick"
+                     Grid.Row="1" Grid.Column="1"
+                     Width="90"
+                     Height="23"
+                     Margin="10,5,5,5"
+                     Content="浏览..."/>
+                <TextBox x:Name="_valueSelectPath" 
+                     Grid.Row="1" Grid.Column="0"
+                     Width="425"
+                     Margin="20,5,5,5"
+                         Height="23"
+                     HorizontalAlignment="Left"
+                     Text="" />
+
+
+
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="数据参数" Grid.Row="1" Margin="5">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="读取数据文件中：" 
+                       Margin="10,5,5,5"/>
+                <TextBox x:Name="_rowValue" 
+                     Grid.Row="1" Grid.Column="1"
+                     Width="100"
+                     Height="23"
+                     Margin="10,5,5,5"
+                     HorizontalAlignment="Left"
+                     Text="" />
+                <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="行以下" 
+                       Margin="20,10,5,5"/>
+
+                <TextBox x:Name="_columnValue" 
+                     Grid.Row="2" Grid.Column="1"
+                     Width="100"
+                     Margin="10,5,5,5"
+                         Height="23"
+                     HorizontalAlignment="Left"
+                     Text="" />
+                <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="列以左" 
+                       Margin="20,10,5,5"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="2" 
+                       Text="当量载荷谱参数：" 
+                       Margin="10,5,5,5"/>
+                <TextBox x:Name="_coefficientValue" 
+                     Grid.Row="1" Grid.Column="3"
+                     Width="100"
+                     Margin="5"
+                         Height="23"
+                     HorizontalAlignment="Left"
+                     Text="" />
+                <TextBlock Grid.Row="1" Grid.Column="2" 
+                       Text="强化系数：" 
+                       Margin="20,10,5,5"/>
+                <TextBlock Grid.Row="1" Grid.Column="4" 
+                       Text="大于等于1的整数" 
+                       Margin="10,10,5,5"/>
+            </Grid>
+        </GroupBox>
+        <Button Grid.Row="2" Margin="445,5,5,5" Content="确定添加文件" Width="90" Height="23" Click="OnAddFileClick"/>
+        <GroupBox Header="已选择的文件" Grid.Row="3" Margin="5" Width="Auto">
+            <ListView Name="listView1" ItemsSource="{Binding}" Height="100">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="行" DisplayMemberBinding="{Binding row}" Width="50"/>
+                        <GridViewColumn Header="列" DisplayMemberBinding="{Binding col}" Width="50"/>
+                        <!--<GridViewColumn Header="通道" DisplayMemberBinding="{Binding td}" Width="80"/>-->
+                        <GridViewColumn Header="强化系数" DisplayMemberBinding="{Binding qhxs}" Width="80"/>
+                        <GridViewColumn Header="文件路径" DisplayMemberBinding="{Binding path}" Width="Auto"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+        <Button Grid.Row="4"  Margin="45,5,5,5" Content="开始分析" Width="90" Height="23" Click="OnDangLiangZaiHePuClick"/>
+        <Button Grid.Row="4"  Margin="245,5,5,5" Content="删除" Width="90" Height="23" Click="OnDeleteClick"/>
+        <Button Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="23" Click="Cancel_Click"/>
+    </Grid>
+</Window>

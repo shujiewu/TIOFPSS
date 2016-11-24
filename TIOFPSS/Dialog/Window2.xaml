@@ -1,0 +1,150 @@
+﻿<Window x:Class="TIOFPSS.Dialog.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window2" Height="400" Width="400">
+    <Grid>
+        <GroupBox Header="分析监视" Width="365" Margin="10,20,10,20">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" RenderTransformOrigin="0.5,0.5">
+                <StackPanel>
+
+                    
+                    <!--<ProgressBar  Margin="10,10,10,10 " Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
+                     Style="{StaticResource PerformanceProgressBar}"/>-->
+
+                    <Expander Header="正在进行的分析" x:Name="expander1" Height="auto" Width="auto" IsExpanded="True" Margin="10,10,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid x:Name="grid" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="无节距误差分析11" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Name="ttt"
+                       Text="00：00：00" 
+                       Margin="20,10,5,5"/>-->
+                            <!--<TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="有节距误差分析" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="协同分析" 
+                       Margin="20,10,5,5"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" 
+                       Text="当量载荷谱分析"  
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" 
+                       Text="非线性损伤分析" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="5" Grid.Column="0" 
+                       Text="噪声分析" 
+                       Margin="20,10,5,5" Visibility="Collapsed"/>
+                            <TextBlock Grid.Row="5" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"  Visibility="Collapsed"/>-->
+                            </Grid>
+                            <ProgressBar  Margin="70,10,70,10 " Grid.Row="1" Visibility="Collapsed"
+                     Style="{StaticResource PerformanceProgressBar}" Name="proBar"/>
+                        </Grid>
+                    </Expander>
+                    <Expander x:Name="expander2" Header="已完成的分析" Margin="10,10,0,0">
+                        <Grid x:Name="gridFinish">
+                            <Grid.RowDefinitions>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--<TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="无节距误差分析" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" 
+                       Text="00：00：00" 
+                       Margin="20,10,5,5"/>-->
+                            <!--<TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="有节距误差分析" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="协同分析" 
+                       Margin="20,10,5,5"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="3" Grid.Column="0" 
+                       Text="当量载荷谱分析"  
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="4" Grid.Column="0" 
+                       Text="非线性损伤分析" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"/>
+                            <TextBlock Grid.Row="5" Grid.Column="0" 
+                       Text="噪声分析" 
+                       Margin="20,10,5,5" Visibility="Collapsed"/>
+                            <TextBlock Grid.Row="5" Grid.Column="1" 
+                       Text="00：00" 
+                       Margin="20,10,5,5"  Visibility="Collapsed"/>-->
+                        </Grid>
+                    </Expander>
+                </StackPanel>
+                <!--<StackPanel Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Margin="10,2">
+                <TextBlock Text="Actual Height Of The Right ListBox: " FontSize="13.333" />
+                <TextBlock Text="{Binding ActualHeight, ElementName=listBox}" FontSize="13.333" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,2">
+                <TextBlock Text="Actual Height Of Expander4: " FontSize="13.333" />
+                <TextBlock Text="{Binding ActualHeight, ElementName=expander1}" FontSize="13.333" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10,2">
+                <TextBlock Text="Actual Height Of  The Green Rectangle: " FontSize="13.333" />
+                <TextBlock Text="{Binding ActualHeight, ElementName=rect1}" FontSize="13.333" />
+            </StackPanel>
+            <ListBox        Margin="5" x:Name="listBox1">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <Expander Header="Expander4" x:Name="expander4" Height="auto" Width="auto" IsExpanded="True">
+                </Expander>
+                <Expander x:Name="expander5" Header="Expander5">
+                    <Rectangle x:Name="rect5" Fill="#FFD2DE00" Stroke="Black" Width="280" Height="70"/>
+                </Expander>
+                <Expander x:Name="expander6" Header="Expander6">
+                    <Rectangle x:Name="rect6" Fill="#FF7E0193" Stroke="Black" Width="280" Height="70"/>
+                </Expander>
+            </ListBox>
+        </StackPanel>-->
+            </ScrollViewer>
+        </GroupBox>
+    </Grid>
+</Window>

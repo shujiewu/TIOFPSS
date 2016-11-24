@@ -1,0 +1,32 @@
+﻿<Window x:Class="TIOFPSS.Dialog.paraProperty"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ParaProperty" Height="543" Width="680" 
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+    <Grid>
+
+        <DockPanel>
+            <GroupBox Header="参数库" Width="250" Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="440"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <ListBox FontFamily="微软雅黑" x:Name="lbxParaLib" Grid.Row="0"  Style="{StaticResource WinChromeListBox}"  ItemContainerStyle="{StaticResource ListBoxContainerStyle}"
+                  Height="430" ItemsSource="{Binding LibName}" MouseDoubleClick="ListBox_MouseDoubleClick" Margin="5" SelectionChanged="lbxParaLib_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" ToolTip="Here is a tooltip!" Style="{StaticResource WinTextNormalStyle}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Content="应用参数库" Grid.Row="1" Width="80" Height="25" Margin="54,0,94,0" Click="OnApplyLibClick"/>
+                    <Button Content="删除参数库" Grid.Row="1" Width="80" Height="25" Margin="148,0,0,0" Click="OnDeleteLibClick"/>
+                </Grid>
+            </GroupBox>
+            <xctk:PropertyGrid x:Name="_propertyGrid" SelectedObject="{Binding}"  Width="400" Height="485" Margin="0,10,0,0"/>
+        </DockPanel>
+    </Grid>
+</Window>

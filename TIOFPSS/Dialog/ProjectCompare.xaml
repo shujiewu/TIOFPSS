@@ -1,0 +1,1055 @@
+﻿<UserControl x:Class="TIOFPSS.Dialog.ProjectCompare"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="3300" d:DesignWidth="1300">
+    
+    
+    <UserControl.Resources>
+         <!--<SolidColorBrush x:Key="ProductNameBackgroundBrush" Color="#C0504D" />
+         <SolidColorBrush x:Key="SubjectAreaBackgroundBrush" Color="#D99795" />
+         <SolidColorBrush x:Key="ExceptionHeaderBackgroundBrush" Color="#E6B9B8" />
+         <SolidColorBrush x:Key="ExceptionCellBackgroundBrush" Color="#F2DDDC" />-->
+
+        <SolidColorBrush x:Key="ProductNameBackgroundBrush" Color="#ffd2e7f4" />
+        <SolidColorBrush x:Key="SubjectAreaBackgroundBrush" Color="#ffd2e7f4" />
+        <SolidColorBrush x:Key="ExceptionHeaderBackgroundBrush" Color="#ffd2e7f4" />
+        <SolidColorBrush x:Key="ExceptionCellBackgroundBrush" Color="#ffd2e7f4" />
+        <Style x:Key="ProductNameStyle" TargetType="{x:Type Label}">
+             <Setter Property="Background" Value="{StaticResource ProductNameBackgroundBrush}" />
+             <Setter Property="FontFamily" Value="微软雅黑" />
+             <Setter Property="FontWeight" Value="Bold" />
+             <Setter Property="FontSize" Value="15" />
+             <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+         <Style x:Key="SubjectAreaStyle" TargetType="{x:Type Label}">
+             <Setter Property="Background" Value="{StaticResource SubjectAreaBackgroundBrush}" />
+             <Setter Property="FontFamily" Value="Trebuchet MS" />
+             <Setter Property="FontWeight" Value="Bold" />
+             <Setter Property="FontSize" Value="15" />
+             <Setter Property="BorderBrush" Value="Black" />
+             <Setter Property="BorderThickness" Value="1" />
+             <Setter Property="Padding" Value="3,6,0,6" />
+         </Style>
+         <Style x:Key="ExceptionHeaderStyle" TargetType="{x:Type Label}">
+             <Setter Property="Background" Value="{StaticResource ExceptionHeaderBackgroundBrush}" />
+             <Setter Property="FontFamily" Value="Trebuchet MS" />
+             <Setter Property="FontWeight" Value="Bold" />
+             <Setter Property="FontSize" Value="15" />
+             <Setter Property="BorderBrush" Value="Black" />
+             <Setter Property="BorderThickness" Value="1" />
+             <Setter Property="Padding" Value="3,6,0,6" />
+             
+         </Style>
+        <!--<Style x:Key="ImgStyle" TargetType="{x:Type Image}">
+            --><!--<Setter Property="Background" Value="{StaticResource ExceptionHeaderBackgroundBrush}" />
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="3,6,0,6" />--><!--
+            <Setter Property="Template">
+            </Setter>
+        </Style>-->
+
+        <Style x:Key="ExceptionCellStyle" TargetType="{x:Type Label}">
+             <Setter Property="Background" Value="{StaticResource ExceptionCellBackgroundBrush}" />
+             <Setter Property="FontFamily" Value="微软雅黑" />
+             <Setter Property="FontWeight" Value="Normal" />
+             <Setter Property="FontSize" Value="13" />
+             <Setter Property="BorderBrush" Value="Black" />
+             <Setter Property="BorderThickness" Value="1" />
+             <!--<Setter Property="Padding" Value="38,6,0,6" />-->
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+
+
+        <Style x:Key="ExpanderStyle" TargetType="{x:Type Expander}">
+            <Setter Property="Foreground" Value="#FF217cb5"/>
+            <Setter Property="FontFamily" Value="宋体" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Expander}">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition x:Name="gr" Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Canvas Name="canv"     Width="Auto" Height="40"   Background="#FFd2e7f4" SnapsToDevicePixels="True" Canvas.Left="0" Grid.Row="0">
+                                <ToggleButton x:Name="HeaderSite"   
+                          Canvas.Top="0"  
+                          ContentTemplate="{TemplateBinding HeaderTemplate}"   
+                          ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}"  
+                          Content="{TemplateBinding Header}"    
+                          IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"                                    
+                          Style="{DynamicResource ToggleButtonStyle}" 
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  VerticalAlignment="Stretch"     Width="{Binding ElementName=canv, Path=ActualWidth}" />
+
+                                <!--<Rectangle Width="1" Height="40" Canvas.Left="0" Fill="Black" />
+                                <Rectangle Width="1" Height="40" Canvas.Right="0" Fill="Black" />
+                                <Rectangle Width="{TemplateBinding Width}" Height="1" Canvas.Bottom="0" Fill="Black" />-->
+                            </Canvas>
+                            <Border x:Name="ExpandSite"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"   
+                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"                              
+                      Visibility="Collapsed"   
+                      Canvas.Top="35" Canvas.Left="0"  
+                      Focusable="false"  
+                      BorderBrush="{TemplateBinding BorderBrush}"  
+                      BorderThickness="{TemplateBinding BorderThickness}"   
+                      Width="{Binding ElementName=canv, Path=ActualWidth}"  
+                           
+                      Grid.Row="1">
+                                <ContentPresenter Margin="0,0,0,0"   
+                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"   
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="true">
+                                <Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Background" Value="#ffd2e7f4" />
+            <Setter Property="Foreground" Value="#FF217cb5"/>
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontFamily" Value="微软雅黑" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="40 10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Canvas Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"   
+                    Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <Canvas x:Name="canvNormal" Visibility="Visible"   
+                     Width="{TemplateBinding Width}" Height="{TemplateBinding Height}"   
+                     Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Canvas.Left="0">
+                                <!--<Rectangle Width="15" Height="40" Fill="#FFc7ebff" Canvas.Left="0"/>
+                                <Line X1="0" Y1="0" X2="0" Y2="15" Stroke="#297eb4" StrokeThickness="3"   
+                        Margin="6 10" StrokeDashArray="1" Canvas.Left="0"/>-->
+                                <!--<Path  Name="Arrow" Fill="#297eb4" HorizontalAlignment="Center" VerticalAlignment="Center"  Data="M 0 0 L 4 4 L 8 0 Z"/>-->
+                                <!--<Path x:Name="ExpandPath" HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Fill="#297eb4" Data="M 2 2 L 7 7 L 2 12 Z"/>-->
+                                <Path x:Name="TogglePath5" Data="M10,11 L20,20 10,29 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0" ></Path>
+                                <Rectangle Width="{TemplateBinding Width}" Height="1" Canvas.Top="0" Fill="Black" />
+                                <Rectangle Width="1" Height="40" Canvas.Left="0" Fill="Black" />
+                                <Rectangle Width="1" Height="40" Canvas.Right="0" Fill="Black" />
+                                <Rectangle Width="{TemplateBinding Width}" Height="1" Canvas.Bottom="0" Fill="Black" />
+                                <!--<Path x:Name="TogglePath" Data="M11,10 L17,16 23,10" Stroke="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                                <Path x:Name="TogglePath2" Data="M11,10 L17,16 23,10" Stroke="#297eb4" StrokeThickness="2" Canvas.Top="10"></Path>-->
+                            </Canvas>
+                            <Canvas x:Name="canvChecked" Visibility="Hidden"   
+                     Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" 
+                     Background="{TemplateBinding Background}" SnapsToDevicePixels="True" Canvas.Left="0" >
+                                <!--<Path Data="M13.494,10.697l-3.497-3.6l-3.497,3.6L6.494,8.328l3.503-3.631l3.48,3.592L13.494,10.697z" Fill="#297eb4" Canvas.Left="5" Canvas.Top="8"/>
+                                <Path Data="M13.494,10.697l-3.497-3.6l-3.497,3.6L6.494,8.328l3.503-3.631l3.48,3.592L13.494,10.697z" Fill="#297eb4" Canvas.Left="5" Canvas.Top="15"/>-->
+                                <!--<Path x:Name="TogglePath3" Data="M11,16 L17,10 23,16" Stroke="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                                <Path x:Name="TogglePath4" Data="M11,16 L17,10 23,16" Stroke="#297eb4" StrokeThickness="2" Canvas.Top="10"></Path>-->
+                                <Path x:Name="TogglePath6" Data="M10,28 L24,28 24,14 z" Fill="#297eb4" StrokeThickness="2" Canvas.Top="0"></Path>
+                                <Rectangle Width="{TemplateBinding Width}" Height="1" Canvas.Top="0" Fill="Black" />
+                                <Rectangle Width="1" Height="40" Canvas.Left="0" Fill="Black" />
+                                <Rectangle Width="1" Height="40" Canvas.Right="0" Fill="Black" />
+                                <Rectangle Width="{TemplateBinding Width}" Height="1" Canvas.Bottom="0" Fill="Black" />
+                            </Canvas>
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"   
+                     Margin="{TemplateBinding Padding}"   
+                     RecognizesAccessKey="True"   
+                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"   
+                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Canvas>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="true">
+                                <!--<Setter Property="Background" Value="#FFd2e7f4" />-->
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Visibility" TargetName="canvChecked" Value="Visible" />
+                                <Setter Property="Visibility" TargetName="canvNormal" Value="Hidden" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="60"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Name="projectName" Orientation="Horizontal" Grid.Row="0">
+                <Image Source="pack://application:,,,/TIOFPSS;component/Images/projectIcon2.png" Height="40" Width="40" Margin="30,10,0,0"/>
+                <TextBlock Text="项目对比" Height="50" FontSize="35" FontWeight="Medium" FontFamily="微软雅黑"
+                                                        Margin="20,10,0,0" IsEnabled="False"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+            <TabControl Style="{StaticResource WinTabControlStyle}" Margin="15,10,0,0" Grid.Row="1">
+
+                    <TabControl.Items>
+                        <TabItem Header="参数信息" Style="{StaticResource WinTabItemStyle}"  FontSize="15" >
+
+                            <StackPanel>
+                                <Grid Name="ParaHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="50"/>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <!--<ColumnDefinition/>
+                                        <ColumnDefinition/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">参数</Label>
+                                    <!--<Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="1,10,0,0">项目1</Label>
+                                    <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="1,10,0,0">项目2</Label>-->
+                                    <!--<Label Width="Auto" HorizontalAlignment="Left" Margin="10,10,0,0" Style="{StaticResource ProductNameStyle}">Product Name : Product 1</Label>-->
+
+                            <!--<Label  Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">Field 1</Label>
+                                <Label  Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                <Label  Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>-->
+                                    <!--<Label  Grid.ColumnSpan="5"  Grid.Row="1" Style="{StaticResource ProductNameStyle}" Margin="0,1,0,0" Height="40" VerticalAlignment="Top"></Label>-->
+                                    <Expander Header="摩擦片设计参数" Name="MCPSJCS" Grid.ColumnSpan="5"  Grid.Row="1" FontSize="15" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" x:Name="GridMCPSJCS">
+                                            <!--<Grid Background="LightYellow">-->
+                                                <!--<Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                 <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                          <ColumnDefinition />
+                                                          <ColumnDefinition />
+                                                           <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>-->
+             <!-- Row 0-->
+             <!--<Label Grid.ColumnSpan="3" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,1,0,0">Product Name : Product 1</Label>
+  
+             --><!-- Row 1--><!--
+             <Label Grid.ColumnSpan="3" Grid.Row="1" Style="{StaticResource SubjectAreaStyle}" Margin="0,1,0,0">Subject Area : Area 1</Label>
+  
+             --><!-- Row 2--><!--
+             <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionHeaderStyle}" Margin="0,1,0,0">UI Field</Label>
+             <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionHeaderStyle}" Margin="1,1,0,0">Exception</Label>
+             <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionHeaderStyle}" Margin="1,1,0,0">Action</Label>-->
+  
+
+                                                <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿数</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+    
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">模数(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+  
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">压力角(°)</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+
+                                                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿顶高(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                 
+                                                <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿根高(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                             
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿根圆角(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">外径(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                       
+                                                <Label Grid.Column="0" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">公法线长度公差(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                 
+                                                <Label Grid.Column="0" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">厚度(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿侧间隙(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>-->
+                                            <!--</Grid>-->
+                                    </Grid>
+                                </Expander>
+
+                                    <Expander Header="内毂设计参数" Name="NGSJCS" Grid.ColumnSpan="5"  Grid.Row="2" FontSize="15" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridNGSJCS">
+                                            <!--<Grid Background="LightYellow">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿数</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">模数(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">压力角(°)</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+
+                                                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿顶高(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿根高(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">齿根圆角(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">外径(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">公法线长度公差(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">厚度(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+                                            </Grid>-->
+                                    </Grid>
+                                </Expander>
+
+
+                                    <Expander Header="摩擦片强化参数" Name="MCPQHCS" FontSize="15" Grid.ColumnSpan="5" Grid.Row="3" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridMCPQHCS">
+                                            <!--<Grid Background="LightYellow">
+                                                <Grid.RowDefinitions>
+                                                 <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦层厚度(mm)</Label>
+                                            <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                            <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                            --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦层径宽(mm)</Label>
+                                            <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                            <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                            --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">镀层厚度(mm)</Label>
+                                            <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                            <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                        </Grid>-->
+                                    </Grid>
+                                </Expander>
+
+                                    <Expander Header="材料参数" Name="CLCS" FontSize="15" Grid.ColumnSpan="5" Grid.Row="4" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridCLCS">
+                                            <!--<Grid Background="LightYellow">
+                                                <Grid.RowDefinitions>
+
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片弹性模量(GPa)</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片材料密度(kg/m^3)</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片泊松比</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+
+                                                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片抗拉强度极限(MPa)</Label>
+                                                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片疲劳极限(MPa)</Label>
+                                                <Label Grid.Column="1" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂弹性模量(GPa)</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂材料密度(kg/m^3)</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂泊松比</Label>
+                                                <Label Grid.Column="1" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦层弹性模量(GPa)</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦层材料密度(kg/m^3)</Label>
+                                                <Label Grid.Column="1" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="10" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦层泊松比</Label>
+                                                <Label Grid.Column="1" Grid.Row="10" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="10" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="11" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">镀层弹性模量(GPa)</Label>
+                                                <Label Grid.Column="1" Grid.Row="11" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="11" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="12" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">镀层材料密度(kg/m^3)</Label>
+                                                <Label Grid.Column="1" Grid.Row="12" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="12" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="13" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">镀层泊松比</Label>
+                                                <Label Grid.Column="1" Grid.Row="13" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="13" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+                                            </Grid>-->
+                                        </Grid>
+                                    </Expander>
+
+
+                                    <Expander Header="初始条件" Name="CSTJ" FontSize="15" Grid.ColumnSpan="5" Grid.Row="5" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridCSTJ">
+                                            <!--<Grid Background="LightYellow">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂初始角位移(rad)</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂初始速度(rad/s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片初始角位移(rad)</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+
+                                                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片初始速度(rad/s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">油膜厚度(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">油膜粘度(Pa.s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">温度(℃)</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                            </Grid>-->
+                                        </Grid>
+                                    </Expander>
+
+
+                                    <Expander Header="计算条件" Name="JSTJ" FontSize="15" Grid.ColumnSpan="5" Grid.Row="6" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridJSTJ">
+                                            <!--<Grid Background="LightYellow">
+                                                <Grid.RowDefinitions>
+
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">实际接触齿数</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">反弹系数</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂转速(r/min)</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+
+                                                <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂振幅(rad/s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="3" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂振频(Hz)</Label>
+                                                <Label Grid.Column="1" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="4" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">结构阻尼(N/(m/s))</Label>
+                                                <Label Grid.Column="1" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="5" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">摩擦片转动惯量(kg*m^2)</Label>
+                                                <Label Grid.Column="1" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0"/>
+                                                <Label Grid.Column="2" Grid.Row="6" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">内毂转动惯量(kg*m^2)</Label>
+                                                <Label Grid.Column="1" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="7" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">接触区径向长度(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="8" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">接触区轴向长度(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="9" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+
+                                                <Label Grid.Column="0" Grid.Row="10" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">阻尼槽长(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="10" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="10" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="11" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">阻尼槽宽(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="11" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="11" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="12" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">阻尼槽半径(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="12" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="12" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="13" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">启动时间(s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="13" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="13" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="14" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">增速时间(s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="14" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="14" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="15" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">稳定时间(s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="15" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="15" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                <Label Grid.Column="0" Grid.Row="16" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">停止时间(s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="16" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="16" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+                                            </Grid>-->
+                                        </Grid>
+                                    </Expander>
+
+                                    <Expander Header="误差条件" Name="WCTJ" FontSize="15" Grid.ColumnSpan="5" Grid.Row="7" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridWCTJ">
+                                            <!--<Grid Background="LightYellow">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">偏心距(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">节距最大误差(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 5--><!--
+                                                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">节距最小误差(mm)</Label>
+                                                <Label Grid.Column="1" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="2" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                            </Grid>-->
+                                        </Grid>
+                                    </Expander>
+
+                                    <Expander Header="实验数据标定与转换系数" Name="SYSJBD" FontSize="15" Grid.ColumnSpan="5" Grid.Row="8" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=ParaHeader}" HorizontalAlignment="Left"  Style="{DynamicResource ExpanderStyle}" Margin="0,1,0,0" IsExpanded="True">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ParaHeader}" Name="GridSYSJBD" >
+                                            <!--<Grid Background="LightYellow">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">采样频率(Hz)</Label>
+                                                <Label Grid.Column="1" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="0" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                                --><!-- Row 4--><!--
+                                                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="0,1,0,0">应力应变转换系数(rad/s)</Label>
+                                                <Label Grid.Column="1" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Missing Data</Label>
+                                                <Label Grid.Column="2" Grid.Row="1" Style="{StaticResource ExceptionCellStyle}" Margin="1,1,0,0">Enter information</Label>
+
+                                         
+
+                                            </Grid>-->
+                                        </Grid>
+                                    </Expander>
+
+
+                                   
+
+                                </Grid>
+                            </StackPanel>
+                            <!--<Table Name="ItemsTable" CellSpacing="10" BorderBrush="Black" BorderThickness="2" TextAlignment="Justify">
+                                <Table.Columns>
+                                    <TableColumn Width="120"/>
+                                    <TableColumn Width="180"/>
+                                    <TableColumn Width="120"/>
+                                    <TableColumn Width="140"/>
+                                    <TableColumn Width="140"/>
+                                </Table.Columns>
+                                <TableRowGroup Background="White" >
+                                    <TableRow>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Columns[0]}"/>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Columns[1]}"/>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Columns[2]}"/>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Columns[3]}"/>
+                                            </Paragraph>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Paragraph>
+                                                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Columns[4]}"/>
+                                            </Paragraph>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableRowGroup>
+                            </Table>-->
+                    </TabItem>
+
+                    <TabItem Header="冲击动力学分析结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
+                            <StackPanel>
+                                <Grid Name="CJDLXHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="50"/>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <!--<ColumnDefinition Width="200"/>-->
+                                        <!--<ColumnDefinition/>
+                                        <ColumnDefinition/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
+                                    <Expander Header="摩擦片冲击力" Name="MoCaPianChonJiLi" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                            <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianChonJiLi" >
+                                            </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                    <Expander Header="摩擦片冲击力频谱图" Name="MoCaPianChonJiLiPinPuTu" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianChonJiLiPinPuTu" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+
+                                    <Expander Header="摩擦片加速度频谱图" Name="MoCaPianJiaSuDuPinPuTu" Grid.Row="3" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaSuDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片角加速度" Name="MoCaPianJiaoJiaSuDu" Grid.Row="4" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaoJiaSuDu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片角速度" Name="MoCaPianJiaoSuDu" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaoSuDu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片速度频谱图" Name="MoCaPianSuDuPinPuTu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianSuDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片位移" Name="MoCaPianWeiYi" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianWeiYi" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片与内毂相对扭转角度" Name="MoCaPianYuNeiGuXiangDuiNiuZhuan" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianYuNeiGuXiangDuiNiuZhuan" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片与内毂相对旋转速度" Name="MoCaPianYuNeiGuXiangDuiXuanZhuan" Grid.Row="9" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianYuNeiGuXiangDuiXuanZhuan" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="内毂加速度频谱图" Name="NeiGuJiaSuDuPinPuTu" Grid.Row="10" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuJiaSuDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="内毂角加速度" Name="NeiGuJiaoJiaSuDu" Grid.Row="11" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuJiaoJiaSuDu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="内毂角速度"  Name="NeiGuJiaoSuDu" Grid.Row="12" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuJiaoSuDu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="内毂速度频谱图" Name="NeiGuSuDuPinPuTu" Grid.Row="13" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid  Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuSuDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="内毂位移"  Name="NeiGuWeiYi" Grid.Row="14" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuWeiYi" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="相对扭转角度频谱图" Name="XiangDuiNiuZhuanJiaoDuPinPuTu" Grid.Row="15" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridXiangDuiNiuZhuanJiaoDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="相对旋转速度频谱图" Name="XiangDuiXuanZhuanJiaoDuPinPuTu" Grid.Row="16" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridXiangDuiXuanZhuanJiaoDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                </Grid>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="非线性损伤分析结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
+                            <StackPanel>
+                                <Grid Name="FXXSSHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="50"/>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <!--<ColumnDefinition Width="200"/>-->
+                                        <!--<ColumnDefinition/>
+                                        <ColumnDefinition/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
+                                    <Expander Header="摩擦片齿根应力时域波形" Name="moChaPianChiGenYingLiShiYuBoXing" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridmoChaPianChiGenYingLiShiYuBoXing" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                    <Expander Header="摩擦片累计损伤" Name="moChaPianLeiJiSunShang" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridmoChaPianLeiJiSunShang" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                </Grid>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="当量载荷谱结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
+                            <StackPanel>
+                                <Grid Name="DLZHPHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="50"/>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <!--<ColumnDefinition Width="200"/>-->
+                                        <!--<ColumnDefinition/>
+                                        <ColumnDefinition/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
+                                    <Expander Header="当量载荷谱" Name="dangLiangZaiHePu" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GriddangLiangZaiHePu" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                    <Expander Header="雨流计数结果" Name="yuLiuJiShuJieGuo" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridyuLiuJiShuJieGuo" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                </Grid>
+                            </StackPanel>
+                    </TabItem>
+                    <TabItem Header="噪声分析结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
+
+                            <StackPanel>
+                                <Grid Name="ZSFXHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="50"/>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <!--<ColumnDefinition Width="200"/>-->
+                                        <!--<ColumnDefinition/>
+                                        <ColumnDefinition/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
+                                    <Expander Header="噪声分析" Name="zaoShengFenXi" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=ZSFXHeader}" Name="GridzaoShengFenXi" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                </Grid>
+                            </StackPanel>
+                        </TabItem>
+                    <TabItem Header="协同分析结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
+                            <StackPanel>
+                                <Grid Name="XTFXHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition  Height="50"/>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <!--<ColumnDefinition Width="200"/>-->
+                                        <!--<ColumnDefinition/>
+                                        <ColumnDefinition/>-->
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
+                                    <Expander Header="少齿当量应力云图" Name="danchiyingliyuntu" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Griddanchiyingliyuntu" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                    <Expander Header="少齿当量位移云图" Name="danchiweiyiyuntu" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Griddanchiweiyiyuntu" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+
+                                    <Expander Header="镀层应力云图" Name="ducengyingli" Grid.Row="3" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridducengyingli" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="镀层位移云图" Name="ducengweiyiyuntu" Grid.Row="4" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridducengweiyiyuntu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="偏心应力云图" Name="pianxinyingliyuntu" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridpianxinyingliyuntu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="偏心位移云图" Name="pianxinweiyiyuntu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridpianxinweiyiyuntu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="预应力应力云图" Name="yuyinliyiyingliyuntu" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridyuyinliyiyingliyuntu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="预应力位移云图" Name="yuyingliweiyiyuntu" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridyuyingliweiyiyuntu" >
+                                        </Grid>
+                                    </Expander>
+                                </Grid>
+                            </StackPanel>
+                        </TabItem>
+
+                </TabControl.Items>
+            </TabControl>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A8361A9-BD56-4FFE-9EE9-E439252FA8EA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TIOFPSS</RootNamespace>
+    <AssemblyName>TIOFPSS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>b17b587e</NuGetPackageImportStamp>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\pro.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="draw">
+      <HintPath>dll\draw.dll</HintPath>
+    </Reference>
+    <Reference Include="fatigue_final">
+      <HintPath>dll\fatigue_final.dll</HintPath>
+    </Reference>
+    <Reference Include="final_loadspectrumprograming_2">
+      <HintPath>dll\final_loadspectrumprograming_2.dll</HintPath>
+    </Reference>
+    <Reference Include="Fluent, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="jjwc">
+      <HintPath>dll\jjwc.dll</HintPath>
+    </Reference>
+    <Reference Include="main_program_v1">
+      <HintPath>dll\main_program_v1.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>dll\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics.Data.Matlab">
+      <HintPath>dll\MathNet.Numerics.Data.Matlab.dll</HintPath>
+    </Reference>
+    <Reference Include="MWArray, Version=2.14.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\MATLAB\R2014a\toolbox\dotnetbuilder\bin\win64\v2.0\MWArray.dll</HintPath>
+    </Reference>
+    <Reference Include="NIHE">
+      <HintPath>dll\NIHE.dll</HintPath>
+    </Reference>
+    <Reference Include="noise, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\noise.dll</HintPath>
+    </Reference>
+    <Reference Include="pitch">
+      <HintPath>dll\pitch.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\学习\实习\TIOFPSS\TIOFPSS\dll\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="TpMetroWpfLibrary">
+      <HintPath>dll\TpMetroWpfLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Expression, Version=2.0.0.1, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\Xceed.Wpf.AvalonDock.Themes.Expression.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>dll\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>dll\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="zsbd">
+      <HintPath>dll\zsbd.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Analysis\DangLiangZaiHePuFenXiThread.cs" />
+    <Compile Include="Analysis\FeiXianXingSunShangThread.cs" />
+    <Compile Include="Analysis\McpNgMoTaiJiSuan.cs" />
+    <Compile Include="Analysis\ShaoChiYuYingLiThread.cs" />
+    <Compile Include="Analysis\WuJieJuWuChaFenXiThread.cs" />
+    <Compile Include="Analysis\XT_DongTaiFenXiThread.cs" />
+    <Compile Include="Analysis\XT_DongTaiYingLiThread.cs" />
+    <Compile Include="Analysis\XT_DuCengShaoChiThread.cs" />
+    <Compile Include="Analysis\XT_jiangTaiQiangDuThread..cs" />
+    <Compile Include="Analysis\XT_McpNgMoTaiJiSuan.cs" />
+    <Compile Include="Analysis\XT_MoCaPianMoTaiThread.cs" />
+    <Compile Include="Analysis\XT_QuanChiPianXinThread.cs" />
+    <Compile Include="Analysis\XT_ShaoChiDongTaiFenXiThread.cs" />
+    <Compile Include="Analysis\XT_ShaoChiYuYingLiThread.cs" />
+    <Compile Include="Analysis\ZaoShengFenXiThread.cs" />
+    <Compile Include="Annotations.cs" />
+    <Compile Include="Commanding\IRelayCommand.cs" />
+    <Compile Include="Commanding\RelayCommand.cs" />
+    <Compile Include="DB\BLLUserProject.cs" />
+    <Compile Include="DB\DALUserProject.cs" />
+    <Compile Include="DB\SQLiteDBHelper.cs" />
+    <Compile Include="DB\UserProject.cs" />
+    <Compile Include="DB\XmlHelper.cs" />
+    <Compile Include="Dialog\AnalysisMonitor.xaml.cs">
+      <DependentUpon>AnalysisMonitor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\Configure.xaml.cs">
+      <DependentUpon>Configure.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DLZHP_DongTaiFenXiJieGuo.xaml.cs">
+      <DependentUpon>DLZHP_DongTaiFenXiJieGuo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DLZHP_ShiYanWenjian.xaml.cs">
+      <DependentUpon>DLZHP_ShiYanWenjian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DLZHP_ZhunDongTaiJiSuanWenJian.xaml.cs">
+      <DependentUpon>DLZHP_ZhunDongTaiJiSuanWenJian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DongTaiFenXi.xaml.cs">
+      <DependentUpon>DongTaiFenXi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DongTaiYingLiJiSuan.xaml.cs">
+      <DependentUpon>DongTaiYingLiJiSuan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\DuCengShaoChiFenXi.xaml.cs">
+      <DependentUpon>DuCengShaoChiFenXi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FXXSS_DongTaiFenXi.xaml.cs">
+      <DependentUpon>FXXSS_DongTaiFenXi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FXXSS_ShiYanWenJian.xaml.cs">
+      <DependentUpon>FXXSS_ShiYanWenJian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FXXSS_ZhunDongTaiJieGuo.xaml.cs">
+      <DependentUpon>FXXSS_ZhunDongTaiJieGuo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\InputPara.xaml.cs">
+      <DependentUpon>InputPara.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\JingTaiQiangDuFenXi.xaml.cs">
+      <DependentUpon>JingTaiQiangDuFenXi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\McpNgMoTaiJiSuan.xaml.cs">
+      <DependentUpon>McpNgMoTaiJiSuan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\MoCaPianMoTaiJiSuan.xaml.cs">
+      <DependentUpon>MoCaPianMoTaiJiSuan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\NewProject.xaml.cs">
+      <DependentUpon>NewProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ParaProperty.xaml.cs">
+      <DependentUpon>ParaProperty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ProjectCompare.xaml.cs">
+      <DependentUpon>ProjectCompare.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ProjectQuery.xaml.cs">
+      <DependentUpon>ProjectQuery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\QuanChiPianXinJiSuan.xaml.cs">
+      <DependentUpon>QuanChiPianXinJiSuan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\SavePara.xaml.cs">
+      <DependentUpon>SavePara.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ShaoChiDongTaiFenXi.xaml.cs">
+      <DependentUpon>ShaoChiDongTaiFenXi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ShaoChiYuYingLiFenXi.xaml.cs">
+      <DependentUpon>ShaoChiYuYingLiFenXi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ShengChengBaoBiao.xaml.cs">
+      <DependentUpon>ShengChengBaoBiao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ViewResult.xaml.cs">
+      <DependentUpon>ViewResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\YouJieJuChuTu.xaml.cs">
+      <DependentUpon>YouJieJuChuTu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\ZaoShengYouHuaFangFa.xaml.cs">
+      <DependentUpon>ZaoShengYouHuaFangFa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="ViewModels\ColorViewModel.cs" />
+    <Compile Include="ViewModels\FontsViewModel.cs" />
+    <Compile Include="ViewModels\GalleryItemViewModel.cs" />
+    <Compile Include="ViewModels\GallerySampleDataItemViewModel.cs" />
+    <Compile Include="ViewModels\GalleryViewModel.cs" />
+    <Compile Include="ViewModels\LatestProjectViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ParaLibViewModel.cs" />
+    <Compile Include="ViewModels\ParaViewModel.cs" />
+    <Compile Include="ViewModels\ProjCmpViewModel.cs" />
+    <Compile Include="ViewModels\ProjectQuery.cs" />
+    <Compile Include="ViewModels\ResultPicViewModel.cs" />
+    <Compile Include="ViewModels\TreeViewData.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Page Include="Content.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\AnalysisMonitor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\Configure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\DLZHP_DongTaiFenXiJieGuo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\DLZHP_ShiYanWenjian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\DLZHP_ZhunDongTaiJiSuanWenJian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\DongTaiFenXi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\DongTaiYingLiJiSuan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\DuCengShaoChiFenXi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\FXXSS_DongTaiFenXi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\FXXSS_ShiYanWenJian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\FXXSS_ZhunDongTaiJieGuo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\InputPara.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\JingTaiQiangDuFenXi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\McpNgMoTaiJiSuan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\MoCaPianMoTaiJiSuan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\NewProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\ParaProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\ProjectCompare.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\ProjectQuery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\QuanChiPianXinJiSuan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\SavePara.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\ShaoChiDongTaiFenXi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\ShaoChiYuYingLiFenXi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\ShengChengBaoBiao.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialog\UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\ViewResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\Window2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\YouJieJuChuTu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\ZaoShengYouHuaFangFa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Content.xaml.cs">
+      <DependentUpon>Content.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\3D_model.png" />
+    <Resource Include="Images\BlackTheme.png" />
+    <Resource Include="Images\Blue.png" />
+    <Resource Include="Images\BlueLarge.png" />
+    <Resource Include="Images\BlueTheme.png" />
+    <Resource Include="Images\Bold.png" />
+    <Resource Include="Images\Box.png" />
+    <Resource Include="Images\Brown.png" />
+    <Resource Include="Images\BrownLarge.png" />
+    <Resource Include="Images\ChangeCase.png" />
+    <Resource Include="Images\chart_line_edit.png" />
+    <Resource Include="Images\check.png" />
+    <Resource Include="Images\ClearFormatting.png" />
+    <Resource Include="Images\contrast.png" />
+    <Resource Include="Images\Copy.png" />
+    <Resource Include="Images\Cut.png" />
+    <Resource Include="Images\Default.png" />
+    <Resource Include="Images\Exit.png" />
+    <Resource Include="Images\FontColor.png" />
+    <Resource Include="Images\FormatPainter.png" />
+    <Resource Include="Images\GalleryLarge.png" />
+    <Resource Include="Images\Gray.png" />
+    <Resource Include="Images\GrayLarge.png" />
+    <Resource Include="Images\Green.png" />
+    <Resource Include="Images\GreenLarge.png" />
+    <Resource Include="Images\GrowFont.png" />
+    <Resource Include="Images\Help.png" />
+    <Resource Include="Images\Italic.png" />
+    <Resource Include="Images\Line_Chart.png" />
+    <Resource Include="Images\new.png" />
+    <Resource Include="Images\open.png" />
+    <Resource Include="Images\Orange.png" />
+    <Resource Include="Images\OrangeLarge.png" />
+    <Resource Include="Images\Parameter.png" />
+    <Resource Include="Images\Paste.png" />
+    <Resource Include="Images\PasteFormating.png" />
+    <Resource Include="Images\PasteImage.png" />
+    <Resource Include="Images\PasteLarge.png" />
+    <Resource Include="Images\PasteSourceFormating.png" />
+    <Resource Include="Images\PasteText.png" />
+    <Resource Include="Images\PasteTextOnly.png" />
+    <Resource Include="Images\Pink.png" />
+    <Resource Include="Images\PinkLarge.png" />
+    <Resource Include="Images\Red.png" />
+    <Resource Include="Images\RedLarge.png" />
+    <Resource Include="Images\refine.png" />
+    <Resource Include="Images\result.png" />
+    <Resource Include="Images\SampleImageForScreenTip.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Search.png" />
+    <Resource Include="Images\ShrinkFont.png" />
+    <Resource Include="Images\SilverTheme.png" />
+    <Resource Include="Images\Strikethrough.png" />
+    <Resource Include="Images\submit.png" />
+    <Resource Include="Images\Subscript.png" />
+    <Resource Include="Images\Superscript.png" />
+    <Resource Include="Images\Task_Report.png" />
+    <Resource Include="Images\Task_Report_32px_1084089_easyicon.net.png" />
+    <Resource Include="Images\Test16.png" />
+    <Resource Include="Images\Test32.png" />
+    <Resource Include="Images\TextEffects.png" />
+    <Resource Include="Images\TextHighlightColor.png" />
+    <Resource Include="Images\Underline.png" />
+    <Resource Include="Images\Yellow.png" />
+    <Resource Include="Images\YellowLarge.png" />
+    <Resource Include="Images\优化.png" />
+    <Resource Include="Images\冲击动力学_无节距.ico" />
+    <Resource Include="Images\冲击动力学_有节距.ico" />
+    <Resource Include="Images\噪声分析.ico" />
+    <Resource Include="Images\当量载荷谱.ico" />
+    <Resource Include="Images\非线性损伤.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\folder.net.png" />
+    <Resource Include="Images\folderopen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\projectIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Library.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\冲击动力学_无节距.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\analysis.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\当量载荷谱.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pro.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\task_manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\模态结果.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\配置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\xbg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\优化1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\projectIcon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\projectIcon1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

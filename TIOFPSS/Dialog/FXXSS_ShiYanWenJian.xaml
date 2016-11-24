@@ -1,0 +1,109 @@
+﻿<Window x:Class="TIOFPSS.Dialog.FXXSS_ShiYanWenJian"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="300" Width="600"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="非线性损伤分析-实验文件选择">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="文件路径" Grid.Row="0" Margin="5">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="选择文件路径：" 
+                       Margin="10,5,5,5"/>
+                <Button Click="OnFindClick"
+                     Grid.Row="1" Grid.Column="1"
+                     Width="90"
+                     Height="23"
+                     Margin="10,5,5,5"
+                     Content="浏览..."/>
+                <TextBox x:Name="_valueSelectPath" 
+                     Grid.Row="1" Grid.Column="0"
+                     Width="425"
+                     Margin="20,5,5,5"
+                         Height="23"
+                     HorizontalAlignment="Left"
+                     Text="" />
+
+
+
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="数据参数" Grid.Row="1" Margin="5">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" 
+                       Text="读取数据文件中：" 
+                       Margin="10,5,5,5"/>
+                <TextBox x:Name="_rowValue" 
+                     Grid.Row="1" Grid.Column="1"
+                     Width="100"
+                     Height="23"
+                     Margin="10,5,5,5"
+                     HorizontalAlignment="Left"
+                     Text="" />
+                <TextBlock Grid.Row="1" Grid.Column="0" 
+                       Text="行以下" 
+                       Margin="20,10,5,5"/>
+
+                <TextBox x:Name="_columnValue" 
+                     Grid.Row="2" Grid.Column="1"
+                     Width="100"
+                     Margin="10,5,5,5"
+                         Height="23"
+                     HorizontalAlignment="Left"
+                     Text="" />
+                <TextBlock Grid.Row="2" Grid.Column="0" 
+                       Text="列以左" 
+                       Margin="20,10,5,5"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="2" 
+                       Text="当量载荷谱参数：" 
+                       Margin="10,5,5,5"/>
+                <TextBox x:Name="_aisleValue" 
+                     Grid.Row="1" Grid.Column="3"
+                     Width="100"
+                     Margin="5,5,0,0"
+                         Height="23"
+                     HorizontalAlignment="Left"
+                     Text="" VerticalAlignment="Top" />
+                <TextBlock Grid.Row="1" Grid.Column="2" 
+                       Text="第几通道：" 
+                       Margin="20,10,5,5"/>             
+            </Grid>
+        </GroupBox>
+        <Button Grid.Row="4"  Margin="245,5,5,5" Content="开始分析" Width="90" Height="23" Click="OnFXXSSClick"/>
+        <Button Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="23" Click="Cancel_Click"/>
+    </Grid>
+</Window>

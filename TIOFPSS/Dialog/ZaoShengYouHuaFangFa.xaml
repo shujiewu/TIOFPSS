@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="TIOFPSS.Dialog.ZaoShengYouHuaFangFa"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="1300" d:DesignWidth="1300">
+    
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="60"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Image Source="pack://application:,,,/TIOFPSS;component/Images/projectIcon1.png" Height="40" Width="40" Margin="30,10,0,0"/>
+                <TextBlock Text="噪声优化方法" Height="50" FontSize="35" FontWeight="Medium" FontFamily="微软雅黑"
+                                                        Margin="20,10,0,0" IsEnabled="False"></TextBlock>
+
+                <!--<TextBlock Text="噪声优化方法" Height="50" FontSize="35" FontWeight="Medium" FontFamily="微软雅黑"
+                                                        Margin="450,10,0,0" IsEnabled="False"></TextBlock>-->
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+            <Border Margin="30,10,0,0"
+                    BorderThickness="4"
+                    BorderBrush="LightBlue"/>
+                <TextBlock Text="    整体结构噪声优化"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextTitle2Style}"/>
+
+
+                <TextBlock Text="    （1）减小齿侧间隙可降低整体结构噪声。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （2）降低内毂振频可降低整体结构噪声，且结构噪声分贝值峰值对应频率和分贝值也随之降低。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （3）降低内毂振幅可降低整体结构噪声。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （4）油膜厚度在0.05mm到0.06mm可降低整体结构噪声。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <Border Margin="30,10,0,0"
+                    BorderThickness="4"
+                    BorderBrush="LightBlue"/>
+                <TextBlock Text="    高频结构噪声优化方法"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextTitle2Style}"/>
+
+
+                <TextBlock Text="    （1）齿侧间隙小于0.9mm可降低高频结构噪声分贝值。齿侧间隙小于0.9mm的高频结构噪声分贝值较齿侧间隙大于0.9mm的高频结构噪声分贝值降低2至6dB。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （2）加油膜可降低高频结构噪声1到4dB。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （3）降低内毂振频，结构噪声分贝值峰值与结构噪声峰值对应频率降低。内毂振频每减少40Hz结构噪声分贝值峰值降低1至4dB，结构噪声分贝值峰值对应频率也随之降低。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <Border Margin="30,10,0,0"
+                    BorderThickness="4"
+                    BorderBrush="LightBlue"/>
+                <TextBlock Text="    低频结构噪声优化方法"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextTitle2Style}"/>
+
+
+                <TextBlock Text="    （1）减小齿侧间隙可降低低频结构噪声，每减小0.1mm间隙低频结构噪声可降低1至2dB。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （2）压力角取值避开15度至17度之间和20至25度之间可降低低频结构噪声。压力角在15度至17度之间和20至25度之间时低频结构噪声较其他压力角的低频结构噪声高3至7dB。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （3）油膜厚度在0.05mm到0.06mm之间时可降低低频结构噪声分贝值。油膜厚度在0.05mm到0.06mm之间时低频结构噪声分贝值较无油膜和其他油膜厚度的低频结构噪声分贝值降低2至5dB。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+
+                <Border Margin="30,10,0,0"
+                    BorderThickness="4"
+                    BorderBrush="LightBlue"/>
+                <TextBlock Text="    结构噪声峰值优化方法"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextTitle2Style}"/>
+
+                <TextBlock Text="    （1)降低内毂振频，结构噪声分贝值峰值与结构噪声峰值对应频率降低。内毂振频每减小40Hz结构噪声分贝值峰值降低1至4dB，结构噪声峰值对应频率也随之降低。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+                <TextBlock Text="    （2)降低内毂振幅，每降低内毂振幅1度结构噪声分贝值峰值降低2至4dB。"
+                   Margin="{StaticResource WinMargin}"
+                   Style="{StaticResource WinTextNormalStyle}"/>
+
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+    
+</UserControl>
