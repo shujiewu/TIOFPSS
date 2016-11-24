@@ -920,13 +920,13 @@
                                     <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
                                     <Expander Header="摩擦片齿根应力时域波形" Name="moChaPianChiGenYingLiShiYuBoXing" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridmoChaPianChiGenYingLiShiYuBoXing" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianChiGenYingLiShiYuBoXing" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
                                     <Expander Header="摩擦片累计损伤" Name="moChaPianLeiJiSunShang" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridmoChaPianLeiJiSunShang" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianLeiJiSunShang" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
@@ -949,13 +949,13 @@
                                     <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
                                     <Expander Header="当量载荷谱" Name="dangLiangZaiHePu" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GriddangLiangZaiHePu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=DLZHPHeader}" Name="GriddangLiangZaiHePu" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
                                     <Expander Header="雨流计数结果" Name="yuLiuJiShuJieGuo" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridyuLiuJiShuJieGuo" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=DLZHPHeader}" Name="GridyuLiuJiShuJieGuo" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
@@ -1007,39 +1007,39 @@
                                     <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
                                     <Expander Header="少齿当量应力云图" Name="danchiyingliyuntu" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Griddanchiyingliyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Griddanchiyingliyuntu" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
                                     <Expander Header="少齿当量位移云图" Name="danchiweiyiyuntu" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Griddanchiweiyiyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Griddanchiweiyiyuntu" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
 
                                     <Expander Header="镀层应力云图" Name="ducengyingli" Grid.Row="3" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridducengyingli" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridducengyingli" >
                                         </Grid>
                                     </Expander>
                                     <Expander Header="镀层位移云图" Name="ducengweiyiyuntu" Grid.Row="4" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridducengweiyiyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridducengweiyiyuntu" >
                                         </Grid>
                                     </Expander>
                                     <Expander Header="偏心应力云图" Name="pianxinyingliyuntu" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridpianxinyingliyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridpianxinyingliyuntu" >
                                         </Grid>
                                     </Expander>
                                     <Expander Header="偏心位移云图" Name="pianxinweiyiyuntu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridpianxinweiyiyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridpianxinweiyiyuntu" >
                                         </Grid>
                                     </Expander>
                                     <Expander Header="预应力应力云图" Name="yuyinliyiyingliyuntu" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridyuyinliyiyingliyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridyuyinliyiyingliyuntu" >
                                         </Grid>
                                     </Expander>
                                     <Expander Header="预应力位移云图" Name="yuyingliweiyiyuntu" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="Gridyuyingliweiyiyuntu" >
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridyuyingliweiyiyuntu" >
                                         </Grid>
                                     </Expander>
                                 </Grid>

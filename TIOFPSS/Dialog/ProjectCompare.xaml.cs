@@ -116,6 +116,9 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(lb, 0);
                 Grid.SetColumn(lb, i);
                 FXXSSHeader.Children.Add(lb);
+
+                GridmoChaPianChiGenYingLiShiYuBoXing.ColumnDefinitions.Add(new ColumnDefinition());
+                GridmoChaPianLeiJiSunShang.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
             for (int i = 0; i < path.Count; i++)
@@ -138,6 +141,9 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(lb, 0);
                 Grid.SetColumn(lb, i);
                 DLZHPHeader.Children.Add(lb);
+
+                GriddangLiangZaiHePu.ColumnDefinitions.Add(new ColumnDefinition());
+                GridyuLiuJiShuJieGuo.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
             for (int i = 0; i < path.Count; i++)
@@ -183,11 +189,246 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(lb, 0);
                 Grid.SetColumn(lb, i);
                 XTFXHeader.Children.Add(lb);
+                Griddanchiyingliyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Griddanchiweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridducengyingli.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridducengweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridpianxinyingliyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridpianxinweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridyuyinliyiyingliyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridyuyingliweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+            //666666666666
+            GridmoChaPianChiGenYingLiShiYuBoXing.RowDefinitions.Add(new RowDefinition());
+            GridmoChaPianLeiJiSunShang.RowDefinitions.Add(new RowDefinition());
+            for (int i = 0; i < path.Count; i++)
+            {
+                string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
+                Image imgtemp1 = new Image();
+                imgtemp1.Source = LoadImg(PicPath + "\\摩擦片齿根应力时域波形.png");
+                if (i == 0)
+                {
+                    imgtemp1.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp1.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp1, 0);
+                Grid.SetColumn(imgtemp1, i);
+
+                GridmoChaPianChiGenYingLiShiYuBoXing.Children.Add(imgtemp1);
+
+                Image imgtemp2 = new Image();
+                imgtemp2.Source = LoadImg(PicPath + "\\摩擦片累计损伤.png");
+                if (i == 0)
+                {
+                    imgtemp2.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp2.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp2, 0);
+                Grid.SetColumn(imgtemp2, i);
+
+                GridmoChaPianLeiJiSunShang.Children.Add(imgtemp2);
             }
 
+            //555555555555      图片名称尚未改
+            Griddanchiyingliyuntu.RowDefinitions.Add(new RowDefinition());
+            Griddanchiweiyiyuntu.RowDefinitions.Add(new RowDefinition());
+            Gridducengyingli.RowDefinitions.Add(new RowDefinition());
+            Gridducengweiyiyuntu.RowDefinitions.Add(new RowDefinition());
+            Gridpianxinyingliyuntu.RowDefinitions.Add(new RowDefinition());
+            Gridpianxinweiyiyuntu.RowDefinitions.Add(new RowDefinition());
+            Gridyuyinliyiyingliyuntu.RowDefinitions.Add(new RowDefinition());
+            Gridyuyingliweiyiyuntu.RowDefinitions.Add(new RowDefinition());
+            for (int i = 0; i < path.Count; i++)
+            {
+                string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
+                Image imgtemp1 = new Image();
+                imgtemp1.Source = LoadImg(PicPath + "\\摩擦片冲击力.png");
+                if (i == 0)
+                {
+                    imgtemp1.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp1.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp1, 0);
+                Grid.SetColumn(imgtemp1, i);
+
+                Griddanchiyingliyuntu.Children.Add(imgtemp1);
 
 
 
+                Image imgtemp2 = new Image();
+                imgtemp2.Source = LoadImg(PicPath + "\\摩擦片冲击力频谱图.png");
+                if (i == 0)
+                {
+                    imgtemp2.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp2.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp2, 0);
+                Grid.SetColumn(imgtemp2, i);
+
+                Griddanchiweiyiyuntu.Children.Add(imgtemp2);
+
+                Image imgtemp3 = new Image();
+                imgtemp3.Source = LoadImg(PicPath + "\\摩擦片加速度频谱图.png");
+                if (i == 0)
+                {
+                    imgtemp3.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp3.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp3, 0);
+                Grid.SetColumn(imgtemp3, i);
+
+                Gridducengyingli.Children.Add(imgtemp3);
+
+
+                Image imgtemp4 = new Image();
+                imgtemp4.Source = LoadImg(PicPath + "\\摩擦片角加速度.png");
+                if (i == 0)
+                {
+                    imgtemp4.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp4.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp4, 0);
+                Grid.SetColumn(imgtemp4, i);
+
+                Gridducengweiyiyuntu.Children.Add(imgtemp4);
+
+
+                Image imgtemp5 = new Image();
+                imgtemp5.Source = LoadImg(PicPath + "\\摩擦片角速度.png");
+                if (i == 0)
+                {
+                    imgtemp5.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp5.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp5, 0);
+                Grid.SetColumn(imgtemp5, i);
+
+                Gridpianxinyingliyuntu.Children.Add(imgtemp5);
+
+                Image imgtemp6 = new Image();
+                imgtemp6.Source = LoadImg(PicPath + "\\摩擦片速度频谱图.png");
+                if (i == 0)
+                {
+                    imgtemp6.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp6.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp6, 0);
+                Grid.SetColumn(imgtemp6, i);
+
+                Gridpianxinweiyiyuntu.Children.Add(imgtemp6);
+
+
+                Image imgtemp7 = new Image();
+                imgtemp7.Source = LoadImg(PicPath + "\\摩擦片位移.png");
+                if (i == 0)
+                {
+                    imgtemp7.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp7.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp7, 0);
+                Grid.SetColumn(imgtemp7, i);
+
+                Gridyuyinliyiyingliyuntu.Children.Add(imgtemp7);
+
+
+                Image imgtemp8 = new Image();
+                imgtemp8.Source = LoadImg(PicPath + "\\摩擦片与内毂相对扭转角度.png");
+                if (i == 0)
+                {
+                    imgtemp8.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp8.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp8, 0);
+                Grid.SetColumn(imgtemp8, i);
+
+                Gridyuyingliweiyiyuntu.Children.Add(imgtemp8);
+            }
+            //444444444444
+            GridzaoShengFenXi.RowDefinitions.Add(new RowDefinition());
+            for (int i = 0; i < path.Count; i++)
+            {
+                string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
+                Image imgtemp1 = new Image();
+                imgtemp1.Source = LoadImg(PicPath + "\\噪声分析.png");
+                if (i == 0)
+                {
+                    imgtemp1.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp1.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp1, 0);
+                Grid.SetColumn(imgtemp1, i);
+
+                GridzaoShengFenXi.Children.Add(imgtemp1);
+            }
+            //33333333333333333
+            GriddangLiangZaiHePu.RowDefinitions.Add(new RowDefinition());
+            GridyuLiuJiShuJieGuo.RowDefinitions.Add(new RowDefinition());
+            for (int i = 0; i < path.Count; i++)
+            {
+                string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
+                Image imgtemp1 = new Image();
+                imgtemp1.Source = LoadImg(PicPath + "\\当量载荷谱.png");
+                if (i == 0)
+                {
+                    imgtemp1.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp1.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp1, 0);
+                Grid.SetColumn(imgtemp1, i);
+
+                GriddangLiangZaiHePu.Children.Add(imgtemp1);
+
+                Image imgtemp2 = new Image();
+                imgtemp2.Source = LoadImg(PicPath + "\\雨流计数结果.png");
+                if (i == 0)
+                {
+                    imgtemp2.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp2.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp2, 0);
+                Grid.SetColumn(imgtemp2, i);
+
+                GridyuLiuJiShuJieGuo.Children.Add(imgtemp2);
+            }
 
 
 
