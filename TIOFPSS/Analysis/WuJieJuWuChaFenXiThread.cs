@@ -106,6 +106,8 @@ new DoTask(Func));
     {
         private WuJieJuWuChaThreadParamter threadParamter;
         private Thread thread;
+        public Helper.delgateYouJieJuWuChaFenXiFinish CallBackMethod;
+        private delegate void DoTask();
         public Thread _Thread
         {
             get
@@ -166,6 +168,9 @@ new DoTask(Func));
             string finame = System.IO.Path.Combine(threadParamter.Path, "Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
             string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
             System.IO.File.Copy(finame, newpath, true);
+
+            System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
             // Xceed.Wpf.Toolkit.MessageBox.Show("有节距误差分析完成");
             //if()
             //{
@@ -190,6 +195,13 @@ new DoTask(Func));
             //    string file16=threadParamter.Path+"相对旋转速度频谱图.png";
                 
             //}
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            //使用ui元素    
+            this.CallBackMethod(true);
         }
     }
 }

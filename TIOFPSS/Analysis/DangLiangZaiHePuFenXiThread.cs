@@ -13,8 +13,8 @@ namespace TIOFPSS.Analysis
     {
         private DangLiangZaiHePuThreadParamter threadParamter;
         private Thread thread;
-
-
+        public Helper.delgateDLZHPFinish CallBackMethod;
+        private delegate void DoTask();
         public DangLiangZaiHePuFenXiThread(DangLiangZaiHePuThreadParamter threadParamter)
         {
             this.threadParamter = threadParamter;
@@ -75,6 +75,8 @@ namespace TIOFPSS.Analysis
             }
             catch
             {
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 return;
             }
             
@@ -87,7 +89,29 @@ namespace TIOFPSS.Analysis
             string finame2 = threadParamter.Path + "多工况双参数雨流计数结果.mat";//项目临时文件目录
             string newpath2 = threadParamter.ProPath + "\\" + "当量载荷谱分析文件" + "\\" + "多工况双参数雨流计数结果.mat";//项目文件保存路径
             System.IO.File.Copy(finame2, newpath2, true);
+
+            System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
            // Xceed.Wpf.Toolkit.MessageBox.Show("当量载荷谱分析分析完成");
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            //使用ui元素
+            if(this.threadParamter.isShiYan>0)
+            {
+                this.CallBackMethod(true,"实验文件" );
+            }
+            else if(this.threadParamter.isShiYan==0)
+            {
+                this.CallBackMethod(true,"准动态计算文件" );
+            }
+            else
+            {
+                this.CallBackMethod(true, "动态分析结果文件");
+            }
+            
         }
 
     }

@@ -31,6 +31,15 @@ namespace TIOFPSS.Dialog
         TextBlock tbZaoSheng;
         TextBlock tb2ZaoSheng;
         int zaoSheng_h, zaoSheng_m, zaoSheng_s;
+
+        TextBlock tbDLZHP;
+        TextBlock tb2DLZHP;
+        int dangLiang_h,dangLiang_m, dangLiang_s;
+
+        TextBlock tbFXXSS;
+        TextBlock tb2FXXSS;
+        int feiXian_h, feiXian_m, feiXian_s;
+
         bool b_dangLiang, b_dongLiXue, b_feiXian, b_xieTong, b_zaoSheng;
 
         public AnalysisMonitor()
@@ -51,6 +60,7 @@ namespace TIOFPSS.Dialog
             else
             {
                 proBar.Visibility = Visibility.Collapsed;
+                return;
             }
             if(b_dongLiXue)
             {
@@ -83,9 +93,41 @@ namespace TIOFPSS.Dialog
                 tb2ZaoSheng.Text = string.Format("{0}：{1}：{2}", zaoSheng_h.ToString().PadLeft(2, '0'), zaoSheng_m.ToString().PadLeft(2, '0'), zaoSheng_s.ToString().PadLeft(2, '0'));
                 //m_time_ZaoSheng.Format("%d:%d:%d", zaoSheng_h, zaoSheng_m, zaoSheng_s);
             }
+            if (b_dangLiang)
+            {
+                dangLiang_s++;
+                if (dangLiang_s > 59)
+                {
+                    dangLiang_m++;
+                    dangLiang_s = 0;
+                    if (dangLiang_m > 59)
+                    {
+                        dangLiang_m = 0;
+                        dangLiang_h++;
+                    }
+                }
+                tb2DLZHP.Text = string.Format("{0}：{1}：{2}", dangLiang_h.ToString().PadLeft(2, '0'), dangLiang_m.ToString().PadLeft(2, '0'), dangLiang_s.ToString().PadLeft(2, '0'));
+                //m_time_ZaoSheng.Format("%d:%d:%d", zaoSheng_h, zaoSheng_m, zaoSheng_s);
+            }
+            if (b_feiXian)
+            {
+                feiXian_s++;
+                if (feiXian_s > 59)
+                {
+                    feiXian_m++;
+                    feiXian_s = 0;
+                    if (feiXian_m > 59)
+                    {
+                        feiXian_m = 0;
+                        feiXian_h++;
+                    }
+                }
+                tb2FXXSS.Text = string.Format("{0}：{1}：{2}", feiXian_h.ToString().PadLeft(2, '0'), feiXian_m.ToString().PadLeft(2, '0'), feiXian_s.ToString().PadLeft(2, '0'));
+                //m_time_ZaoSheng.Format("%d:%d:%d", zaoSheng_h, zaoSheng_m, zaoSheng_s);
+            }
 
         }
-        public void dongLiXue_start()
+        public void dongLiXue_start(string analysisName)
         {
 	        dongLiXue_h=0;
 	        dongLiXue_m=0;
@@ -93,7 +135,7 @@ namespace TIOFPSS.Dialog
 
 
             tb = new TextBlock();
-            tb.Text = "无节距误差分析";
+            tb.Text = analysisName;
             tb.Margin = new Thickness(20, 10, 5, 5);
             RowDefinition row = new RowDefinition();
             grid.RowDefinitions.Add(row);
@@ -115,7 +157,7 @@ namespace TIOFPSS.Dialog
             b_dongLiXue = true;
             
         }
-        public void dongLiXue_stop()
+        public void dongLiXue_stop(string analysisName)
         {
 	        b_dongLiXue=false;
             analysisCount--;
@@ -129,8 +171,8 @@ namespace TIOFPSS.Dialog
                 //bool isRemove = false;
                 foreach (TextBlock item in grid.Children)
                 {
-                    
-                    if (item.Text.Equals("无节距误差分析"))
+
+                    if (item.Text.Equals(analysisName))
                     {
                         grid.Children.RemoveRange(removeIndex, 2);
                         grid.RowDefinitions.RemoveAt(removeIndex); //删除行定义
@@ -232,6 +274,151 @@ namespace TIOFPSS.Dialog
             gridFinish.Children.Add(tb2ZaoSheng);
 
             finishCount++;   
+        }
+
+
+        public void DLZHP_start(string fileType)
+        {
+            dangLiang_h = 0;
+            dangLiang_m = 0;
+            dangLiang_s = 0;
+
+            tbDLZHP = new TextBlock();
+            tbDLZHP.Text = "当量载荷谱分析：" + fileType;
+            tbDLZHP.Margin = new Thickness(20, 10, 5, 5);
+            RowDefinition row = new RowDefinition();
+            grid.RowDefinitions.Add(row);
+            Grid.SetRow(tbDLZHP, analysisCount);
+            Grid.SetColumn(tbDLZHP, 0);
+            grid.Children.Add(tbDLZHP);
+
+            tb2DLZHP = new TextBlock();
+            tb2DLZHP.Text = "00：00：00";
+            tb2DLZHP.Margin = new Thickness(20, 10, 5, 5);
+            RowDefinition row2 = new RowDefinition();
+            grid.RowDefinitions.Add(row2);
+            Grid.SetRow(tb2DLZHP, analysisCount);
+            Grid.SetColumn(tb2DLZHP, 1);
+            grid.Children.Add(tb2DLZHP);
+
+
+            analysisCount++;
+            b_dangLiang = true;
+        }
+        public void DLZHP_stop(string fileType)
+        {
+            b_dangLiang = false;
+            analysisCount--;
+            if (grid.Children.Count > 0)
+            {
+                int removeIndex = 0;
+                //bool isRemove = false;
+                foreach (TextBlock item in grid.Children)
+                {
+
+                    if (item.Text.Equals("当量载荷谱分析：" + fileType))
+                    {
+                        grid.Children.RemoveRange(removeIndex, 2);
+                        grid.RowDefinitions.RemoveAt(removeIndex); //删除行定义
+                        break;
+                    }
+                    removeIndex++;
+
+                }
+                foreach (TextBlock item in grid.Children)
+                {
+                    if (Grid.GetRow(item) > removeIndex)
+                    {
+                        Grid.SetRow(item, (Grid.GetRow(item) - 1));//减1
+                    }
+                }
+            }
+
+            RowDefinition row = new RowDefinition();
+            gridFinish.RowDefinitions.Add(row);
+            Grid.SetRow(tbDLZHP, finishCount);
+            Grid.SetColumn(tbDLZHP, 0);
+            gridFinish.Children.Add(tbDLZHP);
+
+            RowDefinition row2 = new RowDefinition();
+            gridFinish.RowDefinitions.Add(row2);
+            Grid.SetRow(tb2DLZHP, finishCount);
+            Grid.SetColumn(tb2DLZHP, 1);
+            gridFinish.Children.Add(tb2DLZHP);
+
+            finishCount++;
+        }
+
+        public void FXXSS_start(string fileType)
+        {
+            feiXian_h = 0;
+            feiXian_m = 0;
+            feiXian_s = 0;
+
+            tbFXXSS = new TextBlock();
+            tbFXXSS.Text = "非线性损伤分析：" + fileType;
+            tbFXXSS.Margin = new Thickness(20, 10, 5, 5);
+            RowDefinition row = new RowDefinition();
+            grid.RowDefinitions.Add(row);
+            Grid.SetRow(tbFXXSS, analysisCount);
+            Grid.SetColumn(tbFXXSS, 0);
+            grid.Children.Add(tbFXXSS);
+
+            tb2FXXSS = new TextBlock();
+            tb2FXXSS.Text = "00：00：00";
+            tb2FXXSS.Margin = new Thickness(20, 10, 5, 5);
+            RowDefinition row2 = new RowDefinition();
+            grid.RowDefinitions.Add(row2);
+            Grid.SetRow(tb2FXXSS, analysisCount);
+            Grid.SetColumn(tb2FXXSS, 1);
+            grid.Children.Add(tb2FXXSS);
+
+
+            analysisCount++;
+            b_feiXian = true;
+        }
+        public void FXXSS_stop(string fileType)
+        {
+            b_feiXian = false;
+            analysisCount--;
+            if (grid.Children.Count > 0)
+            {
+                int removeIndex = 0;
+                //bool isRemove = false;
+                foreach (TextBlock item in grid.Children)
+                {
+
+                    if (item.Text.Equals("非线性损伤分析：" + fileType))
+                    {
+                        grid.Children.RemoveRange(removeIndex, 2);
+                        grid.RowDefinitions.RemoveAt(removeIndex); //删除行定义
+                        break;
+                    }
+                    removeIndex++;
+
+                }
+                foreach (TextBlock item in grid.Children)
+                {
+                    if (Grid.GetRow(item) > removeIndex)
+                    {
+                        Grid.SetRow(item, (Grid.GetRow(item) - 1));//减1
+                    }
+                }
+            }
+
+            RowDefinition row = new RowDefinition();
+            gridFinish.RowDefinitions.Add(row);
+            Grid.SetRow(tbFXXSS, finishCount);
+            Grid.SetColumn(tbFXXSS, 0);
+            gridFinish.Children.Add(tbFXXSS);
+
+            RowDefinition row2 = new RowDefinition();
+            gridFinish.RowDefinitions.Add(row2);
+            Grid.SetRow(tb2FXXSS, finishCount);
+            Grid.SetColumn(tb2FXXSS, 1);
+            gridFinish.Children.Add(tb2FXXSS);
+
+            finishCount++;
         }
     }
 }

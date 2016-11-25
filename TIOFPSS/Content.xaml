@@ -10,6 +10,7 @@
              xmlns:viewModels="clr-namespace:TIOFPSS.ViewModels"
              xmlns:Dialog="clr-namespace:TIOFPSS.Dialog"
              xmlns:xcdg="http://schemas.xceed.com/wpf/xaml/datagrid"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d"
              d:DesignHeight="600"
              d:DesignWidth="800"
@@ -406,13 +407,13 @@
                                            Width="100"
                                            Icon="Images\当量载荷谱.png"
                                            LargeIcon="Images\当量载荷谱.png">
-                        <Fluent:MenuItem Icon="Images\Pink.png"
+                        <Fluent:MenuItem 
                                          Header="实验文件分析" 
                                          Click="DSywj_Click"/>
-                        <Fluent:MenuItem Icon="Images\Pink.png"
+                        <Fluent:MenuItem 
                                          Header="动态分析结果文件分析" 
                                          Click="DDTFXJG_Click"/>
-                        <Fluent:MenuItem Icon="Images\Pink.png"
+                        <Fluent:MenuItem 
                                          Header="准动态结果文件分析" 
                                          Click="DZDTFXJG_Click"/>
                     </Fluent:DropDownButton>
@@ -430,13 +431,13 @@
                                            Width="100"
                                            Icon="Images\非线性损伤.ico"
                                            LargeIcon="Images\非线性损伤.ico">
-                        <Fluent:MenuItem Icon="Images\Pink.png"
+                        <Fluent:MenuItem 
                                          Header="实验文件分析" 
                                          Click="FSywj_Click"/>
-                        <Fluent:MenuItem Icon="Images\Pink.png"
+                        <Fluent:MenuItem 
                                          Header="动态分析结果文件分析" 
                                           Click="FDTFXJG_Click"/>
-                        <Fluent:MenuItem Icon="Images\Pink.png"
+                        <Fluent:MenuItem 
                                          Header="准动态结果文件分析" 
                                          Click="FZDTFXJG_Click"/>
                     </Fluent:DropDownButton>
@@ -739,7 +740,7 @@
 
                     </Fluent:DropDownButton>
 
-                    <Fluent:DropDownButton Header="线段颜色"
+                    <!--<Fluent:DropDownButton Header="线段颜色"
                                            Icon="Images\Pink.png"
                                            LargeIcon="Images\PinkLarge.png">
                         <Fluent:Gallery>
@@ -750,7 +751,9 @@
                             <Image Source="Images\BlueLarge.png"
                                    Stretch="None" />
                         </Fluent:Gallery>
-                    </Fluent:DropDownButton>
+                    </Fluent:DropDownButton>-->
+
+                 
                     <Fluent:RibbonToolBar>
 
                         <!--ToolBar Layout Definitions-->
@@ -760,6 +763,7 @@
                                 <Fluent:RibbonToolBarRow>
 
                                     <Fluent:RibbonToolBarControlGroupDefinition>
+                                        <Fluent:RibbonToolBarControlDefinition Target="colorName" />
                                         <Fluent:RibbonToolBarControlDefinition Target="xmin" />
                                         <Fluent:RibbonToolBarControlDefinition Target="xmax" />
                                     </Fluent:RibbonToolBarControlGroupDefinition>
@@ -783,6 +787,7 @@
                                 <Fluent:RibbonToolBarRow>
 
                                     <Fluent:RibbonToolBarControlGroupDefinition>
+                                        <Fluent:RibbonToolBarControlDefinition Target="colorPicker" />
                                         <Fluent:RibbonToolBarControlDefinition Target="ymin" />
                                         <Fluent:RibbonToolBarControlDefinition Target="ymax" />
                                     </Fluent:RibbonToolBarControlGroupDefinition>
@@ -844,7 +849,9 @@
                         </Fluent:RibbonToolBar.LayoutDefinitions>
 
                         <!--ToolBar Controls-->
-
+                        <TextBlock Text="线段颜色：" VerticalAlignment="Center" x:Name="colorName" Width="100" Margin="5,0,5,0"/>
+                        <xctk:ColorPicker 
+                           VerticalAlignment="Center"  x:Name="colorPicker" Width="100" Margin="5,0,5,0"/>
                         <Fluent:Spinner KeyTip="KA"
                                     Value="{Binding BoundSpinnerValue}"
                                     InputWidth="75"
@@ -1277,10 +1284,10 @@
                                 </avalon:LayoutAnchorable>
                             </avalon:LayoutAnchorablePane>
                         </avalon:LayoutAnchorablePaneGroup>
-                        <avalon:LayoutPanel  Orientation="Vertical"  >
+                        <avalon:LayoutPanel  Orientation="Vertical" >
                             <avalon:LayoutDocumentPaneGroup Orientation="Horizontal">
                                 <avalon:LayoutDocumentPane   x:Name="DocumentPane">
-                                    <avalon:LayoutDocument Title="欢迎">
+                                    <avalon:LayoutDocument Title="欢迎" >
                                         <StackPanel  Orientation="Horizontal" Background="White" Margin="0">
                                             <Image  Source="pack://application:,,,/TIOFPSS;component/Images/xbg.jpg" Width="1000" Height="600"/>
                                         </StackPanel>

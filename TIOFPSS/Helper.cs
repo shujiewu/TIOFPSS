@@ -27,6 +27,9 @@ namespace TIOFPSS
 
         public delegate void delgateWuJieJuWuChaFenXiFinish(bool finish);
         public delegate void delgateZaoShengFenXiFinish(bool finish);
+        public delegate void delgateYouJieJuWuChaFenXiFinish(bool finish);
+        public delegate void delgateDLZHPFinish(bool finish,string fileType);
+        public delegate void delgateFXXSSFinish(bool finish, string fileType);
 
         public delegate void delgateFXXSS(TIOFPSS.Dialog.FXXSSFile para);
 

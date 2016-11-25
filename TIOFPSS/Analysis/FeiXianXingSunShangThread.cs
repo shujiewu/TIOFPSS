@@ -12,7 +12,8 @@ namespace TIOFPSS.Analysis
     {
         private FeiXianXingSunShangThreadParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateFXXSSFinish CallBackMethod;
+        private delegate void DoTask();
 
         public FeiXianXingSunShangThread(FeiXianXingSunShangThreadParamter threadParamter)
         {
@@ -55,7 +56,8 @@ namespace TIOFPSS.Analysis
             //    return;
             //}
             fxxss.fatigue_final(ff, locc, dataname, fontnm);
-
+            System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
 
             string finame1 = threadParamter.Path + "疲劳损伤.mat";//项目临时文件目录
             string newpath1 = threadParamter.ProPath + "\\" + "非线性损伤分析文件" + "\\" + "疲劳损伤.mat";//项目文件保存路径
@@ -66,6 +68,25 @@ namespace TIOFPSS.Analysis
             System.IO.File.Copy(finame2, newpath2, true);
            // Xceed.Wpf.Toolkit.MessageBox.Show("当量载荷谱分析分析完成");
         }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            //使用ui元素
+            if (this.threadParamter.isShiYan > 0)
+            {
+                this.CallBackMethod(true, "实验文件");
+            }
+            else if (this.threadParamter.isShiYan == 0)
+            {
+                this.CallBackMethod(true, "准动态计算文件");
+            }
+            else
+            {
+                this.CallBackMethod(true, "动态分析结果文件");
+            }
+
+        }
 
     }
      public class FeiXianXingSunShangThreadParamter
@@ -74,16 +95,17 @@ namespace TIOFPSS.Analysis
         public string ProPath { get; set; }//项目路径（mat文件的保存路径）
         public double[] Para = new double[21];
         public string filePath { get; set; }//数据文件数组
-        
+        public int isShiYan;
         public FeiXianXingSunShangThreadParamter()
         { }
 
-        public FeiXianXingSunShangThreadParamter(string path, string proPath, double[] para,string File)
+        public FeiXianXingSunShangThreadParamter(string path, string proPath, double[] para,string File ,int IsShiYan)
         {
             this.Path = path;
             this.ProPath = proPath;
             this.Para = para;
             this.filePath = File;
+            this.isShiYan = IsShiYan;
         }
     }
 }

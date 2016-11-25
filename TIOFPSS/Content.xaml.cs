@@ -64,11 +64,84 @@
             //}
             //f.FontsData = test;
             // n = new MainViewModel();
+
+            btnwjjwc.IsEnabled = false;
+            btnyjjwc.IsEnabled = false;
+            btnzsfx.IsEnabled = false;
+            btnfxxssfx.IsEnabled = false;
+            btndlzhpfx.IsEnabled = false;
             mainViewModel = new MainViewModel();
             this.DataContext = mainViewModel;
-
+            DockManager.MouseLeftButtonUp += TabMouseClick;
         }
-       
+        private void btnFalse()
+        {
+            btnwjjwc.IsEnabled = false;
+            btnyjjwc.IsEnabled = false;
+            btnzsfx.IsEnabled = false;
+            btnfxxssfx.IsEnabled = false;
+            btndlzhpfx.IsEnabled = false;
+        }
+        private void btnTrue()
+        {
+            btnwjjwc.IsEnabled = true;
+            btnyjjwc.IsEnabled = true;
+            btnzsfx.IsEnabled = true;
+            btnfxxssfx.IsEnabled = true;
+            btndlzhpfx.IsEnabled = true;                 
+        }
+        private void TabMouseClick(object sender, MouseButtonEventArgs e)
+        {
+            //处理逻辑
+            foreach (var paneItem in DocumentPane.Children)
+            {
+                if (paneItem.Title == "项目参数" && paneItem.IsSelected == true)
+                {
+                    btnwjjwc.IsEnabled = true;
+                    btnyjjwc.IsEnabled = true;
+                    btnzsfx.IsEnabled = true;
+                    btnfxxssfx.IsEnabled = true;
+                    btndlzhpfx.IsEnabled = true;                       
+                    break;
+                }
+                if (paneItem.Title == "分析结果" && paneItem.IsSelected == true)
+                {
+                    btnwjjwc.IsEnabled = false;
+                    btnyjjwc.IsEnabled = false;
+                    btnzsfx.IsEnabled = false;
+                    btnfxxssfx.IsEnabled = false;
+                    btndlzhpfx.IsEnabled = false;
+                    break;
+                }
+                if (paneItem.Title == "项目查找" && paneItem.IsSelected == true)
+                {
+                    btnwjjwc.IsEnabled = false;
+                    btnyjjwc.IsEnabled = false;
+                    btnzsfx.IsEnabled = false;
+                    btnfxxssfx.IsEnabled = false;
+                    btndlzhpfx.IsEnabled = false;
+                    break;
+                }
+                if (paneItem.Title == "噪声优化方法" && paneItem.IsSelected == true)
+                {
+                    btnwjjwc.IsEnabled = false;
+                    btnyjjwc.IsEnabled = false;
+                    btnzsfx.IsEnabled = false;
+                    btnfxxssfx.IsEnabled = false;
+                    btndlzhpfx.IsEnabled = false;
+                    break;
+                }
+                if (paneItem.Title == "项目对比" && paneItem.IsSelected == true)
+                {
+                    btnwjjwc.IsEnabled = false;
+                    btnyjjwc.IsEnabled = false;
+                    btnzsfx.IsEnabled = false;
+                    btnfxxssfx.IsEnabled = false;
+                    btndlzhpfx.IsEnabled = false;
+                    break;
+                }
+            }
+        }
         private static void OnScreenTipHelpPressed(object sender, ScreenTipHelpEventArgs e)
         {
             Process.Start((string)e.HelpTopic);
@@ -435,9 +508,43 @@
             string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
             string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
 
-            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file);
+            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
             Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
+            t.CallBackMethod = FXXSSFinish;
+            btnfxxssfx.IsEnabled = false;
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+
             t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).FXXSS_start("实验文件");
         }
         private void FDTJGAnalysis(FXXSSFile para)
         {
@@ -496,9 +603,43 @@
             string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
             string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
 
-            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file);
+            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
             Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
+            t.CallBackMethod = FXXSSFinish;
+            btnfxxssfx.IsEnabled = false;
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+
             t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).FXXSS_start("动态分析结果文件");
         }
         private void FZDTJSAnalysis(FXXSSFile para)
         {
@@ -554,9 +695,63 @@
             string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
             string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
 
-            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file);
+            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
             Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
+            t.CallBackMethod = FXXSSFinish;
+            btnfxxssfx.IsEnabled = false;
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+
             t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).FXXSS_start("准动态计算文件");
+        }
+
+        private void FXXSSFinish(bool finish, string fileType)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).FXXSS_stop(fileType);
+                //win2.dongLiXue_stop();
+                foreach (var item in DocumentPane.Children)
+                {
+                    if (item.Title == "分析结果")
+                    {
+                        string path = loadProj[nowProjName] + "\\tempData";
+
+                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
+                    }
+                }
+                btnfxxssfx.IsEnabled = true;
+
+            }
         }
 
 
@@ -615,7 +810,41 @@
 
             Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
             Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
+            t.CallBackMethod = DLZHPFinish;
+            btndlzhpfx.IsEnabled = false;
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+
             t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).DLZHP_start("动态分析结果文件");
         }
 
 
@@ -664,7 +893,41 @@
 
             Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
             Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
+            t.CallBackMethod = DLZHPFinish;
+            btndlzhpfx.IsEnabled = false;
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+
             t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).DLZHP_start("准动态计算文件");
         }
         private void DSywjAnalysis(List<DSFileList> para)
         {
@@ -704,9 +967,61 @@
             
             Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path,proPath,Para,tds,qhxs,file,hang,sum,isShiYanFile);
             Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
-            t.Start();
-        }
+            t.CallBackMethod = DLZHPFinish;
+            btndlzhpfx.IsEnabled = false;
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
 
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).DLZHP_start("实验文件");
+        }
+        private void DLZHPFinish(bool finish,string fileType)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).DLZHP_stop(fileType);
+                //win2.dongLiXue_stop();
+                foreach (var item in DocumentPane.Children)
+                {
+                    if (item.Title == "分析结果")
+                    {
+                        string path = loadProj[nowProjName] + "\\tempData";
+
+                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
+                    }
+                }
+                btndlzhpfx.IsEnabled = true;
+
+            }
+        }
         //新建项目
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
@@ -774,7 +1089,7 @@
                 document.Content = new TIOFPSS.Dialog.InputPara(pathString, projectName);
                 document.IsActive = true;
                 DocumentPane.Children.Add(document);
-
+                btnTrue();
             }
             insertLatestProj(pathString, projectName); //插入到最近使用的项目
 
@@ -813,6 +1128,7 @@
                         document.Content = new TIOFPSS.Dialog.InputPara(projectPath, projectName);
                         document.IsActive = true;
                         DocumentPane.Children.Add(document);
+                        btnTrue();
 
                     }
                     insertLatestProj(projectPath, projectName);
@@ -881,6 +1197,7 @@
                         document.Content = new TIOFPSS.Dialog.InputPara(projectPath, projectName);
                         document.IsActive = true;
                         DocumentPane.Children.Add(document);
+                        btnTrue();
 
                     }
                     insertLatestProj(projectPath, projectName);
@@ -1011,6 +1328,7 @@
                         if (paneItem.Title == "项目参数")
                         {
                             paneItem.Close();
+                            btnFalse();
                             break;
                         }
                     }
@@ -1284,6 +1602,7 @@
                         if (paneItem.Title == "项目参数")
                         {
                             paneItem.Close();
+                            btnFalse();
                             break;
                         }
                     }
@@ -1338,6 +1657,7 @@
                             paneItem.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
                             paneItem.IsActive = true;
                             paneItem.IsSelected = true;
+                            btnFalse();
                             //break;
                         }
                         if(paneItem.Title == "分析结果")
@@ -1369,6 +1689,7 @@
                         paneItem.IsActive = true;
                         hasParaPane = true;
                         paneItem.IsSelected = true;
+                        btnTrue();
                         break;
                     }
                 }
@@ -1379,6 +1700,7 @@
                     document.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
                     document.IsActive = true;
                     DocumentPane.Children.Add(document);
+                    btnTrue();
                 }
 
             }
@@ -1631,7 +1953,8 @@
                 Analysis.WuJieJuWuChaThreadParamter a = new Analysis.WuJieJuWuChaThreadParamter(path, proPath, para);
                 Analysis.WuJieJuWuChaFenXiThread t = new Analysis.WuJieJuWuChaFenXiThread(a);
                 t.CallBackMethod = WuJieJuWuChaFenXiFinish;
-
+                btnwjjwc.IsEnabled = false;
+                btnyjjwc.IsEnabled = false;
                 if(anchorable==null)
                 {
                     try
@@ -1666,7 +1989,7 @@
                 //win2.dongLiXue_start();
                 //win2.ShowDialog();
 
-                ((AnalysisMonitor)anchorable.Content).dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).dongLiXue_start("无节距误差分析");
                 
                 
 
@@ -1684,7 +2007,7 @@
         {
             if (finish == true)
             {
-                ((AnalysisMonitor)anchorable.Content).dongLiXue_stop();
+                ((AnalysisMonitor)anchorable.Content).dongLiXue_stop("无节距误差分析");
                 //win2.dongLiXue_stop();
                 foreach (var item in DocumentPane.Children)
                 {
@@ -1695,7 +2018,8 @@
                         item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
                     }
                 }
-
+                btnwjjwc.IsEnabled = true;
+                btnyjjwc.IsEnabled = true;
 
             }
         }
@@ -1860,7 +2184,42 @@
                 string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
                 Analysis.WuJieJuWuChaThreadParamter a = new Analysis.WuJieJuWuChaThreadParamter(path, proPath, para);
                 Analysis.YouJieJuWuChaFenXiThread t = new Analysis.YouJieJuWuChaFenXiThread(a);
+                t.CallBackMethod = YouJieJuWuChaFenXiFinish;
+                btnwjjwc.IsEnabled = false;
+                btnyjjwc.IsEnabled = false;
+                if (anchorable == null)
+                {
+                    try
+                    {
+                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                        anchorable = new LayoutAnchorable();
+                        anchorable.Title = "分析监视";
+                        anchorable.Content = new AnalysisMonitor();
+                        pane.Children.Add(anchorable);
+                        LeftAnchorableGroup.Children.Add(pane);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                        pane.Children.Add(anchorable);
+                        LeftAnchorableGroup.Children.Add(pane);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                    }
+                }
+                
                 t.Start();
+
+                ((AnalysisMonitor)anchorable.Content).dongLiXue_start("有节距误差分析");
                 //if (t._Thread.ThreadState == System.Threading.ThreadState.Stopped)
                 //{
                 //    MessageBox.Show("线程结束");
@@ -1868,6 +2227,27 @@
             }
 
         }
+        private void YouJieJuWuChaFenXiFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).dongLiXue_stop("有节距误差分析");
+                //win2.dongLiXue_stop();
+                foreach (var item in DocumentPane.Children)
+                {
+                    if (item.Title == "分析结果")
+                    {
+                        string path = loadProj[nowProjName] + "\\tempData";
+
+                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
+                    }
+                }
+
+                btnwjjwc.IsEnabled = true;
+                btnyjjwc.IsEnabled = true;
+            }
+        }
+
         private void OnJingTaiQiangDuFenXiClick(object sender, RoutedEventArgs e)
         {
             Dialog.JingTaiQiangDuFenXi aw = new Dialog.JingTaiQiangDuFenXi();
@@ -2641,6 +3021,8 @@
                         paneItem.IsActive = true;
                         paneItem.IsSelected = true;
                         hasResultPane = true;
+
+                        btnFalse();
                         break;
                     }
                 }
@@ -2652,6 +3034,8 @@
                     document.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
                     document.IsActive = true;
                     DocumentPane.Children.Add(document);
+
+                    btnFalse();
                 }
 
             }
@@ -2714,6 +3098,8 @@
             document.Content = new Dialog.ZaoShengYouHuaFangFa();
             document.IsActive = true;
             DocumentPane.Children.Add(document);
+
+            btnFalse();
         }
 
         //private void OnProOptimiseClick(object sender, RoutedEventArgs e)
@@ -2829,6 +3215,7 @@
                     item.Content = new Dialog.ProjectQuery();
                     item.IsActive = true;
                     item.IsSelected = true;
+                    btnFalse();
                     return;
                 }
             }
@@ -2839,6 +3226,7 @@
             document.Content = new Dialog.ProjectQuery();
             document.IsActive = true;
             DocumentPane.Children.Add(document);
+            btnFalse();
         }
 
         private void OnProjCmpClick(object sender, RoutedEventArgs e)
@@ -2853,6 +3241,7 @@
             document.Content = new Dialog.ProjectCompare(path);
             document.IsActive = true;
             DocumentPane.Children.Add(document);
+            btnFalse();
         }
        
          //<xctk:ColorPicker x:Name="_colorPicker"
