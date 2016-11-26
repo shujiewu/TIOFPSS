@@ -25,6 +25,7 @@
     using zsbd;
     using MathNet.Numerics.LinearAlgebra;
     using MathNet.Numerics.Data.Matlab;
+    using System.Windows.Media;
     /// <summary>
     /// Content.xaml 的交互逻辑
     /// </summary>
@@ -3101,7 +3102,176 @@
 
             btnFalse();
         }
+        private void OnPicEditClick(object sender, RoutedEventArgs e)
+        {
+            var selectItem = sender as Fluent.MenuItem;
+            string picName = selectItem.Header.ToString();
+            PictureEdit picEdit = new PictureEdit(loadProj[nowProjName] + "\\tempData\\" + picName + ".png");
+            //if (picName.Equals("摩擦片冲击力"))
+            //{
+                
+            //}
+            //else if (picName.Equals("摩擦片与内毂相对扭转角度"))
+            //{
 
+            //}
+            //else if (picName.Equals("摩擦片与内毂相对旋转速度"))
+            //{
+
+            //}
+            //else if (picName.Equals("内毂角加速度"))
+            //{
+
+            //}
+            //else if (picName.Equals("摩擦片角加速度"))
+            //{
+
+            //}
+            //else if (picName.Equals("内毂角速度"))
+            //{
+
+            //}
+            //else if (picName.Equals("摩擦片角速度"))
+            //{
+
+            //}
+            //else
+            //{
+            //    return;
+            //}
+            Xceed.Wpf.AvalonDock.Layout.LayoutDocument document = new Xceed.Wpf.AvalonDock.Layout.LayoutDocument();
+            document.Title = "图片修改";
+            document.Content = picEdit;
+            document.IsActive = true;
+            DocumentPane.Children.Add(document);
+
+            btnFalse();
+        }
+        private void OnPicEditOKClick(object sender, RoutedEventArgs e)
+        {
+            string picPath = null;
+            TIOFPSS.Dialog.PictureEdit picEdit = null;
+            foreach (var item in DocumentPane.Children)
+            {
+                if (item.Title == "图片修改" &&item.IsSelected)
+                {
+
+                    picEdit = (TIOFPSS.Dialog.PictureEdit)(item.Content);
+                    picPath = picEdit.PicPath;
+                    break;
+                }
+            }
+            if(picPath==null)
+            {
+                return;
+            }
+            System.Windows.Media.Color lineColor=new Color();
+       
+            if(colorPicker.SelectedColor!=null)
+            {
+                lineColor = (System.Windows.Media.Color)colorPicker.SelectedColor;
+            }
+            
+            string picName=picPath.Substring(picPath.LastIndexOf("\\")+1);            //"摩擦片冲击力";
+            System.Windows.Media.Color fontColor = new Color();
+            if(FontColor.SelectedColor!=null)
+            {
+                fontColor = (System.Windows.Media.Color)FontColor.SelectedColor;
+            }
+           
+
+            double []ii=new double[18];//蓝色和红色
+            TextBlock tb = (TextBlock)comboBoxFontSize.SelectedItem;
+            string fontsize = tb.Text;
+	        ii[0]=(double)lineColor.R/255;//线条颜色1R
+            ii[1] = (double)lineColor.G / 255;//线条颜色1G
+            ii[2] = (double)lineColor.B / 255;//线条颜色1B
+	        ii[3]=1;//线条颜色2R
+	        ii[4]=0;//线条颜色2G
+	        ii[5]=0;//线条颜色2B
+            ii[6] = Convert.ToDouble(fontsize);//字体大小
+	        ii[7]=xmin.Value;//x坐标
+	        ii[8]=xmax.Value;//x坐标
+	        ii[9]=ymin.Value;//Y坐标
+	        ii[10]=ymax.Value;//Y坐标
+	        ii[11]=5;//<0:细化绘图   0<x<10 保存一张图片  >10 保存所有图片
+	        ii[12]=1;//判断是否需要标题>0 需要 <0不需要
+	        ii[13]=1;//字体加粗选择：1、2、3、4  {'normal','bold','light','demi'}
+            ii[14] = (double)fontColor.R / 255;//字体颜色R
+            ii[15] = (double)fontColor.G / 255;//字体颜色G
+            ii[16] = (double)fontColor.B / 255;//字体颜色B
+	        ii[17]=1;//
+
+            string path = loadProj[nowProjName] + "\\project\\冲击动力学分析文件\\Dynamic.mat";
+            string m11 = loadProj[nowProjName] + "\\tempData\\";
+            string fontName = comboBoxFontName.SelectedItem.ToString();
+            MWArray locc=new MWCharArray(path);
+	        MWArray dra=new MWCharArray(m11);
+	        MWArray font=new MWCharArray(fontName);
+            MWArray typ = new MWNumericArray(1, 18, ii); 
+            
+            string name;
+	        if(picName=="摩擦片冲击力.png")
+	        {
+		        name="force";
+	        }
+	        else if(picName=="摩擦片与内毂相对扭转角度.png")
+	        {
+		        name="relative_angle";
+	        }
+	        else if(picName=="摩擦片与内毂相对旋转速度.png")
+	        {
+		        name="relative_rotating_velocity";
+	        }
+	        else if(picName=="内毂角加速度.png")
+	        {
+		        name="inner_acceleration";
+	        }
+	        else if(picName=="摩擦片角加速度.png")
+	        {
+		        name="outer_acceleration";
+	        }
+	        else if(picName=="内毂角速度.png")
+	        {
+		        name="inner_speed";
+	        }
+	        else if(picName=="摩擦片角速度.png")
+	        {
+		        name="outer_speed";
+	        }
+            //else if(picName=="角速度.png")
+            //{
+            //    name="speed";
+            //}
+            //else if(picName=="角加速度.png")
+            //{
+            //    name="acceleration";
+            //}
+	        else
+	        {
+		        return;
+	        }
+            MWArray filename = new MWCharArray(name);
+            draw.HuiTuClass drawClass=new HuiTuClass();
+            drawClass.draw(locc, dra, filename, font, typ);
+
+            picEdit = new PictureEdit(picPath);
+            foreach (var item in DocumentPane.Children)
+            {
+                if (item.Title == "图片修改" &&item.IsSelected)
+                {
+                    item.Content=picEdit;
+                    break;
+                }
+            }
+            //string picEdit = loadProj[nowProjName] + "\\tempData\\摩擦片冲击力.png";
+            //Xceed.Wpf.AvalonDock.Layout.LayoutDocument document = new Xceed.Wpf.AvalonDock.Layout.LayoutDocument();
+            //document.Title = "图片修改";
+            //document.Content = new PictureEdit(picEdit);
+            //document.IsActive = true;
+            //DocumentPane.Children.Add(document);
+            
+        }
         //private void OnProOptimiseClick(object sender, RoutedEventArgs e)
         //{
         //    if(nowProjName!=null)

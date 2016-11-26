@@ -237,6 +237,9 @@
     <Compile Include="Dialog\ParaProperty.xaml.cs">
       <DependentUpon>ParaProperty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\PictureEdit.xaml.cs">
+      <DependentUpon>PictureEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\ProjectCompare.xaml.cs">
       <DependentUpon>ProjectCompare.xaml</DependentUpon>
     </Compile>
@@ -360,6 +363,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialog\ParaProperty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialog\PictureEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -600,6 +607,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\projectIcon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\tasks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pic_edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

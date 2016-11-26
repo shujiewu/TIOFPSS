@@ -719,21 +719,23 @@
                                        LauncherKeys="NF">
                     <Fluent:DropDownButton Name="tpxg"
                                            Header="选择图片"
-                                           Icon="Images\chart_line_edit.png"
-                                           LargeIcon="Images\chart_line_edit.png">
+                                           Icon="Images\pic_edit.png"
+                                           LargeIcon="Images\pic_edit.png">
                         <Fluent:MenuItem 
-                                         Header="摩擦片冲击力" />
+                                         Header="摩擦片冲击力" 
+                            Click="OnPicEditClick"/>
                         <Fluent:MenuItem 
-                                         Header="摩擦片与内毂相对扭转角度" />
-                        <Fluent:MenuItem 
+                                         Header="摩擦片与内毂相对扭转角度" 
+                             Click="OnPicEditClick"/>
+                        <Fluent:MenuItem  Click="OnPicEditClick"
                                          Header="摩擦片与内毂相对旋转速度" />
-                        <Fluent:MenuItem 
+                        <Fluent:MenuItem  Click="OnPicEditClick"
                                          Header="内毂角加速度" />
-                        <Fluent:MenuItem 
+                        <Fluent:MenuItem  Click="OnPicEditClick"
                                          Header="摩擦片角加速度" />
-                        <Fluent:MenuItem 
+                        <Fluent:MenuItem  Click="OnPicEditClick"
                                          Header="内毂角速度" />
-                        <Fluent:MenuItem 
+                        <Fluent:MenuItem  Click="OnPicEditClick"
                                          Header="摩擦片角速度" />
 
 
@@ -853,44 +855,51 @@
                         <xctk:ColorPicker 
                            VerticalAlignment="Center"  x:Name="colorPicker" Width="100" Margin="5,0,5,0"/>
                         <Fluent:Spinner KeyTip="KA"
-                                    Value="{Binding BoundSpinnerValue}"
+                                    
                                     InputWidth="75"
-                                    Format="0"
+                                    
                                     Header="x区间 min"
                                         x:Name="xmin"
                                    />
                         <Fluent:Spinner KeyTip="KB"
 
                                     InputWidth="75"
-                                    Format="0"
+                                    
                                     Header="max"
                                         x:Name="xmax"/>
                         <Fluent:Spinner KeyTip="KC"
                                     InputWidth="75"
-                                    Format="0"
+                                   
                                     Header="y区间 min"
                                         x:Name="ymin"/>
 
                         <Fluent:Spinner  x:Name="ymax"
                                      KeyTip="KC"
                                     InputWidth="75"
-                                    Format="0"
+                                   
                                     Header="max"/>
 
-
-                        <Fluent:ComboBox x:Name="comboBoxFontName"
-                                         MinWidth="40"
-                                         Height="22"
-                                         BorderBrush="Gainsboro"
+                        <!--BorderBrush="Gainsboro"
                                          Foreground="#FF222222"
                                          GroupBy="Tag"
-                                         DisplayMemberPath="Text"
+                                         DisplayMemberPath="Text"-->
+                        <Fluent:ComboBox x:Name="comboBoxFontName"
+                                         MinWidth="40"
+                                         Height="22"  
                                          IsTextSearchEnabled="True"
                                          ResizeMode="Vertical"
                                          KeyTip="FF"
                                          SizeDefinition="Small"
-                                         SelectedIndex="0">
-                            <TextBlock Text="Arial"
+                                         SelectedIndex="0"
+                                         ItemsSource="{Binding FontsViewModel.FontsData}">
+                            <Fluent:ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}"
+                                           FontFamily="{Binding}" />
+
+                                </DataTemplate>
+                            </Fluent:ComboBox.ItemTemplate>
+                            <!--<TextBlock Text="Arial"
                                        Tag="Theme Fonts" />
                             <TextBlock Text="Tahoma"
                                        Tag="Theme Fonts" />
@@ -906,7 +915,7 @@
                             <TextBlock Text="Webdings"
                                        Tag="AllFonts" />
                             <TextBlock Text="Winding"
-                                       Tag="AllFonts" />
+                                       Tag="AllFonts" />-->
                         </Fluent:ComboBox>
                         <Fluent:ComboBox x:Name="comboBoxFontSize"
                                          Width="49"
@@ -1060,12 +1069,18 @@
                                                  SelectedColor="{Binding ColorViewModel.ThemeColor, Mode=TwoWay}"
                                                  Mode="ThemeColors"
                                                  StandardColorGridRows="3"
-                                                 Columns="10"
+                                                 Columns="10" x:Name="FontColor"
                                                  ThemeColorGridRows="5"
                                                  IsNoColorButtonVisible="True">
                             </Fluent:ColorGallery>
                         </Fluent:DropDownButton>
                     </Fluent:RibbonToolBar>
+                    <Fluent:Button Header="确定修改"
+                                   Width="60"
+                                   Icon="pack://application:,,,/TIOFPSS;component/Images/tasks.png"
+                                   LargeIcon="pack://application:,,,/TIOFPSS;component/Images/tasks.png"
+                                   Click="OnPicEditOKClick"/>
+
                 </Fluent:RibbonGroupBox>
                 <!--You can set short form (for ex, "Middle" is equal "Middle,Middle,Middle")-->
 
