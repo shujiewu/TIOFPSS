@@ -18,27 +18,27 @@
   </item>
   <item>
     <name>齿顶高</name>
-    <val>0.500000</val>
+    <val>0.6</val>
     <strname>chiDingGao</strname>
   </item>
   <item>
     <name>齿根高</name>
-    <val>1.5</val>
+    <val>405</val>
     <strname>chiGenGao</strname>
   </item>
   <item>
     <name>齿根圆角</name>
-    <val>3.75</val>
+    <val>0.500000</val>
     <strname>chiGenYuanJiao</strname>
   </item>
   <item>
     <name>外径</name>
-    <val>0.6</val>
+    <val>1.5</val>
     <strname>WaiJing</strname>
   </item>
   <item>
     <name>齿测间隙</name>
-    <val>405</val>
+    <val>3.75</val>
     <strname>chiCeJianXi</strname>
   </item>
   <item>
@@ -68,12 +68,12 @@
   </item>
   <item>
     <name>摩擦片材料密度</name>
-    <val>7850</val>
+    <val>0.3</val>
     <strname>moChaPianCLMD</strname>
   </item>
   <item>
     <name>摩擦片泊松比</name>
-    <val>0.3</val>
+    <val>7850</val>
     <strname>moChaPianBSB</strname>
   </item>
   <item>

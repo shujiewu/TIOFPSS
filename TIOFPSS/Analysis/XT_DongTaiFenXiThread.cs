@@ -13,7 +13,8 @@ namespace TIOFPSS.Analysis
 
          private XT_DongTaiFenXiThreadParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateDongTaiFenXiFinish CallBackMethod;
+        private delegate void DoTask();
 
         public XT_DongTaiFenXiThread(XT_DongTaiFenXiThreadParamter threadParamter)
         {
@@ -36,18 +37,18 @@ namespace TIOFPSS.Analysis
             string m_direction, m_outputfile;//ansys软件路径 和 中间文件输出路径
             string path = threadParamter.path;//结果保存路径
             string ansysPath;//
-            string fileLock = path + "\\dynamic\\file.lock";
+            string fileLock = path + "\\DongTai\\file.lock";
             //fileLock.Format("%s\\single\\file.lock", path);
             //删除错误文件
             if (System.IO.File.Exists(fileLock))
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction = ansysPath;
-            m_outputfile = path + "\\dynamic\\output.out";
-            string workPath = path + "\\dynamic";
+            m_outputfile = path + "\\DongTai\\output.out";
+            string workPath = path + "\\DongTai";
 
             string sCommondLine;
             sCommondLine = m_direction + " -b -p ane3fl -i " + m_inputfile + " -o " + m_outputfile;
@@ -82,6 +83,8 @@ namespace TIOFPSS.Analysis
             }
             if (success)
             {
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //string source1, source2;
                 //string dest1, dest2;
                 //source1 = path + "\\duceng\\ducengyingliyuntu.jpeg";//产生的结果文件
@@ -108,6 +111,13 @@ namespace TIOFPSS.Analysis
             }
            
 
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            this.CallBackMethod(true);
+            //使用ui元素            
         }
     }
      public class XT_DongTaiFenXiThreadParamter

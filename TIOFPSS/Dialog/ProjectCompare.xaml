@@ -844,60 +844,60 @@
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
-
-                                    <Expander Header="摩擦片加速度频谱图" Name="MoCaPianJiaSuDuPinPuTu" Grid.Row="3" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaSuDuPinPuTu" >
-                                        </Grid>
-                                    </Expander>
-                                    <Expander Header="摩擦片角加速度" Name="MoCaPianJiaoJiaSuDu" Grid.Row="4" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaoJiaSuDu" >
-                                        </Grid>
-                                    </Expander>
-                                    <Expander Header="摩擦片角速度" Name="MoCaPianJiaoSuDu" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaoSuDu" >
-                                        </Grid>
-                                    </Expander>
-                                    <Expander Header="摩擦片速度频谱图" Name="MoCaPianSuDuPinPuTu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianSuDuPinPuTu" >
-                                        </Grid>
-                                    </Expander>
-                                    <Expander Header="摩擦片位移" Name="MoCaPianWeiYi" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianWeiYi" >
-                                        </Grid>
-                                    </Expander>
-                                    <Expander Header="摩擦片与内毂相对扭转角度" Name="MoCaPianYuNeiGuXiangDuiNiuZhuan" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="摩擦片与内毂相对扭转角度" Name="MoCaPianYuNeiGuXiangDuiNiuZhuan" Grid.Row="3" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianYuNeiGuXiangDuiNiuZhuan" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="摩擦片与内毂相对旋转速度" Name="MoCaPianYuNeiGuXiangDuiXuanZhuan" Grid.Row="9" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="摩擦片角加速度频谱图" Name="MoCaPianJiaSuDuPinPuTu" Grid.Row="10" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaSuDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片角加速度" Name="MoCaPianJiaoJiaSuDu" Grid.Row="9" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaoJiaSuDu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片角速度" Name="MoCaPianJiaoSuDu" Grid.Row="13" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianJiaoSuDu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片角速度频谱图" Name="MoCaPianSuDuPinPuTu" Grid.Row="14" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianSuDuPinPuTu" >
+                                        </Grid>
+                                    </Expander>
+                                    <Expander Header="摩擦片位移" Name="MoCaPianWeiYi" Grid.Row="15" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianWeiYi" >
+                                        </Grid>
+                                    </Expander>
+
+                                    <Expander Header="摩擦片与内毂相对旋转速度" Name="MoCaPianYuNeiGuXiangDuiXuanZhuan" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridMoCaPianYuNeiGuXiangDuiXuanZhuan" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="内毂加速度频谱图" Name="NeiGuJiaSuDuPinPuTu" Grid.Row="10" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="内毂角加速度频谱图" Name="NeiGuJiaSuDuPinPuTu" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuJiaSuDuPinPuTu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="内毂角加速度" Name="NeiGuJiaoJiaSuDu" Grid.Row="11" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="内毂角加速度" Name="NeiGuJiaoJiaSuDu" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuJiaoJiaSuDu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="内毂角速度"  Name="NeiGuJiaoSuDu" Grid.Row="12" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="内毂角速度"  Name="NeiGuJiaoSuDu" Grid.Row="11" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuJiaoSuDu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="内毂速度频谱图" Name="NeiGuSuDuPinPuTu" Grid.Row="13" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="内毂角速度频谱图" Name="NeiGuSuDuPinPuTu" Grid.Row="12" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid  Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuSuDuPinPuTu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="内毂位移"  Name="NeiGuWeiYi" Grid.Row="14" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="内毂位移"  Name="NeiGuWeiYi" Grid.Row="16" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridNeiGuWeiYi" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="相对扭转角度频谱图" Name="XiangDuiNiuZhuanJiaoDuPinPuTu" Grid.Row="15" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="摩擦片与内毂相对扭转角度频谱图" Name="XiangDuiNiuZhuanJiaoDuPinPuTu" Grid.Row="4" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridXiangDuiNiuZhuanJiaoDuPinPuTu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="相对旋转速度频谱图" Name="XiangDuiXuanZhuanJiaoDuPinPuTu" Grid.Row="16" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="摩擦片与内毂相对旋转速度频谱图" Name="XiangDuiXuanZhuanJiaoDuPinPuTu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=CJDLXHeader}" Name="GridXiangDuiXuanZhuanJiaoDuPinPuTu" >
                                         </Grid>
                                     </Expander>
@@ -909,6 +909,7 @@
                                 <Grid Name="FXXSSHeader" Width="700" HorizontalAlignment="Left" Margin="10,10,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition  Height="50"/>
+                                        <RowDefinition />
                                         <RowDefinition />
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
@@ -924,7 +925,13 @@
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
-                                    <Expander Header="摩擦片累计损伤" Name="moChaPianLeiJiSunShang" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                    <Expander Header="摩擦片齿根应力频域波形" Name="moChaPianChiGenYingLiPinYuBoXing" Grid.Row="2" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                        <!--<Border BorderBrush="Black" BorderThickness="1">-->
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianChiGenYingLiPinYuBoXing" >
+                                        </Grid>
+                                        <!--</Border>-->
+                                    </Expander>
+                                    <Expander Header="摩擦片累计损伤" Name="moChaPianLeiJiSunShang" Grid.Row="3" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianLeiJiSunShang" >
                                         </Grid>
@@ -1026,19 +1033,19 @@
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridducengweiyiyuntu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="偏心应力云图" Name="pianxinyingliyuntu" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="全齿应力云图" Name="pianxinyingliyuntu" Grid.Row="5" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridpianxinyingliyuntu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="偏心位移云图" Name="pianxinweiyiyuntu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="全齿位移云图" Name="pianxinweiyiyuntu" Grid.Row="6" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridpianxinweiyiyuntu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="预应力应力云图" Name="yuyinliyiyingliyuntu" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
-                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridyuyinliyiyingliyuntu" >
+                                    <Expander Header="淬火应力云图" Name="yuyingliyingliyuntu" Grid.Row="7" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0"  Style="{DynamicResource ExpanderStyle}">
+                                        <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridyuyingliyingliyuntu" >
                                         </Grid>
                                     </Expander>
-                                    <Expander Header="预应力位移云图" Name="yuyingliweiyiyuntu" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
+                                    <Expander Header="淬火位移云图" Name="yuyingliweiyiyuntu" Grid.Row="8" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" Style="{DynamicResource ExpanderStyle}">
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=XTFXHeader}" Name="Gridyuyingliweiyiyuntu" >
                                         </Grid>
                                     </Expander>

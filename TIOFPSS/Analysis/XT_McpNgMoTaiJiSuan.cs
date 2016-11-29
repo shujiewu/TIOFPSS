@@ -15,7 +15,8 @@ namespace TIOFPSS.Analysis
 
         private XT_McpNgMoTaiJiSuanParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateMcpNgMoTaiJiSuanFinish CallBackMethod;
+        private delegate void DoTask();
 
         public XT_McpNgMoTaiJiSuan(XT_McpNgMoTaiJiSuanParamter threadParamter)
         {
@@ -45,11 +46,11 @@ namespace TIOFPSS.Analysis
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction=ansysPath;
-            m_outputfile = path + "\\mcpngmodal\\output.out";
-            string workPath = path + "\\mcpngmodal";
+            m_outputfile = path + "\\MoChaPianNeiGuMoTai\\output.out";
+            string workPath = path + "\\MoChaPianNeiGuMoTai";
             
             string sCommondLine;
             sCommondLine=m_direction+" -b -p ane3fl -i "+m_inputfile+" -o "+m_outputfile;
@@ -96,6 +97,9 @@ namespace TIOFPSS.Analysis
             }
             if(success)
             {
+
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //string source1, source2;
                 //string dest1, dest2;
                 //source1 = path + "\\mcpmodal\\danchiyingliyuntu.jpeg";//产生的结果文件
@@ -136,6 +140,13 @@ namespace TIOFPSS.Analysis
             //System.IO.File.Copy(finame, newpath, true);
 
            
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            this.CallBackMethod(true);
+            //使用ui元素            
         }
     }
          public class XT_McpNgMoTaiJiSuanParamter

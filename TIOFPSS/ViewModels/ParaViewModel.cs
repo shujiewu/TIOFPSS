@@ -125,6 +125,86 @@ namespace TIOFPSS.ViewModels
             value.Add(userProject.NgChiGenYuanJiao);
             DB.XmlHelper.UpdatePara(paraPath, value);
         }
+        public List<string> loopGetValue()
+        {
+            List<string> value = new List<string>();
+            value.Add(userProject.ProjectPath);
+            value.Add(userProject.ProjectName);
+            value.Add(userProject.ChiShu);
+            value.Add(userProject.MoShu);
+            value.Add(userProject.YaLiJiao);
+            value.Add(userProject.McpChiDingGao);
+            value.Add(userProject.McpChiGenGao);
+            value.Add(userProject.McpChiGenYuanJiao);
+            value.Add(userProject.WaiJing);
+            value.Add(userProject.ChiCeJianXi);
+            value.Add(userProject.KongJing);
+            value.Add(userProject.NgHouDu);
+
+
+            value.Add(userProject.MccHouDu);
+            value.Add(userProject.DuCengHouDu);
+
+            value.Add(userProject.McpTXML);
+            value.Add(userProject.McpCLMD);
+            value.Add(userProject.McpBSB);
+            value.Add(userProject.KangLaQDJX);
+            value.Add(userProject.PiLaoJiXian);
+
+            value.Add(userProject.NgTXML);
+            value.Add(userProject.NgCLMD);
+            value.Add(userProject.NgBSB);
+
+            value.Add(userProject.MccTXML);
+            value.Add(userProject.MccCLMD);
+            value.Add(userProject.MccBSB);
+
+            value.Add(userProject.DcTXML);
+            value.Add(userProject.DcCLMD);
+            value.Add(userProject.DcBSB);
+
+            value.Add(userProject.NgChuShiJiaoWeiYi);
+            value.Add(userProject.NgChuShiSuDu);
+            value.Add(userProject.McpChuShiJiaoWeiYi);
+            value.Add(userProject.McpChuShiSuDu);
+            value.Add(userProject.YouMoHouDu);
+            value.Add(userProject.YouYeNianDu);
+            value.Add(userProject.WenDu);
+
+            value.Add(userProject.ShiJiJieChuChiShu);
+            value.Add(userProject.FanTanXiShu);
+            value.Add(userProject.NgZhuanSu);
+            value.Add(userProject.NgZhenFu);
+            value.Add(userProject.NgZhenPin);
+            value.Add(userProject.JieGouZuNi);
+            value.Add(userProject.McpZhuanDongGuanLiang);
+            value.Add(userProject.NgZhuanDongGuanLiang);
+            value.Add(userProject.JieChuQuJinXiangChuangDu);
+            value.Add(userProject.JieChuQuZhouXiangChangDu);
+            value.Add(userProject.QiDongShiJian);
+            value.Add(userProject.ZengSuShiJian);
+            value.Add(userProject.WenDingShiJian);
+            value.Add(userProject.TingZhiShiJIan);
+
+            value.Add(userProject.PianXinJu);
+            value.Add(userProject.JieJuZuiDaWuCha);
+            value.Add(userProject.JieJuZuiXiaoWuCha);
+            value.Add(userProject.CaiYangPinLv);
+            value.Add(userProject.YinLiYingBianZhuanHuanXiShu);
+            value.Add(userProject.MccJingKuan);
+            value.Add(userProject.McpHouDu);
+
+            value.Add(userProject.NgChiDingGao);
+            value.Add(userProject.NgChiGenGao);
+            value.Add(userProject.McpGFXDGC);
+            value.Add(userProject.NgGFXCDGC);
+            value.Add(userProject.ZuNiCaoChang);
+            value.Add(userProject.ZuNiCaoKuan);
+            value.Add(userProject.ZuNiCaoBanJing);
+            value.Add(userProject.NgChiGenYuanJiao);
+
+            return value;
+        }
         public  void loopSetValue(List<string> value)
         {
             //摩擦片设计参数 10                           

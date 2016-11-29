@@ -49,7 +49,7 @@ namespace TIOFPSS.Analysis
         {
            
             MWArray A = new MWNumericArray(1,54,threadParamter.Para);
-            MWArray loc = new MWCharArray(threadParamter.Path);
+            MWArray loc = new MWCharArray(threadParamter.Path+"冲击动力学分析结果\\");
             
             MWArray fontName = new MWCharArray("宋体");
 
@@ -58,15 +58,15 @@ namespace TIOFPSS.Analysis
             main_program_v1.WuJieJuWuChaClass wjj = new WuJieJuWuChaClass();
             wjj.main_program_v1(A, loc, fontName);
 
-            string force_source1 = System.IO.Path.Combine(threadParamter.Path, "force+.txt"); //inf->path + "force+.txt";
-            string force_source2 = System.IO.Path.Combine(threadParamter.Path, "force-.txt"); //inf->path + "force-.txt";
-            string dest_s1 = System.IO.Path.Combine(threadParamter.Path, "fdynamic\\force+.txt"); //inf->path + "fdynamic\\force+.txt";
-            string dest_s2 = System.IO.Path.Combine(threadParamter.Path, "fdynamic\\force-.txt"); //inf->path + "fdynamic\\force-.txt";
+            string force_source1 = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\force+.txt"); //inf->path + "force+.txt";
+            string force_source2 = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\force-.txt"); //inf->path + "force-.txt";
+            string dest_s1 = System.IO.Path.Combine(threadParamter.Path, "ZhunDongTai\\force+.txt"); //inf->path + "fdynamic\\force+.txt";
+            string dest_s2 = System.IO.Path.Combine(threadParamter.Path, "ZhunDongTai\\force-.txt"); //inf->path + "fdynamic\\force-.txt";
             System.IO.File.Copy(force_source1, dest_s1, true);
             System.IO.File.Copy(force_source2, dest_s2, true);
 
             //复制结果
-            string finame = System.IO.Path.Combine(threadParamter.Path, "Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
+            string finame = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
             string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
             System.IO.File.Copy(finame, newpath, true);
             //CallBackMethod finish = new CallBackMethod();
@@ -139,7 +139,7 @@ new DoTask(Func));
         {
 
             MWArray A = new MWNumericArray(1, 54, threadParamter.Para);
-            MWArray loc = new MWCharArray(threadParamter.Path);
+            MWArray loc = new MWCharArray(threadParamter.Path+"冲击动力学分析结果\\");
 
             MWArray fontName = new MWCharArray("宋体");
 
@@ -165,7 +165,7 @@ new DoTask(Func));
             //System.IO.File.Copy(force_source2, dest_s2, true);
 
             //复制结果
-            string finame = System.IO.Path.Combine(threadParamter.Path, "Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
+            string finame = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
             string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
             System.IO.File.Copy(finame, newpath, true);
 

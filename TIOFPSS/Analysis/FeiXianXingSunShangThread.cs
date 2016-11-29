@@ -39,7 +39,7 @@ namespace TIOFPSS.Analysis
             //MWArray fontName = new MWCharArray("宋体");
                       
             MWArray ff = new MWNumericArray(1, 21,threadParamter.Para);
-            MWArray locc = new MWCharArray(threadParamter.Path);
+            MWArray locc = new MWCharArray(threadParamter.Path + "非线性损伤分析结果\\");
             MWArray dataname = new MWCharArray(threadParamter.filePath);
             MWArray fontnm = new MWCharArray("宋体");
             
@@ -59,11 +59,11 @@ namespace TIOFPSS.Analysis
             System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 new DoTask(Func));
 
-            string finame1 = threadParamter.Path + "疲劳损伤.mat";//项目临时文件目录
+            string finame1 = threadParamter.Path + "非线性损伤分析结果\\疲劳损伤.mat";//项目临时文件目录
             string newpath1 = threadParamter.ProPath + "\\" + "非线性损伤分析文件" + "\\" + "疲劳损伤.mat";//项目文件保存路径
             //CopyFile(finame1, newpath1, false);
             System.IO.File.Copy(finame1, newpath1, true);
-            string finame2 = threadParamter.Path + "寿命.mat";//项目临时文件目录
+            string finame2 = threadParamter.Path + "非线性损伤分析结果\\寿命.mat";//项目临时文件目录
             string newpath2 = threadParamter.ProPath + "\\" + "非线性损伤分析文件" + "\\" + "寿命.mat";//项目文件保存路径
             System.IO.File.Copy(finame2, newpath2, true);
            // Xceed.Wpf.Toolkit.MessageBox.Show("当量载荷谱分析分析完成");

@@ -65,15 +65,11 @@
             //}
             //f.FontsData = test;
             // n = new MainViewModel();
-
-            btnwjjwc.IsEnabled = false;
-            btnyjjwc.IsEnabled = false;
-            btnzsfx.IsEnabled = false;
-            btnfxxssfx.IsEnabled = false;
-            btndlzhpfx.IsEnabled = false;
+            btnFalse();
+            
             mainViewModel = new MainViewModel();
             this.DataContext = mainViewModel;
-            DockManager.MouseLeftButtonUp += TabMouseClick;
+            //DockManager.MouseLeftButtonUp += TabMouseClick;
         }
         private void btnFalse()
         {
@@ -82,6 +78,31 @@
             btnzsfx.IsEnabled = false;
             btnfxxssfx.IsEnabled = false;
             btndlzhpfx.IsEnabled = false;
+            btnParaView.IsEnabled = false;
+            btnSubmit.IsEnabled = false;
+            btnView3DModel.IsEnabled = false;
+            btnSavePara.IsEnabled = false;
+            btnApplyLib.IsEnabled = false;
+            btnYouJieJuChuTu.IsEnabled = false;
+
+            btnXTFX.IsEnabled = false;
+            btnJingTaiQiangDuFenXi.IsEnabled = false;
+            btnDuCengShaoChiFenXi.IsEnabled = false;
+            btnShaoChiDangLiangFenXi.IsEnabled = false;
+            btnQuanChiPianXinJiSuan.IsEnabled = false;
+            btnDongTaiFenXi.IsEnabled = false;
+            btnDongTaiYingLiJiSuan.IsEnabled = false;
+            btnMoCaPianMoTaiJiSuan.IsEnabled = false;
+            btnMcpNgMoTaiJiSuan.IsEnabled = false;
+            btnMoTaiJieGuo.IsEnabled = false;
+
+            btnAnalysisMonitor.IsEnabled = false;
+            btnShengChengBaoBiao.IsEnabled = false;
+            btnViewResult.IsEnabled = false;
+
+            btnPicEdit.IsEnabled = false;
+            btnDetailDraw.IsEnabled = false;
+            btnPicEditOK.IsEnabled = false;
         }
         private void btnTrue()
         {
@@ -89,60 +110,85 @@
             btnyjjwc.IsEnabled = true;
             btnzsfx.IsEnabled = true;
             btnfxxssfx.IsEnabled = true;
-            btndlzhpfx.IsEnabled = true;                 
+            btndlzhpfx.IsEnabled = true;
+            btnParaView.IsEnabled = true;
+            btnSubmit.IsEnabled = true;
+            btnView3DModel.IsEnabled = true;
+            btnSavePara.IsEnabled = true;
+            btnApplyLib.IsEnabled = true;
+            btnYouJieJuChuTu.IsEnabled = true;
+
+            btnXTFX.IsEnabled = true;
+            btnJingTaiQiangDuFenXi.IsEnabled = true;
+            btnDuCengShaoChiFenXi.IsEnabled = true;
+            btnShaoChiDangLiangFenXi.IsEnabled = true;
+            btnQuanChiPianXinJiSuan.IsEnabled = true;
+            btnDongTaiFenXi.IsEnabled = true;
+            btnDongTaiYingLiJiSuan.IsEnabled = true;
+            btnMoCaPianMoTaiJiSuan.IsEnabled = true;
+            btnMcpNgMoTaiJiSuan.IsEnabled = true;
+            btnMoTaiJieGuo.IsEnabled = true;
+
+            btnAnalysisMonitor.IsEnabled = true;
+            btnShengChengBaoBiao.IsEnabled = true;
+            btnViewResult.IsEnabled = true;
+
+            btnPicEdit.IsEnabled = true;
+            btnDetailDraw.IsEnabled = true;
+            btnPicEditOK.IsEnabled = true;
         }
-        private void TabMouseClick(object sender, MouseButtonEventArgs e)
-        {
-            //处理逻辑
-            foreach (var paneItem in DocumentPane.Children)
-            {
-                if (paneItem.Title == "项目参数" && paneItem.IsSelected == true)
-                {
-                    btnwjjwc.IsEnabled = true;
-                    btnyjjwc.IsEnabled = true;
-                    btnzsfx.IsEnabled = true;
-                    btnfxxssfx.IsEnabled = true;
-                    btndlzhpfx.IsEnabled = true;                       
-                    break;
-                }
-                if (paneItem.Title == "分析结果" && paneItem.IsSelected == true)
-                {
-                    btnwjjwc.IsEnabled = false;
-                    btnyjjwc.IsEnabled = false;
-                    btnzsfx.IsEnabled = false;
-                    btnfxxssfx.IsEnabled = false;
-                    btndlzhpfx.IsEnabled = false;
-                    break;
-                }
-                if (paneItem.Title == "项目查找" && paneItem.IsSelected == true)
-                {
-                    btnwjjwc.IsEnabled = false;
-                    btnyjjwc.IsEnabled = false;
-                    btnzsfx.IsEnabled = false;
-                    btnfxxssfx.IsEnabled = false;
-                    btndlzhpfx.IsEnabled = false;
-                    break;
-                }
-                if (paneItem.Title == "噪声优化方法" && paneItem.IsSelected == true)
-                {
-                    btnwjjwc.IsEnabled = false;
-                    btnyjjwc.IsEnabled = false;
-                    btnzsfx.IsEnabled = false;
-                    btnfxxssfx.IsEnabled = false;
-                    btndlzhpfx.IsEnabled = false;
-                    break;
-                }
-                if (paneItem.Title == "项目对比" && paneItem.IsSelected == true)
-                {
-                    btnwjjwc.IsEnabled = false;
-                    btnyjjwc.IsEnabled = false;
-                    btnzsfx.IsEnabled = false;
-                    btnfxxssfx.IsEnabled = false;
-                    btndlzhpfx.IsEnabled = false;
-                    break;
-                }
-            }
-        }
+        //private void TabMouseClick(object sender, MouseButtonEventArgs e)
+        //{
+        //    //处理逻辑
+        //    foreach (var paneItem in DocumentPane.Children)
+        //    {
+        //        if (paneItem.Title == "项目参数" && paneItem.IsSelected == true)
+        //        {
+        //            btnwjjwc.IsEnabled = true;
+        //            btnyjjwc.IsEnabled = true;
+        //            btnzsfx.IsEnabled = true;
+        //            btnfxxssfx.IsEnabled = true;
+        //            btndlzhpfx.IsEnabled = true;                       
+        //            break;
+        //        }
+        //        if (paneItem.Title == "分析结果" && paneItem.IsSelected == true)
+        //        {
+        //            btnwjjwc.IsEnabled = false;
+        //            btnyjjwc.IsEnabled = false;
+        //            btnzsfx.IsEnabled = false;
+        //            btnfxxssfx.IsEnabled = false;
+        //            btndlzhpfx.IsEnabled = false;
+        //            break;
+        //        }
+        //        if (paneItem.Title == "项目查找" && paneItem.IsSelected == true)
+        //        {
+        //            btnwjjwc.IsEnabled = false;
+        //            btnyjjwc.IsEnabled = false;
+        //            btnzsfx.IsEnabled = false;
+        //            btnfxxssfx.IsEnabled = false;
+        //            btndlzhpfx.IsEnabled = false;
+        //            break;
+        //        }
+        //        if (paneItem.Title == "噪声优化方法" && paneItem.IsSelected == true)
+        //        {
+        //            btnwjjwc.IsEnabled = false;
+        //            btnyjjwc.IsEnabled = false;
+        //            btnzsfx.IsEnabled = false;
+        //            btnfxxssfx.IsEnabled = false;
+        //            btndlzhpfx.IsEnabled = false;
+        //            break;
+        //        }
+        //        if (paneItem.Title == "项目对比" && paneItem.IsSelected == true)
+        //        {
+        //            btnwjjwc.IsEnabled = false;
+        //            btnyjjwc.IsEnabled = false;
+        //            btnzsfx.IsEnabled = false;
+        //            btnfxxssfx.IsEnabled = false;
+        //            btndlzhpfx.IsEnabled = false;
+        //            break;
+        //        }
+        //    }
+        //}
         private static void OnScreenTipHelpPressed(object sender, ScreenTipHelpEventArgs e)
         {
             Process.Start((string)e.HelpTopic);
@@ -431,598 +477,7 @@
             var w = new Window();
             w.ShowDialog();
         }
-        private void FSywj_Click(object sender, RoutedEventArgs e)
-        {
 
-            FXXSS_ShiYanWenJian aw = new FXXSS_ShiYanWenJian();
-            aw.CallBackMethod = FSywjAnalysis;
-            aw.ShowDialog();
-        }
-        private void FDTFXJG_Click(object sender, RoutedEventArgs e)
-        {
-
-            FXXSS_DongTaiFenXi aw = new FXXSS_DongTaiFenXi();
-            aw.CallBackMethod = FDTJGAnalysis;
-            aw.ShowDialog();
-        }
-        private void FZDTFXJG_Click(object sender, RoutedEventArgs e)
-        {
-
-            FXXSS_ZhunDongTaiJieGuo aw = new FXXSS_ZhunDongTaiJieGuo();
-            aw.CallBackMethod = FZDTJSAnalysis;
-            aw.ShowDialog();
-        }
-        private void FSywjAnalysis(FXXSSFile para)
-        {
-            DB.UserProject proj = new UserProject();
-            foreach (var item in DocumentPane.Children)
-            {
-                if (item.IsSelected == true && item.Title == "项目参数")
-                {
-
-                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                    proj = tempPara.UserProject;
-                }
-            }
-            int isShiYanFile = 1;//shiyanwenjian
-
-            string row = "21";
-            string col = "2";
-            string tongdao = "3";
-
-            row = para.row;
-            col = para.col;
-            tongdao = para.td;
-
-            string clcs1, clcs2, clcs3;
-            clcs1=Configure.IniReadValue("canshu", "clcs1");
-            clcs2 = Configure.IniReadValue("canshu", "clcs2");
-            clcs3 = Configure.IniReadValue("canshu", "clcs3");
-
-            double[] Para = new double[21];
-
-            Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
-            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
-            Para[2] = Convert.ToDouble(tongdao);
-            Para[3] = Convert.ToDouble(proj.CaiYangPinLv);
-            Para[4] = 12;
-            Para[5] = 0;
-            Para[6] = 0;
-            Para[7] = 0;
-            Para[8] = 1;
-            Para[9] = 1;
-            Para[10] = 0;
-            Para[11] = 0;
-            Para[12] = 1;
-            Para[13] = Convert.ToDouble(row);
-            Para[14] = Convert.ToDouble(col);
-            Para[15] = isShiYanFile;//判断用什么数据
-            Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
-            Para[17] = Convert.ToDouble(clcs2);//3.6;
-            Para[18] = Convert.ToDouble(clcs3);//0.3;
-
-            Para[19] = 2;//3.6;
-            Para[20] = 50;//0.3;
-
-            string file = para.path;
-            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
-            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
-
-            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
-            Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
-            t.CallBackMethod = FXXSSFinish;
-            btnfxxssfx.IsEnabled = false;
-            if (anchorable == null)
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    anchorable = new LayoutAnchorable();
-                    anchorable.Title = "分析监视";
-                    anchorable.Content = new AnalysisMonitor();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-            else
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-
-            t.Start();
-
-            ((AnalysisMonitor)anchorable.Content).FXXSS_start("实验文件");
-        }
-        private void FDTJGAnalysis(FXXSSFile para)
-        {
-            DB.UserProject proj = new UserProject();
-            foreach (var item in DocumentPane.Children)
-            {
-                if (item.IsSelected == true && item.Title == "项目参数")
-                {
-
-                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                    proj = tempPara.UserProject;
-                }
-            }
-            int isShiYanFile = -1;//shiyanwenjian
-
-            string row = "21";
-            string col = "2";
-            string tongdao = "3";
-
-            row = para.row;
-            col = para.col;
-
-
-            string clcs1, clcs2, clcs3;
-            clcs1 = Configure.IniReadValue("canshu", "clcs1");
-            clcs2 = Configure.IniReadValue("canshu", "clcs2");
-            clcs3 = Configure.IniReadValue("canshu", "clcs3");
-
-            double[] Para = new double[21];
-
-            Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
-            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
-            Para[2] = Convert.ToDouble(tongdao);
-            Para[3] = Convert.ToDouble(proj.CaiYangPinLv);
-            Para[4] = 12;
-            Para[5] = 0;
-            Para[6] = 0;
-            Para[7] = 0;
-            Para[8] = 1;
-            Para[9] = 1;
-            Para[10] = 0;
-            Para[11] = 0;
-            Para[12] = 1;
-            Para[13] = Convert.ToDouble(row);
-            Para[14] = Convert.ToDouble(col);
-            Para[15] = isShiYanFile;//判断用什么数据
-            Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
-            Para[17] = Convert.ToDouble(clcs2);//3.6;
-            Para[18] = Convert.ToDouble(clcs3);//0.3;
-
-            Para[19] = 2;//3.6;
-            Para[20] = 50;//0.3;
-
-            string file = para.path;
-            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
-            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
-
-            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
-            Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
-            t.CallBackMethod = FXXSSFinish;
-            btnfxxssfx.IsEnabled = false;
-            if (anchorable == null)
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    anchorable = new LayoutAnchorable();
-                    anchorable.Title = "分析监视";
-                    anchorable.Content = new AnalysisMonitor();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-            else
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-
-            t.Start();
-
-            ((AnalysisMonitor)anchorable.Content).FXXSS_start("动态分析结果文件");
-        }
-        private void FZDTJSAnalysis(FXXSSFile para)
-        {
-            DB.UserProject proj = new UserProject();
-            foreach (var item in DocumentPane.Children)
-            {
-                if (item.IsSelected == true && item.Title == "项目参数")
-                {
-
-                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                    proj = tempPara.UserProject;
-                }
-            }
-            int isShiYanFile = 0;//shiyanwenjian
-
-            string row = "21";
-            string col = "2";
-            string tongdao = "3";
-
-
-            string clcs1, clcs2, clcs3;
-            clcs1 = Configure.IniReadValue("canshu", "clcs1");
-            clcs2 = Configure.IniReadValue("canshu", "clcs2");
-            clcs3 = Configure.IniReadValue("canshu", "clcs3");
-
-            double[] Para = new double[21];
-
-            Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
-            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
-            Para[2] = Convert.ToDouble(tongdao);
-            Para[3] = Convert.ToDouble(proj.CaiYangPinLv);
-            Para[4] = 12;
-            Para[5] = 0;
-            Para[6] = 0;
-            Para[7] = 0;
-            Para[8] = 1;
-            Para[9] = 1;
-            Para[10] = 0;
-            Para[11] = 0;
-            Para[12] = 1;
-            Para[13] = Convert.ToDouble(row);
-            Para[14] = Convert.ToDouble(col);
-            Para[15] = isShiYanFile;//判断用什么数据
-            Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
-            Para[17] = Convert.ToDouble(clcs2);//3.6;
-            Para[18] = Convert.ToDouble(clcs3);//0.3;
-
-            Para[19] = 2;//3.6;
-            Para[20] = 50;//0.3;
-
-            string file = para.path;
-            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
-            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
-
-            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
-            Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
-            t.CallBackMethod = FXXSSFinish;
-            btnfxxssfx.IsEnabled = false;
-            if (anchorable == null)
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    anchorable = new LayoutAnchorable();
-                    anchorable.Title = "分析监视";
-                    anchorable.Content = new AnalysisMonitor();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-            else
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-
-            t.Start();
-
-            ((AnalysisMonitor)anchorable.Content).FXXSS_start("准动态计算文件");
-        }
-
-        private void FXXSSFinish(bool finish, string fileType)
-        {
-            if (finish == true)
-            {
-                ((AnalysisMonitor)anchorable.Content).FXXSS_stop(fileType);
-                //win2.dongLiXue_stop();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "分析结果")
-                    {
-                        string path = loadProj[nowProjName] + "\\tempData";
-
-                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
-                    }
-                }
-                btnfxxssfx.IsEnabled = true;
-
-            }
-        }
-
-
-        private void DSywj_Click(object sender, RoutedEventArgs e)
-        {
-
-            DLZHP_ShiYanWenjian aw = new DLZHP_ShiYanWenjian();
-            aw.CallBackMethod = DSywjAnalysis;
-            aw.ShowDialog();
-        }
-
-
-        private void DDTFXJG_Click(object sender, RoutedEventArgs e)
-        {
-
-            DLZHP_DongTaiFenXiJieGuo aw = new DLZHP_DongTaiFenXiJieGuo();
-            aw.CallBackMethod = DDTJGAnalysis;
-            aw.ShowDialog();
-        }
-
-        private void DDTJGAnalysis(List<DSFileList> para)
-        {
-            DB.UserProject proj = new UserProject();
-            foreach (var item in DocumentPane.Children)
-            {
-                if (item.IsSelected == true && item.Title == "项目参数")
-                {
-
-                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                    proj = tempPara.UserProject;
-                }
-            }
-            List<string> tds = new List<string>();
-            List<string> qhxs = new List<string>();
-            List<string> file = new List<string>();
-            List<string> hang = new List<string>();
-            int sum = 0;
-            foreach (DSFileList item in para)
-            {
-                tds.Add(item.col);
-                qhxs.Add(item.qhxs);
-                file.Add(item.path);
-                hang.Add(item.row);
-                sum++;
-            }
-            double[] Para = new double[5];
-            Para[0] = Convert.ToDouble(proj.KangLaQDJX);
-            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
-            Para[2] = Convert.ToDouble(proj.CaiYangPinLv);
-            Para[3] = Convert.ToDouble(para[0].row);
-            Para[4] = Convert.ToDouble(para[0].col);
-            int isShiYanFile = -1;//shiyanwenjian
-            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
-            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
-
-            Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
-            Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
-            t.CallBackMethod = DLZHPFinish;
-            btndlzhpfx.IsEnabled = false;
-            if (anchorable == null)
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    anchorable = new LayoutAnchorable();
-                    anchorable.Title = "分析监视";
-                    anchorable.Content = new AnalysisMonitor();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-            else
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-
-            t.Start();
-
-            ((AnalysisMonitor)anchorable.Content).DLZHP_start("动态分析结果文件");
-        }
-
-
-        private void DZDTFXJG_Click(object sender, RoutedEventArgs e)
-        {
-
-            DLZHP_ZhunDongTaiJiSuanWenJian aw = new DLZHP_ZhunDongTaiJiSuanWenJian();
-            aw.CallBackMethod = DZDTJSAnalysis;
-            aw.ShowDialog();
-        }
-        private void DZDTJSAnalysis(List<DSFileList> para)
-        {
-            DB.UserProject proj = new UserProject();
-            foreach (var item in DocumentPane.Children)
-            {
-                if (item.IsSelected == true && item.Title == "项目参数")
-                {
-
-                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                    proj = tempPara.UserProject;
-                }
-            }
-            List<string> tds = new List<string>();
-            List<string> qhxs = new List<string>();
-            List<string> file = new List<string>();
-            List<string> hang = new List<string>();
-            int sum = 0;
-            foreach (DSFileList item in para)
-            {
-                tds.Add("6");
-                qhxs.Add(item.qhxs);
-                file.Add(item.path);
-                hang.Add("0");
-                sum++;
-            }
-            double[] Para = new double[5];
-            Para[0] = Convert.ToDouble(proj.KangLaQDJX);
-            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
-            Para[2] = Convert.ToDouble(proj.CaiYangPinLv);
-            Para[3] = Convert.ToDouble(para[0].row);
-            Para[4] = Convert.ToDouble(para[0].col);
-            int isShiYanFile = 0;//shiyanwenjian
-            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
-            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
-
-            Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
-            Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
-            t.CallBackMethod = DLZHPFinish;
-            btndlzhpfx.IsEnabled = false;
-            if (anchorable == null)
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    anchorable = new LayoutAnchorable();
-                    anchorable.Title = "分析监视";
-                    anchorable.Content = new AnalysisMonitor();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-            else
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-
-            t.Start();
-
-            ((AnalysisMonitor)anchorable.Content).DLZHP_start("准动态计算文件");
-        }
-        private void DSywjAnalysis(List<DSFileList> para)
-        {
-            DB.UserProject proj = new UserProject();
-            foreach (var item in DocumentPane.Children)
-            {
-                if (item.IsSelected == true && item.Title == "项目参数")
-                {
-
-                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                    proj = tempPara.UserProject;
-                }
-            }
-            List<string> tds = new List<string>();
-            List<string> qhxs = new List<string>();
-            List<string> file = new List<string>();
-            List<string> hang = new List<string>();
-            int sum=0;
-            foreach(DSFileList item in para)
-            {
-                tds.Add(item.td);
-                qhxs.Add(item.qhxs);
-                file.Add(item.path);
-                hang.Add("0");
-                sum++;
-            }
-            double[] Para = new double[5];
-            Para[0] = Convert.ToDouble(proj.KangLaQDJX);
-            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
-            Para[2] = Convert.ToDouble(proj.CaiYangPinLv);
-            Para[3] = Convert.ToDouble(para[0].row);
-            Para[4] = Convert.ToDouble(para[0].col);
-            int isShiYanFile = 1;//shiyanwenjian
-            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
-            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
-            
-            Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path,proPath,Para,tds,qhxs,file,hang,sum,isShiYanFile);
-            Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
-            t.CallBackMethod = DLZHPFinish;
-            btndlzhpfx.IsEnabled = false;
-            if (anchorable == null)
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    anchorable = new LayoutAnchorable();
-                    anchorable.Title = "分析监视";
-                    anchorable.Content = new AnalysisMonitor();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-            else
-            {
-                try
-                {
-                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                    pane.Children.Add(anchorable);
-                    LeftAnchorableGroup.Children.Add(pane);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                }
-            }
-
-            t.Start();
-
-            ((AnalysisMonitor)anchorable.Content).DLZHP_start("实验文件");
-        }
-        private void DLZHPFinish(bool finish,string fileType)
-        {
-            if (finish == true)
-            {
-                ((AnalysisMonitor)anchorable.Content).DLZHP_stop(fileType);
-                //win2.dongLiXue_stop();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "分析结果")
-                    {
-                        string path = loadProj[nowProjName] + "\\tempData";
-
-                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
-                    }
-                }
-                btndlzhpfx.IsEnabled = true;
-
-            }
-        }
         //新建项目
         private void NewProject_Click(object sender, RoutedEventArgs e)
         {
@@ -1329,7 +784,7 @@
                         if (paneItem.Title == "项目参数")
                         {
                             paneItem.Close();
-                            btnFalse();
+                            //;
                             break;
                         }
                     }
@@ -1341,6 +796,7 @@
                             break;
                         }
                     }
+                    btnFalse();
                 }
                 if(!DeleteDB(loadProj[itemName]))
                 {
@@ -1360,6 +816,10 @@
                 }
 
                 loadProj.Remove(itemName);
+                if (loadProj.Count == 0)
+                {
+                    btnFalse();
+                }
                 TIOFPSS.ViewModels.TreeViewData.delete(item.Label);
             }
         }
@@ -1603,7 +1063,7 @@
                         if (paneItem.Title == "项目参数")
                         {
                             paneItem.Close();
-                            btnFalse();
+                            //;
                             break;
                         }
                     }
@@ -1615,8 +1075,13 @@
                             break;
                         }
                     }
+                    btnFalse();
                 }
                 loadProj.Remove(itemName);
+                if(loadProj.Count==0)
+                {
+                    btnFalse();
+                }
                 TIOFPSS.ViewModels.TreeViewData.delete(item.Label);
 
 
@@ -1658,7 +1123,7 @@
                             paneItem.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
                             paneItem.IsActive = true;
                             paneItem.IsSelected = true;
-                            btnFalse();
+                            //;
                             //break;
                         }
                         if(paneItem.Title == "分析结果")
@@ -1668,6 +1133,8 @@
                             paneItem.IsActive = true;
                         }
                     }
+
+                    btnTrue();
                 }
 
             }
@@ -1690,7 +1157,7 @@
                         paneItem.IsActive = true;
                         hasParaPane = true;
                         paneItem.IsSelected = true;
-                        btnTrue();
+                        //;
                         break;
                     }
                 }
@@ -1701,7 +1168,7 @@
                     document.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
                     document.IsActive = true;
                     DocumentPane.Children.Add(document);
-                    btnTrue();
+                    //;
                 }
 
             }
@@ -1850,6 +1317,11 @@
 
             
         }
+        private void OnAnalysisMonitorClick(object sender, RoutedEventArgs e)
+        {
+            AddMonitor();
+        }
+        
         private void ApplyLib(List<string> para)
         {
             foreach (var item in DocumentPane.Children)
@@ -1863,33 +1335,112 @@
                 }
             }
         }
+        void AddMonitor()
+        {
+            if (anchorable == null)
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    anchorable = new LayoutAnchorable();
+                    anchorable.Title = "分析监视";
+                    anchorable.Content = new AnalysisMonitor();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+            else
+            {
+                try
+                {
+                    LayoutAnchorablePane pane = new LayoutAnchorablePane();
+                    pane.Children.Add(anchorable);
+                    LeftAnchorableGroup.Children.Add(pane);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+                }
+            }
+        }
+        void UpdateResultPane()
+        {
+            foreach (var item in DocumentPane.Children)
+            {
+                if (item.Title == "分析结果")
+                {
+                    string path = loadProj[nowProjName] + "\\tempData";
+
+                    item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
+                    break;
+                }
+            }
+        }
+        UserProject GetNowProjectPara()
+        {
+            DB.UserProject proj = new UserProject(); 
 
 
+            ViewModels.ParaViewModel Para = new ViewModels.ParaViewModel(loadProj[nowProjName], nowProjName);
+            List<string> viewPara = new List<string>();
+            List<string> xmlPara = new List<string>();
+            xmlPara = Para.loopGetValue();
+            proj =Para.UserProject;
+            foreach (var item in DocumentPane.Children)
+            {
+                if (item.Title == "项目参数")
+                {
+                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                    viewPara = tempPara.loopGetValue();
+                    for (int i = 0; i < xmlPara.Count;i++ )
+                    {
+                        if(xmlPara[i]!=viewPara[i])
+                        {
+                            Xceed.Wpf.Toolkit.MessageBox.Show("修改的参数未保存！");
+                            return null;
+                        }
+                    }
+                    //proj = tempPara.UserProject;
+                    break;
+                }
+            }
+            return proj;
+        }
         private void OnWuJieJuWuChaClick(object sender, RoutedEventArgs e)
         {
             if(nowProjName!=null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        item.IsSelected = true;
-                        //break;
-                    }
-                    if (item.Title == "分析结果")
-                    {
-                        item.IsSelected = false;
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        item.IsSelected = true;
+                //        //break;
+                //    }
+                //    if (item.Title == "分析结果")
+                //    {
+                //        item.IsSelected = false;
                         
-                        //item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, null);
-                        //item.IsActive = false;
-                        //item.IsSelected = false;
-                    }  
-                }
+                //        //item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, null);
+                //        //item.IsActive = false;
+                //        //item.IsSelected = false;
+                //    }  
+                //}
+
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
+
                 double[] para = new double[54];
                 para[0] = Convert.ToDouble(proj.TingZhiShiJIan);//0.5   停止时间  1
                 para[1] = Convert.ToDouble(proj.NgChuShiJiaoWeiYi);//0  内毂初始角位移 0
@@ -1956,50 +1507,9 @@
                 t.CallBackMethod = WuJieJuWuChaFenXiFinish;
                 btnwjjwc.IsEnabled = false;
                 btnyjjwc.IsEnabled = false;
-                if(anchorable==null)
-                {
-                    try
-                    {
-                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                        anchorable = new LayoutAnchorable();
-                        anchorable.Title = "分析监视";
-                        anchorable.Content = new AnalysisMonitor();
-                        pane.Children.Add(anchorable);
-                        LeftAnchorableGroup.Children.Add(pane);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                        pane.Children.Add(anchorable);
-                        LeftAnchorableGroup.Children.Add(pane);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                    }
-                }
-                //t.SetApartmentState(ApartmentState.STA);
+                AddMonitor();
                 t.Start();
-                //win2.dongLiXue_start();
-                //win2.ShowDialog();
-
                 ((AnalysisMonitor)anchorable.Content).dongLiXue_start("无节距误差分析");
-                
-                
-
-
-
-                //if (t._Thread.ThreadState == System.Threading.ThreadState.Stopped)
-                //{
-                //    MessageBox.Show("线程结束");
-                //}
             }
 
 
@@ -2010,15 +1520,7 @@
             {
                 ((AnalysisMonitor)anchorable.Content).dongLiXue_stop("无节距误差分析");
                 //win2.dongLiXue_stop();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "分析结果")
-                    {
-                        string path = loadProj[nowProjName] + "\\tempData";
-
-                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
-                    }
-                }
+                UpdateResultPane();
                 btnwjjwc.IsEnabled = true;
                 btnyjjwc.IsEnabled = true;
 
@@ -2029,20 +1531,22 @@
             if(nowProjName!=null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
                 //string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");//@"D:\proj\10.31\tempData\";
                 //string proPath = System.IO.Path.Combine(proj.ProjectPath, "project");//+"\\";
-
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string tempDataPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");
                 string dynmicMat = System.IO.Path.Combine(tempDataPath, "Dynamic.mat");
                 string picPath = tempDataPath;
@@ -2055,35 +1559,7 @@
                 
                 t.Start();
 
-                if (anchorable == null)
-                {
-                    try
-                    {
-                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                        anchorable = new LayoutAnchorable();
-                        anchorable.Title = "分析监视";
-                        anchorable.Content = new AnalysisMonitor();
-                        pane.Children.Add(anchorable);
-                        LeftAnchorableGroup.Children.Add(pane);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                        pane.Children.Add(anchorable);
-                        LeftAnchorableGroup.Children.Add(pane);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                    }
-                }
+                AddMonitor();
                 ((AnalysisMonitor)anchorable.Content).zaoSheng_start();
 
                 //if (t._Thread.ThreadState == System.Threading.ThreadState.Stopped)
@@ -2097,7 +1573,7 @@
             if (finish == true)
             {
                 ((AnalysisMonitor)anchorable.Content).zaoSheng_stop();
-                //win2.dongLiXue_stop();
+                UpdateResultPane();
             }
         }
         private void OnYouJieJuWuChaClick(object sender, RoutedEventArgs e)
@@ -2105,17 +1581,20 @@
             if (nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 double[] para = new double[54];
                 para[0] = Convert.ToDouble(proj.TingZhiShiJIan);//0.5   停止时间  1
                 para[1] = Convert.ToDouble(proj.NgChuShiJiaoWeiYi);//0  内毂初始角位移 0
@@ -2188,35 +1667,7 @@
                 t.CallBackMethod = YouJieJuWuChaFenXiFinish;
                 btnwjjwc.IsEnabled = false;
                 btnyjjwc.IsEnabled = false;
-                if (anchorable == null)
-                {
-                    try
-                    {
-                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                        anchorable = new LayoutAnchorable();
-                        anchorable.Title = "分析监视";
-                        anchorable.Content = new AnalysisMonitor();
-                        pane.Children.Add(anchorable);
-                        LeftAnchorableGroup.Children.Add(pane);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-                        pane.Children.Add(anchorable);
-                        LeftAnchorableGroup.Children.Add(pane);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
-                    }
-                }
+                AddMonitor();
                 
                 t.Start();
 
@@ -2233,22 +1684,13 @@
             if (finish == true)
             {
                 ((AnalysisMonitor)anchorable.Content).dongLiXue_stop("有节距误差分析");
-                //win2.dongLiXue_stop();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "分析结果")
-                    {
-                        string path = loadProj[nowProjName] + "\\tempData";
-
-                        item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
-                    }
-                }
+                UpdateResultPane();
 
                 btnwjjwc.IsEnabled = true;
                 btnyjjwc.IsEnabled = true;
             }
         }
-
+        string startPath=System.Windows.Forms.Application.StartupPath;
         private void OnJingTaiQiangDuFenXiClick(object sender, RoutedEventArgs e)
         {
             Dialog.JingTaiQiangDuFenXi aw = new Dialog.JingTaiQiangDuFenXi();
@@ -2260,23 +1702,26 @@
             if(para!=null&&nowProjName!=null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string chongjili = para[0];
                 string resName =para[1];
                 string APDLPath, tempPath;
-                tempPath=System.IO.Path.Combine(proj.ProjectPath, "tempData\\single");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa=APDLPath+"\\para_gear122.txt";
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\ShaoChi");
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string []dataname={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2307,15 +1752,28 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath=APDLPath+"\\single.txt";
-
-                Analysis.XT_jiangTaiQiangDuThreadParamter threadPara = new Analysis.XT_jiangTaiQiangDuThreadParamter(null,path,apdlfilepath,null);
+                string apdlfilepath = APDLPath + "\\ShaoChi.txt";
+                string proPath = proj.ProjectPath + "\\" + Helper.str_FloderPath[6];
+                Analysis.XT_jiangTaiQiangDuThreadParamter threadPara = new Analysis.XT_jiangTaiQiangDuThreadParamter(null, path, apdlfilepath, proPath);
                 Analysis.XT_jiangTaiQiangDuThread t = new Analysis.XT_jiangTaiQiangDuThread(threadPara);
                 //Window2.dongLiXue_start();
-
-                
+                t.CallBackMethod = JingTaiQiangDuFenXiFinish;
+                AddMonitor();
+                t.Start();
+                ((AnalysisMonitor)anchorable.Content).JingTaiQiangDuFenXi_start();                
             }
         }
+        private void JingTaiQiangDuFenXiFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).JingTaiQiangDuFenXi_stop();
+                UpdateResultPane();
+            }
+        }
+
+
+
 
         public void OnDuCengShaoChiFenXiClick(object sender, RoutedEventArgs e)
         {
@@ -2328,23 +1786,26 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string chongjili = para[0];
                 string resName = para[1];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\duceng");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\DuCeng");
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2379,14 +1840,25 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\duceng.txt";
+                string apdlfilepath = APDLPath + "\\DuCeng.txt";
 
                 Analysis.XT_DuCengShaoChiThreadParamter threadPara = new Analysis.XT_DuCengShaoChiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_DuCengShaoChiThread t = new Analysis.XT_DuCengShaoChiThread(threadPara);
+                t.CallBackMethod = DuCengFenXiFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).DuCengFenXi_start();    
 
 
+            }
+        }
+
+        private void DuCengFenXiFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).DuCengFenXi_stop();
+                UpdateResultPane();
             }
         }
         public void OnShaoChiDangLiangFenXiClick(object sender, RoutedEventArgs e)
@@ -2400,26 +1872,29 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string chongjili = para[0];
                 string chiMianLi = para[1];
                 string chigenLi = para[2];
                 string chiDingLi = para[3];
                 string resName = para[4];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\yuyingli");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\CuiHuo");
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2459,14 +1934,25 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\yuyingli.txt";
+                string apdlfilepath = APDLPath + "\\CuiHuo.txt";
 
                 Analysis.XT_ShaoChiYuYingLiThreadParamter threadPara = new Analysis.XT_ShaoChiYuYingLiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_ShaoChiYuYingLiThread t = new Analysis.XT_ShaoChiYuYingLiThread(threadPara);
+                t.CallBackMethod = ShaoChiYuYingLiFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).YuYingLiFenXi_start();    
 
 
+            }
+        }
+
+        private void ShaoChiYuYingLiFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).YuYingLiFenXi_stop();
+                UpdateResultPane();
             }
         }
         public void OnQuanChiPianXinJiSuanClick(object sender, RoutedEventArgs e)
@@ -2480,24 +1966,27 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string chongjili = para[0];
 
                 string resName = para[1];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\pianxin");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\QuanChi");
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2529,17 +2018,27 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\pianxin.txt";
+                string apdlfilepath = APDLPath + "\\QuanChi.txt";
 
                 Analysis.XT_QuanChiPianXinThreadParamter threadPara = new Analysis.XT_QuanChiPianXinThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_QuanChiPianXinThread t = new Analysis.XT_QuanChiPianXinThread(threadPara);
+                t.CallBackMethod = QuanChiPianXinJiSuanFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).QuanChiPianXin_start();    
 
 
             }
         }
 
+        private void QuanChiPianXinJiSuanFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).QuanChiPianXin_stop();
+                UpdateResultPane();
+            }
+        }
         public void OnDongTaiFenXiClick(object sender, RoutedEventArgs e)
         {
             Dialog.DongTaiFenXi aw = new Dialog.DongTaiFenXi();
@@ -2551,18 +2050,22 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
                 // string chongjili = para[0];
+
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 double zengsushijian = Convert.ToDouble(para[0]);
                 MWNumericArray zenSuShiJian = new MWNumericArray(zengsushijian);
 
@@ -2581,7 +2084,7 @@
 
                 string resName = para[4];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\dynamic");
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\DongTai");
 
                 string location = tempPath + "\\";    ///////////////////////////////////////////路径如何设置
                 MWCharArray locc = new MWCharArray(location);//
@@ -2594,8 +2097,8 @@
                 {
                     MessageBox.Show("wrong");
                 }///////////////////////////////////////////////////
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2629,117 +2132,127 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\dynamic.txt";
+                string apdlfilepath = APDLPath + "\\DongTai.txt";
 
                 Analysis.XT_DongTaiFenXiThreadParamter threadPara = new Analysis.XT_DongTaiFenXiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_DongTaiFenXiThread t = new Analysis.XT_DongTaiFenXiThread(threadPara);
+                t.CallBackMethod = DongTaiFenXiFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).DongTaiFenXi_start();    
 
 
             }
         }
-        public void OnShaoChiDongTaiFenXiClick(object sender, RoutedEventArgs e)
+        private void DongTaiFenXiFinish(bool finish)
         {
-            Dialog.ShaoChiDongTaiFenXi aw = new Dialog.ShaoChiDongTaiFenXi();
-            aw.CallBackMethod = ShaoChiDongTaiFenXi;
-            aw.ShowDialog();
-        }
-        private void ShaoChiDongTaiFenXi(List<string> para)
-        {
-            if (para != null && nowProjName != null)
+            if (finish == true)
             {
-                DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
-
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
-                // string chongjili = para[0];
-                //double zengsushijian = Convert.ToDouble(para[0]);
-                //MWNumericArray zenSuShiJian = new MWNumericArray(zengsushijian);
-
-                //double wendingshijian = Convert.ToDouble(para[1]);
-                //MWNumericArray wendingShiJian = new MWNumericArray(wendingshijian);
-                double tingzhishijian = Convert.ToDouble(para[0]);
-                MWNumericArray tingZhiShiJian = new MWNumericArray(tingzhishijian);
-                //double neiguzhuansu = Convert.ToDouble(proj.NgZhuanSu);
-                //MWNumericArray neiGuZhuanSu = new MWNumericArray(neiguzhuansu);
-                double neiguzhenfu = Convert.ToDouble(proj.NgZhenFu);
-                MWNumericArray neiGuZhenFu = new MWNumericArray(neiguzhenfu);
-                double neiguzhenpin = Convert.ToDouble(proj.NgZhenPin);
-                MWNumericArray neiGuZhenPin = new MWNumericArray(neiguzhenpin);
-
-
-
-                string resName = para[2];
-                string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\sdynamic");
-
-                string location = tempPath;    ///////////////////////////////////////////路径如何设置
-                MWCharArray locc = new MWCharArray(location);//
-                try
-                {
-
-                    zsbd.ShengChengShuJuClass z = new ShengChengShuJuClass();
-                    z.zsbd(tingZhiShiJian, neiGuZhenFu, neiGuZhenPin, locc);
-                }
-                catch
-                {
-
-                    MessageBox.Show("wrong");
-                }///////////////////////////////////////////////////
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
-
-                string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
-		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
-                string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
-		"bx="+proj.McpHouDu,"gap1="+proj.NgGFXCDGC+"*cos("+proj.YaLiJiao+"*2*pi/360)*(-1)/2","gap2="+proj.McpGFXDGC+"*cos("+proj.YaLiJiao+"*2*pi/360)/2","ex1="+proj.NgTXML+"e3","prxy1="+proj.NgBSB,"dens1="+proj.NgCLMD+"e-12",
-		"ex2="+proj.McpTXML+"e3","prxy2="+proj.McpBSB,"dens2="+proj.McpCLMD+"e-12","ex3="+proj.MccTXML+"e3","prxy3="+proj.MccBSB,
-		"dens3="+proj.MccCLMD+"e-12","ex4="+proj.DcTXML+"e3","prxy4="+proj.DcBSB,"dens4="+proj.DcCLMD+"e-12","rd1="+proj.KongJing+"/2","rd2="+proj.WaiJing+"/2","rdc=rd2-"+proj.MccJingKuan,"bc="+proj.MccHouDu,"rff1="+proj.NgChiGenYuanJiao,"rff2="+proj.McpChiGenYuanJiao,"pxl="+proj.PianXinJu};
-
-                //string ducenghoudu = proj.DuCengHouDu;
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(praa))
-                {
-                    string temp;
-                    temp = "pi=3.14159265358979";
-                    file.WriteLine(temp);
-                    for (int i = 0; i < 30; ++i)
-                    {
-                        file.Write(filename[i]);
-                        file.Write("        !");
-                        file.WriteLine(dataname[i]);
-                    }
-
-                    temp = "fzsj=" + para[0] + "*1000/n3/rd1    !仿真时间";
-                    file.WriteLine(temp);
-                    temp = "MASSoNG=" + para[1] + "*1000/n3/rd1    !与内毂连接轴的质量";
-                    file.WriteLine(temp);
-                    temp = "jobname=\'" + resName + "\'    !结果文件命名名称";
-                    file.WriteLine(temp);
-                    temp = "filepath=\'" + tempPath + "\'  !计算结果路径";
-                    file.WriteLine(temp);
-                    file.Close();
-                }
-
-                string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\dongtai\\sdynamic.txt";
-
-                Analysis.XT_ShaoChiDongTaiFenXiThreadParamter threadPara = new Analysis.XT_ShaoChiDongTaiFenXiThreadParamter(null, path, apdlfilepath, null);
-                Analysis.XT_ShaoChiDongTaiFenXiThread t = new Analysis.XT_ShaoChiDongTaiFenXiThread(threadPara);
-                t.Start();
-                //Window2.dongLiXue_start();
-
-
+                ((AnalysisMonitor)anchorable.Content).DongTaiFenXi_stop();
+                UpdateResultPane();
             }
         }
+        //public void OnShaoChiDongTaiFenXiClick(object sender, RoutedEventArgs e)
+        //{
+        //    Dialog.ShaoChiDongTaiFenXi aw = new Dialog.ShaoChiDongTaiFenXi();
+        //    aw.CallBackMethod = ShaoChiDongTaiFenXi;
+        //    aw.ShowDialog();
+        //}
+        //private void ShaoChiDongTaiFenXi(List<string> para)
+        //{
+        //    if (para != null && nowProjName != null)
+        //    {
+        //        DB.UserProject proj = new UserProject();
+        //        foreach (var item in DocumentPane.Children)
+        //        {
+        //            if (item.Title == "项目参数")
+        //            {
+
+        //                TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+        //                ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+        //                proj = tempPara.UserProject;
+        //                break;
+        //            }
+        //        }
+        //        // string chongjili = para[0];
+        //        //double zengsushijian = Convert.ToDouble(para[0]);
+        //        //MWNumericArray zenSuShiJian = new MWNumericArray(zengsushijian);
+
+        //        //double wendingshijian = Convert.ToDouble(para[1]);
+        //        //MWNumericArray wendingShiJian = new MWNumericArray(wendingshijian);
+        //        double tingzhishijian = Convert.ToDouble(para[0]);
+        //        MWNumericArray tingZhiShiJian = new MWNumericArray(tingzhishijian);
+        //        //double neiguzhuansu = Convert.ToDouble(proj.NgZhuanSu);
+        //        //MWNumericArray neiGuZhuanSu = new MWNumericArray(neiguzhuansu);
+        //        double neiguzhenfu = Convert.ToDouble(proj.NgZhenFu);
+        //        MWNumericArray neiGuZhenFu = new MWNumericArray(neiguzhenfu);
+        //        double neiguzhenpin = Convert.ToDouble(proj.NgZhenPin);
+        //        MWNumericArray neiGuZhenPin = new MWNumericArray(neiguzhenpin);
+
+
+
+        //        string resName = para[2];
+        //        string APDLPath, tempPath;
+        //        tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\sdynamic");
+
+        //        string location = tempPath;    ///////////////////////////////////////////路径如何设置
+        //        MWCharArray locc = new MWCharArray(location);//
+        //        try
+        //        {
+
+        //            zsbd.ShengChengShuJuClass z = new ShengChengShuJuClass();
+        //            z.zsbd(tingZhiShiJian, neiGuZhenFu, neiGuZhenPin, locc);
+        //        }
+        //        catch
+        //        {
+
+        //            MessageBox.Show("wrong");
+        //        }///////////////////////////////////////////////////
+        //        APDLPath = @"D:\abc\APDL0320";
+        //        string praa = APDLPath + "\\para_gear122.txt";
+
+        //        string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
+        //"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
+        //        string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
+        //"bx="+proj.McpHouDu,"gap1="+proj.NgGFXCDGC+"*cos("+proj.YaLiJiao+"*2*pi/360)*(-1)/2","gap2="+proj.McpGFXDGC+"*cos("+proj.YaLiJiao+"*2*pi/360)/2","ex1="+proj.NgTXML+"e3","prxy1="+proj.NgBSB,"dens1="+proj.NgCLMD+"e-12",
+        //"ex2="+proj.McpTXML+"e3","prxy2="+proj.McpBSB,"dens2="+proj.McpCLMD+"e-12","ex3="+proj.MccTXML+"e3","prxy3="+proj.MccBSB,
+        //"dens3="+proj.MccCLMD+"e-12","ex4="+proj.DcTXML+"e3","prxy4="+proj.DcBSB,"dens4="+proj.DcCLMD+"e-12","rd1="+proj.KongJing+"/2","rd2="+proj.WaiJing+"/2","rdc=rd2-"+proj.MccJingKuan,"bc="+proj.MccHouDu,"rff1="+proj.NgChiGenYuanJiao,"rff2="+proj.McpChiGenYuanJiao,"pxl="+proj.PianXinJu};
+
+        //        //string ducenghoudu = proj.DuCengHouDu;
+        //        using (System.IO.StreamWriter file = new System.IO.StreamWriter(praa))
+        //        {
+        //            string temp;
+        //            temp = "pi=3.14159265358979";
+        //            file.WriteLine(temp);
+        //            for (int i = 0; i < 30; ++i)
+        //            {
+        //                file.Write(filename[i]);
+        //                file.Write("        !");
+        //                file.WriteLine(dataname[i]);
+        //            }
+
+        //            temp = "fzsj=" + para[0] + "*1000/n3/rd1    !仿真时间";
+        //            file.WriteLine(temp);
+        //            temp = "MASSoNG=" + para[1] + "*1000/n3/rd1    !与内毂连接轴的质量";
+        //            file.WriteLine(temp);
+        //            temp = "jobname=\'" + resName + "\'    !结果文件命名名称";
+        //            file.WriteLine(temp);
+        //            temp = "filepath=\'" + tempPath + "\'  !计算结果路径";
+        //            file.WriteLine(temp);
+        //            file.Close();
+        //        }
+
+        //        string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
+        //        string apdlfilepath = APDLPath + "\\dongtai\\sdynamic.txt";
+
+        //        Analysis.XT_ShaoChiDongTaiFenXiThreadParamter threadPara = new Analysis.XT_ShaoChiDongTaiFenXiThreadParamter(null, path, apdlfilepath, null);
+        //        Analysis.XT_ShaoChiDongTaiFenXiThread t = new Analysis.XT_ShaoChiDongTaiFenXiThread(threadPara);
+        //        t.Start();
+        //        //Window2.dongLiXue_start();
+
+
+        //    }
+        //}
 
         public void OnDongTaiYingLiJiSuanClick(object sender, RoutedEventArgs e)
         {
@@ -2752,23 +2265,25 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
-
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string resName = para[0];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\fdynamic");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\ZhunDongTai");
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
                 string matPath = proj.ProjectPath + "tempData\\lengthforce+.mat";
                 if (!System.IO.File.Exists(matPath))
                 {
@@ -2818,17 +2333,26 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\dongtai\\fdynamic.txt";
+                string apdlfilepath = APDLPath + "\\ZhunDongTai.txt";
 
                 Analysis.XT_DongTaiYingLiThreadParamter threadPara = new Analysis.XT_DongTaiYingLiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_DongTaiYingLiThread t = new Analysis.XT_DongTaiYingLiThread(threadPara);
+                t.CallBackMethod = DongTaiYingLiJiSuanFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).DongTaiYingLiJiSuan_start();    
 
 
             }
         }
-
+        private void DongTaiYingLiJiSuanFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).DongTaiYingLiJiSuan_stop();
+                UpdateResultPane();
+            }
+        }
         private void OnMoCaPianMoTaiJiSuanClick(object sender, RoutedEventArgs e)
         {
             Dialog.MoCaPianMoTaiJiSuan aw = new Dialog.MoCaPianMoTaiJiSuan();
@@ -2840,23 +2364,26 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string moTaiJieShu = para[0];
                 string resName = para[1];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\mcpmodal");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\MoChaPianMoTai");
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角"};
@@ -2886,18 +2413,27 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\mcp_modal.txt";
+                string apdlfilepath = APDLPath + "\\MoChaPianMoTai.txt";
 
 
                 Analysis.XT_MoCaPianMoTaiThreadParamter threadPara = new Analysis.XT_MoCaPianMoTaiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_MoCaPianMoTaiThread t = new Analysis.XT_MoCaPianMoTaiThread(threadPara);
+                t.CallBackMethod = MoCaPianMoTaiJiSuanFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).McpModel_start();    
 
 
             }
         }
-
+        private void MoCaPianMoTaiJiSuanFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).McpModel_stop();
+                UpdateResultPane();
+            }
+        }
         private void OnMcpNgMoTaiJiSuanClick(object sender, RoutedEventArgs e)
         {
             Dialog.McpNgMoTaiJiSuan aw = new Dialog.McpNgMoTaiJiSuan();
@@ -2909,23 +2445,26 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string moTaiJieShu = para[0];
                 string resName = para[1];
                 string APDLPath, tempPath;
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\mcpngmodal");
-                APDLPath = @"D:\abc\APDL0320";
-                string praa = APDLPath + "\\para_gear122.txt";
+                APDLPath = startPath + "\\APDLcode";
+                string praa = APDLPath + "\\parameter.txt";
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","实际接触齿数"};
@@ -2955,17 +2494,26 @@
                 }
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-                string apdlfilepath = APDLPath + "\\modal.txt";
+                string apdlfilepath = APDLPath + "\\MoChaPianNeiGuMoTai.txt";
 
                 Analysis.XT_McpNgMoTaiJiSuanParamter threadPara = new Analysis.XT_McpNgMoTaiJiSuanParamter(null, path, apdlfilepath, null);
                 Analysis.XT_McpNgMoTaiJiSuan t = new Analysis.XT_McpNgMoTaiJiSuan(threadPara);
+                t.CallBackMethod = McpNgMoTaiJiSuanFinish;
+                AddMonitor();
                 t.Start();
-                //Window2.dongLiXue_start();
+                ((AnalysisMonitor)anchorable.Content).McpNgModel_start();    
 
 
             }
         }
-
+        private void McpNgMoTaiJiSuanFinish(bool finish)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).McpNgModel_stop();
+                UpdateResultPane();
+            }
+        }
 
         private void OnYouJieJuChuTuClick(object sender, RoutedEventArgs e)
         {
@@ -2974,40 +2522,432 @@
                 YouJieJuChuTu aw = new YouJieJuChuTu(loadProj[nowProjName]);
                 aw.ShowDialog();
             }
+        }
+        private void FSywj_Click(object sender, RoutedEventArgs e)
+        {
 
-            //if (anchorable == null)
+            FXXSS_ShiYanWenJian aw = new FXXSS_ShiYanWenJian();
+            aw.CallBackMethod = FSywjAnalysis;
+            aw.ShowDialog();
+        }
+        private void FDTFXJG_Click(object sender, RoutedEventArgs e)
+        {
+
+            FXXSS_DongTaiFenXi aw = new FXXSS_DongTaiFenXi();
+            aw.CallBackMethod = FDTJGAnalysis;
+            aw.ShowDialog();
+        }
+        private void FZDTFXJG_Click(object sender, RoutedEventArgs e)
+        {
+
+            FXXSS_ZhunDongTaiJieGuo aw = new FXXSS_ZhunDongTaiJieGuo();
+            aw.CallBackMethod = FZDTJSAnalysis;
+            aw.ShowDialog();
+        }
+        private void FSywjAnalysis(FXXSSFile para)
+        {
+            DB.UserProject proj = new UserProject();
+            //foreach (var item in DocumentPane.Children)
             //{
-            //    try
+            //    if (item.IsSelected == true && item.Title == "项目参数")
             //    {
-            //        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-            //        anchorable = new LayoutAnchorable();
-            //        anchorable.Title = "分析监视";
-            //        anchorable.Content = new AnalysisMonitor();
-            //        pane.Children.Add(anchorable);
-            //        LeftAnchorableGroup.Children.Add(pane);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+
+            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+            //        proj = tempPara.UserProject;
             //    }
             //}
-            //else
+            proj = GetNowProjectPara();
+            if (proj == null)
+                return;
+            int isShiYanFile = 1;//shiyanwenjian
+
+            string row = "21";
+            string col = "2";
+            string tongdao = "3";
+
+            row = para.row;
+            col = para.col;
+            tongdao = para.td;
+
+            string clcs1, clcs2, clcs3;
+            clcs1 = Configure.IniReadValue("canshu", "clcs1");
+            clcs2 = Configure.IniReadValue("canshu", "clcs2");
+            clcs3 = Configure.IniReadValue("canshu", "clcs3");
+
+            double[] Para = new double[21];
+
+            Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
+            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
+            Para[2] = Convert.ToDouble(tongdao);
+            Para[3] = Convert.ToDouble(proj.CaiYangPinLv);
+            Para[4] = 12;
+            Para[5] = 0;
+            Para[6] = 0;
+            Para[7] = 0;
+            Para[8] = 1;
+            Para[9] = 1;
+            Para[10] = 0;
+            Para[11] = 0;
+            Para[12] = 1;
+            Para[13] = Convert.ToDouble(row);
+            Para[14] = Convert.ToDouble(col);
+            Para[15] = isShiYanFile;//判断用什么数据
+            Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
+            Para[17] = Convert.ToDouble(clcs2);//3.6;
+            Para[18] = Convert.ToDouble(clcs3);//0.3;
+
+            Para[19] = 2;//3.6;
+            Para[20] = 50;//0.3;
+
+            string file = para.path;
+            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
+            Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
+            t.CallBackMethod = FXXSSFinish;
+            btnfxxssfx.IsEnabled = false;
+            AddMonitor();
+
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).FXXSS_start("实验文件");
+        }
+        private void FDTJGAnalysis(FXXSSFile para)
+        {
+            DB.UserProject proj = new UserProject();
+            //foreach (var item in DocumentPane.Children)
             //{
-            //    try
+            //    if (item.IsSelected == true && item.Title == "项目参数")
             //    {
-            //        LayoutAnchorablePane pane = new LayoutAnchorablePane();
-            //        pane.Children.Add(anchorable);
-            //        LeftAnchorableGroup.Children.Add(pane);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, "[MainWindow][miAnchorVerticalPane_Click_1]");
+
+            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+            //        proj = tempPara.UserProject;
             //    }
             //}
-            //win2.ShowDialog();
-            //win2.dongLiXue_stop();
+            proj = GetNowProjectPara();
+            if (proj == null)
+                return;
+            int isShiYanFile = -1;//shiyanwenjian
+
+            string row = "21";
+            string col = "2";
+            string tongdao = "3";
+
+            row = para.row;
+            col = para.col;
+
+
+            string clcs1, clcs2, clcs3;
+            clcs1 = Configure.IniReadValue("canshu", "clcs1");
+            clcs2 = Configure.IniReadValue("canshu", "clcs2");
+            clcs3 = Configure.IniReadValue("canshu", "clcs3");
+
+            double[] Para = new double[21];
+
+            Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
+            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
+            Para[2] = Convert.ToDouble(tongdao);
+            Para[3] = Convert.ToDouble(proj.CaiYangPinLv);
+            Para[4] = 12;
+            Para[5] = 0;
+            Para[6] = 0;
+            Para[7] = 0;
+            Para[8] = 1;
+            Para[9] = 1;
+            Para[10] = 0;
+            Para[11] = 0;
+            Para[12] = 1;
+            Para[13] = Convert.ToDouble(row);
+            Para[14] = Convert.ToDouble(col);
+            Para[15] = isShiYanFile;//判断用什么数据
+            Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
+            Para[17] = Convert.ToDouble(clcs2);//3.6;
+            Para[18] = Convert.ToDouble(clcs3);//0.3;
+
+            Para[19] = 2;//3.6;
+            Para[20] = 50;//0.3;
+
+            string file = para.path;
+            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
+            Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
+            t.CallBackMethod = FXXSSFinish;
+            btnfxxssfx.IsEnabled = false;
+            AddMonitor();
+
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).FXXSS_start("动态分析结果文件");
+        }
+        private void FZDTJSAnalysis(FXXSSFile para)
+        {
+            DB.UserProject proj = new UserProject();
+            //foreach (var item in DocumentPane.Children)
+            //{
+            //    if (item.IsSelected == true && item.Title == "项目参数")
+            //    {
+
+            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+            //        proj = tempPara.UserProject;
+            //    }
+            //}
+            proj = GetNowProjectPara();
+            if (proj == null)
+                return;
+            int isShiYanFile = 0;//shiyanwenjian
+
+            string row = "21";
+            string col = "2";
+            string tongdao = "3";
+
+
+            string clcs1, clcs2, clcs3;
+            clcs1 = Configure.IniReadValue("canshu", "clcs1");
+            clcs2 = Configure.IniReadValue("canshu", "clcs2");
+            clcs3 = Configure.IniReadValue("canshu", "clcs3");
+
+            double[] Para = new double[21];
+
+            Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
+            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
+            Para[2] = Convert.ToDouble(tongdao);
+            Para[3] = Convert.ToDouble(proj.CaiYangPinLv);
+            Para[4] = 12;
+            Para[5] = 0;
+            Para[6] = 0;
+            Para[7] = 0;
+            Para[8] = 1;
+            Para[9] = 1;
+            Para[10] = 0;
+            Para[11] = 0;
+            Para[12] = 1;
+            Para[13] = Convert.ToDouble(row);
+            Para[14] = Convert.ToDouble(col);
+            Para[15] = isShiYanFile;//判断用什么数据
+            Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
+            Para[17] = Convert.ToDouble(clcs2);//3.6;
+            Para[18] = Convert.ToDouble(clcs3);//0.3;
+
+            Para[19] = 2;//3.6;
+            Para[20] = 50;//0.3;
+
+            string file = para.path;
+            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+            Analysis.FeiXianXingSunShangThreadParamter threadPara = new Analysis.FeiXianXingSunShangThreadParamter(path, proPath, Para, file, isShiYanFile);
+            Analysis.FeiXianXingSunShangThread t = new Analysis.FeiXianXingSunShangThread(threadPara);
+            t.CallBackMethod = FXXSSFinish;
+            btnfxxssfx.IsEnabled = false;
+            AddMonitor();
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).FXXSS_start("准动态计算文件");
         }
 
+        private void FXXSSFinish(bool finish, string fileType)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).FXXSS_stop(fileType);
+                UpdateResultPane();
+                btnfxxssfx.IsEnabled = true;
+
+            }
+        }
+
+
+        private void DSywj_Click(object sender, RoutedEventArgs e)
+        {
+
+            DLZHP_ShiYanWenjian aw = new DLZHP_ShiYanWenjian();
+            aw.CallBackMethod = DSywjAnalysis;
+            aw.ShowDialog();
+        }
+
+
+        private void DDTFXJG_Click(object sender, RoutedEventArgs e)
+        {
+
+            DLZHP_DongTaiFenXiJieGuo aw = new DLZHP_DongTaiFenXiJieGuo();
+            aw.CallBackMethod = DDTJGAnalysis;
+            aw.ShowDialog();
+        }
+
+        private void DZDTFXJG_Click(object sender, RoutedEventArgs e)
+        {
+
+            DLZHP_ZhunDongTaiJiSuanWenJian aw = new DLZHP_ZhunDongTaiJiSuanWenJian();
+            aw.CallBackMethod = DZDTJSAnalysis;
+            aw.ShowDialog();
+        }
+
+        private void DDTJGAnalysis(List<DSFileList> para)
+        {
+            DB.UserProject proj = new UserProject();
+            //foreach (var item in DocumentPane.Children)
+            //{
+            //    if (item.IsSelected == true && item.Title == "项目参数")
+            //    {
+
+            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+            //        proj = tempPara.UserProject;
+            //    }
+            //}
+            proj = GetNowProjectPara();
+            if (proj == null)
+                return;
+            List<string> tds = new List<string>();
+            List<string> qhxs = new List<string>();
+            List<string> file = new List<string>();
+            List<string> hang = new List<string>();
+            int sum = 0;
+            foreach (DSFileList item in para)
+            {
+                tds.Add(item.col);
+                qhxs.Add(item.qhxs);
+                file.Add(item.path);
+                hang.Add(item.row);
+                sum++;
+            }
+            double[] Para = new double[5];
+            Para[0] = Convert.ToDouble(proj.KangLaQDJX);
+            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
+            Para[2] = Convert.ToDouble(proj.CaiYangPinLv);
+            Para[3] = Convert.ToDouble(para[0].row);
+            Para[4] = Convert.ToDouble(para[0].col);
+            int isShiYanFile = -1;//shiyanwenjian
+            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+            Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
+            Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
+            t.CallBackMethod = DLZHPFinish;
+            btndlzhpfx.IsEnabled = false;
+            AddMonitor();
+
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).DLZHP_start("动态分析结果文件");
+        }
+
+
+
+        private void DZDTJSAnalysis(List<DSFileList> para)
+        {
+            DB.UserProject proj = new UserProject();
+            //foreach (var item in DocumentPane.Children)
+            //{
+            //    if (item.IsSelected == true && item.Title == "项目参数")
+            //    {
+
+            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+            //        proj = tempPara.UserProject;
+            //    }
+            //}
+            proj = GetNowProjectPara();
+            if (proj == null)
+                return;
+            List<string> tds = new List<string>();
+            List<string> qhxs = new List<string>();
+            List<string> file = new List<string>();
+            List<string> hang = new List<string>();
+            int sum = 0;
+            foreach (DSFileList item in para)
+            {
+                tds.Add("6");
+                qhxs.Add(item.qhxs);
+                file.Add(item.path);
+                hang.Add("0");
+                sum++;
+            }
+            double[] Para = new double[5];
+            Para[0] = Convert.ToDouble(proj.KangLaQDJX);
+            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
+            Para[2] = Convert.ToDouble(proj.CaiYangPinLv);
+            Para[3] = Convert.ToDouble(para[0].row);
+            Para[4] = Convert.ToDouble(para[0].col);
+            int isShiYanFile = 0;//shiyanwenjian
+            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+            Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
+            Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
+            t.CallBackMethod = DLZHPFinish;
+            btndlzhpfx.IsEnabled = false;
+            AddMonitor();
+
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).DLZHP_start("准动态计算文件");
+        }
+        private void DSywjAnalysis(List<DSFileList> para)
+        {
+            DB.UserProject proj = new UserProject();
+            //foreach (var item in DocumentPane.Children)
+            //{
+            //    if (item.IsSelected == true && item.Title == "项目参数")
+            //    {
+
+            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+            //        proj = tempPara.UserProject;
+            //    }
+            //}
+            proj = GetNowProjectPara();
+            if (proj == null)
+                return;
+            List<string> tds = new List<string>();
+            List<string> qhxs = new List<string>();
+            List<string> file = new List<string>();
+            List<string> hang = new List<string>();
+            int sum = 0;
+            foreach (DSFileList item in para)
+            {
+                tds.Add(item.td);
+                qhxs.Add(item.qhxs);
+                file.Add(item.path);
+                hang.Add("0");
+                sum++;
+            }
+            double[] Para = new double[5];
+            Para[0] = Convert.ToDouble(proj.KangLaQDJX);
+            Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
+            Para[2] = Convert.ToDouble(proj.CaiYangPinLv);
+            Para[3] = Convert.ToDouble(para[0].row);
+            Para[4] = Convert.ToDouble(para[0].col);
+            int isShiYanFile = 1;//shiyanwenjian
+            string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+            Analysis.DangLiangZaiHePuThreadParamter threadPara = new Analysis.DangLiangZaiHePuThreadParamter(path, proPath, Para, tds, qhxs, file, hang, sum, isShiYanFile);
+            Analysis.DangLiangZaiHePuFenXiThread t = new Analysis.DangLiangZaiHePuFenXiThread(threadPara);
+            t.CallBackMethod = DLZHPFinish;
+            btndlzhpfx.IsEnabled = false;
+            AddMonitor();
+
+            t.Start();
+
+            ((AnalysisMonitor)anchorable.Content).DLZHP_start("实验文件");
+        }
+        private void DLZHPFinish(bool finish, string fileType)
+        {
+            if (finish == true)
+            {
+                ((AnalysisMonitor)anchorable.Content).DLZHP_stop(fileType);
+                UpdateResultPane();
+                btndlzhpfx.IsEnabled = true;
+
+            }
+        }
         private void OnViewResultClick(object sender, RoutedEventArgs e)
         {
             if (nowProjName != null)
@@ -3023,7 +2963,7 @@
                         paneItem.IsSelected = true;
                         hasResultPane = true;
 
-                        btnFalse();
+                        //;
                         break;
                     }
                 }
@@ -3036,7 +2976,7 @@
                     document.IsActive = true;
                     DocumentPane.Children.Add(document);
 
-                    btnFalse();
+                    //;
                 }
 
             }
@@ -3052,17 +2992,20 @@
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                foreach (var item in DocumentPane.Children)
-                {
-                    if (item.Title == "项目参数")
-                    {
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
 
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                        proj = tempPara.UserProject;
-                        break;
-                    }
-                }
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                //        proj = tempPara.UserProject;
+                //        break;
+                //    }
+                //}
+                proj = GetNowProjectPara();
+                if (proj == null)
+                    return;
                 string LuJing = para[0];
                 string resName = para[1];
                 string xmlPath = proj.ProjectPath + "\\";
@@ -3100,7 +3043,7 @@
             document.IsActive = true;
             DocumentPane.Children.Add(document);
 
-            btnFalse();
+            //;
         }
         private void OnPicEditClick(object sender, RoutedEventArgs e)
         {
@@ -3145,7 +3088,7 @@
             document.IsActive = true;
             DocumentPane.Children.Add(document);
 
-            btnFalse();
+            //;
         }
         private void OnPicEditOKClick(object sender, RoutedEventArgs e)
         {
@@ -3203,7 +3146,7 @@
 	        ii[17]=1;//
 
             string path = loadProj[nowProjName] + "\\project\\冲击动力学分析文件\\Dynamic.mat";
-            string m11 = loadProj[nowProjName] + "\\tempData\\";
+            string m11 = loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果\\";
             string fontName = comboBoxFontName.SelectedItem.ToString();
             MWArray locc=new MWCharArray(path);
 	        MWArray dra=new MWCharArray(m11);
@@ -3294,7 +3237,7 @@
             {
                 string path = loadProj[nowProjName] + "\\project\\冲击动力学分析文件\\Dynamic.mat";
                 MWArray loc = new MWCharArray(path);
-                string picPath=loadProj[nowProjName] + "\\tempData";
+                string picPath = loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果";
                 MWArray dra = new MWCharArray(picPath);
                 MWArray fontName = new MWCharArray("宋体");
                 double []ii=new double[18];
@@ -3385,7 +3328,7 @@
                     item.Content = new Dialog.ProjectQuery();
                     item.IsActive = true;
                     item.IsSelected = true;
-                    btnFalse();
+                    //;
                     return;
                 }
             }
@@ -3396,13 +3339,13 @@
             document.Content = new Dialog.ProjectQuery();
             document.IsActive = true;
             DocumentPane.Children.Add(document);
-            btnFalse();
+            //;
         }
 
         private void OnProjCmpClick(object sender, RoutedEventArgs e)
         {
             List<string> path = new List<string>();
-            path.Add("D:\\proj\\10.32");
+            path.Add("D:\\proj\\11.29");
             path.Add("D:\\proj\\11.11");
             path.Add("D:\\proj\\11.111");
             path.Add("D:\\proj\\11.14");
@@ -3411,7 +3354,7 @@
             document.Content = new Dialog.ProjectCompare(path);
             document.IsActive = true;
             DocumentPane.Children.Add(document);
-            btnFalse();
+            //;
         }
        
          //<xctk:ColorPicker x:Name="_colorPicker"

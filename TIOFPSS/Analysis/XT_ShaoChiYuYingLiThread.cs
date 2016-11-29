@@ -13,7 +13,8 @@ namespace TIOFPSS.Analysis
 
         private XT_ShaoChiYuYingLiThreadParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateShaoChiYuYingLiFenXiFinish CallBackMethod;
+        private delegate void DoTask();
 
         public XT_ShaoChiYuYingLiThread(XT_ShaoChiYuYingLiThreadParamter threadParamter)
         {
@@ -36,18 +37,18 @@ namespace TIOFPSS.Analysis
             string m_direction, m_outputfile;//ansys软件路径 和 中间文件输出路径
             string path = threadParamter.path;//结果保存路径
             string ansysPath;//
-            string fileLock = path + "\\yuyingli\\file.lock";
+            string fileLock = path + "\\CuiHuo\\file.lock";
             //fileLock.Format("%s\\single\\file.lock", path);
             //删除错误文件
             if (System.IO.File.Exists(fileLock))
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction = ansysPath;
-            m_outputfile = path + "\\yuyingli\\output.out";
-            string workPath = path + "\\yuyingli";
+            m_outputfile = path + "\\CuiHuo\\output.out";
+            string workPath = path + "\\CuiHuo";
 
             string sCommondLine;
             sCommondLine = m_direction + " -b -p ane3fl -i " + m_inputfile + " -o " + m_outputfile;
@@ -95,20 +96,23 @@ namespace TIOFPSS.Analysis
             }
             if (success)
             {
-                string source1, source2;
-                string dest1, dest2;
-                source1 = path + "\\yuyingli\\yuyingliyingliyuntu.jpeg";//产生的结果文件
-                dest1 = path + "\\yuyingliyingliyuntu.jpeg";
-                source2 = path + "\\yuyingli\\yuyingliweiyiyuntu.jpeg";//
-                dest2 = path + "\\yuyingliweiyiyuntu.jpeg";
-                System.IO.File.Copy(source1, dest1, true);
-                System.IO.File.Copy(source2, dest2, true);
+                //string source1, source2;
+                //string dest1, dest2;
+                //source1 = path + "\\yuyingli\\yuyingliyingliyuntu.jpeg";//产生的结果文件
+                //dest1 = path + "\\yuyingliyingliyuntu.jpeg";
+                //source2 = path + "\\yuyingli\\yuyingliweiyiyuntu.jpeg";//
+                //dest2 = path + "\\yuyingliweiyiyuntu.jpeg";
+                //System.IO.File.Copy(source1, dest1, true);
+                //System.IO.File.Copy(source2, dest2, true);
+
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //Xceed.Wpf.Toolkit.MessageBox.Show("少齿当量静态强度分析完成");
             }
             else
             {
-                string f1 = path + "\\yuyingliyingliyuntu.jpeg";
-                string f2 = path + "\\yuyingliweiyiyuntu.jpeg"; ;
+                string f1 = path + "\\CuiHuo\\cuihuoyingliyuntu.jpeg";
+                string f2 = path + "\\CuiHuo\\cuihuoweiyiyuntu.jpeg"; ; 
                 if (System.IO.File.Exists(f1))
                 {
                     System.IO.File.Delete(f1);
@@ -121,6 +125,13 @@ namespace TIOFPSS.Analysis
             }
             
 
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            this.CallBackMethod(true);
+            //使用ui元素            
         }
     }
 

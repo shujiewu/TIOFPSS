@@ -43,7 +43,7 @@ namespace TIOFPSS.Analysis
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction = ansysPath;
             m_outputfile = path + "\\sdynamic\\output.out";
@@ -82,6 +82,7 @@ namespace TIOFPSS.Analysis
             }
             if (success)
             {
+
                 //string source1, source2;
                 //string dest1, dest2;
                 //source1 = path + "\\duceng\\ducengyingliyuntu.jpeg";//产生的结果文件
@@ -109,6 +110,7 @@ namespace TIOFPSS.Analysis
            
 
         }
+
     }
 
       public class XT_ShaoChiDongTaiFenXiThreadParamter

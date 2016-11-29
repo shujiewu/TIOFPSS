@@ -39,32 +39,32 @@ namespace TIOFPSS.Dialog
                 //this.Title = "优化项目";
             }
         }
-        string[] str_FloderPath = new string[]{//摩擦片项目文件的文件层次结构
-	"参数文件",
-	"冲击动力学分析文件",
-	"当量载荷谱分析文件",
-	"非线性损伤分析文件",
-	"噪声分析文件",
-	"协同分析文件",
-	"协同分析文件\\少齿当量静态强度分析",
-	"协同分析文件\\镀层少齿当量分析",
-	"协同分析文件\\少齿当量预应力分析",
-	"协同分析文件\\全齿偏心计算",
-	"协同分析文件\\动态分析",
-	"协同分析文件\\少齿动态分析",
-	"协同分析文件\\动态应力计算"};
+    //    string[] str_FloderPath = new string[]{//摩擦片项目文件的文件层次结构
+    //"参数文件",
+    //"冲击动力学分析文件",
+    //"当量载荷谱分析文件",
+    //"非线性损伤分析文件",
+    //"噪声分析文件",
+    //"协同分析文件",
+    //"协同分析文件\\少齿当量静态强度分析",
+    //"协同分析文件\\镀层少齿当量分析",
+    //"协同分析文件\\少齿当量预应力分析",
+    //"协同分析文件\\全齿偏心计算",
+    //"协同分析文件\\动态分析",
+    //"协同分析文件\\少齿动态分析",
+    //"协同分析文件\\动态应力计算"};
 
 
-        string[] str_AnsysTempPath = new string[]{
-	"single",
-	"duceng",
-	"yuyingli",
-	"pianxin",
-	"dynamic",
-	"fdynamic",
-	"sdynamic",
-	"mcpmodal",
-	"mcpngmodal"};
+    //    string[] str_AnsysTempPath = new string[]{
+    //"single",
+    //"duceng",
+    //"yuyingli",
+    //"pianxin",
+    //"dynamic",
+    //"fdynamic",
+    //"sdynamic",
+    //"mcpmodal",
+    //"mcpngmodal"};
 
 
         public Helper.delgateNewProjMethod CallBackMethod; 
@@ -107,14 +107,14 @@ namespace TIOFPSS.Dialog
                     this.Close();
                     return;
                 }
-                for (int i = 0; i < 13; ++i)
+                for (int i = 0; i < 14; ++i)
                 {
-                    System.IO.Directory.CreateDirectory(System.IO.Path.Combine(projectPath, str_FloderPath[i]));
+                    System.IO.Directory.CreateDirectory(System.IO.Path.Combine(projectPath, Helper.str_FloderPath[i]));
                 }
 
-                for (int i = 0; i < 9; ++i)
+                for (int i = 0; i < 12; ++i)
                 {
-                    System.IO.Directory.CreateDirectory(System.IO.Path.Combine(tempDataPath, str_AnsysTempPath[i]));
+                    System.IO.Directory.CreateDirectory(System.IO.Path.Combine(tempDataPath, Helper.str_AnsysTempPath[i]));
                 }
 
 
@@ -130,8 +130,8 @@ namespace TIOFPSS.Dialog
                 {
                     sourceFile = paraTempPath;
                 }
-                
-                string targetPath = System.IO.Path.Combine(projectPath, str_FloderPath[0]);
+
+                string targetPath = System.IO.Path.Combine(projectPath, Helper.str_FloderPath[0]);
 
                 // Use Path class to manipulate file and directory paths.
                 //string 

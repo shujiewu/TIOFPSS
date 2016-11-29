@@ -14,7 +14,8 @@ namespace TIOFPSS.Analysis
 
         private XT_MoCaPianMoTaiThreadParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateMoCaPianMoTaiJiSuanFinish CallBackMethod;
+        private delegate void DoTask();
 
         public XT_MoCaPianMoTaiThread(XT_MoCaPianMoTaiThreadParamter threadParamter)
         {
@@ -37,18 +38,18 @@ namespace TIOFPSS.Analysis
             string m_direction, m_outputfile;//ansys软件路径 和 中间文件输出路径
             string path = threadParamter.path;//结果保存路径
             string ansysPath;//
-            string fileLock = path + "\\mcpmodal\\file.lock";
+            string fileLock = path + "\\MoChaPianMoTai\\file.lock";
             //fileLock.Format("%s\\single\\file.lock", path);
             //删除错误文件
             if (System.IO.File.Exists(fileLock))
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction=ansysPath;
-            m_outputfile = path + "\\mcpmodal\\output.out";
-            string workPath = path + "\\mcpmodal";
+            m_outputfile = path + "\\MoChaPianMoTai\\output.out";
+            string workPath = path + "\\MoChaPianMoTai";
             
             string sCommondLine;
             sCommondLine=m_direction+" -b -p ane3fl -i "+m_inputfile+" -o "+m_outputfile;
@@ -96,7 +97,8 @@ namespace TIOFPSS.Analysis
             }
             if(success)
             {
-                MessageBox.Show("ok");
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //string source1, source2;
                 //string dest1, dest2;
                 //source1 = path + "\\mcpmodal\\danchiyingliyuntu.jpeg";//产生的结果文件
@@ -138,6 +140,13 @@ namespace TIOFPSS.Analysis
             //System.IO.File.Copy(finame, newpath, true);
 
            
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            this.CallBackMethod(true);
+            //使用ui元素            
         }
     }
 

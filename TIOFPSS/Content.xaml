@@ -228,18 +228,20 @@
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/Parameter.png"
                                    Header="项目参数"
                                    Width="60"
-                                   Click="OnParaViewClick" />
+                                   Click="OnParaViewClick" 
+                                   x:Name="btnParaView"/>
                     <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/submit.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/save.png"
                                    Header="保存修改"
                                    Width="60"
-                                   Click="OnSubmitClick" />
+                                   Click="OnSubmitClick"  x:Name="btnSubmit"/>
 
 
                     <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/3D_model.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/3D_model.png"
                                    Header="查看三维模型"
                                    Click="OnView3DModelClick"
+                                   x:Name="btnView3DModel"
                                    Width="60"/>
 
                 </Fluent:RibbonGroupBox>
@@ -248,12 +250,15 @@
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/submit.png"
                                    Header="参数入库"
                                    Width="60"
-                                   Click="OnSaveParaClick"/>
+                                   Click="OnSaveParaClick"
+                                   x:Name="btnSavePara"
+                                   />
                     <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/Library.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/Library.png"
                                    Header="应用库数据"
                                    Width="70"
-                                   Click="OnApplyLibClick"/>
+                                   Click="OnApplyLibClick"
+                                   x:Name="btnApplyLib"/>
                 </Fluent:RibbonGroupBox>
                 <!--<Fluent:RibbonGroupBox Header="参数库"
                                        Name="Group3"
@@ -362,7 +367,8 @@
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/Line_Chart.png"
                                    ToolTip="Regular Tooltip" 
                                    Width="70"
-                                   Click="OnYouJieJuChuTuClick"/>
+                                   Click="OnYouJieJuChuTuClick"
+                                   x:Name="btnYouJieJuChuTu"/>
                 </Fluent:RibbonGroupBox>
 
                 <Fluent:RibbonGroupBox Header="协同分析">
@@ -370,22 +376,23 @@
                     <Fluent:DropDownButton Header="协同分析"
                                            Width="70"
                                            Icon="pack://application:,,,/TIOFPSS;component/Images/analysis.ico"
-                                           LargeIcon="pack://application:,,,/TIOFPSS;component/Images/analysis.ico">
-                        <Fluent:MenuItem Header="少齿当量静态强度分析" Click="OnJingTaiQiangDuFenXiClick"/>
-                        <Fluent:MenuItem Header="镀层少齿当量分析" Click="OnDuCengShaoChiFenXiClick"/>
-                        <Fluent:MenuItem Header="少齿当量预应力分析" Click="OnShaoChiDangLiangFenXiClick"/>
-                        <Fluent:MenuItem Header="全齿偏心计算" Click="OnQuanChiPianXinJiSuanClick"/>
-                        <Fluent:MenuItem Header="动态分析" Click="OnDongTaiFenXiClick"/>
-                        <Fluent:MenuItem Header="少齿动态分析" Click="OnShaoChiDongTaiFenXiClick"/>
-                        <Fluent:MenuItem Header="动态应力计算" Click="OnDongTaiYingLiJiSuanClick"/>
-                        <Fluent:MenuItem Header="摩擦片模态计算" Click="OnMoCaPianMoTaiJiSuanClick"/>
-                        <Fluent:MenuItem Header="摩擦片内毂模态计算" Click="OnMcpNgMoTaiJiSuanClick"/>
+                                           LargeIcon="pack://application:,,,/TIOFPSS;component/Images/analysis.ico" x:Name="btnXTFX">
+                        <Fluent:MenuItem Header="少齿当量静态强度分析" Click="OnJingTaiQiangDuFenXiClick" x:Name="btnJingTaiQiangDuFenXi"/>
+                        <Fluent:MenuItem Header="镀层少齿当量分析" Click="OnDuCengShaoChiFenXiClick" x:Name="btnDuCengShaoChiFenXi"/>
+                        <Fluent:MenuItem Header="淬火少齿当量分析" Click="OnShaoChiDangLiangFenXiClick" x:Name="btnShaoChiDangLiangFenXi"/>
+                        <Fluent:MenuItem Header="全齿静态强度分析" Click="OnQuanChiPianXinJiSuanClick" x:Name="btnQuanChiPianXinJiSuan"/>
+                        <Fluent:MenuItem Header="动态分析" Click="OnDongTaiFenXiClick" x:Name="btnDongTaiFenXi"/>
+                        <!--<Fluent:MenuItem Header="少齿动态分析" Click="OnShaoChiDongTaiFenXiClick"/>-->
+                        <Fluent:MenuItem Header="准动态分析" Click="OnDongTaiYingLiJiSuanClick" x:Name="btnDongTaiYingLiJiSuan"/>
+                        <Fluent:MenuItem Header="摩擦片模态计算" Click="OnMoCaPianMoTaiJiSuanClick" x:Name="btnMoCaPianMoTaiJiSuan"/>
+                        <Fluent:MenuItem Header="摩擦片内毂模态计算" Click="OnMcpNgMoTaiJiSuanClick" x:Name="btnMcpNgMoTaiJiSuan"/>
                     </Fluent:DropDownButton>
 
                     <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/模态结果.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/模态结果.png"
                                    Header="查看模态结果"
                                    Width="70"
+                                   x:Name="btnMoTaiJieGuo"
                                    />
                     <!--<Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/result.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/result.png"
@@ -556,7 +563,8 @@
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/task_manager.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/task_manager.png"
                                    ToolTip="Regular Tooltip" 
-                                   Click="OnYouJieJuChuTuClick"/>
+                                   Click="OnAnalysisMonitorClick"
+                                   x:Name="btnAnalysisMonitor"/>
                 </Fluent:RibbonGroupBox>
 
                 <Fluent:RibbonGroupBox Header="结果管理">
@@ -566,6 +574,7 @@
                                    Header="查看结果"
                                    Click="OnViewResultClick"
                                    Width="60"
+                                   x:Name="btnViewResult"
                                    />
 
                     <Fluent:Button SizeDefinition="Large"
@@ -573,7 +582,8 @@
                                    Width="60"
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/Task_Report.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/Task_Report.png"
-                                   Click="OnShengChengBaoBiao"/>
+                                   Click="OnShengChengBaoBiao"
+                                   x:Name="btnShengChengBaoBiao"/>
                 </Fluent:RibbonGroupBox>
 
 
@@ -672,7 +682,8 @@
                                    Width="60"
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/refine.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/refine.png"
-                                   Click="OnDetailDrawClick">
+                                   Click="OnDetailDrawClick"
+                                   x:Name="btnDetailDraw">
                         <Fluent:Button.ToolTip>
                             <Fluent:ScreenTip Title="Gray"
                                               IsRibbonAligned="False"
@@ -717,10 +728,11 @@
                                        Icon="pack://application:,,,/TIOFPSS;component/Images/FontColor.png"
                                        LauncherIcon="/Images/FontColor.png"
                                        LauncherKeys="NF">
-                    <Fluent:DropDownButton Name="tpxg"
+                    <Fluent:DropDownButton 
                                            Header="选择图片"
                                            Icon="Images\pic_edit.png"
-                                           LargeIcon="Images\pic_edit.png">
+                                           LargeIcon="Images\pic_edit.png"
+                                           x:Name="btnPicEdit">
                         <Fluent:MenuItem 
                                          Header="摩擦片冲击力" 
                             Click="OnPicEditClick"/>
@@ -1079,7 +1091,8 @@
                                    Width="60"
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/tasks.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/tasks.png"
-                                   Click="OnPicEditOKClick"/>
+                                   Click="OnPicEditOKClick"
+                                   x:Name="btnPicEditOK"/>
 
                 </Fluent:RibbonGroupBox>
                 <!--You can set short form (for ex, "Middle" is equal "Middle,Middle,Middle")-->

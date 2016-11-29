@@ -52,7 +52,7 @@ namespace TIOFPSS.Analysis
             //MWCharArray dataname = new MWCharArray(threadParamter.FilePath);
             //MWCharArray fontName = new MWCharArray("宋体");
             MWArray Wendingshijian = new MWNumericArray(threadParamter.Wendingshijian);
-            MWArray locc = new MWCharArray(threadParamter.Path);
+            MWArray locc = new MWCharArray(threadParamter.Path+"噪声分析结果\\");
             MWArray dataname = new MWCharArray(threadParamter.FilePath);
             MWArray fontName = new MWCharArray("宋体");
 

@@ -222,13 +222,13 @@ namespace TIOFPSS.ViewModels
                 this.OnPropertyChanged("YuYingLiWeiYiYunTu");
             }
         }
-        private ImageSource yuyinliyiyingliyuntu;
+        private ImageSource yuyingliyingliyuntu;
         public ImageSource YuYingLiYingLiYunTu
         {
-            get { return yuyinliyiyingliyuntu; }
+            get { return yuyingliyingliyuntu; }
             set
             {
-                yuyinliyiyingliyuntu = value;
+                yuyingliyingliyuntu = value;
                 this.OnPropertyChanged("YuYingLiYingLiYunTu");
             }
         }
@@ -375,43 +375,43 @@ namespace TIOFPSS.ViewModels
             if(path!=null)
             {
                 //无节距误差分析
-                MoCaPianChonJiLi = LoadImg(PicPath + "\\摩擦片冲击力.png");
-                MoCaPianChonJiLiPinPuTu = LoadImg(PicPath + "\\摩擦片冲击力频谱图.png");
-                MoCaPianJiaSuDuPinPuTu = LoadImg(PicPath + "\\摩擦片加速度频谱图.png");
-                MoCaPianJiaoJiaSuDu = LoadImg(PicPath + "\\摩擦片角加速度.png");
-                MoCaPianJiaoSuDu = LoadImg(PicPath + "\\摩擦片角速度.png");
+                MoCaPianChonJiLi = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片冲击力.png");
+                MoCaPianChonJiLiPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片冲击力频谱图.png");
+                MoCaPianJiaSuDuPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片加速度频谱图.png");
+                MoCaPianJiaoJiaSuDu = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片角加速度.png");
+                MoCaPianJiaoSuDu = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片角速度.png");
 
-                MoCaPianSuDuPinPuTu = LoadImg(PicPath + "\\摩擦片速度频谱图.png");
+                MoCaPianSuDuPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片速度频谱图.png");
 
-                MoCaPianWeiYi = LoadImg(PicPath + "\\摩擦片位移.png");
-                MoCaPianYuNeiGuXiangDuiNiuZhuan = LoadImg(PicPath + "\\摩擦片与内毂相对扭转角度.png");
-                MoCaPianYuNeiGuXiangDuiXuanZhuan = LoadImg(PicPath + "\\摩擦片与内毂相对旋转速度.png");
-                NeiGuJiaSuDuPinPuTu = LoadImg(PicPath + "\\内毂加速度频谱图.png");
-                NeiGuJiaoJiaSuDu = LoadImg(PicPath + "\\内毂角加速度.png");
-                NeiGuJiaoSuDu = LoadImg(PicPath + "\\内毂角速度.png");
-                NeiGuSuDuPinPuTu = LoadImg(PicPath + "\\内毂速度频谱图.png");
-                NeiGuWeiYi = LoadImg(PicPath + "\\内毂位移.png");
-                XiangDuiNiuZhuanJiaoDuPinPuTu = LoadImg(PicPath + "\\相对扭转角度频谱图.png");
-                XiangDuiXuanZhuanJiaoDuPinPuTu = LoadImg(PicPath + "\\相对旋转速度频谱图.png");
+                MoCaPianWeiYi = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片位移.png");
+                MoCaPianYuNeiGuXiangDuiNiuZhuan = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片与内毂相对扭转角度.png");
+                MoCaPianYuNeiGuXiangDuiXuanZhuan = LoadImg(PicPath + "\\冲击动力学分析结果\\摩擦片与内毂相对旋转速度.png");
+                NeiGuJiaSuDuPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\内毂加速度频谱图.png");
+                NeiGuJiaoJiaSuDu = LoadImg(PicPath + "\\冲击动力学分析结果\\内毂角加速度.png");
+                NeiGuJiaoSuDu = LoadImg(PicPath + "\\冲击动力学分析结果\\内毂角速度.png");
+                NeiGuSuDuPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\内毂速度频谱图.png");
+                NeiGuWeiYi = LoadImg(PicPath + "\\冲击动力学分析结果\\内毂位移.png");
+                XiangDuiNiuZhuanJiaoDuPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\相对扭转角度频谱图.png");
+                XiangDuiXuanZhuanJiaoDuPinPuTu = LoadImg(PicPath + "\\冲击动力学分析结果\\相对旋转速度频谱图.png");
 
-                ZaoShengFenXi = LoadImg(PicPath + "\\噪声分析.png");
+                ZaoShengFenXi = LoadImg(PicPath + "\\噪声分析结果\\噪声分析.png");
                 //协同分析
-                PianXinWeiYiYunTu = LoadImg(PicPath + "\\pianxinweiyiyuntu.jpeg");
-                PianXinYingLiYunTu = LoadImg(PicPath + "\\pianxinyingliyuntu.jpeg");
-                YuYingLiWeiYiYunTu = LoadImg(PicPath + "\\yuyingliweiyiyuntu.jpeg");
-                YuYingLiYingLiYunTu = LoadImg(PicPath + "\\yuyingliyingliyuntu.jpeg");
-                DuCengWeiYiYunTu = LoadImg(PicPath + "\\ducengweiyiyuntu.jpeg");
-                DuCengYingLi = LoadImg(PicPath + "\\ducengyingliyuntu.jpeg");
-                DangChiWeiYiYunTu = LoadImg(PicPath + "\\danchiweiyiyuntu.jpeg");
-                DangChiYingLiYunTu = LoadImg(PicPath + "\\danchiyingliyuntu.jpeg");
-                DongTaiYingLiYunTu = LoadImg(PicPath + "\\dynamicyingliyutu.jpeg");
-                DongTaiWeiYiYunTu = LoadImg(PicPath + "\\dynamicweiyiyuntu.jpeg");
+                PianXinWeiYiYunTu = LoadImg(PicPath + "\\QuanChi\\pianxinweiyiyuntu.jpeg");
+                PianXinYingLiYunTu = LoadImg(PicPath + "\\QuanChi\\pianxinyingliyuntu.jpeg");
+                YuYingLiWeiYiYunTu = LoadImg(PicPath + "\\CuiHuo\\cuihuoweiyiyuntu.jpeg");
+                YuYingLiYingLiYunTu = LoadImg(PicPath + "\\CuiHuo\\cuihuoyingliyuntu.jpeg");
+                DuCengWeiYiYunTu = LoadImg(PicPath + "\\DuCeng\\ducengweiyiyuntu.jpeg");
+                DuCengYingLi = LoadImg(PicPath + "\\DuCeng\\ducengyingliyuntu.jpeg");
+                DangChiWeiYiYunTu = LoadImg(PicPath + "\\ShaoChi\\danchiweiyiyuntu.jpeg");
+                DangChiYingLiYunTu = LoadImg(PicPath + "\\ShaoChi\\danchiyingliyuntu.jpeg");
+                //DongTaiYingLiYunTu = LoadImg(PicPath + "\\dynamicyingliyutu.jpeg");
+                //DongTaiWeiYiYunTu = LoadImg(PicPath + "\\dynamicweiyiyuntu.jpeg");
                 //非线性损伤分析
-                MoChaPianChiGenYingLiShiYuBoXing = LoadImg(PicPath + "\\摩擦片齿根应力时域波形.png");
-                MoChaPianLeiJiSunShang = LoadImg(PicPath + "\\摩擦片累计损伤.png");
+                MoChaPianChiGenYingLiShiYuBoXing = LoadImg(PicPath + "\\非线性损伤分析结果\\摩擦片齿根应力时域波形.png");
+                MoChaPianLeiJiSunShang = LoadImg(PicPath + "\\非线性损伤分析结果\\摩擦片累计损伤.png");
                 //当量载荷谱分析结果
-                DangLiangZaiHePu = LoadImg(PicPath + "\\当量载荷谱.png");
-                YuLiuJiShuJieGuo = LoadImg(PicPath + "\\雨流计数结果.png");
+                DangLiangZaiHePu = LoadImg(PicPath + "\\当量载荷谱分析结果\\当量载荷谱.png");
+                YuLiuJiShuJieGuo = LoadImg(PicPath + "\\当量载荷谱分析结果\\雨流计数结果.png");
             }
             //else
             //{

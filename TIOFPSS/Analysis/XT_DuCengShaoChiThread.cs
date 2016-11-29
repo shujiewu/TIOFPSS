@@ -12,7 +12,8 @@ namespace TIOFPSS.Analysis
     {
         private XT_DuCengShaoChiThreadParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateDuCengShaoChiFenXiFinish CallBackMethod;
+        private delegate void DoTask();
 
         public XT_DuCengShaoChiThread(XT_DuCengShaoChiThreadParamter threadParamter)
         {
@@ -35,18 +36,18 @@ namespace TIOFPSS.Analysis
             string m_direction, m_outputfile;//ansys软件路径 和 中间文件输出路径
             string path = threadParamter.path;//结果保存路径
             string ansysPath;//
-            string fileLock = path + "\\duceng\\file.lock";
+            string fileLock = path + "\\DuCeng\\file.lock";
             //fileLock.Format("%s\\single\\file.lock", path);
             //删除错误文件
             if (System.IO.File.Exists(fileLock))
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction = ansysPath;
-            m_outputfile = path + "\\duceng\\output.out";
-            string workPath = path + "\\duceng";
+            m_outputfile = path + "\\DuCeng\\output.out";
+            string workPath = path + "\\DuCeng";
 
             string sCommondLine;
             sCommondLine = m_direction + " -b -p ane3fl -i " + m_inputfile + " -o " + m_outputfile;
@@ -93,20 +94,23 @@ namespace TIOFPSS.Analysis
             }
             if (success)
             {
-                string source1, source2;
-                string dest1, dest2;
-                source1 = path + "\\duceng\\ducengyingliyuntu.jpeg";//产生的结果文件
-                dest1 = path + "\\ducengyingliyuntu.jpeg";
-                source2 = path + "\\duceng\\ducengweiyiyuntu.jpeg";//
-                dest2 = path + "\\ducengweiyiyuntu.jpeg";
-                System.IO.File.Copy(source1, dest1, true);
-                System.IO.File.Copy(source2, dest2, true);
+                //string source1, source2;
+                //string dest1, dest2;
+                //source1 = path + "\\DuCeng\\ducengyingliyuntu.jpeg";//产生的结果文件
+                //dest1 = path + "\\ducengyingliyuntu.jpeg";
+                //source2 = path + "\\DuCeng\\ducengweiyiyuntu.jpeg";//
+                //dest2 = path + "\\ducengweiyiyuntu.jpeg";
+                //System.IO.File.Copy(source1, dest1, true);
+                //System.IO.File.Copy(source2, dest2, true);
+
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //Xceed.Wpf.Toolkit.MessageBox.Show("少齿当量静态强度分析完成");
             }
             else
             {
-                string f1 = path + "\\ducengyingliyuntu.jpeg";
-                string f2 = path + "\\ducengweiyiyuntu.jpeg"; ;
+                string f1 = path + "\\DuCeng\\ducengyingliyuntu.jpeg";
+                string f2 = path + "\\DuCeng\\ducengweiyiyuntu.jpeg"; ;
                 if (System.IO.File.Exists(f1))
                 {
                     System.IO.File.Delete(f1);
@@ -133,6 +137,13 @@ namespace TIOFPSS.Analysis
             //System.IO.File.Copy(finame, newpath, true);
 
 
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            this.CallBackMethod(true);
+            //使用ui元素            
         }
     }
         public class XT_DuCengShaoChiThreadParamter

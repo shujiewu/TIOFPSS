@@ -12,7 +12,8 @@ namespace TIOFPSS.Analysis
     {
         private XT_jiangTaiQiangDuThreadParamter threadParamter;
         private Thread thread;
-
+        public Helper.delgateJingTaiQiangDuFenXiFinish CallBackMethod;
+        private delegate void DoTask();
 
         public XT_jiangTaiQiangDuThread(XT_jiangTaiQiangDuThreadParamter threadParamter)
         {
@@ -35,18 +36,18 @@ namespace TIOFPSS.Analysis
             string m_direction, m_outputfile;//ansys软件路径 和 中间文件输出路径
             string path = threadParamter.path;//结果保存路径
             string ansysPath;//
-            string fileLock = path + "\\single\\file.lock";
-            //fileLock.Format("%s\\single\\file.lock", path);
+            string fileLock = path + "\\ShaoChi\\file.lock";
+            //fileLock.Format("%s\\ShaoChi\\file.lock", path);
             //删除错误文件
             if (System.IO.File.Exists(fileLock))
             {
                 System.IO.File.Delete(fileLock);
             }
-            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\ansys160.exe";
+            ansysPath = Dialog.Configure.IniReadValue("system", "AnsysPath") + "\\" + Dialog.Configure.IniReadValue("system", "AnsysName");
             //ansysPath = @"D:\Program Files\ANSYS Inc\v160\ansys\bin\winx64\ansys160.exe";
             m_direction=ansysPath;
-            m_outputfile = path+"\\single\\output.out";
-            string workPath=path+"\\single";
+            m_outputfile = path+"\\ShaoChi\\output.out";
+            string workPath=path+"\\ShaoChi";
             
             string sCommondLine;
             sCommondLine=m_direction+" -b -p ane3fl -i "+m_inputfile+" -o "+m_outputfile;
@@ -95,12 +96,15 @@ namespace TIOFPSS.Analysis
             {
                 string source1, source2;
                 string dest1, dest2;
-                source1 = path + "\\single\\danchiyingliyuntu.jpeg";//产生的结果文件
+                source1 = path + "\\ShaoChi\\danchiyingliyuntu.jpeg";//产生的结果文件
                 dest1 = path + "\\danchiyingliyuntu.jpeg";
-                source2 = path + "\\single\\danchiweiyiyuntu.jpeg";//
+                source2 = path + "\\ShaoChi\\danchiweiyiyuntu.jpeg";//
                 dest2 = path + "\\danchiweiyiyuntu.jpeg";
                 System.IO.File.Copy(source1, dest1, true);
                 System.IO.File.Copy(source2, dest2, true);
+
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //Xceed.Wpf.Toolkit.MessageBox.Show("少齿当量静态强度分析完成");
             }
             else
@@ -119,6 +123,7 @@ namespace TIOFPSS.Analysis
             }
             // Wait that the process exits
 
+            
 
             //string force_source1 = System.IO.Path.Combine(threadParamter.Path, "force+.txt"); //inf->path + "force+.txt";
             //string force_source2 = System.IO.Path.Combine(threadParamter.Path, "force-.txt"); //inf->path + "force-.txt";
@@ -130,9 +135,14 @@ namespace TIOFPSS.Analysis
             ////复制结果
             //string finame = System.IO.Path.Combine(threadParamter.Path, "Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
             //string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
-            //System.IO.File.Copy(finame, newpath, true);
-
-           
+            //System.IO.File.Copy(finame, newpath, true);           
+        }
+        public void Func()
+        {
+            //Window2 aw = new Window2();
+            //aw.ShowDialog();
+            this.CallBackMethod(true);
+            //使用ui元素            
         }
     }
     public class XT_jiangTaiQiangDuThreadParamter

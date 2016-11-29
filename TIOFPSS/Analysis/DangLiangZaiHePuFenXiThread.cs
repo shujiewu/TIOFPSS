@@ -62,7 +62,7 @@ namespace TIOFPSS.Analysis
             MWArray QHXS = new MWNumericArray(1,i,qhxs);
             MWArray SUM = new MWNumericArray(i);
             MWArray ff = new MWNumericArray(1, 5,threadParamter.Para);
-            MWArray locc = new MWCharArray(threadParamter.Path);
+            MWArray locc = new MWCharArray(threadParamter.Path+"当量载荷谱分析结果\\");
             
             
             MWArray leixing = new MWNumericArray(threadParamter.isShiYan);
@@ -79,14 +79,14 @@ namespace TIOFPSS.Analysis
 new DoTask(Func));
                 return;
             }
-            
 
 
-            string finame1 = threadParamter.Path + "多工况均值化零当量载荷谱.mat";//项目临时文件目录
+
+            string finame1 = threadParamter.Path + "当量载荷谱分析结果\\多工况均值化零当量载荷谱.mat";//项目临时文件目录
             string newpath1 = threadParamter.ProPath + "\\" + "当量载荷谱分析文件" + "\\" + "多工况均值化零当量载荷谱.mat";//项目文件保存路径
             //CopyFile(finame1, newpath1, false);
             System.IO.File.Copy(finame1, newpath1, true);
-            string finame2 = threadParamter.Path + "多工况双参数雨流计数结果.mat";//项目临时文件目录
+            string finame2 = threadParamter.Path + "当量载荷谱分析结果\\多工况双参数雨流计数结果.mat";//项目临时文件目录
             string newpath2 = threadParamter.ProPath + "\\" + "当量载荷谱分析文件" + "\\" + "多工况双参数雨流计数结果.mat";//项目文件保存路径
             System.IO.File.Copy(finame2, newpath2, true);
 

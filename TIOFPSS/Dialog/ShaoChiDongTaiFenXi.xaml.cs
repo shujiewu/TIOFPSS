@@ -24,37 +24,37 @@ namespace TIOFPSS.Dialog
             InitializeComponent();
         }
 
-        private void OnCancelClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        public Helper.delgateShaoChiDongTaiFenXiMethod CallBackMethod;
-        private void OnOKClick(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-            if (this.DialogResult.Value && CallBackMethod != null)
-            {
+        //private void OnCancelClick(object sender, RoutedEventArgs e)
+        //{
+        //    this.Close();
+        //}
+        //public Helper.delgateShaoChiDongTaiFenXiMethod CallBackMethod;
+        //private void OnOKClick(object sender, RoutedEventArgs e)
+        //{
+        //    this.DialogResult = true;
+        //    if (this.DialogResult.Value && CallBackMethod != null)
+        //    {
 
-                string FangZhenShiJian = fangzhenjieshushijian.Text.ToString();
-                string ZhiLiang = zhiliang.Text.ToString();
-                string ResName = resName.Text.ToString();
-                if (FangZhenShiJian != "" && ZhiLiang != "" && ResName != "" )
-                {
-                    List<string> para = new List<string>();
+        //        string FangZhenShiJian = fangzhenjieshushijian.Text.ToString();
+        //        string ZhiLiang = zhiliang.Text.ToString();
+        //        string ResName = resName.Text.ToString();
+        //        if (FangZhenShiJian != "" && ZhiLiang != "" && ResName != "" )
+        //        {
+        //            List<string> para = new List<string>();
 
                    
-                    para.Add(FangZhenShiJian);
-                    para.Add(ZhiLiang);
-                    para.Add(ResName);
+        //            para.Add(FangZhenShiJian);
+        //            para.Add(ZhiLiang);
+        //            para.Add(ResName);
 
-                    this.CallBackMethod(para);
-                    this.Close();
-                }
-                else
-                {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("参数信息不能为空值！");
-                }
-            }
-        }
+        //           this.CallBackMethod(para);
+        //            this.Close();
+        //        }
+        //        else
+        //        {
+        //            Xceed.Wpf.Toolkit.MessageBox.Show("参数信息不能为空值！");
+        //        }
+        //    }
+        //}
     }
 }

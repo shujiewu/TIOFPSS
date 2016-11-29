@@ -93,7 +93,7 @@ namespace TIOFPSS.Dialog
             danchiweiyiyuntu.SetValue(Grid.ColumnSpanProperty, path.Count);
             ducengyingli.SetValue(Grid.ColumnSpanProperty, path.Count);
             ducengweiyiyuntu.SetValue(Grid.ColumnSpanProperty, path.Count);
-            yuyinliyiyingliyuntu.SetValue(Grid.ColumnSpanProperty, path.Count);
+            yuyingliyingliyuntu.SetValue(Grid.ColumnSpanProperty, path.Count);
             yuyingliweiyiyuntu.SetValue(Grid.ColumnSpanProperty, path.Count);
 
             for (int i = 0; i < path.Count; i++)
@@ -118,6 +118,7 @@ namespace TIOFPSS.Dialog
                 FXXSSHeader.Children.Add(lb);
 
                 GridmoChaPianChiGenYingLiShiYuBoXing.ColumnDefinitions.Add(new ColumnDefinition());
+                GridmoChaPianChiGenYingLiPinYuBoXing.ColumnDefinitions.Add(new ColumnDefinition());
                 GridmoChaPianLeiJiSunShang.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
@@ -195,7 +196,7 @@ namespace TIOFPSS.Dialog
                 Gridducengweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
                 Gridpianxinyingliyuntu.ColumnDefinitions.Add(new ColumnDefinition());
                 Gridpianxinweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
-                Gridyuyinliyiyingliyuntu.ColumnDefinitions.Add(new ColumnDefinition());
+                Gridyuyingliyingliyuntu.ColumnDefinitions.Add(new ColumnDefinition());
                 Gridyuyingliweiyiyuntu.ColumnDefinitions.Add(new ColumnDefinition());
             }
             //666666666666
@@ -205,7 +206,7 @@ namespace TIOFPSS.Dialog
             {
                 string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
                 Image imgtemp1 = new Image();
-                imgtemp1.Source = LoadImg(PicPath + "\\摩擦片齿根应力时域波形.png");
+                imgtemp1.Source = LoadImg(PicPath + Helper.compareFilePath[17]);
                 if (i == 0)
                 {
                     imgtemp1.Margin = new Thickness(1, 2, 2, 2);
@@ -220,7 +221,7 @@ namespace TIOFPSS.Dialog
                 GridmoChaPianChiGenYingLiShiYuBoXing.Children.Add(imgtemp1);
 
                 Image imgtemp2 = new Image();
-                imgtemp2.Source = LoadImg(PicPath + "\\摩擦片累计损伤.png");
+                imgtemp2.Source = LoadImg(PicPath + Helper.compareFilePath[19]);
                 if (i == 0)
                 {
                     imgtemp2.Margin = new Thickness(1, 2, 2, 2);
@@ -233,6 +234,22 @@ namespace TIOFPSS.Dialog
                 Grid.SetColumn(imgtemp2, i);
 
                 GridmoChaPianLeiJiSunShang.Children.Add(imgtemp2);
+
+
+                Image imgtemp3 = new Image();
+                imgtemp3.Source = LoadImg(PicPath + Helper.compareFilePath[18]);
+                if (i == 0)
+                {
+                    imgtemp3.Margin = new Thickness(1, 2, 2, 2);
+                }
+                else
+                {
+                    imgtemp3.Margin = new Thickness(2, 2, 2, 2);
+                }
+                Grid.SetRow(imgtemp3, 0);
+                Grid.SetColumn(imgtemp3, i);
+
+                GridmoChaPianChiGenYingLiPinYuBoXing.Children.Add(imgtemp3);
             }
 
             //555555555555      图片名称尚未改
@@ -242,13 +259,13 @@ namespace TIOFPSS.Dialog
             Gridducengweiyiyuntu.RowDefinitions.Add(new RowDefinition());
             Gridpianxinyingliyuntu.RowDefinitions.Add(new RowDefinition());
             Gridpianxinweiyiyuntu.RowDefinitions.Add(new RowDefinition());
-            Gridyuyinliyiyingliyuntu.RowDefinitions.Add(new RowDefinition());
+            Gridyuyingliyingliyuntu.RowDefinitions.Add(new RowDefinition());
             Gridyuyingliweiyiyuntu.RowDefinitions.Add(new RowDefinition());
             for (int i = 0; i < path.Count; i++)
             {
                 string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
                 Image imgtemp1 = new Image();
-                imgtemp1.Source = LoadImg(PicPath + "\\摩擦片冲击力.png");
+                imgtemp1.Source = LoadImg(PicPath + Helper.compareFilePath[23]);
                 if (i == 0)
                 {
                     imgtemp1.Margin = new Thickness(1, 2, 2, 2);
@@ -265,7 +282,7 @@ namespace TIOFPSS.Dialog
 
 
                 Image imgtemp2 = new Image();
-                imgtemp2.Source = LoadImg(PicPath + "\\摩擦片冲击力频谱图.png");
+                imgtemp2.Source = LoadImg(PicPath + Helper.compareFilePath[22]);
                 if (i == 0)
                 {
                     imgtemp2.Margin = new Thickness(1, 2, 2, 2);
@@ -280,7 +297,7 @@ namespace TIOFPSS.Dialog
                 Griddanchiweiyiyuntu.Children.Add(imgtemp2);
 
                 Image imgtemp3 = new Image();
-                imgtemp3.Source = LoadImg(PicPath + "\\摩擦片加速度频谱图.png");
+                imgtemp3.Source = LoadImg(PicPath + Helper.compareFilePath[25]);
                 if (i == 0)
                 {
                     imgtemp3.Margin = new Thickness(1, 2, 2, 2);
@@ -296,7 +313,7 @@ namespace TIOFPSS.Dialog
 
 
                 Image imgtemp4 = new Image();
-                imgtemp4.Source = LoadImg(PicPath + "\\摩擦片角加速度.png");
+                imgtemp4.Source = LoadImg(PicPath + Helper.compareFilePath[24]);
                 if (i == 0)
                 {
                     imgtemp4.Margin = new Thickness(1, 2, 2, 2);
@@ -312,7 +329,7 @@ namespace TIOFPSS.Dialog
 
 
                 Image imgtemp5 = new Image();
-                imgtemp5.Source = LoadImg(PicPath + "\\摩擦片角速度.png");
+                imgtemp5.Source = LoadImg(PicPath + Helper.compareFilePath[27]);
                 if (i == 0)
                 {
                     imgtemp5.Margin = new Thickness(1, 2, 2, 2);
@@ -327,7 +344,7 @@ namespace TIOFPSS.Dialog
                 Gridpianxinyingliyuntu.Children.Add(imgtemp5);
 
                 Image imgtemp6 = new Image();
-                imgtemp6.Source = LoadImg(PicPath + "\\摩擦片速度频谱图.png");
+                imgtemp6.Source = LoadImg(PicPath + Helper.compareFilePath[26]);
                 if (i == 0)
                 {
                     imgtemp6.Margin = new Thickness(1, 2, 2, 2);
@@ -343,7 +360,7 @@ namespace TIOFPSS.Dialog
 
 
                 Image imgtemp7 = new Image();
-                imgtemp7.Source = LoadImg(PicPath + "\\摩擦片位移.png");
+                imgtemp7.Source = LoadImg(PicPath + Helper.compareFilePath[29]);
                 if (i == 0)
                 {
                     imgtemp7.Margin = new Thickness(1, 2, 2, 2);
@@ -355,11 +372,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp7, 0);
                 Grid.SetColumn(imgtemp7, i);
 
-                Gridyuyinliyiyingliyuntu.Children.Add(imgtemp7);
+                Gridyuyingliyingliyuntu.Children.Add(imgtemp7);
 
 
                 Image imgtemp8 = new Image();
-                imgtemp8.Source = LoadImg(PicPath + "\\摩擦片与内毂相对扭转角度.png");
+                imgtemp8.Source = LoadImg(PicPath + Helper.compareFilePath[28]);
                 if (i == 0)
                 {
                     imgtemp8.Margin = new Thickness(1, 2, 2, 2);
@@ -379,7 +396,7 @@ namespace TIOFPSS.Dialog
             {
                 string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
                 Image imgtemp1 = new Image();
-                imgtemp1.Source = LoadImg(PicPath + "\\噪声分析.png");
+                imgtemp1.Source = LoadImg(PicPath + Helper.compareFilePath[16]);
                 if (i == 0)
                 {
                     imgtemp1.Margin = new Thickness(1, 2, 2, 2);
@@ -400,7 +417,7 @@ namespace TIOFPSS.Dialog
             {
                 string PicPath = projCmpViewModel.projects[i].ProjectName + "\\tempData";
                 Image imgtemp1 = new Image();
-                imgtemp1.Source = LoadImg(PicPath + "\\当量载荷谱.png");
+                imgtemp1.Source = LoadImg(PicPath + Helper.compareFilePath[20]);
                 if (i == 0)
                 {
                     imgtemp1.Margin = new Thickness(1, 2, 2, 2);
@@ -415,7 +432,7 @@ namespace TIOFPSS.Dialog
                 GriddangLiangZaiHePu.Children.Add(imgtemp1);
 
                 Image imgtemp2 = new Image();
-                imgtemp2.Source = LoadImg(PicPath + "\\雨流计数结果.png");
+                imgtemp2.Source = LoadImg(PicPath + Helper.compareFilePath[21]);
                 if (i == 0)
                 {
                     imgtemp2.Margin = new Thickness(1, 2, 2, 2);
@@ -494,7 +511,7 @@ namespace TIOFPSS.Dialog
             {
                 string PicPath = projCmpViewModel.projects[i].ProjectName+"\\tempData";
                 Image imgtemp1 = new Image();
-                imgtemp1.Source = LoadImg(PicPath + "\\摩擦片冲击力.png");
+                imgtemp1.Source = LoadImg(PicPath + Helper.compareFilePath[0]);
                 if(i==0)
                 {
                     imgtemp1.Margin = new Thickness(1, 2, 2, 2);
@@ -511,7 +528,7 @@ namespace TIOFPSS.Dialog
 
  
                 Image imgtemp2 = new Image();
-                imgtemp2.Source = LoadImg(PicPath + "\\摩擦片冲击力频谱图.png");
+                imgtemp2.Source = LoadImg(PicPath + Helper.compareFilePath[1]);
                 if (i == 0)
                 {
                     imgtemp2.Margin = new Thickness(1, 2, 2, 2);
@@ -526,7 +543,7 @@ namespace TIOFPSS.Dialog
                 GridMoCaPianChonJiLiPinPuTu.Children.Add(imgtemp2);
 
                 Image imgtemp3 = new Image();
-                imgtemp3.Source = LoadImg(PicPath + "\\摩擦片加速度频谱图.png");
+                imgtemp3.Source = LoadImg(PicPath + Helper.compareFilePath[2]);
                 if (i == 0)
                 {
                     imgtemp3.Margin = new Thickness(1, 2, 2, 2);
@@ -538,11 +555,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp3, 0);
                 Grid.SetColumn(imgtemp3, i);
 
-                GridMoCaPianJiaSuDuPinPuTu.Children.Add(imgtemp3);
+                GridMoCaPianYuNeiGuXiangDuiNiuZhuan.Children.Add(imgtemp3);
 
 
                 Image imgtemp4 = new Image();
-                imgtemp4.Source = LoadImg(PicPath + "\\摩擦片角加速度.png");
+                imgtemp4.Source = LoadImg(PicPath + Helper.compareFilePath[3]);
                 if (i == 0)
                 {
                     imgtemp4.Margin = new Thickness(1, 2, 2, 2);
@@ -554,11 +571,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp4, 0);
                 Grid.SetColumn(imgtemp4, i);
 
-                GridMoCaPianJiaoJiaSuDu.Children.Add(imgtemp4);
+                GridXiangDuiNiuZhuanJiaoDuPinPuTu.Children.Add(imgtemp4);
 
 
                 Image imgtemp5 = new Image();
-                imgtemp5.Source = LoadImg(PicPath + "\\摩擦片角速度.png");
+                imgtemp5.Source = LoadImg(PicPath + Helper.compareFilePath[4]);
                 if (i == 0)
                 {
                     imgtemp5.Margin = new Thickness(1, 2, 2, 2);
@@ -570,10 +587,10 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp5, 0);
                 Grid.SetColumn(imgtemp5, i);
 
-                GridMoCaPianJiaoSuDu.Children.Add(imgtemp5);
+                GridMoCaPianYuNeiGuXiangDuiXuanZhuan.Children.Add(imgtemp5);
 
                 Image imgtemp6 = new Image();
-                imgtemp6.Source = LoadImg(PicPath + "\\摩擦片速度频谱图.png");
+                imgtemp6.Source = LoadImg(PicPath + Helper.compareFilePath[5]);
                 if (i == 0)
                 {
                     imgtemp6.Margin = new Thickness(1, 2, 2, 2);
@@ -585,11 +602,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp6, 0);
                 Grid.SetColumn(imgtemp6, i);
 
-                GridMoCaPianSuDuPinPuTu.Children.Add(imgtemp6);
+                GridXiangDuiXuanZhuanJiaoDuPinPuTu.Children.Add(imgtemp6);
 
 
                 Image imgtemp7 = new Image();
-                imgtemp7.Source = LoadImg(PicPath + "\\摩擦片位移.png");
+                imgtemp7.Source = LoadImg(PicPath + Helper.compareFilePath[6]);
                 if (i == 0)
                 {
                     imgtemp7.Margin = new Thickness(1, 2, 2, 2);
@@ -601,11 +618,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp7, 0);
                 Grid.SetColumn(imgtemp7, i);
 
-                GridMoCaPianWeiYi.Children.Add(imgtemp7);
+                GridNeiGuJiaoJiaSuDu.Children.Add(imgtemp7);
 
 
                 Image imgtemp8 = new Image();
-                imgtemp8.Source = LoadImg(PicPath + "\\摩擦片与内毂相对扭转角度.png");
+                imgtemp8.Source = LoadImg(PicPath + Helper.compareFilePath[7]);
                 if (i == 0)
                 {
                     imgtemp8.Margin = new Thickness(1, 2, 2, 2);
@@ -617,11 +634,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp8, 0);
                 Grid.SetColumn(imgtemp8, i);
 
-                GridMoCaPianYuNeiGuXiangDuiNiuZhuan.Children.Add(imgtemp8);
+                GridNeiGuJiaSuDuPinPuTu.Children.Add(imgtemp8);
 
 
                 Image imgtemp9 = new Image();
-                imgtemp9.Source = LoadImg(PicPath + "\\摩擦片与内毂相对旋转速度.png");
+                imgtemp9.Source = LoadImg(PicPath + Helper.compareFilePath[8]);
                 if (i == 0)
                 {
                     imgtemp9.Margin = new Thickness(1, 2, 2, 2);
@@ -633,11 +650,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp9, 0);
                 Grid.SetColumn(imgtemp9, i);
 
-                GridMoCaPianYuNeiGuXiangDuiXuanZhuan.Children.Add(imgtemp9);
+                GridMoCaPianJiaoJiaSuDu.Children.Add(imgtemp9);
 
 
                 Image imgtemp10 = new Image();
-                imgtemp10.Source = LoadImg(PicPath + "\\内毂加速度频谱图.png");
+                imgtemp10.Source = LoadImg(PicPath + Helper.compareFilePath[9]);
                 if (i == 0)
                 {
                     imgtemp10.Margin = new Thickness(1, 2, 2, 2);
@@ -649,11 +666,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp10, 0);
                 Grid.SetColumn(imgtemp10, i);
 
-                GridNeiGuJiaSuDuPinPuTu.Children.Add(imgtemp10);
+                GridMoCaPianJiaSuDuPinPuTu.Children.Add(imgtemp10);
 
 
                 Image imgtemp11 = new Image();
-                imgtemp11.Source = LoadImg(PicPath + "\\内毂角加速度.png");
+                imgtemp11.Source = LoadImg(PicPath + Helper.compareFilePath[10]);
                 if (i == 0)
                 {
                     imgtemp11.Margin = new Thickness(1, 2, 2, 2);
@@ -665,11 +682,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp11, 0);
                 Grid.SetColumn(imgtemp11, i);
 
-                GridNeiGuJiaoJiaSuDu.Children.Add(imgtemp11);
+                GridNeiGuJiaoSuDu.Children.Add(imgtemp11);
 
 
                 Image imgtemp12 = new Image();
-                imgtemp12.Source = LoadImg(PicPath + "\\内毂角速度.png");
+                imgtemp12.Source = LoadImg(PicPath + Helper.compareFilePath[11]);
                 if (i == 0)
                 {
                     imgtemp12.Margin = new Thickness(1, 2, 2, 2);
@@ -681,11 +698,11 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp12, 0);
                 Grid.SetColumn(imgtemp12, i);
 
-                GridNeiGuJiaoSuDu.Children.Add(imgtemp12);
+                GridNeiGuSuDuPinPuTu.Children.Add(imgtemp12);
 
 
                 Image imgtemp13 = new Image();
-                imgtemp13.Source = LoadImg(PicPath + "\\内毂速度频谱图.png");
+                imgtemp13.Source = LoadImg(PicPath + Helper.compareFilePath[12]);
                 if (i == 0)
                 {
                     imgtemp13.Margin = new Thickness(1, 2, 2, 2);
@@ -697,10 +714,10 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp13, 0);
                 Grid.SetColumn(imgtemp13, i);
 
-                GridNeiGuSuDuPinPuTu.Children.Add(imgtemp13);
+                GridMoCaPianJiaoSuDu.Children.Add(imgtemp13);
 
                 Image imgtemp14 = new Image();
-                imgtemp14.Source = LoadImg(PicPath + "\\内毂位移.png");
+                imgtemp14.Source = LoadImg(PicPath + Helper.compareFilePath[13]);
                 if (i == 0)
                 {
                     imgtemp14.Margin = new Thickness(1, 2, 2, 2);
@@ -711,10 +728,10 @@ namespace TIOFPSS.Dialog
                 }
                 Grid.SetRow(imgtemp14, 0);
                 Grid.SetColumn(imgtemp14, i);
-                GridNeiGuWeiYi.Children.Add(imgtemp14);
+                GridMoCaPianSuDuPinPuTu.Children.Add(imgtemp14);
 
                 Image imgtemp15 = new Image();
-                imgtemp15.Source = LoadImg(PicPath + "\\相对扭转角度频谱图.png");
+                imgtemp15.Source = LoadImg(PicPath + Helper.compareFilePath[14]);
                 if (i == 0)
                 {
                     imgtemp15.Margin = new Thickness(1, 2, 2, 2);
@@ -726,10 +743,10 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp15, 0);
                 Grid.SetColumn(imgtemp15, i);
 
-                GridXiangDuiNiuZhuanJiaoDuPinPuTu.Children.Add(imgtemp15);
+                GridMoCaPianWeiYi.Children.Add(imgtemp15);
 
                 Image imgtemp16 = new Image();
-                imgtemp16.Source = LoadImg(PicPath + "\\相对旋转速度频谱图.png");
+                imgtemp16.Source = LoadImg(PicPath + Helper.compareFilePath[15]);
                 if (i == 0)
                 {
                     imgtemp16.Margin = new Thickness(1, 2, 2, 2);
@@ -741,7 +758,7 @@ namespace TIOFPSS.Dialog
                 Grid.SetRow(imgtemp16, 0);
                 Grid.SetColumn(imgtemp16, i);
 
-                GridXiangDuiXuanZhuanJiaoDuPinPuTu.Children.Add(imgtemp16);
+                GridNeiGuWeiYi.Children.Add(imgtemp16);
             }
 
 

@@ -165,8 +165,6 @@
     </ApplicationDefinition>
     <Compile Include="Analysis\DangLiangZaiHePuFenXiThread.cs" />
     <Compile Include="Analysis\FeiXianXingSunShangThread.cs" />
-    <Compile Include="Analysis\McpNgMoTaiJiSuan.cs" />
-    <Compile Include="Analysis\ShaoChiYuYingLiThread.cs" />
     <Compile Include="Analysis\WuJieJuWuChaFenXiThread.cs" />
     <Compile Include="Analysis\XT_DongTaiFenXiThread.cs" />
     <Compile Include="Analysis\XT_DongTaiYingLiThread.cs" />
