@@ -1,24 +1,24 @@
 !/CLEAR
-/INPUT,'para_gear122','txt','D:\abc\APDL0320\',, 0   !·��
+/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !路径
 /CWD,filepath
-/FILNAME,friction,0
+/FILNAME,jobname,0
 /PREP7 
-!��������ú��׵�λ�ƽ��б�д (MCP5֮�����ݲ��϶)
-!��챲�������
+!本程序采用毫米单位制进行编写 (MCP5之后加入齿侧间隙)
+!内毂参数定义
 pi=3.14159265358979
-r=0.5*m*z             !�ֶ�Բ�뾶
-rb=r*cos(angle1)       !��Բ�뾶
-ra1=0.5*(z*m+2*ha1)     !��챳ݶ�Բ�뾶
-rf1=0.5*(z*m-2*c1)  !��챳ݸ�Բ�뾶  
-!Ħ��Ƭ��������
-ra2=0.5*(z*m-2*ha2)     !Ħ��Ƭ�ݶ�Բ�뾶
-rf2=0.5*(z*m+2*c2)  !Ħ��Ƭ�ݸ�Բ�뾶  
+r=0.5*m*z             !分度圆半径
+rb=r*cos(angle1)       !基圆半径
+ra1=0.5*(z*m+2*ha1)     !内毂齿顶圆半径
+rf1=0.5*(z*m-2*c1)  !内毂齿根圆半径  
+!摩擦片参数定义
+ra2=0.5*(z*m-2*ha2)     !摩擦片齿顶圆半径
+rf2=0.5*(z*m+2*c2)  !摩擦片齿根圆半径  
 
-angle2=180.0/z        !������ת��   
-angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !��ʼ��ƫת��(��ֵ���ܸı䣩  
-angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !�Գ�ƫת��  
+angle2=180.0/z        !镜像旋转角   
+angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !初始的偏转角(其值不能改变）  
+angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !对称偏转角  
  
-ET,1,SOLID185     !���嵥Ԫ����
+ET,1,SOLID185     !定义单元类型
 ET,2,SHELL181 
 sect,1,shell,,  
 secdata, 0.1,1,0.0,3
@@ -26,7 +26,7 @@ secoffset,MID
 seccontrol,,,, , , ,
  
 
-MPTEMP,,,,,,,,     !������챲��ϲ���
+MPTEMP,,,,,,,,     !定义内毂材料参数
 MPTEMP,1,0  
 MPDATA,EX,1,,ex1
 MPDATA,PRXY,1,,prxy1
@@ -34,7 +34,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,1,,dens1
 
-MPTEMP,,,,,,,,     !����о����ϲ���
+MPTEMP,,,,,,,,     !定义芯板材料参数
 MPTEMP,1,0  
 MPDATA,EX,2,,ex2
 MPDATA,PRXY,2,,prxy2
@@ -42,7 +42,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,2,,dens2
 
-MPTEMP,,,,,,,,     !����Ħ������ϲ���
+MPTEMP,,,,,,,,     !定义摩擦层材料参数
 MPTEMP,1,0  
 MPDATA,EX,3,,ex3
 MPDATA,PRXY,3,,prxy3
@@ -51,7 +51,7 @@ MPTEMP,1,0
 MPDATA,DENS,3,,dens3
 
 /prep7
-csys,4               !��������ת�Ƕ�                 
+csys,4               !获得内毂旋转角度                 
 wprot,-angle3,0,0      
 K,1,0,0                
  
@@ -68,15 +68,12 @@ fitem,3,t
 bsplin,,p51x           
  
 KDELE,3,101,1          
-NUMCMP,KP              
-
-LGEN,2,1, , ,0,0,10, ,0   
-CSKP,11,0,2,4,3,1,1,
-
-csys,1 
-LGEN,2,1, , ,0,gap1/r*180/pi,0, ,0
-LGEN,2,1, , ,0,-gap2/r*180/pi,0, ,0
-
+NUMCMP,KP
+              
+LGEN,2,1, , ,0,0,10, ,0
+CSYS,1   
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线 
+LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0
 LDELE,1,2 ,1 ,1
 NUMCMP,KP   
 NUMCMP,line 
@@ -91,10 +88,12 @@ LDELE,6,7,1 ,1
 NUMCMP,KP   
 NUMCMP,line 
 csys,1  
-gky=gap1/r*180/pi+gap2/r*180/pi
+gky1=ky(4)
+gky2=ky(5)
+gky=gky1-gky2
 LDELE,1,2,1,1
 
-!�������ģ�� 
+!建立内毂模型 
 WPCSYS,-1,0 
 csys,4  
 wprot,-angle3,0,0   
@@ -112,9 +111,8 @@ bsplin,,p51x
 KDELE,3,101,1   
 NUMCMP,KP   
 LGEN,2,1, , ,0,0,10, ,0 
-CSKP,11,0,2,4,3,1,1,
 csys,1 
-LGEN,2,1, , ,0,gap1/r*180/pi,0, ,0 
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线 
 ldele,1,2,1 
 kdele,2,5,1 
 NUMCMP,KP   
@@ -183,7 +181,7 @@ NUMCMP,KP
 LCOMB,6, 7,0
 LCOMB,8, 9,0
 lfillt,2,4,rff1  
-lfillt,1,5,rff1  
+lfillt,1,5,rff1 
 LSTR,1,9
 LSTR,9,6
 LSTR,11,12  
@@ -230,7 +228,7 @@ ALLSEL,BELOW,VOLU
 *GET,VMN1,VOLU,,NUM,MIN 
 *GET,VMX1,VOLU,,NUM,Max 
 
-!����Ħ��Ƭ
+!建立摩擦片
 CSYS,4  
 WPCSYS,-1,0 
 VSEL,U, , ,ALL  
@@ -256,7 +254,7 @@ KDELE,kpnub1+1,kpnub2-1,1
 NUMCMP,KP   
 *GET,lnub,line,,NUM,max 
 CSYS,1 
-LGEN,2,lnub, , ,0,-gap2/r*180/pi,0, ,0 
+LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线 
 ldele,lnub  
 kdele,kpnub1,kpnub1+1,1 
 NUMCMP,KP   
@@ -305,7 +303,7 @@ LSEL,S,LOC,X,rf2
 LSEL,R,LOC,Y,0,0.1  
 WPCSYS,-1,0 
 wpro,,90.000000,
-LSBW,lnub+2     !����LSBW,all              
+LSBW,lnub+2     !出错LSBW,all              
 ALLSEL,ALL  
 *GET,VMN1,VOLU,,NUM,MIN 
 *GET,VMX1,VOLU,,NUM,Max 
@@ -318,7 +316,7 @@ LSEL,R,LOC,Y,angle4,60
 WPCSYS,-1,0 
 wprot,2*angle2,0,0  
 wpro,,90.000000,
-LSBW,lnub+5     !����LSBW,all
+LSBW,lnub+5     !出错LSBW,all
 LSBW,lnub+6
 LSBW,lnub+10
 ALLSEL,ALL  
@@ -332,7 +330,7 @@ NUMCMP,line
 NUMCMP,KP   
 LSEL,S,,,lnub,lnub+6,1  
 larc,kpnub1,kpnub1+2,kzx,ra2
-lfillt,lnub,lnub+4,rff2     !����
+lfillt,lnub,lnub+4,rff2     !倒角
 lfillt,lnub+1,lnub+5,rff2
 LSTR,kpnub1+7,kpnub1+8  
 LSTR,kpnub1+8,kpnub1+9  
@@ -340,8 +338,8 @@ LSTR,kpnub1+5,kpnub1+4
 LSTR,kpnub1+4,kpnub1+6  
 CSYS,1  
 LSEL,R,LOC,X,ra2,rdc
-AL,ALL    !�Ѷ������������  
-ALLSEL,ALL  !ѡ������ʵ�壺��������
+AL,ALL    !已定义的线生成面  
+ALLSEL,ALL  !选择所有实体：点线面体
 LSEL,s,LOC,X,rdc,rd2
 AL,ALL     
 ALLSEL,ALL  
@@ -377,7 +375,7 @@ NUMCMP,VOLU
 *GET,VMN2,VOLU,,NUM,MIN 
 *GET,VMX2,VOLU,,NUM,Max 
 
-!���񻮷� 
+!网格划分 
 CSYS,4  
 WPCSYS,-1,0 
 wprot,2*angle2,0,0  
@@ -404,7 +402,7 @@ NUMCMP,VOLU
 ALLSEL,ALL             
 VSEL,S, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
-VGEN, ,1,VMX1,1, ,gky, , , ,1   !�����Ӵ� 
+VGEN, ,1,VMX1,1, ,gky, , , ,1   !调整接触 
 ALLSEL,ALL   
 ALLSEL,BELOW,VOLU
 ALLSEL,ALL            
@@ -416,7 +414,7 @@ CSYS,1
 
 *dim,VN,,n3,2
 
-*if,n3,gt,0,then  !������챳��������
+*if,n3,gt,0,then  !产生内毂齿面随机数
 NNN=z/n3
 
 *do,t,1,n3,1
@@ -427,7 +425,7 @@ NN=NINT(NX)
 
 *endif
 
-*if,bc,ne,0,then   !����Ħ��Ƭ��Ӧ�ĳ���
+*if,bc,ne,0,then   !计算摩擦片对应的齿面
 
 *do,t,1,n3,1
 
@@ -476,7 +474,7 @@ NN=NINT(NX)
 
 ALLSEL,ALL
 ALLSEL,BELOW,VOLU
-VSEL,S, , ,VN(1,1,1),   !ѡ�������
+VSEL,S, , ,VN(1,1,1),   !选择齿面体
 VSEL,a, , ,VN(1,2,1),   
 *do,t,2,n3,1
 VSEL,a, , ,VN(t,1,1),
@@ -491,7 +489,7 @@ NUMCMP,VOLU
 
 
 *GET,VMX3,VOLU,,NUM,Max
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,S, , ,1 ,VMX1-n3,1
 VSEL,A, , ,VMX3-n3+1 ,VMX3,1
 ALLSEL,BELOW,VOLU   
@@ -523,7 +521,7 @@ ALLSEL,BELOW,VOLU
 LSEL,R,LOC,Z,BC+0.5-(B1-BX)/2+0.001,BC+0.5-(B1-BX)/2+b1-0.001 
 LESIZE,ALL,1.2, , , ,1, , ,1,     
  
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,U, , ,1 ,VMX1-n3,1
 VSEL,U, , ,VMX3-n3+1 ,VMX3,1
 ALLSEL,BELOW,VOLU
@@ -560,7 +558,7 @@ LESIZE,ALL,1.2, , , ,1, , ,1,
 
 !VSEL,R,LOC,Z,bc+0.6,bc+bx+0.4
 
-ALLSEL,ALL          !�������  
+ALLSEL,ALL          !内毂网络  
 ALLSEL,BELOW,VOLU
 TYPE,   1   
 MAT,       1
@@ -584,7 +582,7 @@ VCLEAR,2
 VSWEEP,2
 *endif 
 
-TYPE,   1       !Ħ��Ƭ�ݲ�����
+TYPE,   1       !摩擦片齿部网格
 MAT,       2
 *if,bc,ne,0,then
 
@@ -601,7 +599,7 @@ VSWEEP,z*5+1+t-n3
 VSWEEP,VMX3-2*n3+t
 *enddo
 
-VSWEEP,z*2+1-n3      !Ħ��Ƭ��������
+VSWEEP,z*2+1-n3      !摩擦片基体网络
 VSWEEP,z*2+5-n3
 VSWEEP,z*2+6-n3
 
@@ -611,7 +609,7 @@ VSWEEP,z*2+8+t*3-n3
 
 *else
 
-*if,VN(1,1,1),eq,1,then    !Ħ��Ƭ�ݲ�����
+*if,VN(1,1,1),eq,1,then    !摩擦片齿部网络
 VSWEEP,z*3+1-n3
 *else
 VSWEEP,Z*2+2-n3
@@ -622,7 +620,7 @@ VSWEEP,Z*2+2-n3
 VSWEEP,Z*3+1+t-n3
 *enddo 
 
-VSWEEP,Z*2+1-n3     !Ħ��Ƭ��������
+VSWEEP,Z*2+1-n3     !摩擦片基体网络
 *do,t,1,z-1,1 
 VSWEEP,Z*2+2+t-n3
 *enddo
@@ -654,39 +652,39 @@ VSWEEP,z*2+10+t*3-n3
 *enddo
 *endif
 
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,S, , ,1 ,VMX1-n3,1
 VSEL,A, , ,VMX3-n3+1 ,VMX3,1
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,X,rf1-1,ra1+1
 LESIZE,ALL,0.5, , , ,1, , ,1,   
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,S, , ,1 ,VMX1-n3,1
 VSEL,A, , ,VMX3-n3+1 ,VMX3,1 
 ALLSEL,BELOW,VOLU   
 LSEL,R,LOC,X,rf1-1.2
 LESIZE,ALL,1, , , ,1, , ,1, 
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,S, , ,1 ,VMX1-n3,1
 VSEL,A, , ,VMX3-n3+1,VMX3,1  
 ALLSEL,BELOW,VOLU   
 LSEL,R,LOC,X,0,rd1+1
 LESIZE,ALL,3, , , ,1, , ,1, 
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,S, , ,1 ,VMX1-n3,1
 VSEL,A, , ,VMX3-n3+1 ,VMX3,1
 ALLSEL,BELOW,VOLU   
 LSEL,R,LOC,X,rd1+1,rf1-1.3  
 LESIZE,ALL,2, , , ,1, , ,1, 
-ALLSEL,ALL          !���񻮷ֳߴ��趨   
+ALLSEL,ALL          !网格划分尺寸设定   
 VSEL,S, , ,1 ,VMX1-n3,1
 VSEL,A, , ,VMX3-n3+1 ,VMX3,1  
 ALLSEL,BELOW,VOLU   
 LSEL,R,LOC,Z,BC+0.5-(B1-BX)/2+0.001,BC+0.5-(B1-BX)/2+b1-0.001 
 LESIZE,ALL,1.2, , , ,1, , ,1, 
 
-ALLSEL,ALL          !���񻮷ֳߴ��趨  
+ALLSEL,ALL          !网格划分尺寸设定  
 !VSEL,S, , ,VMX3-n3+1,VMX3,1 
 ALLSEL,BELOW,VOLU
 TYPE,   1   
@@ -697,18 +695,18 @@ MSHKEY,0
 VMESH,VMX3-n3+t
 *enddo  
 
-ALLSEL,ALL         !�������Լ���ڵ㼯��
+ALLSEL,ALL         !创建内毂约束节点集合
 ALLSEL,BELOW,VOLU
 NSEL,S,LOC,x,rd1
 CM,FORCE,NODE 
 CSYS,1
-CMSEL,S,FORCE     !Ħ��ƬԼ����ʩ��
+CMSEL,S,FORCE     !摩擦片约束的施加
 D,ALL, , , , , ,UX,UZ, , , , 
 ALLSEL,ALL
 SAVE
 FINISH  
 
-!���
+!求解
 /SOL 
 ANTYPE,MODAL 
 MODOPT,LANB,dom,0,0, ,OFF   
@@ -738,9 +736,9 @@ set,1,i
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, U,SUM, 0,1.0      !λ����ʾ
+PLNSOL, U,SUM, 0,1.0      !位移显示
 /show,close 
-/RENAME,friction000.JPG,,,modal_u_%i%.jpeg
+/RENAME,%jobname%000.JPG,,,modal_u_%i%.jpeg
 *enddo
 finish
 
@@ -756,9 +754,9 @@ set,1,i
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, S,EQV, 0,1.0     !��ЧӦ����ʾ
+PLNSOL, S,EQV, 0,1.0     !等效应力显示
 /show,close 
-/RENAME,friction000.JPG,,,modal_s_%i%.jpeg
+/RENAME,%jobname%000.JPG,,,modal_s_%i%.jpeg
 *enddo
 finish
 
@@ -767,9 +765,9 @@ finish
 
 
 /post1                  
-*get,nodenum,node,,num,max                  !��ȡ�ڵ���        
-*set,modenum,dom                               !ָ��ģ̬�Ľ��� 
-*cfopen,modal,csv,,loc                    !���ļ�          
+*get,nodenum,node,,num,max                  !读取节点数        
+*set,modenum,dom                               !指定模态的阶数 
+*cfopen,modal,csv,,loc                    !打开文件          
 *Do,i,1,modenum,1                       
 *Get,modefq,mode,i,freq 
 *Vwrite,i,modefq

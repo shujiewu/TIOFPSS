@@ -1548,7 +1548,7 @@
                 if (proj == null)
                     return;
                 string tempDataPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");
-                string dynmicMat = System.IO.Path.Combine(tempDataPath, "Dynamic.mat");
+                string dynmicMat = System.IO.Path.Combine(tempDataPath, "冲击动力学分析结果\\Dynamic.mat");
                 string picPath = tempDataPath;
                 double wendingshijian = Convert.ToDouble(proj.WenDingShiJian);
                 Analysis.ZaoShengFenXiThread t = new Analysis.ZaoShengFenXiThread(new Analysis.NoiseThreadParamter(picPath, dynmicMat, wendingshijian));
@@ -1691,6 +1691,32 @@
             }
         }
         string startPath=System.Windows.Forms.Application.StartupPath;
+        private void ModifyParaPath(string fileName)
+        {
+            List<string> fileContent = new List<string>();
+            int i = 0;
+            using (System.IO.StreamReader file = new System.IO.StreamReader(fileName, Encoding.Default))
+            {              
+                string line;                
+                while((line=file.ReadLine())!=null)
+                {
+                    i++;
+                    if(i==2)
+                    {
+                        line="/INPUT,'parameter','txt','"+startPath+"\\APDLcode\\"+"',, 0   !路径";
+                    }
+                    fileContent.Add(line);
+                }             
+            }
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName))
+            {
+                foreach(string line in fileContent)
+                {
+                    file.WriteLine(line);
+                }                
+            }
+        }
+
         private void OnJingTaiQiangDuFenXiClick(object sender, RoutedEventArgs e)
         {
             Dialog.JingTaiQiangDuFenXi aw = new Dialog.JingTaiQiangDuFenXi();
@@ -1759,6 +1785,8 @@
                 //Window2.dongLiXue_start();
                 t.CallBackMethod = JingTaiQiangDuFenXiFinish;
                 AddMonitor();
+
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).JingTaiQiangDuFenXi_start();                
             }
@@ -1846,6 +1874,7 @@
                 Analysis.XT_DuCengShaoChiThread t = new Analysis.XT_DuCengShaoChiThread(threadPara);
                 t.CallBackMethod = DuCengFenXiFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).DuCengFenXi_start();    
 
@@ -1940,6 +1969,7 @@
                 Analysis.XT_ShaoChiYuYingLiThread t = new Analysis.XT_ShaoChiYuYingLiThread(threadPara);
                 t.CallBackMethod = ShaoChiYuYingLiFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).YuYingLiFenXi_start();    
 
@@ -2024,6 +2054,7 @@
                 Analysis.XT_QuanChiPianXinThread t = new Analysis.XT_QuanChiPianXinThread(threadPara);
                 t.CallBackMethod = QuanChiPianXinJiSuanFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).QuanChiPianXin_start();    
 
@@ -2138,6 +2169,7 @@
                 Analysis.XT_DongTaiFenXiThread t = new Analysis.XT_DongTaiFenXiThread(threadPara);
                 t.CallBackMethod = DongTaiFenXiFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).DongTaiFenXi_start();    
 
@@ -2339,6 +2371,7 @@
                 Analysis.XT_DongTaiYingLiThread t = new Analysis.XT_DongTaiYingLiThread(threadPara);
                 t.CallBackMethod = DongTaiYingLiJiSuanFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).DongTaiYingLiJiSuan_start();    
 
@@ -2420,6 +2453,7 @@
                 Analysis.XT_MoCaPianMoTaiThread t = new Analysis.XT_MoCaPianMoTaiThread(threadPara);
                 t.CallBackMethod = MoCaPianMoTaiJiSuanFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).McpModel_start();    
 
@@ -2500,6 +2534,7 @@
                 Analysis.XT_McpNgMoTaiJiSuan t = new Analysis.XT_McpNgMoTaiJiSuan(threadPara);
                 t.CallBackMethod = McpNgMoTaiJiSuanFinish;
                 AddMonitor();
+                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).McpNgModel_start();    
 
@@ -2565,17 +2600,20 @@
             string row = "21";
             string col = "2";
             string tongdao = "3";
-
+            string dcol = "2";
+            string row1 = "0";
+            string row2 = "0";
+            double iszidingyi = 0;
             row = para.row;
             col = para.col;
             tongdao = para.td;
-
+            
             string clcs1, clcs2, clcs3;
             clcs1 = Configure.IniReadValue("canshu", "clcs1");
             clcs2 = Configure.IniReadValue("canshu", "clcs2");
             clcs3 = Configure.IniReadValue("canshu", "clcs3");
 
-            double[] Para = new double[21];
+            double[] Para = new double[23];
 
             Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
             Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
@@ -2597,8 +2635,10 @@
             Para[17] = Convert.ToDouble(clcs2);//3.6;
             Para[18] = Convert.ToDouble(clcs3);//0.3;
 
-            Para[19] = 2;//3.6;
-            Para[20] = 50;//0.3;
+            Para[19] = Convert.ToDouble(dcol);//第几列 （动态分析结果文件用）
+            Para[20] = Convert.ToDouble(row1);//从多少行开始
+            Para[21] = Convert.ToDouble(row2);//到多少行截止
+            Para[22] = iszidingyi;//时候用户自定义
 
             string file = para.path;
             string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
@@ -2635,7 +2675,10 @@
             string row = "21";
             string col = "2";
             string tongdao = "3";
-
+            string dcol = "2";
+            string row1 = "0";
+            string row2 = "0";
+            double iszidingyi = 0;
             row = para.row;
             col = para.col;
 
@@ -2645,7 +2688,7 @@
             clcs2 = Configure.IniReadValue("canshu", "clcs2");
             clcs3 = Configure.IniReadValue("canshu", "clcs3");
 
-            double[] Para = new double[21];
+            double[] Para = new double[23];
 
             Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
             Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
@@ -2666,9 +2709,10 @@
             Para[16] = Convert.ToDouble(clcs1);//1.2*1e-11;
             Para[17] = Convert.ToDouble(clcs2);//3.6;
             Para[18] = Convert.ToDouble(clcs3);//0.3;
-
-            Para[19] = 2;//3.6;
-            Para[20] = 50;//0.3;
+            Para[19] = Convert.ToDouble(dcol);//第几列 （动态分析结果文件用）
+            Para[20] = Convert.ToDouble(row1);//从多少行开始
+            Para[21] = Convert.ToDouble(row2);//到多少行截止
+            Para[22] = iszidingyi;//时候用户自定义
 
             string file = para.path;
             string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
@@ -2705,14 +2749,17 @@
             string row = "21";
             string col = "2";
             string tongdao = "3";
-
+            string dcol = "2";
+            string row1 = "0";
+            string row2 = "0";
+            double iszidingyi = 0;
 
             string clcs1, clcs2, clcs3;
             clcs1 = Configure.IniReadValue("canshu", "clcs1");
             clcs2 = Configure.IniReadValue("canshu", "clcs2");
             clcs3 = Configure.IniReadValue("canshu", "clcs3");
 
-            double[] Para = new double[21];
+            double[] Para = new double[23];
 
             Para[0] = Convert.ToDouble(proj.PiLaoJiXian);
             Para[1] = Convert.ToDouble(proj.YinLiYingBianZhuanHuanXiShu);
@@ -2734,8 +2781,10 @@
             Para[17] = Convert.ToDouble(clcs2);//3.6;
             Para[18] = Convert.ToDouble(clcs3);//0.3;
 
-            Para[19] = 2;//3.6;
-            Para[20] = 50;//0.3;
+            Para[19] = Convert.ToDouble(dcol);//第几列 （动态分析结果文件用）
+            Para[20] = Convert.ToDouble(row1);//从多少行开始
+            Para[21] = Convert.ToDouble(row2);//到多少行截止
+            Para[22] = iszidingyi;//时候用户自定义
 
             string file = para.path;
             string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
@@ -3049,7 +3098,7 @@
         {
             var selectItem = sender as Fluent.MenuItem;
             string picName = selectItem.Header.ToString();
-            PictureEdit picEdit = new PictureEdit(loadProj[nowProjName] + "\\tempData\\" + picName + ".png");
+            PictureEdit picEdit = new PictureEdit(loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果\\" + picName + ".png");
             //if (picName.Equals("摩擦片冲击力"))
             //{
                 
@@ -3346,9 +3395,9 @@
         {
             List<string> path = new List<string>();
             path.Add("D:\\proj\\11.29");
-            path.Add("D:\\proj\\11.11");
-            path.Add("D:\\proj\\11.111");
-            path.Add("D:\\proj\\11.14");
+            //path.Add("D:\\proj\\11.11");
+            //path.Add("D:\\proj\\11.111");
+            //path.Add("D:\\proj\\11.14");
             Xceed.Wpf.AvalonDock.Layout.LayoutDocument document = new Xceed.Wpf.AvalonDock.Layout.LayoutDocument();
             document.Title = "项目对比";
             document.Content = new Dialog.ProjectCompare(path);

@@ -94,14 +94,14 @@ namespace TIOFPSS.Analysis
             }
             if(success)
             {
-                string source1, source2;
-                string dest1, dest2;
-                source1 = path + "\\ShaoChi\\danchiyingliyuntu.jpeg";//产生的结果文件
-                dest1 = path + "\\danchiyingliyuntu.jpeg";
-                source2 = path + "\\ShaoChi\\danchiweiyiyuntu.jpeg";//
-                dest2 = path + "\\danchiweiyiyuntu.jpeg";
-                System.IO.File.Copy(source1, dest1, true);
-                System.IO.File.Copy(source2, dest2, true);
+                //string source1, source2;
+                //string dest1, dest2;
+                //source1 = path + "\\ShaoChi\\danchiyingliyuntu.jpeg";//产生的结果文件
+                //dest1 = path + "\\danchiyingliyuntu.jpeg";
+                //source2 = path + "\\ShaoChi\\danchiweiyiyuntu.jpeg";//
+                //dest2 = path + "\\danchiweiyiyuntu.jpeg";
+                //System.IO.File.Copy(source1, dest1, true);
+                //System.IO.File.Copy(source2, dest2, true);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 new DoTask(Func));

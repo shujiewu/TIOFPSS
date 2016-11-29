@@ -13,14 +13,25 @@ namespace TIOFPSS.DB
         {
 
         }
-        public static void LoadPara(string path, List<string> values)
+        public static bool LoadPara(string path, List<string> values)
         {
-            XElement root = XElement.Load(path);
-            foreach (var item in root.Elements("item"))
+            if(System.IO.File.Exists(path))
             {
-                values.Add(item.Element("val").Value.ToString());
-                //Console.WriteLine(item.Element("val").Value);
+                XElement root = XElement.Load(path);
+                foreach (var item in root.Elements("item"))
+                {
+                    values.Add(item.Element("val").Value.ToString());
+                    
+                    //Console.WriteLine(item.Element("val").Value);
+                }
+                return true;
             }
+            else
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("xml文件读取出错！");
+                return false;
+            }
+
         }
         public static void UpdatePara(string path, List<string> values)
         {

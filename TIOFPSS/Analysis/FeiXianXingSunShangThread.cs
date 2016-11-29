@@ -38,7 +38,7 @@ namespace TIOFPSS.Analysis
             
             //MWArray fontName = new MWCharArray("宋体");
                       
-            MWArray ff = new MWNumericArray(1, 21,threadParamter.Para);
+            MWArray ff = new MWNumericArray(1, 23,threadParamter.Para);
             MWArray locc = new MWCharArray(threadParamter.Path + "非线性损伤分析结果\\");
             MWArray dataname = new MWCharArray(threadParamter.filePath);
             MWArray fontnm = new MWCharArray("宋体");
@@ -93,7 +93,7 @@ new DoTask(Func));
     {
         public string Path { get; set; }//分析得到的文件的存放位置
         public string ProPath { get; set; }//项目路径（mat文件的保存路径）
-        public double[] Para = new double[21];
+        public double[] Para = new double[23];
         public string filePath { get; set; }//数据文件数组
         public int isShiYan;
         public FeiXianXingSunShangThreadParamter()

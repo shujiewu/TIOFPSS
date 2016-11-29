@@ -1,7 +1,7 @@
 !/CLEAR
-/INPUT,'para_gear122','txt','D:\abc\APDL0320\',, 0   !路径
+/INPUT,'parameter','txt','D:\abc\APDLcode\',, 0   !路径
 /CWD,filepath
-/FILNAME,friction,0
+/FILNAME,jobname,0
 /PREP7 
 pi=3.14159265358979  
 r=0.5*m*z             
@@ -36,9 +36,9 @@ KDELE,3,101,1
 NUMCMP,KP              
 
 LGEN,2,1, , ,0,0,10, ,0   
-CSKP,11,0,2,4,3,1,1,
-LGEN,2,1, , ,0,0,gap1, ,0
-LGEN,2,1, , ,0,0,-gap2, ,0
+CSYS,1
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线 
+LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0
 LDELE,1,2 ,1 ,1
 NUMCMP,KP   
 NUMCMP,line 
@@ -79,9 +79,9 @@ KDELE,3,101,1
 NUMCMP,KP             
 
 !用于调整齿侧间隙
-LGEN,2,1, , ,0,0,10, ,0   
-CSKP,11,0,2,4,3,1,1,
-LGEN,2,1, , ,0,0,gap1, ,0
+LGEN,2,1, , ,0,0,10, ,0 
+CSYS,1  
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线 
 ldele,1,2,1
 kdele,2,5,1
 NUMCMP,KP   
@@ -155,7 +155,7 @@ NUMCMP,KP
 LCOMB,6, 7,0  
 LCOMB,8, 9,0    
 lfillt,2,4,rff1
-lfillt,1,5,rff1    
+lfillt,1,5,rff1  
 LSTR,1,9 
 LSTR,9,6  
 LSTR,11,12  
@@ -216,8 +216,8 @@ bsplin,,p51x
 KDELE,kpnub1+1,kpnub2-1,1   
 NUMCMP,KP   
 *GET,lnub,line,,NUM,max 
-CSYS,11 
-LGEN,2,lnub, , ,0,0,-gap2, ,0  
+CSYS,1 
+LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线 
 ldele,lnub  
 kdele,kpnub1,kpnub1+1,1 
 NUMCMP,KP   
@@ -294,7 +294,7 @@ NUMCMP,KP
 LSEL,S,,,lnub,lnub+6,1  
 larc,kpnub1,kpnub1+2,kzx,ra2
 lfillt,lnub,lnub+4,rff2     !倒角
-lfillt,lnub+1,lnub+5,rff2
+lfillt,lnub+1,lnub+5,rff2 
 LSTR,kpnub1+7,kpnub1+8  
 LSTR,kpnub1+8,kpnub1+9  
 LSTR,kpnub1+5,kpnub1+4  
@@ -506,12 +506,6 @@ ALLSEL,ALL
 ALLSEL,BELOW,VOLU
 NSEL,S,LOC,x,rd1
 CM,FORCE,NODE 
-!创建摩擦片约束节点集合
-ALLSEL,ALL
-ALLSEL,BELOW,VOLU
-ASEL,S,LOC,x,rd2
-NSLA,S,1
-CM,yueshu,NODE
 !创建内毂齿面节点集合
 ALLSEL,ALL       
 VSEL,S,,,1,2,1 
@@ -620,55 +614,29 @@ RMORE,,,0, 0,0,
 RMORE,,,,,, 
 RMORE,,,,,  
 
-!摩擦片约束的施加
-CMSEL,S,YUESHU     
-D,ALL,ALL
+
 
 ALLSEL,ALL 
 VSEL,U,,,1,2,1 
 ALLSEL,BELOW,VOLU
 *if,bc,ne,0,then 
-ASEL,S,,,107
-ASEL,A,,,102
-ASEL,A,,,121
-ASEL,A,,,125
+ASEL,S,,,125
 ASEL,A,,,98
 ASEL,A,,,20
 ASEL,A,,,71
-ASEL,A,,,67
-ASEL,A,,,48
-ASEL,A,,,53
-ASEL,A,,,51
-ASEL,A,,,25
-ASEL,A,,,78
 ASEL,A,,,105
-ASEL,A,,,124
-ASEL,A,,,103
-ASEL,A,,,108
-ASEL,A,,,97
-ASEL,A,,,76
-ASEL,A,,,81
-ASEL,A,,,42
-ASEL,A,,,41
-ASEL,A,,,28
-ASEL,A,,,70
-ASEL,A,,,49
-ASEL,A,,,54
+ASEL,A,,,78
+ASEL,A,,,25
+ASEL,A,,,51
 *else
-ASEL,S,,,70
-ASEL,A,,,72
+ASEL,S,,,36
+ASEL,A,,,70
 ASEL,A,,,53
 ASEL,A,,,20
-ASEL,A,,,36
 ASEL,A,,,69
 ASEL,A,,,52
 ASEL,A,,,19
 ASEL,A,,,35
-ASEL,A,,,38
-ASEL,A,,,39
-ASEL,A,,,23
-ASEL,A,,,56
-ASEL,A,,,73
 *endif
 NSLA,S,1
 D,ALL,ALL

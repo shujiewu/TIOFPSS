@@ -35,11 +35,11 @@ namespace TIOFPSS.Dialog
             InitializeComponent();
             nowProjPath = NowProjPath;
 
-            tempPath = nowProjPath + "\\tempData\\";
+            tempPath = nowProjPath + "\\tempData\\冲击动力学分析结果\\";
 
-            filePath = nowProjPath + "\\tempData\\Dynamic.mat";
+            filePath = nowProjPath + "\\tempData\\冲击动力学分析结果\\Dynamic.mat";
 
-            string matPath = nowProjPath + "\\tempData\\Pitch.mat";
+            string matPath = nowProjPath + "\\tempData\\冲击动力学分析结果\\Pitch.mat";
             Matrix<double> pitchLeft = MatlabReader.Read<double>(matPath, "pitchleft");
             Matrix<double> pitchRight = MatlabReader.Read<double>(matPath, "pitchright");
             Matrix<double> pMaxForce = MatlabReader.Read<double>(matPath, "maxforce");

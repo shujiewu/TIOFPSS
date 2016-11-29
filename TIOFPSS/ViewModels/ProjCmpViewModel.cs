@@ -27,12 +27,14 @@ namespace TIOFPSS.ViewModels
                 para.Add("0");
                 para.Add(path[i]);
                 para.Add(path[i]);
-                DB.XmlHelper.LoadPara(paraPath, para);
-                
-                loopSetValue(para,userProject);
-                projects.Add(userProject);
-                para.Clear();
 
+                if (DB.XmlHelper.LoadPara(paraPath, para))
+                {
+                    loopSetValue(para, userProject);
+                    projects.Add(userProject);
+                    para.Clear();
+                }
+               
             }
             
         }

@@ -1,7 +1,7 @@
 !/CLEAR
-/INPUT,'para_gear122','txt','D:\abc\APDL0320\',, 0   !路径
+/INPUT,'parameter','txt','D:\abc\APDLcode\',, 0   !路径
 /CWD,filepath
-/FILNAME,friction1,0
+/FILNAME,jobname,0
 !本程序采用毫米单位制进行编写
 /NOPR          !设置LSDYNA求解类型    
 KEYW,LSDYNA,1   
@@ -50,7 +50,7 @@ MP,DENS,6,dens3    !定义摩擦层材料参数
 MP,EX,6,ex3 
 MP,NUXY,6,prxy3 
 EDMP,RIGI,1,7,4    !定义刚体材料  
-MP,DENS,1,500000/pi/2/rd1/b1 
+MP,DENS,1,MASSoNG*10000/pi/2/rd1/b1 
 MP,EX,1,2e11
 MP,NUXY,1,0.3   
 EDMP,RIGI,7,7,4     !定义刚体材料 
@@ -75,8 +75,8 @@ bsplin,,p51x
 KDELE,3,101,1   
 NUMCMP,KP   
 LGEN,2,1, , ,0,0,10, ,0 
-CSKP,11,0,2,4,3,1,1,
-LGEN,2,1, , ,0,0,gap1, ,0  
+CSYS,1
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !按齿侧间隙偏移渐开线  
 ldele,1,2,1 
 kdele,2,5,1 
 NUMCMP,KP   
@@ -145,7 +145,10 @@ NUMCMP,KP
 LCOMB,6, 7,0
 LCOMB,8, 9,0
 lfillt,2,4,rff1  
-lfillt,1,5,rff1  
+lfillt,1,5,rff1   
+LCOMB,4,7,0  !倒角1修改
+LCOMB,5,9,0
+  
 LSTR,1,9
 LSTR,9,6
 LSTR,11,12  
@@ -162,6 +165,10 @@ CSYS,4
 WPCSYS,-1,0 
 VOFFST,1,-b1
 VOFFST,2,b1 
+ALLSEL,ALL  
+NUMCMP,line 
+NUMCMP,KP  
+
 !!!对内毂进行网格划分  
 VSEL,S,,,1,2,1  
 ALLSEL,BELOW,VOLU   
@@ -242,8 +249,8 @@ bsplin,,p51x
 KDELE,kpnub1+1,kpnub2-1,1   
 NUMCMP,KP   
 *GET,lnub,line,,NUM,max 
-CSYS,11 
-LGEN,2,lnub, , ,0,0,-gap2, ,0  
+CSYS,1 
+LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0    !按齿侧间隙偏移渐开线 
 ldele,lnub  
 kdele,kpnub1,kpnub1+1,1 
 NUMCMP,KP   
@@ -321,6 +328,9 @@ LSEL,S,,,lnub,lnub+6,1
 larc,kpnub1,kpnub1+2,kzx,ra2
 lfillt,lnub,lnub+4,rff2  
 lfillt,lnub+1,lnub+5,rff2    !倒角
+LCOMB,lnub+8,lnub+5,0  !倒角2修改
+LCOMB,lnub+7,lnub+4,0
+
 LSTR,kpnub1+7,kpnub1+8  
 LSTR,kpnub1+8,kpnub1+9  
 LSTR,kpnub1+5,kpnub1+4  
@@ -345,6 +355,7 @@ VOFFST,AC2,bc
 ALLSEL,ALL 
 ASEL,s,LOC,X,rf2-1,rd2
 *GET,AC1,AREA,,NUM,MIN  
+ALLSEL,ALL
 CSYS,4  
 WPCSYS,-1,0 
 VOFFST,AC2-1,bx  
@@ -446,18 +457,6 @@ SECNUM,
 MSHAPE,0,2D 
 MSHKEY,1
 AMESH,ALL   
-ALLSEL,ALL         !摩擦片刚性单元面网格划分
-ALLSEL,BELOW,VOLU   
-ASEL,S,LOC,x,rd2
-TYPE,   1   
-MAT,       7
-REAL,       1   
-ESYS,       0   
-SECNUM, 
-!*  
-MSHAPE,0,2D 
-MSHKEY,1
-AMESH,ALL   
 ALLSEL,ALL  
 ASEL,S,LOC,X,rd1+1,rf1-1.3  
 ASEL,R,LOC,Z,0  
@@ -485,7 +484,7 @@ VGEN, ,1,VMX1, 1, , ,BC+0.5-(B1-BX)/2, , ,1
 ALLSEL,ALL  
 EDPART,CREATE     !创建part部件  
 !建立接触   
-EDCGEN,ASTS,       1,       3,0.1,0.8E-01,0,0,0, , , , ,0,10000000,0,0  !target改为part4
+EDCGEN,ASTS,       1,       3,0.1,0.8E-01,0,0,0, , , , ,0,10000000,0,0  !target改为part4  5 3 
 *create,ttb,mac 
 *dim,tc,,fzsj*1000,1  
 *vread,tc(1,1),tt,dat,,jik,1,fzsj*1000
