@@ -44,7 +44,7 @@ namespace TIOFPSS
 
         public delegate void delgateShengChengBaoBiaoMethod(List<string> para);
 
-
+        public delegate void delgateViewMoTaiResultOKMethod(int select,List<int> para);
 
         public static string [] str_AnsysTempPath=new string [12]{
 	"ShaoChi",

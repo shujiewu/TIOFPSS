@@ -303,6 +303,18 @@ namespace TIOFPSS.ViewModels
                 this.OnPropertyChanged("MoChaPianChiGenYingLiShiYuBoXing");
             }
         }
+
+        private ImageSource moChaPianChiGenYingLiPinYuBoXing;
+        public ImageSource MoChaPianChiGenYingLiPinYuBoXing
+        {
+            get { return moChaPianChiGenYingLiPinYuBoXing; }
+            set
+            {
+                moChaPianChiGenYingLiPinYuBoXing = value;
+                this.OnPropertyChanged("MoChaPianChiGenYingLiPinYuBoXing");
+            }
+        }
+
         private ImageSource moChaPianLeiJiSunShang;
         public ImageSource MoChaPianLeiJiSunShang
         {
@@ -347,7 +359,7 @@ namespace TIOFPSS.ViewModels
         }
 
 
-        BitmapImage LoadImg(string fileName)
+       public static BitmapImage LoadImg(string fileName)
        {
            if (!System.IO.File.Exists(fileName))
            {
@@ -408,6 +420,7 @@ namespace TIOFPSS.ViewModels
                 //DongTaiWeiYiYunTu = LoadImg(PicPath + "\\dynamicweiyiyuntu.jpeg");
                 //非线性损伤分析
                 MoChaPianChiGenYingLiShiYuBoXing = LoadImg(PicPath + "\\非线性损伤分析结果\\摩擦片齿根应力时域波形.png");
+                MoChaPianChiGenYingLiPinYuBoXing = LoadImg(PicPath + "\\非线性损伤分析结果\\摩擦片齿根应力频域波形.png");
                 MoChaPianLeiJiSunShang = LoadImg(PicPath + "\\非线性损伤分析结果\\摩擦片累计损伤.png");
                 //当量载荷谱分析结果
                 DangLiangZaiHePu = LoadImg(PicPath + "\\当量载荷谱分析结果\\当量载荷谱.png");

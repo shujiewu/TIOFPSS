@@ -1,31 +1,32 @@
-﻿namespace TIOFPSS
-{
-    using System;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Input;
-    using System.Windows.Threading;
-    using Fluent;
-    using TIOFPSS.ViewModels;
-    using Button = Fluent.Button;
-    using System.Collections.Generic;
-    using TIOFPSS.Dialog;
-    using System.IO;
-    using TIOFPSS.DB;
-    using System.Data.SQLite;
-    using System.Windows.Data;
-    using Xceed.Wpf.AvalonDock.Layout;
-    using MathWorks.MATLAB.NET.Arrays;
-    using draw;
+﻿using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Threading;
+using Fluent;
+using TIOFPSS.ViewModels;
+using Button = Fluent.Button;
+using System.Collections.Generic;
+using TIOFPSS.Dialog;
+using System.IO;
+using TIOFPSS.DB;
+using System.Data.SQLite;
+using System.Windows.Data;
+using Xceed.Wpf.AvalonDock.Layout;
+using MathWorks.MATLAB.NET.Arrays;
+using draw;
 
-    using zsbd;
-    using MathNet.Numerics.LinearAlgebra;
-    using MathNet.Numerics.Data.Matlab;
-    using System.Windows.Media;
+using zsbd;
+using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.Data.Matlab;
+using System.Windows.Media;
+namespace TIOFPSS
+{
+
     /// <summary>
     /// Content.xaml 的交互逻辑
     /// </summary>
@@ -94,7 +95,7 @@
             btnDongTaiYingLiJiSuan.IsEnabled = false;
             btnMoCaPianMoTaiJiSuan.IsEnabled = false;
             btnMcpNgMoTaiJiSuan.IsEnabled = false;
-            btnMoTaiJieGuo.IsEnabled = false;
+            //btnMoTaiJieGuo.IsEnabled = false;
 
             btnAnalysisMonitor.IsEnabled = false;
             btnShengChengBaoBiao.IsEnabled = false;
@@ -127,7 +128,7 @@
             btnDongTaiYingLiJiSuan.IsEnabled = true;
             btnMoCaPianMoTaiJiSuan.IsEnabled = true;
             btnMcpNgMoTaiJiSuan.IsEnabled = true;
-            btnMoTaiJieGuo.IsEnabled = true;
+            //btnMoTaiJieGuo.IsEnabled = true;
 
             btnAnalysisMonitor.IsEnabled = true;
             btnShengChengBaoBiao.IsEnabled = true;
@@ -1944,11 +1945,11 @@
                         file.Write("        !");
                         file.WriteLine(dataname[i]);
                     }
-                    temp = "pre1=" + chigenLi + "   !齿根预应力";
+                    temp = "pre1=" + chigenLi + "   !淬火前温度";
                     file.WriteLine(temp);
-                    temp = "pre2=" + chiMianLi + "   !齿面预应力";
+                    temp = "pre2=" + chiMianLi + "   !淬火后温度";
                     file.WriteLine(temp);
-                    temp = "pre3=" + chiDingLi + "   !齿顶预应力";
+                    temp = "pre3=" + chiDingLi + "   !淬火深度";
                     file.WriteLine(temp);
 
                     temp = "n3=" + proj.ShiJiJieChuChiShu + "   !实际接触齿数";
@@ -2679,7 +2680,8 @@
             string row1 = "0";
             string row2 = "0";
             double iszidingyi = 0;
-            row = para.row;
+            row1 = para.row1;
+            row2 = para.row2;
             col = para.col;
 
 
@@ -3501,5 +3503,71 @@
         {
 
         }
+    }
+
+    public sealed class TrueToFalseConverter : IValueConverter
+    {
+        static TrueToFalseConverter()
+        {
+        }
+        private TrueToFalseConverter()
+        {
+        }
+        public static TrueToFalseConverter Instance
+        {
+            get
+            {
+                return _instance;
+            }
+         }
+        private static readonly TrueToFalseConverter _instance = new TrueToFalseConverter();
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            var v = (bool)value;
+            return !v;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    //public static class Singleton<TItem> where TItem : class, new()
+    //{
+    //    public static TItem GetInstance();
+    //}
+    /// <summary>
+    /// 常用转换器的静态引用
+    /// 使用实例：Converter={x:Static local:XConverter.TrueToFalseConverter}
+    /// </summary>
+    public sealed class XConverter
+    {
+        //public static BooleanToVisibilityConverter BooleanToVisibilityConverter
+        //{
+        //    get { return Singleton<BooleanToVisibilityConverter>.GetInstance(); }
+        //}
+
+        public static TrueToFalseConverter TrueToFalseConverter
+        {
+            get { return TrueToFalseConverter.Instance; }
+        }
+
+        //public static ThicknessToDoubleConverter ThicknessToDoubleConverter
+        //{
+        //    get { return Singleton<ThicknessToDoubleConverter>.GetInstance(); }
+        //}
+        //public static BackgroundToForegroundConverter BackgroundToForegroundConverter
+        //{
+        //    get { return Singleton<BackgroundToForegroundConverter>.GetInstance(); }
+        //}
+        //public static TreeViewMarginConverter TreeViewMarginConverter
+        //{
+        //    get { return Singleton<TreeViewMarginConverter>.GetInstance(); }
+        //}
+
+        //public static PercentToAngleConverter PercentToAngleConverter
+        //{
+        //    get { return Singleton<PercentToAngleConverter>.GetInstance(); }
+        //}
     }
 }

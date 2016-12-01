@@ -71,6 +71,8 @@ namespace TIOFPSS.Dialog
     public class FXXSSFile
     {
         public string row { get; set; }
+        public string row1 { get; set; }
+        public string row2 { get; set; }
         public string col { get; set; }
         public string td { get; set; }
         public string path { get; set; }

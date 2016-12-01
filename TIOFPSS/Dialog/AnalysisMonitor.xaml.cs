@@ -75,7 +75,7 @@ namespace TIOFPSS.Dialog
 
 
 
-        bool b_dangLiang, b_dongLiXue, b_feiXian, b_xieTong, b_zaoSheng;
+        bool b_dangLiang, b_dongLiXue, b_feiXian,b_zaoSheng;
         bool b_JingTaiQiangDuFenXi, b_DuCengFenXi, b_YuYingLiFenXi, b_QuanChiPianXin, b_DongTaiFenXi, b_DongTaiYingLiJiSuan, b_McpModel, b_McpNgModel;
         public AnalysisMonitor()
         {

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="1300" d:DesignWidth="900">
     <UserControl.Resources>
@@ -224,6 +225,9 @@
                             <Expander Header="摩擦片齿根应力时域波形" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding MoChaPianChiGenYingLiShiYuBoXing}" Margin="30,0,30,0" />
                             </Expander>
+                            <Expander Header="摩擦片齿根应力频域波形" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                                <Image  Source="{Binding MoChaPianChiGenYingLiPinYuBoXing}" Margin="30,0,30,0" />
+                            </Expander>
                             <Expander Header="摩擦片累计损伤" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding MoChaPianLeiJiSunShang}" Margin="30,0,30,0" />
                             </Expander>
@@ -280,8 +284,15 @@
                         </Expander>
                         </StackPanel>
                     </TabItem>
+                    <TabItem Header="模态结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" MouseLeftButtonUp="TabItem_MouseDown">
+                        <StackPanel Name="MoTaiResult">
+                            <!--<Expander Header="动态位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                                <Image  Source="{Binding DongTaiWeiYiYunTu}" Margin="30,0,30,0" />
+                            </Expander>-->
+                        </StackPanel>
 
-            </TabControl.Items>
+                    </TabItem>
+                </TabControl.Items>
         </TabControl>
 
 

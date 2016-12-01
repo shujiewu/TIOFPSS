@@ -262,6 +262,9 @@
     <Compile Include="Dialog\UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\ViewMoTaiResult.xaml.cs">
+      <DependentUpon>ViewMoTaiResult.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\ViewResult.xaml.cs">
       <DependentUpon>ViewResult.xaml</DependentUpon>
     </Compile>
@@ -278,6 +281,10 @@
       <DependentUpon>ZaoShengYouHuaFangFa.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="ControlAttachProperty.cs" />
+    <Compile Include="Resources\FButton.xaml.cs">
+      <DependentUpon>FButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="ViewModels\FontsViewModel.cs" />
     <Compile Include="ViewModels\GalleryItemViewModel.cs" />
@@ -400,6 +407,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialog\ViewMoTaiResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialog\ViewResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -435,6 +446,34 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\CheckBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\FButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\FIcon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\RadioButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\TreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -463,6 +502,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\iconfont.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -537,10 +577,6 @@
     <Resource Include="Images\YellowLarge.png" />
     <Resource Include="Images\优化.png" />
     <Resource Include="Images\冲击动力学_无节距.ico" />
-    <Resource Include="Images\冲击动力学_有节距.ico" />
-    <Resource Include="Images\噪声分析.ico" />
-    <Resource Include="Images\当量载荷谱.ico" />
-    <Resource Include="Images\非线性损伤.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\folder.net.png" />
@@ -558,12 +594,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\冲击动力学_无节距.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\analysis.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\当量载荷谱.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -611,6 +641,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\pic_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\冲击动力学_有节距.png" />
+    <Resource Include="Images\噪声分析.png" />
+    <Resource Include="Images\非线性损伤.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\analysis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\当量载荷谱.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

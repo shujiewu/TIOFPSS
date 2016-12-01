@@ -4,6 +4,7 @@
         Height="350" Width="600"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
+        xmlns:xly="clr-namespace:TIOFPSS.Resources"
         Title="有节距动力学出图">
     <Window.Resources>
         <SolidColorBrush x:Key="WindowBackground" Color="#093B5D"></SolidColorBrush>
@@ -373,7 +374,7 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <Button Grid.Row="4"  Margin="245,5,5,5" Content="出图" Width="90" Height="23" Click="OnChuTuClick"/>
+        <xly:FButton Grid.Row="4"  Margin="245,5,5,5" Content="出图" Width="90" Height="23" Click="OnChuTuClick"/>
 
         <Button Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="23"/>
     </Grid>

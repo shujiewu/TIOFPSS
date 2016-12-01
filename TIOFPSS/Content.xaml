@@ -351,8 +351,8 @@
                                    Click="OnWuJieJuWuChaClick"
                                    Width="70"
                                    x:Name="btnwjjwc"/>
-                    <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/冲击动力学_有节距.ico"
-                                   LargeIcon="pack://application:,,,/TIOFPSS;component/Images/冲击动力学_有节距.ico"
+                    <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/冲击动力学_有节距.png"
+                                   LargeIcon="pack://application:,,,/TIOFPSS;component/Images/冲击动力学_有节距.png"
                                    Header="有节距误差"
                                    Click="OnYouJieJuWuChaClick"
                                    Width="70"
@@ -375,8 +375,8 @@
 
                     <Fluent:DropDownButton Header="协同分析"
                                            Width="70"
-                                           Icon="pack://application:,,,/TIOFPSS;component/Images/analysis.ico"
-                                           LargeIcon="pack://application:,,,/TIOFPSS;component/Images/analysis.ico" x:Name="btnXTFX">
+                                           Icon="pack://application:,,,/TIOFPSS;component/Images/analysis.png"
+                                           LargeIcon="pack://application:,,,/TIOFPSS;component/Images/analysis.png" x:Name="btnXTFX">
                         <Fluent:MenuItem Header="少齿当量静态强度分析" Click="OnJingTaiQiangDuFenXiClick" x:Name="btnJingTaiQiangDuFenXi"/>
                         <Fluent:MenuItem Header="镀层少齿当量分析" Click="OnDuCengShaoChiFenXiClick" x:Name="btnDuCengShaoChiFenXi"/>
                         <Fluent:MenuItem Header="淬火少齿当量分析" Click="OnShaoChiDangLiangFenXiClick" x:Name="btnShaoChiDangLiangFenXi"/>
@@ -388,12 +388,12 @@
                         <Fluent:MenuItem Header="摩擦片内毂模态计算" Click="OnMcpNgMoTaiJiSuanClick" x:Name="btnMcpNgMoTaiJiSuan"/>
                     </Fluent:DropDownButton>
 
-                    <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/模态结果.png"
+                    <!--<Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/模态结果.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/模态结果.png"
                                    Header="查看模态结果"
                                    Width="70"
                                    x:Name="btnMoTaiJieGuo"
-                                   />
+                                   />-->
                     <!--<Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/result.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/result.png"
                                    Header="查看结果" />-->
@@ -411,7 +411,7 @@
                                        Name="Group5">
                     <Fluent:DropDownButton x:Name="btndlzhpfx"
                                            Header="当量载荷谱分析"
-                                           Width="100"
+                                           Width="90"
                                            Icon="Images\当量载荷谱.png"
                                            LargeIcon="Images\当量载荷谱.png">
                         <Fluent:MenuItem 
@@ -436,8 +436,8 @@
                     <Fluent:DropDownButton x:Name="btnfxxssfx"
                                            Header="非线性损伤分析"
                                            Width="100"
-                                           Icon="Images\非线性损伤.ico"
-                                           LargeIcon="Images\非线性损伤.ico">
+                                           Icon="Images\非线性损伤.png"
+                                           LargeIcon="Images\非线性损伤.png">
                         <Fluent:MenuItem 
                                          Header="实验文件分析" 
                                          Click="FSywj_Click"/>
@@ -465,8 +465,8 @@
                                        IsLauncherVisible="False"  x:Name="ssssfx">
 
 
-                    <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/噪声分析.ico"
-                                   LargeIcon="pack://application:,,,/TIOFPSS;component/Images/噪声分析.ico"
+                    <Fluent:Button Icon="pack://application:,,,/TIOFPSS;component/Images/噪声分析.png"
+                                   LargeIcon="pack://application:,,,/TIOFPSS;component/Images/噪声分析.png"
                                    Header="噪声分析"
                                    Width="60"
                                    Click="OnZaoshengFenXi"

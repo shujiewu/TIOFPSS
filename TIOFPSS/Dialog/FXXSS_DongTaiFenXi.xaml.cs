@@ -22,6 +22,11 @@ namespace TIOFPSS.Dialog
         public FXXSS_DongTaiFenXi()
         {
             InitializeComponent();
+            rbA.Checked += new RoutedEventHandler(radio_Checked);
+            rbB.Checked += new RoutedEventHandler(radio_Checked);
+            rbA.Unchecked += new RoutedEventHandler(radio_Unchecked);
+            rbB.Unchecked += new RoutedEventHandler(radio_Unchecked);
+            rbA.IsChecked = true;
         }
         private void OnFindClick(object sender, RoutedEventArgs e)
         {
@@ -49,14 +54,26 @@ namespace TIOFPSS.Dialog
             this.DialogResult = true;
             if (this.DialogResult.Value && CallBackMethod != null)
             {
+                string rowValue1,rowValue2;
+                if(rbA.IsChecked==true)
+                {
+                    rowValue1 = "0";
+                    rowValue2 = "0";
+                }
+                else
+                {
+                    rowValue1 = _rowValue.Text.ToString();
+                    rowValue2 =  _rowValue2.Text.ToString();
+                }
 
                 FXXSSFile fileData = new FXXSSFile()
                 {
-                    row = _rowValue.Text.ToString(),
+                    row1 =rowValue1 ,
+                    row2 = rowValue2,
                     col = _columnValue.Text.ToString(),
                     path = _valueSelectPath.Text.ToString()
                 };
-                if (fileData.row != null && fileData.col != null && fileData.path != null)
+                if (fileData.row1 != null && fileData.row2 != null && fileData.col != null && fileData.path != null)
                 {
                     this.CallBackMethod(fileData);
                     this.Close();
@@ -66,6 +83,43 @@ namespace TIOFPSS.Dialog
                     Xceed.Wpf.Toolkit.MessageBox.Show("参数输入有误!");
                 }
 
+            }
+        }
+        private void radio_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RadioButton btn = sender as RadioButton;
+            if (btn == null)
+                return;
+            if (btn.Name == "rbA")
+            {
+                dao.Visibility = Visibility.Hidden;
+                _rowValue.Visibility = Visibility.Hidden;
+                _rowValue2.Visibility = Visibility.Hidden;
+            }
+            if (btn.Name == "rbB")
+            {
+                dao.Visibility = Visibility.Visible;
+                _rowValue.Visibility = Visibility.Visible;
+                _rowValue2.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void radio_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton btn = sender as RadioButton;
+            if (btn == null)
+                return;
+            if (btn.Name == "rbA")
+            {
+                dao.Visibility = Visibility.Hidden;
+                _rowValue.Visibility = Visibility.Hidden;
+                _rowValue2.Visibility = Visibility.Hidden;
+            }
+            if (btn.Name == "rbB")
+            {
+                dao.Visibility = Visibility.Visible;
+                _rowValue.Visibility = Visibility.Visible;
+                _rowValue2.Visibility = Visibility.Visible;
             }
         }
     }

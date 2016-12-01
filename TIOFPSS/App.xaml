@@ -1,6 +1,7 @@
 ﻿<Application x:Class="TIOFPSS.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -8,6 +9,13 @@
                 <ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Office2013/Generic.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/TpMetroWpfLibrary;component/Styles/MetroStyles.xaml" />
                 <!--<ResourceDictionary Source="pack://application:,,,/Fluent;Component/Themes/Office2013/Generic.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/FIcon.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/Colors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/ListView.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/FButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/RadioButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/ComboBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
 
@@ -18,7 +26,27 @@
 
             <!-- Converter -->
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <sys:Double x:Key="DisableOpacity">0.5</sys:Double>
+            <!--<Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}"></Style>-->
+            <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
+            <sys:Double x:Key="FontSize">13</sys:Double>
+            <!--<Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DefaultScrollBar}"></Style>
+            <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource DefaultScrollViewer}"></Style>
+            <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource DefaultRichTextBox}"/>
 
+            <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBox}"></Style>
+            <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBox}"></Style>
+            <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}"></Style>
+            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}"></Style>
+            <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}"></Style>
+            <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource DefaultContextMenu}"></Style>
+            <Style TargetType="{x:Type DataGrid}" BasedOn="{StaticResource DefaultDataGrid}"></Style>
+            <Style TargetType="{x:Type TreeView}" BasedOn="{StaticResource DefaultTreeView}"></Style>
+            <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultComboBox}"></Style>
+            <Style TargetType="{x:Type DatePicker}" BasedOn="{StaticResource DefaultDatePicker}"></Style>
+            <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource DefaultListBox}"></Style>
+            <Style TargetType="{x:Type PasswordBox}" BasedOn="{StaticResource DefaultPasswordBox}"></Style>
+            <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource DefaultListView}"></Style>-->
 
         </ResourceDictionary>
     </Application.Resources>
