@@ -2115,11 +2115,11 @@ namespace TIOFPSS
                         file.Write("        !");
                         file.WriteLine(dataname[i]);
                     }
-                    temp = "pre1=" + chigenLi + "   !淬火前温度";
+                    temp = "tquench1=" + chigenLi + "   !淬火前温度";
                     file.WriteLine(temp);
-                    temp = "pre2=" + chiMianLi + "   !淬火后温度";
+                    temp = "tquench2=" + chiMianLi + "   !淬火后温度";
                     file.WriteLine(temp);
-                    temp = "pre3=" + chiDingLi + "   !淬火深度";
+                    temp = "quench=" + chiDingLi + "   !淬火深度";
                     file.WriteLine(temp);
 
                     temp = "n3=" + proj.ShiJiJieChuChiShu + "   !实际接触齿数";

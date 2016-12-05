@@ -29,8 +29,8 @@
                     Text="位置：" Margin="30,20,0,0"/>-->
 
                     <TextBox x:Name="_projectName"
-                     local:ControlAttachProperty.Label="名称："
-                     
+                     local:ControlAttachProperty.Label="名称"
+                     MinWidth="70"
                      Grid.Row="0" Grid.Column="1" 
                      Width="400"
                      Height="25"
@@ -40,7 +40,8 @@
                      Text=""
                      Style="{StaticResource LabelTextBox}" />
                     <TextBox x:Name="_valueSelectPath"
-                     local:ControlAttachProperty.Label="路径："
+                     local:ControlAttachProperty.Label="路径"
+                             MinWidth="70"
                      Grid.Row="1" Grid.Column="1" 
                      Width="400"
                      Height="25"

@@ -312,6 +312,26 @@ namespace TIOFPSS
         }
         #endregion
 
+        #region LabelProperty TextBox的头部LabelWidth
+        /// <summary>
+        /// TextBox的头部Label
+        /// </summary>
+        public static readonly DependencyProperty LabelWidthProperty = DependencyProperty.RegisterAttached(
+            "LabelWidth", typeof(double), typeof(ControlAttachProperty), new FrameworkPropertyMetadata(null));
+
+        [AttachedPropertyBrowsableForType(typeof(TextBox))]
+        public static double GetLabelWidth(DependencyObject d)
+        {
+            return (double)d.GetValue(LabelWidthProperty);
+        }
+
+        public static void SetLabelWidth(DependencyObject obj, double value)
+        {
+            obj.SetValue(LabelWidthProperty, value);
+        }
+        #endregion
+
+
         #region LabelTemplateProperty TextBox的头部Label模板
         /// <summary>
         /// TextBox的头部Label模板

@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="动态分析" Height="350.379" Width="450"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+                         xmlns:xly="clr-namespace:TIOFPSS.Resources"
+        xmlns:local="clr-namespace:TIOFPSS">
     <Grid>
         <GroupBox Header="参数信息" Margin="10">
             <Grid>
@@ -15,19 +17,75 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox x:Name="zengsushijian"  Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
-                <TextBlock HorizontalAlignment="Left" Grid.Row="0" Margin="35,22,0,0" TextWrapping="Wrap" Text="增速时间：" VerticalAlignment="Top" />
-                <TextBox x:Name="wendnigshijian"  Grid.Row="1" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
-                <TextBlock HorizontalAlignment="Left" Grid.Row="1" Margin="35,22,0,0" TextWrapping="Wrap" Text="稳定时间：" VerticalAlignment="Top" />
+                <TextBox x:Name="zengsushijian"
+                     local:ControlAttachProperty.Label="增速时间"
+                     MinWidth="70"
+                     Grid.Row="0" Grid.ColumnSpan="2" 
+                     Width="340"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
+                <TextBox x:Name="wendnigshijian"
+                     local:ControlAttachProperty.Label="稳定时间"
+                     MinWidth="70"
+                     Grid.Row="1" Grid.ColumnSpan="2" 
+                     Width="340"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
+                <TextBox x:Name="fanzhengshijian"
+                     local:ControlAttachProperty.Label="仿真结束时间"
+                     MinWidth="90"
+                     Grid.Row="2" Grid.ColumnSpan="2" 
+                     Width="340"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
 
-                <TextBox x:Name="fanzhengshijian"  Grid.Row="2" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
-                <TextBlock HorizontalAlignment="Left" Grid.Row="2" Margin="35,22,0,0" TextWrapping="Wrap" Text="仿真结束时间：" VerticalAlignment="Top" />
-                <TextBox x:Name="zhiLiang"  Grid.Row="3" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
-                <TextBlock HorizontalAlignment="Left" Grid.Row="3" Margin="5,20,0,0" TextWrapping="Wrap" Text="与内毂连接轴的质量（吨）：" VerticalAlignment="Top" />
-                <TextBox x:Name="resName"  Grid.Row="4" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
-                <TextBlock HorizontalAlignment="Left" Grid.Row="4" Margin="35,22,0,0" TextWrapping="Wrap" Text="结果文件命名：" VerticalAlignment="Top" />
-                <Button Content="开始分析" Grid.Row="5" HorizontalAlignment="Left" Margin="224,22,0,0" VerticalAlignment="Top" Width="70" Height="23" Click="OnOKClick"/>
-                <Button Content="取消"  Grid.Row="5" HorizontalAlignment="Left" Margin="304,22,0,0" VerticalAlignment="Top" Width="70" Height="23" Click="OnCancelClick"/>
+                <TextBox x:Name="zhiLiang"
+                     local:ControlAttachProperty.Label="与内毂连接轴的质量（吨）"
+                     MinWidth="170"
+                     Grid.Row="3" Grid.ColumnSpan="2" 
+                     Width="340"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
+                <TextBox x:Name="resName"
+                     local:ControlAttachProperty.Label="结果文件命名"
+                     MinWidth="90"
+                     Grid.Row="4" Grid.ColumnSpan="2" 
+                     Width="340"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
+                <!--<TextBox x:Name="zengsushijian"  Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="0" Margin="35,22,0,0" TextWrapping="Wrap" Text="增速时间：" VerticalAlignment="Top" />-->
+                <!--<TextBox x:Name="wendnigshijian"  Grid.Row="1" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="1" Margin="35,22,0,0" TextWrapping="Wrap" Text="稳定时间：" VerticalAlignment="Top" />-->
+
+                <!--<TextBox x:Name="fanzhengshijian"  Grid.Row="2" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="2" Margin="35,22,0,0" TextWrapping="Wrap" Text="仿真结束时间：" VerticalAlignment="Top" />-->
+                <!--<TextBox x:Name="zhiLiang"  Grid.Row="3" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="3" Margin="5,20,0,0" TextWrapping="Wrap" Text="与内毂连接轴的质量（吨）：" VerticalAlignment="Top" />-->
+                <!--<TextBox x:Name="resName"  Grid.Row="4" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="4" Margin="35,22,0,0" TextWrapping="Wrap" Text="结果文件命名：" VerticalAlignment="Top" />-->
+                <xly:FButton FIcon="" Content="开始分析" Grid.Row="5" HorizontalAlignment="Left" Margin="214,22,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnOKClick"/>
+                <xly:FButton FIcon="" Content="取消"  Grid.Row="5" HorizontalAlignment="Left" Margin="304,22,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnCancelClick"/>
 
             </Grid>
         </GroupBox>

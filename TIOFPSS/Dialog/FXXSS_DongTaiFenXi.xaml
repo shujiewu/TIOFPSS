@@ -4,7 +4,9 @@
         Height="300" Width="600"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="非线性损伤分析-动态分析结果文件选择">
+        Title="非线性损伤分析-动态分析结果文件选择"
+                                 xmlns:xly="clr-namespace:TIOFPSS.Resources"
+        xmlns:local="clr-namespace:TIOFPSS">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,7 +27,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" 
+                <!--<TextBlock Grid.Row="0" Grid.Column="0" 
                        Text="选择文件路径：" 
                        Margin="10,5,5,5"/>
                 <Button Click="OnFindClick"
@@ -40,9 +42,19 @@
                      Margin="20,5,5,5"
                          Height="23"
                      HorizontalAlignment="Left"
-                     Text="" />
+                     Text="" />-->
 
-
+                <TextBox x:Name="_valueSelectPath"
+                     local:ControlAttachProperty.Label="选择文件路径"
+                     MinWidth="100"
+                     Grid.Row="1" Grid.Column="0" 
+                     Width="530"
+                     Height="25"
+                     Margin="20,5,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelOpenFileTextBox}" />
 
 
             </Grid>
@@ -72,25 +84,25 @@
                      Grid.Row="2" Grid.Column="4"
                      Width="80"
                      Height="23"
-                     Margin="10,5,5,5"
+                     Margin="10,10,5,5"
                      HorizontalAlignment="Left"
                      Text="" />
-                <RadioButton Margin="10" x:Name="rbA" Grid.Row="2" Grid.Column="1">默认区间</RadioButton>
-                <RadioButton Margin="10"  x:Name="rbB" Grid.Row="2" Grid.Column="2">自定义区间</RadioButton>
-                <TextBlock Grid.Row="2" Grid.Column="0" 
+                <RadioButton Margin="10" x:Name="rbA" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">默认区间</RadioButton>
+                <RadioButton Margin="10"  x:Name="rbB" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">自定义区间</RadioButton>
+                <!--<TextBlock Grid.Row="2" Grid.Column="0" 
                        Text="行数据：" 
-                       Margin="20,10,5,5"/>
+                       Margin="20,10,5,5"/>-->
                 <TextBlock Grid.Row="2" Grid.Column="5"  x:Name="dao"
-                       Text="到" 
-                       Margin="20,10,5,5"/>
+                       Text="到"  VerticalAlignment="Center"
+                       Margin="10,10,5,5"/>
                 <TextBox x:Name="_rowValue2" 
                      Grid.Row="2" Grid.Column="6"
                      Width="80"
                      Height="23"
-                     Margin="10,5,5,5"
+                     Margin="10,10,5,5"
                      HorizontalAlignment="Left"
                      Text="" />
-                <TextBox x:Name="_columnValue" 
+                <!--<TextBox x:Name="_columnValue" 
                      Grid.Row="1" Grid.Column="1"
                      Width="80"
                      Margin="10,5,5,5"
@@ -99,11 +111,34 @@
                      Text="" />
                 <TextBlock Grid.Row="1" Grid.Column="0" 
                        Text="列" 
-                       Margin="20,10,5,5"/>
+                       Margin="20,10,5,5"/>-->
+                <TextBox x:Name="_columnValue"
+                     local:ControlAttachProperty.Label="列"
+                     MinWidth="70"
+                     Grid.Row="1" Grid.ColumnSpan="2" 
+                     Width="170"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
+
+                <TextBox x:Name="hangname"
+                     local:ControlAttachProperty.Label="行"
+                     MinWidth="70"
+                     Grid.Row="2" Grid.Column="0" 
+                     Width="70"
+                     Height="25"
+                     Margin="5,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
 
             </Grid>
         </GroupBox>
-        <Button Grid.Row="4"  Margin="245,5,5,5" Content="开始分析" Width="90" Height="23" Click="OnFXXSSClick"/>
-        <Button Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="23" Click="Cancel_Click"/>
+        <xly:FButton FIcon="" Grid.Row="4"  Margin="245,5,5,5" Content="开始分析" Width="80" Height="25" Click="OnFXXSSClick"/>
+        <xly:FButton FIcon="" Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="80" Height="25" Click="Cancel_Click"/>
     </Grid>
 </Window>

@@ -95,10 +95,10 @@
                 <TextBlock Text="内毂设计参数" Height="30" FontSize="20" Margin="10,0,0,0"/>
             </StackPanel>
 
-            <StackPanel Name="DataLayer" Orientation="Horizontal" >
+            <StackPanel Name="DataLayer" Orientation="Horizontal" Background="WhiteSmoke" >
 
-                <StackPanel Name="paraLayer" Orientation="Vertical"  >
-                    <StackPanel Name="BlockLayer" Orientation="Horizontal">
+                <!--<StackPanel Name="paraLayer" Orientation="Vertical"  >
+                    <StackPanel Name="BlockLayer" Orientation="Horizontal">-->
 
                         <TextBlock Text="齿数" Height="30" Width="80" FontSize="15" 
                                                                                                    Background="WhiteSmoke" 
@@ -122,9 +122,9 @@
                                                                                                    TextAlignment="Center" Padding="4"/>
                         <TextBlock Text="厚度(mm)" Name="NgHouDu"  Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
-                        <TextBlock Text="" Name="layer2"  Height="30" Width="240" Background="WhiteSmoke" Padding="0"/>
+                        <!--<TextBlock Text="" Name="layer2"  Height="30" Width="240" Background="WhiteSmoke" Padding="0"/>-->
                     </StackPanel>
-                    <StackPanel Name="TextLayer" Orientation="Horizontal">
+            <StackPanel Name="TextLayer" Orientation="Horizontal" Background="White" Height="30">
 
                         <TextBox Text="{Binding ElementName=txtChiShu, Path=Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30" Width="{Binding ElementName=ChiShu, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding ElementName=txtMoShu, Path=Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="30" Width="{Binding ElementName=ChiShu, Path=Width}" Background="white"></TextBox>
@@ -135,11 +135,11 @@
                         <TextBox Text="{Binding Path=UserProject.KongJing}" Name="txtKongJing" Height="30" Width="{Binding ElementName=KongJing, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.NgGFXCDGC}" Name="txtNgGFXCDGC" Height="30" Width="{Binding ElementName=NgGFXCDGC, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.NgHouDu}" Name="txtNgHouDu" Height="30" Width="{Binding ElementName=NgHouDu, Path=Width}" Background="white"></TextBox>
-                        <TextBlock Text="" Height="29" Width="240" Background="White" Padding="0"/>
+                        <!--<TextBlock Text="" Height="29" Width="240" Background="White" Padding="0"/>-->
                     </StackPanel>
 
-                </StackPanel>
-            </StackPanel>
+                <!--</StackPanel>--><!--
+            </StackPanel>-->
 
 
             <StackPanel Name="paraLayer2" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0">
@@ -147,10 +147,10 @@
                 <TextBlock Text="摩擦片强化参数" Height="30" FontSize="20" Margin="10,0,0,0"/>
             </StackPanel>
 
-            <StackPanel Name="DataLayer2" Orientation="Horizontal" >
+            <!--<StackPanel Name="DataLayer2" Orientation="Horizontal" >
 
-                <StackPanel Name="ItemLayer2" Orientation="Vertical"  >
-                    <StackPanel Name="BlockLayer2" Orientation="Horizontal">
+                <StackPanel Name="ItemLayer2" Orientation="Vertical"  >-->
+            <StackPanel Name="BlockLayer2" Orientation="Horizontal" Background="WhiteSmoke">
 
                         <TextBlock Name="MccHouDu" Text="摩擦层厚度(mm)" Height="30" FontSize="15" Width="150"
                                                                                                    Background="WhiteSmoke" 
@@ -162,19 +162,19 @@
 
                         <TextBlock Name="DuCengHouDu" Text="镀层厚度(mm)" Height="30" Width="130" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
-                        <TextBlock Text="" Height="30" Width="670" Background="WhiteSmoke" Padding="0"/>
+                        <!--<TextBlock Text="" Height="30" Width="670" Background="WhiteSmoke" Padding="0"/>-->
                     </StackPanel>
-                    <StackPanel Name="TextLayer2" Orientation="Horizontal">
+                    <StackPanel Name="TextLayer2" Orientation="Horizontal" Background="White" Height="30">
 
                         <TextBox Name="txtMccHouDu" Text="{Binding Path=UserProject.MccHouDu}" Height="30" Width="{Binding ElementName=MccHouDu, Path=Width}" Background="white"></TextBox>
                         <TextBox Name="txtMccJingKuan" Text="{Binding Path=UserProject.MccJingKuan}" Height="30" Width="{Binding ElementName=MccJingKuan, Path=Width}" Background="white"></TextBox>
                         <TextBox Name="txtDuCengHouDu" Text="{Binding Path=UserProject.DuCengHouDu}" Height="30" Width="{Binding ElementName=DuCengHouDu, Path=Width}" Background="white"></TextBox>
-                        <TextBlock Text="" Height="29" Width="670" Background="White" Padding="0"/>
+                        <!--<TextBlock Text="" Height="29" Width="670" Background="White" Padding="0"/>-->
 
                     </StackPanel>
 
-                </StackPanel>
-            </StackPanel>
+                <!--</StackPanel>
+            </StackPanel>-->
 
 
             <StackPanel Name="ItemLayer3" Orientation="Horizontal" Background="LightBlue" Margin="0,20,0,0">
@@ -183,13 +183,16 @@
             </StackPanel>
 
             <StackPanel Name="DataLayer3" Orientation="Horizontal" >
-                <StackPanel Name="NameLayer" Orientation="Vertical" Background="#ffd2e7f4">
+                <Border BorderBrush="WhiteSmoke" BorderThickness="0,1,0,1">
+                    <StackPanel Name="NameLayer3" Orientation="Vertical" Background="#ffd2e7f4"
+                                                >
 
-                    <TextBlock Text="摩擦片" Width="90" Height="60" 
+                        <TextBlock Text="摩擦片" Width="90" Height="58"
                                                                                                FontSize="18"  Padding="18"  />
-                </StackPanel>
+                    </StackPanel>
+                </Border>
 
-                <StackPanel Name="paraLayer3" Orientation="Vertical"  >
+            <StackPanel Name="paraLayer3" Orientation="Vertical">
                     <StackPanel Name="BlockLayer3" Orientation="Horizontal">
 
                         <TextBlock Name="McpTXML" Text="弹性模量(GPa)" Height="30" Width="120" FontSize="15" 
@@ -205,31 +208,35 @@
                                                                                                    TextAlignment="Center" Padding="4"/>
                         <TextBlock Name="PiLaoJiXian" Text="疲劳极限(MPa)" Height="30" Width="130"  FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
-                        <TextBlock Text="" Height="30" Width="380" Background="WhiteSmoke" Padding="0"/>
+                        <TextBlock Text="" Height="31" Width="1000" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
-                    <StackPanel Name="TextLayer3" Orientation="Horizontal">
+                <StackPanel Name="TextLayer3" Orientation="Horizontal">
 
                         <TextBox Text="{Binding Path=UserProject.McpTXML}" Name="txtMcpTXML" Height="30" Width="{Binding ElementName=McpTXML, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.McpCLMD}" Name="txtMcpCLMD" Height="30" Width="{Binding ElementName=McpCLMD, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.McpBSB}" Name="txtMcpBSB" Height="30" Width="{Binding ElementName=McpBSB, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.KangLaQDJX}" Name="txtKangLaQDJX" Height="30" Width="{Binding ElementName=KangLaQDJX, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.PiLaoJiXian}" Name="txtPiLaoJiXian" Height="30" Width="{Binding ElementName=PiLaoJiXian, Path=Width}" Background="white"></TextBox>
-                        <TextBlock Text="" Height="29" Width="380" Background="White" Padding="0"/>
+                        <TextBlock Text="" Height="29" Width="1000" Background="White" Padding="0"/>
 
                     </StackPanel>
 
                 </StackPanel>
-
             </StackPanel>
 
 
+
+
+
             <StackPanel Name="DataLayer4" Orientation="Horizontal" >
-                <StackPanel Name="NameLayer4" Orientation="Vertical" Background="#ffd2e7f4"
+                <Border BorderBrush="WhiteSmoke" BorderThickness="0,0,0,1">
+                    <StackPanel Name="NameLayer4" Orientation="Vertical" Background="#ffd2e7f4"
                                                 >
 
-                    <TextBlock Text="内毂" Width="90" Height="60"
+                        <TextBlock Text="内毂" Width="90" Height="58"
                                                                                                FontSize="18"  Padding="25,15"  />
-                </StackPanel>
+                    </StackPanel>
+                </Border>
                 <StackPanel Name="paraLayer4" Orientation="Vertical"  >
                     <StackPanel Name="BlockLayer4" Orientation="Horizontal">
 
@@ -242,14 +249,14 @@
                                                                                                    TextAlignment="Center" Padding="4"/>
                         <TextBlock Name="NgBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
-                        <TextBlock Text="" Height="30" Width="660" Background="WhiteSmoke" Padding="0"/>
+                        <TextBlock Text="" Height="31" Width="1500" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer4" Orientation="Horizontal">
 
                         <TextBox Text="{Binding Path=UserProject.NgTXML}" Name="txtNgTXML" Height="30" Width="{Binding ElementName=NgTXML, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.NgCLMD}" Name="txtNgCLMD" Height="30" Width="{Binding ElementName=NgCLMD, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.NgBSB}" Name="txtNgBSB" Height="30" Width="{Binding ElementName=NgBSB, Path=Width}" Background="white"></TextBox>
-                        <TextBlock Text="" Height="29" Width="660" Background="White" Padding="0"/>
+                        <TextBlock Text="" Height="29" Width="1500" Background="White" Padding="0"/>
 
                     </StackPanel>
 
@@ -257,12 +264,14 @@
             </StackPanel>
 
             <StackPanel Name="DataLayer5" Orientation="Horizontal" >
-                <StackPanel Name="NameLayer5" Orientation="Vertical" Background="#ffd2e7f4" >
+                <Border BorderBrush="WhiteSmoke" BorderThickness="0,0,0,1">
+                    <StackPanel Name="NameLayer5" Orientation="Vertical" Background="#ffd2e7f4" >
 
-                    <TextBlock Text="摩擦层" Width="90" Height="60"
+                        <TextBlock Text="摩擦层" Width="90" Height="58"
                                                                                                FontSize="18"  Padding="18"  />
-                </StackPanel>
-                <StackPanel Name="paraLayer5" Orientation="Vertical"  >
+                    </StackPanel>
+                </Border>
+                <StackPanel Name="paraLayer5" Orientation="Vertical"   >
                     <StackPanel Name="BlockLayer5" Orientation="Horizontal">
 
                         <TextBlock Name="MccTXML" Text="弹性模量(GPa)" Height="30" Width="120"  FontSize="15" 
@@ -274,14 +283,14 @@
                                                                                                    TextAlignment="Center" Padding="4"/>
                         <TextBlock Name="MccBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
-                        <TextBlock Text="" Height="30" Width="660" Background="WhiteSmoke" Padding="0"/>
+                        <TextBlock Text="" Height="31" Width="1500" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer5" Orientation="Horizontal">
 
                         <TextBox Text="{Binding Path=UserProject.MccTXML}" Name="txtMccTXML" Height="30" Width="{Binding ElementName=MccTXML, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.MccCLMD}" Name="txtMccCLMD" Height="30" Width="{Binding ElementName=MccCLMD, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.MccBSB}" Name="txtMccBSB" Height="30" Width="{Binding ElementName=MccBSB, Path=Width}" Background="white"></TextBox>
-                        <TextBlock Text="" Height="29" Width="660" Background="White" Padding="0"/>
+                        <TextBlock Text="" Height="29" Width="1500" Background="White" Padding="0"/>
 
                     </StackPanel>
 
@@ -307,7 +316,7 @@
                                                                                                    TextAlignment="Center" Padding="4"/>
                         <TextBlock Name="DcBSB" Text="泊松比" Height="30" Width="80" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
-                        <TextBlock Text="" Height="30" Width="660" Background="WhiteSmoke" Padding="0"/>
+                        <TextBlock Text="" Height="31" Width="1500" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer6" Orientation="Horizontal">
 
@@ -315,7 +324,7 @@
                         <TextBox Text="{Binding Path=UserProject.DcCLMD}" Name="txtDcCLMD" Height="30" Width="{Binding ElementName=DcCLMD, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.DcBSB}" Name="txtDcBSB" Height="30" Width="{Binding ElementName=DcBSB, Path=Width}" Background="white"></TextBox>
 
-                        <TextBlock Text="" Height="29" Width="660" Background="White" Padding="0"/>
+                        <TextBlock Text="" Height="29" Width="1500" Background="White" Padding="0"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -327,12 +336,13 @@
             </StackPanel>
 
             <StackPanel Name="DataLayer7" Orientation="Horizontal" >
-                <StackPanel Name="NameLayer7" Orientation="Vertical" Background="#ffd2e7f4">
+                <Border BorderBrush="WhiteSmoke" BorderThickness="0,1,0,1">
+                    <StackPanel Name="NameLayer7" Orientation="Vertical" Background="#ffd2e7f4">
 
-                    <TextBlock Text="初始条件" Width="90" Height="60"
+                        <TextBlock Text="初始条件" Width="90" Height="60"
                                                                                                FontSize="18"  Padding="10,15"  />
-                </StackPanel>
-
+                    </StackPanel>
+                </Border>
                 <StackPanel Name="paraLayer7" Orientation="Vertical"  >
                     <StackPanel Name="BlockLayer7" Orientation="Horizontal">
 
@@ -353,7 +363,7 @@
                                                                                                    TextAlignment="Center" Padding="4"/>
                         <TextBlock Name="WenDu" Text="  温度(℃)" Height="30" Width="98" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Justify" Padding="4"/>
-
+                        <TextBlock Text="" Height="32" Width="1000" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer7" Orientation="Horizontal">
 
@@ -364,7 +374,7 @@
                         <TextBox Text="{Binding Path=UserProject.YouMoHouDu}" Name="txtYouMoHouDu" Height="30" Width="{Binding ElementName=YouMoHouDu, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.YouYeNianDu}" Name="txtYouYeNianDu" Height="30" Width="{Binding ElementName=YouYeNianDu, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.WenDu}" Name="txtWenDu" Height="30" Width="{Binding ElementName=WenDu, Path=Width}" Background="white"></TextBox>
-
+                        <TextBlock Text="" Height="29" Width="1000" Background="White" Padding="0"/>
 
                     </StackPanel>
 
@@ -375,13 +385,13 @@
             </StackPanel>
 
             <StackPanel Name="DataLayer8" Orientation="Horizontal" >
+                <Border BorderBrush="WhiteSmoke" BorderThickness="0,0,0,1">
+                    <StackPanel Name="NameLayer8" Orientation="Vertical" Background="#ffd2e7f4">
 
-                <StackPanel Name="NameLayer8" Orientation="Vertical" Background="#ffd2e7f4">
-
-                    <TextBlock Text="计算条件" Width="90" Height="120" 
+                        <TextBlock Text="计算条件" Width="90" Height="120" 
                                                                                                FontSize="18"  Padding="10,50"/>
-                </StackPanel>
-
+                    </StackPanel>
+                </Border>
                 <StackPanel Name="paraLayer8" Orientation="Vertical"  >
                     <StackPanel Name="BlockLayer8" Orientation="Horizontal">
 
@@ -405,7 +415,7 @@
                         <TextBlock Name="NgZhuanDongGuanLiang" Text="内毂转动惯量(kg*m^2)" Height="30" Width="168" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
 
-
+                        <TextBlock Text="" Height="31" Width="1000" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer8" Orientation="Horizontal">
 
@@ -417,7 +427,7 @@
                         <TextBox Text="{Binding Path=UserProject.JieGouZuNi}" Name="txtJieGouZuNi" Height="30" Width="{Binding ElementName=JieGouZuNi, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.McpZhuanDongGuanLiang}" Name="txtMcpZhuanDongGuanLiang" Height="30" Width="{Binding ElementName=McpZhuanDongGuanLiang, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.NgZhuanDongGuanLiang}" Name="txtNgZhuanDongGuanLiang" Height="30" Width="{Binding ElementName=NgZhuanDongGuanLiang, Path=Width}" Background="white"></TextBox>
-
+                        <TextBlock Text="" Height="29" Width="1000" Background="White" Padding="0"/>
 
                     </StackPanel>
                     <StackPanel Name="BlockLayer81" Orientation="Horizontal">
@@ -445,7 +455,7 @@
                         <TextBlock Name="TingZhiShiJIan" Text="停止时间(s)" Height="30" Width="90" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
 
-
+                        <TextBlock Text="" Height="31" Width="1000" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer81" Orientation="Horizontal">
                         <TextBox Text="{Binding Path=UserProject.JieChuQuJinXiangChuangDu}" Name="txtJieChuQuJinXiangChuangDu" Height="30" Width="{Binding ElementName=JieChuQuJinXiangChuangDu, Path=Width}" Background="white"></TextBox>
@@ -457,7 +467,7 @@
                         <TextBox Text="{Binding Path=UserProject.ZengSuShiJian}" Name="txtZengSuShiJian" Height="30" Width="{Binding ElementName=ZengSuShiJian, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.WenDingShiJian}" Name="txtWenDingShiJian" Height="30" Width="{Binding ElementName=WenDingShiJian, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.TingZhiShiJIan}" Name="txtTingZhiShiJIan" Height="30" Width="{Binding ElementName=TingZhiShiJIan, Path=Width}" Background="white"></TextBox>
-
+                        <TextBlock Text="" Height="29" Width="1000" Background="White" Padding="0"/>
 
                     </StackPanel>
 
@@ -485,7 +495,7 @@
                         <TextBlock Name="JieJuZuiXiaoWuCha" Text="节距最小误差(mm)" Height="30" Width="140" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
 
-                        <TextBlock Text="" Height="30" Width="620" Background="WhiteSmoke" Padding="0"/>
+                        <TextBlock Text="" Height="31" Width="1500" Background="WhiteSmoke" Padding="0"/>
                     </StackPanel>
                     <StackPanel Name="TextLayer9" Orientation="Horizontal">
 
@@ -493,8 +503,8 @@
                         <TextBox Text="{Binding Path=UserProject.JieJuZuiDaWuCha}" Name="txtJieJuZuiDaWuCha" Height="30" Width="{Binding ElementName=JieJuZuiDaWuCha, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.JieJuZuiXiaoWuCha}" Name="txtJieJuZuiXiaoWuCha" Height="30" Width="{Binding ElementName=JieJuZuiXiaoWuCha, Path=Width}" Background="white"></TextBox>
 
-                        <TextBlock Text="" Height="29" Width="620" Background="White" Padding="0"/>
 
+                        <TextBlock Text="" Height="29" Width="1500" Background="White" Padding="0"/>
                     </StackPanel>
 
                 </StackPanel>
@@ -506,10 +516,10 @@
                 <TextBlock Text="实验数据标定与转换系数" Height="30" FontSize="20" Margin="10,0,0,0"/>
             </StackPanel>
             
-            <StackPanel Name="DataLayer10" Orientation="Horizontal" >
+            <!--<StackPanel Name="DataLayer10" Orientation="Horizontal" >
 
-                <StackPanel Name="paraLayer10" Orientation="Vertical"  >
-                    <StackPanel Name="BlockLayer10" Orientation="Horizontal">
+                <StackPanel Name="paraLayer10" Orientation="Vertical"  >-->
+            <StackPanel Name="BlockLayer10" Orientation="Horizontal" Background="WhiteSmoke">
 
                         <TextBlock Name="CaiYangPinLv" Text="采样频率(Hz)" Height="30" Width="120" FontSize="15" 
                                                                                                    Background="WhiteSmoke" 
@@ -519,23 +529,23 @@
                         <TextBlock Name="YinLiYingBianZhuanHuanXiShu" Text="应力应变转换系数(rad/s)" Height="30" Width="180" FontSize="15" Background="WhiteSmoke"
                                                                                                    TextAlignment="Center" Padding="4"/>
 
-                        <TextBlock Text="" Height="30" Width="790" Background="WhiteSmoke" Padding="0"/>
+                        <!--<TextBlock Text="" Height="30" Width="790" Background="WhiteSmoke" Padding="0"/>-->
                     </StackPanel>
-                    <StackPanel Name="TextLayer10" Orientation="Horizontal">
+            <StackPanel Name="TextLayer10" Orientation="Horizontal" Background="White" Height="30">
 
                         <TextBox Text="{Binding Path=UserProject.CaiYangPinLv}" Name="txtCaiYangPinLv" Height="30" Width="{Binding ElementName=CaiYangPinLv, Path=Width}" Background="white"></TextBox>
                         <TextBox Text="{Binding Path=UserProject.YinLiYingBianZhuanHuanXiShu}" Name="txtYinLiYingBianZhuanHuanXiShu" Height="30" Width="{Binding ElementName=YinLiYingBianZhuanHuanXiShu, Path=Width}" Background="white"></TextBox>
 
 
-                        <TextBlock Text="" Height="30" Width="790" Background="White" Padding="0"/>
+                        <!--<TextBlock Text="" Height="30" Width="790" Background="White" Padding="0"/>-->
 
                     </StackPanel>
 
-                </StackPanel>
+                <!--</StackPanel>
 
 
 
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
         <!--</ScrollViewer>-->
     </ScrollViewer>

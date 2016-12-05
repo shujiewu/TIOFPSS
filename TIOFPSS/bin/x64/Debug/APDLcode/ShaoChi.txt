@@ -14,7 +14,7 @@ angle2=180.0/z
 angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi     
 angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi     
 
-!鐠烘繄顬?
+!閻犵儤绻勯‖?
 /prep7
 csys,4                               
 wprot,-angle3,0,0      
@@ -37,7 +37,7 @@ NUMCMP,KP
 
 LGEN,2,1, , ,0,0,10, ,0   
 CSYS,1 
-LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !閹稿濞囨笟褔妫块梾娆忎焊缁夌粯绗庡鈧痪?
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !闁圭顦垫繛鍥ㄧ瑹瑜斿Λ鍧楁⒕濞嗗繋鐒婄紒澶岀帛缁楀骸顕ｉ埀顒傜棯?
 LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0
 LDELE,1,2 ,1 ,1
 NUMCMP,KP   
@@ -57,7 +57,7 @@ gky1=ky(4)
 gky2=ky(5)
 gky=gky1-gky2
 LDELE,1,2,1,1
-!瀵よ櫣鐝涢崘鍛構濡€崇€?
+!鐎点倛娅ｉ悵娑㈠礃閸涱喚妲嬫俊顖椻偓宕団偓?
 WPCSYS,-1,0 
 csys,4                 
 wprot,-angle3,0,0      
@@ -78,7 +78,7 @@ bsplin,,p51x
 KDELE,3,101,1          
 NUMCMP,KP             
 
-!閻劋绨拫鍐╂殻姒诲じ鏅堕梻鎾
+!闁活潿鍔嬬花顒傛嫬閸愨晜娈诲璇层仒閺呭爼姊婚幘顔筋唲
 LGEN,2,1, , ,0,0,10, ,0   
 csys,1
 LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0
@@ -125,7 +125,7 @@ NUMCMP,KP
  
 circle,1,rf1
 circle,1,rd1
-circle,1,rf1-1.2    !姒诲潡鍎撮崺杞扮秼閸掑棛顬囩痪?
+circle,1,rf1-1.2    !濮掕娼￠崕鎾春鏉炴壆绉奸柛鎺戞椤洨鐥?
 LSTR,       5,       1  
 LSTR,       1,       3  
 LSBL,       4,      16  
@@ -183,12 +183,12 @@ NUMCMP,line
 NUMCMP,KP
 NUMCMP,AREA 
 NUMCMP,VOLU 
-VGEN,2,1, 2,1 , , , , ,0 !婢跺秴鍩楅敍宀勫櫢閹烘帞鍤庨崣?
+VGEN,2,1, 2,1 , , , , ,0 !濠㈣泛绉撮崺妤呮晬瀹€鍕闁圭儤甯為崵搴ㄥ矗?
 Vdele,1,2,1,1
 NUMCMP,line
 NUMCMP,KP
 NUMCMP,VOLU 
-*do,t,1,2,1          !闂冮潧鍨幋鎰瑏娑擃亪濞?
+*do,t,1,2,1          !闂傚啴娼ч崹顏堝箣閹邦亞鐟忓☉鎿冧邯婵?
 wprot,-angle2,0,0  
 VSYMM,Y,1, 2,1 , ,0,0
 *enddo
@@ -198,7 +198,7 @@ NUMCMP,line
 NUMCMP,AREA
 NUMCMP,VOLU 
 
-!瀵よ櫣鐝涢幗鈺傛憹閻?
+!鐎点倛娅ｉ悵娑㈠箺閳哄倹鎲归柣?
 
 VSEL,U, , ,ALL  
 ALLSEL,BELOW,VOLU   
@@ -272,7 +272,7 @@ LSEL,S,LOC,X,rf2
 LSEL,R,LOC,Y,0,0.1  
 WPCSYS,-1,0 
 wpro,,90.000000,
-LSBW,lnub+2     !閸戞椽鏁奓SBW,all              
+LSBW,lnub+2     !闁告垶妞介弫濂揝BW,all              
 ALLSEL,ALL  
 *GET,VMN1,VOLU,,NUM,MIN 
 *GET,VMX1,VOLU,,NUM,Max 
@@ -285,7 +285,7 @@ LSEL,R,LOC,Y,angle4,60
 WPCSYS,-1,0 
 wprot,2*angle2,0,0  
 wpro,,90.000000,
-LSBW,lnub+5     !閸戞椽鏁奓SBW,all
+LSBW,lnub+5     !闁告垶妞介弫濂揝BW,all
 LSBW,lnub+6
 LSBW,lnub+10
 ALLSEL,ALL  
@@ -299,7 +299,7 @@ NUMCMP,line
 NUMCMP,KP   
 LSEL,S,,,lnub,lnub+6,1  
 larc,kpnub1,kpnub1+2,kzx,ra2
-lfillt,lnub,lnub+4,rff2     !閸婃帟顫?
+lfillt,lnub,lnub+4,rff2     !闁稿﹥甯熼～?
 lfillt,lnub+1,lnub+5,rff2
 lcomb,lnub+8,lnub+5,0
 lcomb,lnub+7,lnub+4,0
@@ -309,8 +309,8 @@ LSTR,kpnub1+5,kpnub1+4
 LSTR,kpnub1+4,kpnub1+6  
 CSYS,1  
 LSEL,R,LOC,X,ra2,rdc
-AL,ALL    !瀹告彃鐣炬稊澶屾畱缁捐法鏁撻幋鎰版桨  
-ALLSEL,ALL  !闁瀚ㄩ幍鈧張澶婄杽娴ｆ搫绱伴悙鍦殠闂堫澀缍?
+AL,ALL    !鐎瑰憡褰冮悾鐐▕婢跺本鐣辩紒鎹愭硶閺佹捇骞嬮幇鐗堟〃  
+ALLSEL,ALL  !闂侇偄顦扮€氥劑骞嶉埀顒勫嫉婢跺﹦鏉藉ù锝嗘惈缁变即鎮欓崷顓炴疇闂傚牜婢€缂?
 LSEL,s,LOC,X,rdc,rd2
 AL,ALL     
 ALLSEL,ALL  
@@ -346,11 +346,11 @@ NUMCMP,VOLU
 *GET,VMN2,VOLU,,NUM,MIN 
 *GET,VMX2,VOLU,,NUM,Max 
 
-!鐎规矮绠熼崡鏇炲帗缁鐎?
+!閻庤鐭粻鐔煎础閺囩偛甯楃紒顐ヮ嚙閻?
 ET,1,SOLID185 
 ET,10,SHELL181     
 
-!鐎规矮绠熼崘鍛構閺夋劖鏋￠崣鍌涙殶
+!閻庤鐭粻鐔煎礃閸涱喚妲嬮柡澶嬪姈閺嬶繝宕ｉ崒娑欐
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,1,,ex1
@@ -359,7 +359,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,1,,dens1
 
-!鐎规矮绠熼懞顖涙緲閺夋劖鏋￠崣鍌涙殶
+!閻庤鐭粻鐔兼嚍椤栨稒绶查柡澶嬪姈閺嬶繝宕ｉ崒娑欐
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,2,,ex2
@@ -368,7 +368,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,2,,dens2
 
-!鐎规矮绠熼幗鈺傛憹鐏炲倹娼楅弬娆忓棘閺?
+!閻庤鐭粻鐔煎箺閳哄倹鎲归悘鐐插€瑰妤呭棘濞嗗繐妫橀柡?
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,3,,ex3
@@ -377,7 +377,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,3,,dens3
 
-!鐎规矮绠熼梹鈧仦鍌涙綏閺傛瑥寮弫?
+!閻庤鐭粻鐔兼⒐閳ь剛浠﹂崒娑欑稄闁哄倹鐟ュ顒勫极?
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,4,,ex4
@@ -386,7 +386,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,4,,dens4
 
-!!!鐎电懓鍞村В鍌濈箻鐞涘瞼缍夐弽鐓庡灊閸?
+!!!閻庣數鎳撻崬鏉懶掗崒婵堢閻炴稑鐬肩紞澶愬冀閻撳骸鐏婇柛?
 VSEL,S,,,1,6,1           
 ALLSEL,BELOW,VOLU 
 CSYS,1 
@@ -422,8 +422,8 @@ ASEL,S,LOC,X,rd1+1,rf1-1.3
 ASEL,R,LOC,Z,0
 AMESH,ALL 
 
-TYPE,   1   !閹稿洤鐣鹃崡鏇炲帗缁鐎烽崣?
-MAT,       1    !閹稿洤鐣鹃崡鏇炲帗閺夋劖鏋＄紓鏍у娇
+TYPE,   1   !闁圭娲ら悾楣冨础閺囩偛甯楃紒顐ヮ嚙閻庣兘宕?
+MAT,       1    !闁圭娲ら悾楣冨础閺囩偛甯楅柡澶嬪姈閺嬶紕绱撻弽褍濞?
 VSWEEP,1
 VSWEEP,2
 VSWEEP,3
@@ -435,37 +435,37 @@ NUMCMP,KP
 NUMCMP,AREA 
 NUMCMP,VOLU 
 
-!鐎佃鎳囬幙锔惧鏉╂稖顢戠純鎴炵壐閸掓帒鍨?
-ALLSEL,ALL          !缂冩垶鐗搁崚鎺戝瀻鐏忓搫顕拋鎯х暰   
+!閻庝絻顫夐幊鍥箼閿旀儳顣婚弶鈺傜椤㈡垹绱旈幋鐐靛闁告帗甯掗崹?
+ALLSEL,ALL          !缂傚啯鍨堕悧鎼佸礆閹烘垵鐎婚悘蹇撴惈椤曨厾鎷嬮幆褏鏆?  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
 CSYS,1  
 LSEL,R,LOC,X,ra2-1,rdc-0.1  
-LESIZE,ALL,0.5, , , ,1, , ,1,      !姒诲潡鍎?
+LESIZE,ALL,0.5, , , ,1, , ,1,      !濮掕娼￠崕?
 ALLSEL,ALL  
 VSEL,U, , ,1,VMX1,1 
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,X,rdc-0.01,rdc+0.01
-LESIZE,ALL,0.5, , , ,1, , ,1,      !閹解晜鎽濈仦鍌氬敶瀵?
+LESIZE,ALL,0.5, , , ,1, , ,1,      !闁硅В鏅滈幗婵堜沪閸屾艾鏁剁€?
 ALLSEL,ALL  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,X,rd2
-LESIZE,ALL,0.5, , , ,1, , ,1,       !婢舵牕绶炴径?
+LESIZE,ALL,0.5, , , ,1, , ,1,       !濠㈣埖鐗曠欢鐐村緞?
 ALLSEL,ALL  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU   
 LSEL,R,LOC,X,rdc+1,rd2-1
-LESIZE,ALL,0.5, , , ,1, , ,1,          !閸╄桨缍?
+LESIZE,ALL,0.5, , , ,1, , ,1,          !闁糕晞妗ㄧ紞?
 
 ALLSEL,ALL  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,Z,bc+0.6,bc+bx+0.4   
-LESIZE,ALL,1.2, , , ,1, , ,1,        !姒诲灝顔?
+LESIZE,ALL,1.2, , , ,1, , ,1,        !濮掕鐏濋?
 VSEL,R,LOC,Z,bc+0.6,bc+bx+0.4   
 ALLSEL,BELOW,VOLU   
 VSEL,R,LOC,X,rdc,rd2
@@ -518,13 +518,13 @@ ALLSEL,BELOW,VOLU
 CSYS,4 
 VGEN, ,1,6, 1, , ,BC+0.5-(B1-BX)/2, , ,1
 
-!閸掓稑缂撻崘鍛構缁撅附娼懞鍌滃仯闂嗗棗鎮?
+!闁告帗绋戠紓鎾诲礃閸涱喚妲嬬紒鎾呴檮濞碱偊鎳為崒婊冧化闂傚棗妫楅幃?
 CSYS,1
 ALLSEL,ALL       
 ALLSEL,BELOW,VOLU
 NSEL,S,LOC,x,rd1
 CM,FORCE,NODE 
-!閸掓稑缂撻崘鍛構姒诲潡娼伴懞鍌滃仯闂嗗棗鎮?
+!闁告帗绋戠紓鎾诲礃閸涱喚妲嬪璇叉健濞间即鎳為崒婊冧化闂傚棗妫楅幃?
 ALLSEL,ALL       
 VSEL,S, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
@@ -533,7 +533,7 @@ ASEL,U,LOC,z,BC+0.5-(B1-BX)/2
 ASEL,U,LOC,z,b1+BC+0.5-(B1-BX)/2
 NSLA,S,1
 CM,NEIGU_CHIMIAN,NODE
-!閸掓稑缂撻幗鈺傛憹閻楀洭濞囬棃銏ｅΝ閻愬綊娉﹂崥?
+!闁告帗绋戠紓鎾诲箺閳哄倹鎲归柣妤€娲繛鍥閵忥絽螡闁绘劕缍婂▔锕傚触?
 ALLSEL,ALL       
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
@@ -542,8 +542,8 @@ ASEL,U,LOC,z,BC+0.5
 ASEL,U,LOC,z,bx+bc+0.5
 NSLA,S,1
 CM,mocapian_CHIMIAN,NODE
-!!!鏉堝湱鏅弶鈥叉鐠佸墽鐤?
-!瀵よ櫣鐝涢幒銉ㄐ?
+!!!閺夊牆婀遍弲顐﹀级閳ュ弶顐介悹浣稿⒔閻?
+!鐎点倛娅ｉ悵娑㈠箳閵夈剱?
 CM,_NODECM,NODE       
 CM,_ELEMCM,ELEM 
 CM,_KPCM,KP 
@@ -629,7 +629,7 @@ RMORE,,,0, 0,0,
 RMORE,,,,,, 
 RMORE,,,,,  
 
-!閹解晜鎽濋悧鍥╁閺夌喓娈戦弬钘夊
+!闁硅В鏅滈幗婵嬫偋閸モ晛顔婇柡澶屽枔濞堟垿寮挊澶婎潱
 ALLSEL,ALL 
 VSEL,S,,,1,6,1 
 ALLSEL,BELOW,VOLU      
@@ -646,13 +646,13 @@ CSYS,1
 ALLSEL,ALL
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
-ASEL,S,LOC,Z,BC+0.5   !缁撅附娼弴瀛樻暭
+ASEL,S,LOC,Z,BC+0.5   !缂佹拝闄勫顐﹀即鐎涙ɑ鏆?
 ASEL,A,LOC,Z,BC+0.5+BX
 ASEL,U,LOC,x,ra2+0.1,rdC-0.1
 NSLA,S,1
 D,ALL,ALL
 ALLSEL,ALL
-!閸愬懏鐦嬮弬钘夊鏉炲€熷祹
+!闁告劕鎳忛惁瀣棘閽樺顫ｉ弶鐐测偓鐔风ス
 CMSEL,S,FORCE     
 CSYS,1
 NROTAT,ALL
@@ -674,7 +674,7 @@ ALLSEL,ALL
 SAVE
 FINISH 
 
-!濮瑰倽袙
+!婵懓鍊借
 /SOLU
 SOLVE       
 FINISH
@@ -685,18 +685,18 @@ FINISH
 /REPLOT 
 FINISH 
 
-!!!閸氬骸顦╅悶?
+!!!闁告艾楠搁ˇ鈺呮偠?
 /POST1
 /DSCALE,ALL,1.0 
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, S,EQV, 0,1.0     !缁涘鏅ユ惔鏂垮閺勫墽銇?
+PLNSOL, S,EQV, 0,1.0     !缂佹稑顦伴弲銉︽償閺傚灝顫旈柡鍕⒔閵?
 /show,close 
 /RENAME,%jobname%000.JPG,,,danchiyingliyuntu.jpeg
 
 ALLSEL,ALL
-RSYS,1     !娴犮儲鐓撮崸鎰垼鏉堟挸鍤紒鎾寸亯
+RSYS,1     !濞寸姰鍎查悡鎾锤閹邦厾鍨奸弶鍫熸尭閸ゎ厾绱掗幘瀵镐函
 AVPRIN,0
 AVRES,2,
 /EFACET,1   
@@ -707,7 +707,7 @@ FORCE,TOTAL
 /EFACET,1 
 /GRAPHICS,POWER 
 /show,jpeg,,
-PLNSOL, U,Y, 0,1.0       !閸涖劌鎮滄担宥囆╅弰鍓с仛
+PLNSOL, U,Y, 0,1.0       !闁告稏鍔岄幃婊勬媴瀹ュ泦鈺呭及閸撗佷粵
 /show,close 
 /RENAME,%jobname%000.JPG,,,danchiweiyiyuntu.jpeg
 !*  
@@ -724,24 +724,24 @@ WPCSYS,-1,0
 CSYS,4
 ALLSEL,BELOW,VOLU
 NSEL,R,LOC,z,0.5+bx+bc
-*GET,Nnod,NODE,0,COUNT閵嗏偓閵嗏偓閵嗏偓閵嗏偓閵嗏偓  閵嗏偓!瀵版鍩岄幍鈧柅澶嬪閻ㄥ嫯濡悙瑙勨偓缁樻殶      
-*DIM,Xyz,ARRAY,NNOD,5               !鐎规矮绠熼弫鎵矋              
-*GET,Nd,NODE,0,NUM,MIN              !瀵版鍩岄張鈧亸蹇曟畱閼哄倻鍋ｇ紓鏍у娇      
+*GET,Nnod,NODE,0,COUNT闁靛棌鍋撻柕鍡忓亾闁靛棌鍋撻柕鍡忓亾闁靛棌鍋? 闁靛棌鍋?鐎电増顨呴崺宀勫箥閳ь剟鏌呮径瀣仴闁汇劌瀚俊顓㈡倷鐟欏嫧鍋撶紒妯绘      
+*DIM,Xyz,ARRAY,NNOD,5               !閻庤鐭粻鐔煎极閹殿喚鐭?             
+*GET,Nd,NODE,0,NUM,MIN              !鐎电増顨呴崺宀勫嫉閳ь剛浜歌箛鏇熺暠闁煎搫鍊婚崑锝囩磽閺嵮冨▏      
 *cfopen,nodexyz,txt,,append
-*do,t,1,Nnod,1                      !鐎电濡悙瑙勬殶鏉╂稖顢戝顏嗗箚             
-Xyz(t,1)=Nd                           !閹绘劕褰囬懞鍌滃仯缂傛牕褰?          
-Xyz(t,2)=NX(Nd)                     !閸欐牕鍤懞鍌滃仯閻ㄥ垕閸ф劖鐖?            
-Xyz(t,3)=NY(Nd)                    !閸欐牕鍤懞鍌滃仯閻ㄥ垖閸ф劖鐖?              
+*do,t,1,Nnod,1                      !閻庣數顢婃俊顓㈡倷鐟欏嫭娈堕弶鈺傜椤㈡垵顕ラ鍡楃畾             
+Xyz(t,1)=Nd                           !闁圭粯鍔曡ぐ鍥嚍閸屾粌浠紓鍌涚墪瑜?          
+Xyz(t,2)=NX(Nd)                     !闁告瑦鐗曢崵顓㈡嚍閸屾粌浠柣銊ュ灂闁秆勫姈閻?            
+Xyz(t,3)=NY(Nd)                    !闁告瑦鐗曢崵顓㈡嚍閸屾粌浠柣銊ュ灃闁秆勫姈閻?              
 Xyz(t,4)=NZ(Nd)
 *GET,Xyz(t,5),NODE,ND,S,EQV
-unn=Xyz(t,1)                     !閸欐牕鍤懞鍌滃仯閻ㄥ垙閸ф劖鐖?
-uxn=Xyz(t,2)                  !  鐠囪褰囬懞鍌滃仯 t 閻?Ux閿涘奔绗呴崥?
+unn=Xyz(t,1)                     !闁告瑦鐗曢崵顓㈡嚍閸屾粌浠柣銊ュ灆闁秆勫姈閻?
+uxn=Xyz(t,2)                  !  閻犲洩顕цぐ鍥嚍閸屾粌浠?t 闁?Ux闁挎稑濂旂粭鍛村触?
 uyn=Xyz(t,3)
 uzn=Xyz(t,4)
 sss=Xyz(t,5)
 *vwrite,unn, uxn, uyn, uzn, sss
 (F10.0,3F15.4,3F15.4)
-Nd=NDNEXT(Nd)                   !鐠囪鍤稉瀣╃娑擃亣濡悙鍦椽閸?              
+Nd=NDNEXT(Nd)                   !閻犲洩顕ч崵顓熺▔鐎ｂ晝顏卞☉鎿冧海婵☆參鎮欓崷顓犳そ闁?              
 *enddo
 *cfclos
 save

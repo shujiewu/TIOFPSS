@@ -4,7 +4,9 @@
                 Height="450" Width="600"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="当量载荷谱分析-准动态文件选择">
+        Title="当量载荷谱分析-准动态文件选择"
+                         xmlns:xly="clr-namespace:TIOFPSS.Resources"
+        xmlns:local="clr-namespace:TIOFPSS">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -25,10 +27,10 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" 
+                <!--<TextBlock Grid.Row="0" Grid.Column="0" 
                        Text="选择文件路径：" 
-                       Margin="10,5,5,5"/>
-                <Button Click="OnFindClick"
+                       Margin="10,5,5,5"/>-->
+                <!--<Button Click="OnFindClick"
                      Grid.Row="1" Grid.Column="1"
                      Width="90"
                      Height="23"
@@ -40,8 +42,18 @@
                      Margin="20,5,5,5"
                          Height="23"
                      HorizontalAlignment="Left"
-                     Text="" />
-
+                     Text="" />-->
+                <TextBox x:Name="_valueSelectPath"
+                     local:ControlAttachProperty.Label="选择文件路径"
+                     MinWidth="100"
+                     Grid.Row="1" Grid.Column="0" 
+                     Width="530"
+                     Height="25"
+                     Margin="20,5,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelOpenFileTextBox}" />
 
 
 
@@ -65,38 +77,39 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" 
                        Text="当量载荷谱参数：" 
                        Margin="10,5,5,5"/>
-              
-                <TextBox x:Name="_coefficientValue" 
-                     Grid.Row="1" Grid.Column="1"
-                     Width="100"
-                     Margin="5"
-                         Height="23"
-                     HorizontalAlignment="Left"
-                     Text="" />
-                <TextBlock Grid.Row="1" Grid.Column="0" 
-                       Text="强化系数：" 
-                       Margin="20,10,5,5"/>
+
+                <TextBox x:Name="_coefficientValue"
+                     local:ControlAttachProperty.Label="强化系数"
+                     MinWidth="70"
+                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                     Width="170"
+                     Height="25"
+                     Margin="20,10,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
                 <TextBlock Grid.Row="1" Grid.Column="2" 
                        Text="大于等于1的整数" 
-                       Margin="10,10,5,5"/>
+                       Margin="10,10,5,5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="445,5,5,5" Content="确定添加文件" Width="90" Height="23" Click="OnAddFileClick"/>
+        <xly:FButton FIcon="" Grid.Row="2" Margin="445,5,5,5" Content="确定添加文件" Width="90" Height="23" Click="OnAddFileClick"/>
         <GroupBox Header="已选择的文件" Grid.Row="3" Margin="5" Width="Auto">
-            <ListView Name="listView1" ItemsSource="{Binding}" Height="100">
+            <ListView Name="listView1" ItemsSource="{Binding}" Height="100" Style="{StaticResource DefaultListView}">
                 <ListView.View>
-                    <GridView>
+                    <GridView ColumnHeaderContainerStyle="{StaticResource DefaultGridViewColumnHeader}">
                         <!--<GridViewColumn Header="行" DisplayMemberBinding="{Binding row}" Width="50"/>
                         <GridViewColumn Header="列" DisplayMemberBinding="{Binding col}" Width="50"/>
                         <GridViewColumn Header="通道" DisplayMemberBinding="{Binding td}" Width="80"/>-->
                         <GridViewColumn Header="强化系数" DisplayMemberBinding="{Binding qhxs}" Width="80"/>
-                        <GridViewColumn Header="文件路径" DisplayMemberBinding="{Binding path}" Width="Auto"/>
+                        <GridViewColumn Header="文件路径" DisplayMemberBinding="{Binding path}" Width="500"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <Button Grid.Row="4"  Margin="45,5,5,5" Content="开始分析" Width="90" Height="23" Click="OnDangLiangZaiHePuClick"/>
-        <Button Grid.Row="4"  Margin="245,5,5,5" Content="删除" Width="90" Height="23" Click="OnDeleteClick"/>
-        <Button Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="23" Click="Cancel_Click"/>
+        <xly:FButton FIcon="" Grid.Row="4"  Margin="45,5,5,5" Content="开始分析" Width="90" Height="25" Click="OnDangLiangZaiHePuClick"/>
+        <xly:FButton FIcon="" Grid.Row="4"  Margin="245,5,5,5" Content="删除" Width="90" Height="25" Click="OnDeleteClick"/>
+        <xly:FButton FIcon="" Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="25" Click="Cancel_Click"/>
     </Grid>
 </Window>

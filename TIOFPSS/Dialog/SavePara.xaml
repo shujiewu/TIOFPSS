@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="参数入库" Height="180" Width="450">
+        Title="参数入库" Height="180" Width="450"
+                                         xmlns:xly="clr-namespace:TIOFPSS.Resources"
+        xmlns:local="clr-namespace:TIOFPSS">
     <Grid Margin="0,0,4,6">
         <GroupBox Header="请输入参数库名称" Margin="10">
             <Grid>
@@ -11,10 +13,21 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox x:Name="libName"  Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="75,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300"/>
-                <TextBlock HorizontalAlignment="Left" Grid.Row="0" Margin="35,22,0,0" TextWrapping="Wrap" Text="名称：" VerticalAlignment="Top" RenderTransformOrigin="0.159,1.3"/>
-                <Button Content="保存" Grid.Row="1" HorizontalAlignment="Left" Margin="224,25,0,0" VerticalAlignment="Top" Width="70" Click="OnSaveClick"/>
-                <Button Content="取消"  Grid.Row="1" HorizontalAlignment="Left" Margin="304,25,0,0" VerticalAlignment="Top" Width="70" Click="OnCancelClick"/>
+                <TextBox x:Name="libName"
+                     local:ControlAttachProperty.Label="库名称"
+                     MinWidth="90"
+                     Grid.Row="0"
+                     Width="340"
+                     Height="25"
+                     Margin="0,20,5,5"
+                     HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                     Text=""
+                     Style="{StaticResource LabelTextBox}" />
+                <!--<TextBox x:Name="libName"  Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="75,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300"/>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="0" Margin="35,22,0,0" TextWrapping="Wrap" Text="名称：" VerticalAlignment="Top" RenderTransformOrigin="0.159,1.3"/>-->
+                <xly:FButton FIcon="" Width="80" Height="25" Margin="200,10,0,0" Content="保存" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Top"  Click="OnSaveClick"/>
+                <xly:FButton FIcon="" Width="80" Height="25" Margin="290,10,0,0" Content="取消"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Click="OnCancelClick"/>
 
             </Grid>
         </GroupBox>

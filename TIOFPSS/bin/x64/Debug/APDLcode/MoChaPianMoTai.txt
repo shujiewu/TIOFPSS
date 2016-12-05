@@ -3,22 +3,22 @@
 /CWD,filepath
 /FILNAME,jobname,0
 /PREP7 
-!鏈▼搴忛噰鐢ㄦ绫冲崟浣嶅埗杩涜缂栧啓 (MCP5涔嬪悗鍔犲叆榻夸晶闂撮殭)
-!鍐呮瘋鍙傛暟瀹氫箟
+!閺堫剛鈻兼惔蹇涘櫚閻劍顕犵猾鍐插礋娴ｅ秴鍩楁潻娑滎攽缂傛牕鍟?(MCP5娑斿鎮楅崝鐘插弳姒诲じ鏅堕梻鎾)
+!閸愬懏鐦嬮崣鍌涙殶鐎规矮绠?
 pi=3.14159265358979
-r=0.5*m*z             !鍒嗗害鍦嗗崐寰?
-rb=r*cos(angle1)       !鍩哄渾鍗婂緞
-ra1=0.5*(z*m+2*ha1)     !鍐呮瘋榻块《鍦嗗崐寰?
-rf1=0.5*(z*m-2*c1)  !鍐呮瘋榻挎牴鍦嗗崐寰? 
-!鎽╂摝鐗囧弬鏁板畾涔?
-ra2=0.5*(z*m-2*ha2)     !鎽╂摝鐗囬娇椤跺渾鍗婂緞
-rf2=0.5*(z*m+2*c2)  !鎽╂摝鐗囬娇鏍瑰渾鍗婂緞  
+r=0.5*m*z             !閸掑棗瀹抽崷鍡楀磹瀵?
+rb=r*cos(angle1)       !閸╁搫娓鹃崡濠傜窞
+ra1=0.5*(z*m+2*ha1)     !閸愬懏鐦嬫鍧椼€婇崷鍡楀磹瀵?
+rf1=0.5*(z*m-2*c1)  !閸愬懏鐦嬫鎸庣壌閸﹀棗宕愬? 
+!閹解晜鎽濋悧鍥у棘閺佹澘鐣炬稊?
+ra2=0.5*(z*m-2*ha2)     !閹解晜鎽濋悧鍥▏妞よ泛娓鹃崡濠傜窞
+rf2=0.5*(z*m+2*c2)  !閹解晜鎽濋悧鍥▏閺嶇懓娓鹃崡濠傜窞  
 
-angle2=180.0/z        !闀滃儚鏃嬭浆瑙?  
-angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !鍒濆鐨勫亸杞(鍏跺€间笉鑳芥敼鍙橈級  
-angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !瀵圭О鍋忚浆瑙? 
+angle2=180.0/z        !闂€婊冨剼閺冨娴嗙憴?  
+angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !閸掓繂顫愰惃鍕焊鏉烆剝顫?閸忚泛鈧棿绗夐懗鑺ユ暭閸欐﹫绱? 
+angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !鐎靛湱袨閸嬪繗娴嗙憴? 
  
-ET,1,SOLID185     !瀹氫箟鍗曞厓绫诲瀷
+ET,1,SOLID185     !鐎规矮绠熼崡鏇炲帗缁鐎?
 ET,2,SHELL181 
 sect,1,shell,,  
 secdata, 0.1,1,0.0,3
@@ -26,7 +26,7 @@ secoffset,MID
 seccontrol,,,, , , ,
  
 
-MPTEMP,,,,,,,,     !瀹氫箟鍐呮瘋鏉愭枡鍙傛暟
+MPTEMP,,,,,,,,     !鐎规矮绠熼崘鍛構閺夋劖鏋￠崣鍌涙殶
 MPTEMP,1,0  
 MPDATA,EX,1,,ex1
 MPDATA,PRXY,1,,prxy1
@@ -34,7 +34,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,1,,dens1
 
-MPTEMP,,,,,,,,     !瀹氫箟鑺澘鏉愭枡鍙傛暟
+MPTEMP,,,,,,,,     !鐎规矮绠熼懞顖涙緲閺夋劖鏋￠崣鍌涙殶
 MPTEMP,1,0  
 MPDATA,EX,2,,ex2
 MPDATA,PRXY,2,,prxy2
@@ -42,7 +42,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,2,,dens2
 
-MPTEMP,,,,,,,,     !瀹氫箟鎽╂摝灞傛潗鏂欏弬鏁?
+MPTEMP,,,,,,,,     !鐎规矮绠熼幗鈺傛憹鐏炲倹娼楅弬娆忓棘閺?
 MPTEMP,1,0  
 MPDATA,EX,3,,ex3
 MPDATA,PRXY,3,,prxy3
@@ -51,7 +51,7 @@ MPTEMP,1,0
 MPDATA,DENS,3,,dens3
 
 /prep7
-csys,4               !鑾峰緱鍐呮瘋鏃嬭浆瑙掑害                 
+csys,4               !閼惧嘲绶遍崘鍛構閺冨娴嗙憴鎺戝                 
 wprot,-angle3,0,0      
 K,1,0,0                
  
@@ -72,7 +72,7 @@ NUMCMP,KP
 
 LGEN,2,1, , ,0,0,10, ,0   
 CSYS,1
-LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !鎸夐娇渚ч棿闅欏亸绉绘笎寮€绾?
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !閹稿濞囨笟褔妫块梾娆忎焊缁夌粯绗庡鈧痪?
 LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0   
 LDELE,1,2 ,1 ,1
 NUMCMP,KP   
@@ -93,7 +93,7 @@ gky2=ky(5)
 gky=gky1-gky2
 LDELE,1,2,1,1
 
-!寤虹珛鍐呮瘋妯″瀷 
+!瀵よ櫣鐝涢崘鍛構濡€崇€?
 WPCSYS,-1,0 
 csys,4  
 wprot,-angle3,0,0   
@@ -112,7 +112,7 @@ KDELE,3,101,1
 NUMCMP,KP   
 LGEN,2,1, , ,0,0,10, ,0 
 CSYS,1
-LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !鎸夐娇渚ч棿闅欏亸绉绘笎寮€绾?
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !閹稿濞囨笟褔妫块梾娆忎焊缁夌粯绗庡鈧痪?
 ldele,1,2,1 
 kdele,2,5,1 
 NUMCMP,KP   
@@ -210,7 +210,7 @@ NUMCMP,line
 NUMCMP,KP  
 NUMCMP,VOLU
 
-!寤虹珛鎽╂摝鐗?
+!瀵よ櫣鐝涢幗鈺傛憹閻?
 VSEL,U, , ,ALL  
 ALLSEL,BELOW,VOLU   
 K, ,,,, 
@@ -234,7 +234,7 @@ KDELE,kpnub1+1,kpnub2-1,1
 NUMCMP,KP   
 *GET,lnub,line,,NUM,max 
 CSYS,1 
-LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0!鎸夐娇渚ч棿闅欏亸绉绘笎寮€绾?
+LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0!閹稿濞囨笟褔妫块梾娆忎焊缁夌粯绗庡鈧痪?
 ldele,lnub  
 kdele,kpnub1,kpnub1+1,1 
 NUMCMP,KP   
@@ -283,7 +283,7 @@ LSEL,S,LOC,X,rf2
 LSEL,R,LOC,Y,0,0.1  
 WPCSYS,-1,0 
 wpro,,90.000000,
-LSBW,lnub+2     !鍑洪敊LSBW,all              
+LSBW,lnub+2     !閸戞椽鏁奓SBW,all              
 ALLSEL,ALL  
 *GET,VMN1,VOLU,,NUM,MIN 
 *GET,VMX1,VOLU,,NUM,Max 
@@ -296,7 +296,7 @@ LSEL,R,LOC,Y,angle4,60
 WPCSYS,-1,0 
 wprot,2*angle2,0,0  
 wpro,,90.000000,
-LSBW,lnub+5     !鍑洪敊LSBW,all
+LSBW,lnub+5     !閸戞椽鏁奓SBW,all
 LSBW,lnub+6
 LSBW,lnub+10
 ALLSEL,ALL  
@@ -310,7 +310,7 @@ NUMCMP,line
 NUMCMP,KP   
 LSEL,S,,,lnub,lnub+6,1  
 larc,kpnub1,kpnub1+2,kzx,ra2
-lfillt,lnub,lnub+4,rff2     !鍊掕
+lfillt,lnub,lnub+4,rff2     !閸婃帟顫?
 lfillt,lnub+1,lnub+5,rff2
 LSTR,kpnub1+7,kpnub1+8  
 LSTR,kpnub1+8,kpnub1+9  
@@ -318,8 +318,8 @@ LSTR,kpnub1+5,kpnub1+4
 LSTR,kpnub1+4,kpnub1+6  
 CSYS,1  
 LSEL,R,LOC,X,ra2,rdc
-AL,ALL    !宸插畾涔夌殑绾跨敓鎴愰潰  
-ALLSEL,ALL  !閫夋嫨鎵€鏈夊疄浣擄細鐐圭嚎闈綋
+AL,ALL    !瀹告彃鐣炬稊澶屾畱缁捐法鏁撻幋鎰版桨  
+ALLSEL,ALL  !闁瀚ㄩ幍鈧張澶婄杽娴ｆ搫绱伴悙鍦殠闂堫澀缍?
 LSEL,s,LOC,X,rdc,rd2
 AL,ALL     
 ALLSEL,ALL  
@@ -354,7 +354,7 @@ NUMCMP,AREA
 NUMCMP,VOLU 
 *GET,VMN2,VOLU,,NUM,MIN 
 *GET,VMX2,VOLU,,NUM,Max 
-!瀵规懇鎿︾墖杩涜缃戞牸鍒掑垎   
+!鐎佃鎳囬幙锔惧鏉╂稖顢戠純鎴炵壐閸掓帒鍨?  
  
 CSYS,4  
 WPCSYS,-1,0 
@@ -379,7 +379,7 @@ NUMCMP,KP
 NUMCMP,AREA 
 NUMCMP,VOLU
 
-ALLSEL,ALL          !缃戞牸鍒掑垎灏哄璁惧畾   
+ALLSEL,ALL          !缂冩垶鐗搁崚鎺戝瀻鐏忓搫顕拋鎯х暰   
 !VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
 CSYS,1  
@@ -454,7 +454,7 @@ VSWEEP,10+t*3
 *endif
 
 
-!姹傝В
+!濮瑰倽袙
 /SOL 
 ANTYPE,MODAL 
 MODOPT,LANB,dom,0,0, ,OFF   
@@ -484,7 +484,7 @@ set,1,i
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, U,SUM, 0,1.0      !浣嶇Щ鏄剧ず
+PLNSOL, U,SUM, 0,1.0      !娴ｅ秶些閺勫墽銇?
 /show,close 
 /RENAME,%jobname%000.JPG,,,modal_u_%i%.jpeg
 *enddo
@@ -502,7 +502,7 @@ set,1,i
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, S,EQV, 0,1.0     !绛夋晥搴斿姏鏄剧ず
+PLNSOL, S,EQV, 0,1.0     !缁涘鏅ユ惔鏂垮閺勫墽銇?
 /show,close 
 /RENAME,%jobname%000.JPG,,,modal_m_s_%i%.jpeg
 *enddo
@@ -514,9 +514,9 @@ finish
 
 
 /post1                  
-*get,nodenum,node,,num,max                  !璇诲彇鑺傜偣鏁?       
-*set,modenum,dom                               !鎸囧畾妯℃€佺殑闃舵暟 
-*cfopen,modal_mcp,csv,,loc                    !鎵撳紑鏂囦欢          
+*get,nodenum,node,,num,max                  !鐠囪褰囬懞鍌滃仯閺?       
+*set,modenum,dom                               !閹稿洤鐣惧Ο鈩冣偓浣烘畱闂冭埖鏆?
+*cfopen,modal_mcp,csv,,loc                    !閹垫挸绱戦弬鍥︽          
 *Do,i,1,modenum,1                       
 *Get,modefq,mode,i,freq 
 *Vwrite,i,modefq

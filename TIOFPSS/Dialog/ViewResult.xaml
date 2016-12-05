@@ -260,22 +260,22 @@
                 </TabItem>
                 <TabItem Header="协同分析结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
                         <StackPanel>
-                        <Expander Header="偏心位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                            <Expander Header="全齿位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding PianXinWeiYiYunTu}" Margin="30,0,30,0" />
                         </Expander>
-                        <Expander Header="偏心应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                            <Expander Header="全齿应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding PianXinYingLiYunTu}" Margin="30,0,30,0" />
                         </Expander>
-                        <Expander Header="预应力位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                            <Expander Header="淬火位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding YuYingLiWeiYiYunTu}" Margin="30,0,30,0" />
                         </Expander>
-                        <Expander Header="预应力应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                            <Expander Header="淬火应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding YuYingLiYingLiYunTu}" Margin="30,0,30,0" />
                         </Expander>
-                        <Expander Header="当齿应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                            <Expander Header="少齿当量应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding DangChiYingLiYunTu}" Margin="30,0,30,0" />
                         </Expander>
-                        <Expander Header="当齿位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                            <Expander Header="少齿当量位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding DangChiWeiYiYunTu}" Margin="30,0,30,0" />
                         </Expander>
                         <Expander Header="镀层位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
@@ -284,12 +284,12 @@
                         <Expander Header="镀层应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding DuCengYingLi}" Margin="30,0,30,0" />
                         </Expander>
-                        <Expander Header="动态应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
+                        <!--<Expander Header="动态应力云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding DongTaiYingLiYunTu}" Margin="30,0,30,0" />
                         </Expander>
                         <Expander Header="动态位移云图" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding DongTaiWeiYiYunTu}" Margin="30,0,30,0" />
-                        </Expander>
+                        </Expander>-->
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="模态结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" MouseLeftButtonUp="TabItem_MouseDown">

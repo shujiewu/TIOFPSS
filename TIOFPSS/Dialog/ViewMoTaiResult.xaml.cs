@@ -67,6 +67,8 @@ namespace TIOFPSS.Dialog
                 filepath = PicPath + "\\MoChaPianMoTai\\modal_mcp.csv";
                 if (!System.IO.File.Exists(filepath))
                 {
+                    fileList.Clear();
+                    this.gridList1.ItemsSource = fileList;
                     return;
                 }
                 result = ReadCSV(filepath);
@@ -97,6 +99,8 @@ namespace TIOFPSS.Dialog
                 filepath = PicPath + "\\MoChaPianNeiGuMoTai\\modal.csv";
                 if (!System.IO.File.Exists(filepath))
                 {
+                    fileList.Clear();
+                    this.gridList1.ItemsSource = fileList;
                     return;
                 }
                 result = ReadCSV(filepath);

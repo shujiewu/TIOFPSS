@@ -22,6 +22,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <!-- change SnapsToDevicePixels to True to view a better border and validation error -->
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="local:ControlAttachProperty.LabelWidth" Value="200"/>
         <!--英 ['kærət]  美 ['kærət]  插入符号-->
         <Setter Property="CaretBrush" Value="{StaticResource TextForeground}" />
         <Setter Property="Template">
@@ -39,7 +40,7 @@
                             </Grid.ColumnDefinitions>
                             <!--Label区域-->
                             <ContentControl x:Name="Label" Margin="1" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}"
-                                            Content="{TemplateBinding local:ControlAttachProperty.Label}" Foreground="White"/>
+                                            Content="{TemplateBinding local:ControlAttachProperty.Label}" Foreground="White" Width="{Binding RelativeSource={RelativeSource TemplatedParent},Path=MinWidth}"/>
                             <!--内容区域-->
                             <ScrollViewer x:Name="PART_ContentHost" BorderThickness="0" Grid.Column="1" IsTabStop="False" Margin="2"
                                           VerticalAlignment="Stretch" Background="{x:Null}" />
@@ -102,7 +103,7 @@
         <Setter Property="local:ControlAttachProperty.LabelTemplate" >
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <Border Width="70" Background="{StaticResource TextLabelBackground}">
+                    <Border  Background="{StaticResource TextLabelBackground}">
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3" Text="{TemplateBinding Content}"></TextBlock>
                     </Border>
                 </ControlTemplate>
@@ -115,7 +116,7 @@
         <Setter Property="local:ControlAttachProperty.LabelTemplate" >
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <Border Width="70" Background="{StaticResource TextLabelBackground}">
+                    <Border  Background="{StaticResource TextLabelBackground}">
                         <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3" Text="{TemplateBinding Content}"></TextBlock>
                     </Border>
                 </ControlTemplate>
@@ -143,7 +144,7 @@
                     <xly:FButton FIcon="&#xe64e;" Style="{StaticResource FButton_Transparency}" IsTabStop="False" FIconMargin="0"
                                local:ControlAttachProperty.IsOpenFileButtonBehaviorEnabled="True" Command="local:ControlAttachProperty.OpenFileCommand" 
                                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type TextBox}}}"
-                               Margin="0,1,0,2"  FIconSize="18" Foreground="{StaticResource TextForeground}" Cursor="Arrow"/>
+                               Margin="0,1,0,2"  FIconSize="18" Foreground="{StaticResource TextLabelBackground}" Cursor="Arrow"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -152,6 +153,7 @@
     <!--LabelOpenFolderTextBox-->
     <Style TargetType="{x:Type TextBox}" x:Key="LabelOpenFolderTextBox" BasedOn="{StaticResource LabelClearButtonTextBox}">
         <Setter Property="local:ControlAttachProperty.Label" Value="设置路径"/>
+
         <Setter Property="local:ControlAttachProperty.Watermark" Value="选择文件夹路径"/>
         <Setter Property="local:ControlAttachProperty.AttachContent">
             <Setter.Value>
@@ -160,6 +162,16 @@
                                local:ControlAttachProperty.IsOpenFolderButtonBehaviorEnabled="True" Command="local:ControlAttachProperty.OpenFolderCommand" 
                                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type TextBox}}}"
                                Margin="0,1,0,2"  FIconSize="18" Foreground="{StaticResource TextLabelBackground}" Cursor="Arrow"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="local:ControlAttachProperty.LabelTemplate" >
+            <Setter.Value>
+                <ControlTemplate TargetType="ContentControl">
+                    <Border  Background="{StaticResource TextLabelBackground}" >
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3" Text="{TemplateBinding Content}"></TextBlock>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
