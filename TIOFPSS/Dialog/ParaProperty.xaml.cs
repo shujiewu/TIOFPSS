@@ -898,12 +898,12 @@ namespace TIOFPSS.Dialog
                 temp.LibName.RemoveAt(selectIndex);
                 //DataContext = temp;
                 lbxParaLib.Items.Refresh();
-                
-                Xceed.Wpf.Toolkit.MessageBox.Show("删除成功！");
+
+                TIOFPSS.Resources.MessageBoxX.Info("删除成功！", this);
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("删除失败！");
+                TIOFPSS.Resources.MessageBoxX.Error("删除失败！", this);
             }
         }
 
@@ -925,8 +925,8 @@ namespace TIOFPSS.Dialog
         public Helper.delgateApplyLibMethod CallBackMethod; 
         private void OnApplyLibClick(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;  
-            if (this.DialogResult.Value && CallBackMethod != null)
+            //this.DialogResult = true;  
+            if (CallBackMethod != null)
             {
                 int selectIndex = lbxParaLib.SelectedIndex;
                 TIOFPSS.ViewModels.ParaLibViewModel temp = (TIOFPSS.ViewModels.ParaLibViewModel)DataContext;

@@ -84,8 +84,8 @@
                 <TextBlock HorizontalAlignment="Left" Grid.Row="3" Margin="5,20,0,0" TextWrapping="Wrap" Text="与内毂连接轴的质量（吨）：" VerticalAlignment="Top" />-->
                 <!--<TextBox x:Name="resName"  Grid.Row="4" HorizontalAlignment="Left" Height="23" Margin="161,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
                 <TextBlock HorizontalAlignment="Left" Grid.Row="4" Margin="35,22,0,0" TextWrapping="Wrap" Text="结果文件命名：" VerticalAlignment="Top" />-->
-                <xly:FButton FIcon="" Content="开始分析" Grid.Row="5" HorizontalAlignment="Left" Margin="214,22,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnOKClick"/>
-                <xly:FButton FIcon="" Content="取消"  Grid.Row="5" HorizontalAlignment="Left" Margin="304,22,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnCancelClick"/>
+                <xly:FButton FIcon="" Content="开始分析" Grid.Row="5" HorizontalAlignment="Left" Margin="210,22,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnOKClick"/>
+                <xly:FButton FIcon="" Content="取消"  Grid.Row="5" HorizontalAlignment="Left" Margin="300,22,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnCancelClick"/>
 
             </Grid>
         </GroupBox>

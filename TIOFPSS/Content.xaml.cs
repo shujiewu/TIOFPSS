@@ -214,10 +214,10 @@ namespace TIOFPSS
             wnd.Show();
         }
 
-        private void OnSplitClick(object sender, RoutedEventArgs e)
-        {
-            Xceed.Wpf.Toolkit.MessageBox.Show("Split Clicked!!!");
-        }
+        //private void OnSplitClick(object sender, RoutedEventArgs e)
+        //{
+        //    TIOFPSS.Resources.MessageBoxX.Warning("Split Clicked!!!");
+        //}
 
 
         private void OnReduceClick(object sender, RoutedEventArgs e)
@@ -417,10 +417,10 @@ namespace TIOFPSS
 
         #endregion Logical tree
 
-        private void OnFormatPainterClick(object sender, RoutedEventArgs e)
-        {
-            Xceed.Wpf.Toolkit.MessageBox.Show("FP");
-        }
+        //private void OnFormatPainterClick(object sender, RoutedEventArgs e)
+        //{
+        //    TIOFPSS.Resources.MessageBoxX.Warning("FP");
+        //}
 
         private void OnHelpClick(object sender, RoutedEventArgs e)
         {
@@ -531,7 +531,7 @@ namespace TIOFPSS
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("请选择当前项目！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择当前项目！",this.Parent as Window);
             }
 
         }
@@ -572,7 +572,7 @@ namespace TIOFPSS
                 if (loadProj.ContainsKey(projectName))
                 {
 
-                    Xceed.Wpf.Toolkit.MessageBox.Show("不能加载同名项目", "提示", MessageBoxButton.OK,MessageBoxImage.Warning);
+                    TIOFPSS.Resources.MessageBoxX.Warning("不能加载同名项目",this.Parent as Window);
                     return;
                 }
 
@@ -598,14 +598,14 @@ namespace TIOFPSS
                 }
                 else
                 {
-                    //Xceed.Wpf.Toolkit.MessageBox.Show("创建树目录出错！");
+                    //TIOFPSS.Resources.MessageBoxX.Warning("创建树目录出错！");
                     return;
                 }
 
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("项目路径不能为空！");
+                TIOFPSS.Resources.MessageBoxX.Warning("项目路径不能为空！",this.Parent as Window);
                 return;
             }
 
@@ -624,7 +624,7 @@ namespace TIOFPSS
             DB.BLLUserProject bll = new DB.BLLUserProject();//实例化BLL层
             if (!bll.AddLatestProject(projectPath, projectName, DateTime.Now.ToFileTimeUtc().ToString()))
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("插入最近使用的项目失败！");
+                TIOFPSS.Resources.MessageBoxX.Error("插入最近使用的项目失败！", this.Parent as Window);
                 return;
             }
             mainViewModel.LatestProjectViewModel = new LatestProjectViewModel();
@@ -638,7 +638,7 @@ namespace TIOFPSS
 
             if (loadProj.ContainsKey(projectName))
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("不能加载同名项目");
+                TIOFPSS.Resources.MessageBoxX.Warning("不能加载同名项目", this.Parent as Window);
                 return;
             }
 
@@ -676,7 +676,7 @@ namespace TIOFPSS
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("数据库读取失败！");
+                TIOFPSS.Resources.MessageBoxX.Error("数据库读取失败！", this.Parent as Window);
 
                 ///此处添加删除数据库代码
 
@@ -805,9 +805,9 @@ namespace TIOFPSS
                     }
                     btnFalse();
                 }
-                if(!DeleteDB(loadProj[itemName]))
+                if (!DeleteDB(loadProj[itemName]))
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("数据库信息删除失败！");
+                    TIOFPSS.Resources.MessageBoxX.Error("数据库信息删除失败！", this.Parent as Window);
                 }
 
                 try
@@ -818,7 +818,7 @@ namespace TIOFPSS
                 catch (System.IO.IOException err)
                 {
                     Console.WriteLine(err.Message);
-                    Xceed.Wpf.Toolkit.MessageBox.Show("项目文件删除失败！");
+                    TIOFPSS.Resources.MessageBoxX.Error("项目文件删除失败！", this.Parent as Window);
                     return;
                 }
 
@@ -892,7 +892,7 @@ namespace TIOFPSS
                     if (!tempTextBox.Text.Contains("（当前项目）"))
                     {
                         tempTextBlock.Text = changeItemName;
-                        Xceed.Wpf.Toolkit.MessageBox.Show("重命名不合法！");
+                        TIOFPSS.Resources.MessageBoxX.Warning("重命名不合法！", this.Parent as Window);
                         return;
                     }
                 }
@@ -949,14 +949,14 @@ namespace TIOFPSS
                 
                         if (UpdateDB(tempPara.UserProject, oldPath))
                         {
-                            Xceed.Wpf.Toolkit.MessageBox.Show("保存成功！");
+                            TIOFPSS.Resources.MessageBoxX.Info("保存成功！", this.Parent as Window);
                             //changeItemName = null;
                             break;
                         }
                         else
                         {
                             tempTextBlock.Text = changeItemName;
-                            Xceed.Wpf.Toolkit.MessageBox.Show("重命名不合法！");
+                            TIOFPSS.Resources.MessageBoxX.Warning("重命名不合法！", this.Parent as Window);
                             return;
                         }
                     }
@@ -1112,10 +1112,10 @@ namespace TIOFPSS
 
             if (item.Level == 1)
             {
-                //Xceed.Wpf.Toolkit.MessageBox.Show(item.Label);
+                //TIOFPSS.Resources.MessageBoxX.Warning(item.Label);
                 if (item.Label.Contains("（当前项目）"))
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("已经是当前项目");
+                    TIOFPSS.Resources.MessageBoxX.Warning("已经是当前项目", this.Parent as Window);
                 }
                 else
                 {
@@ -1181,7 +1181,7 @@ namespace TIOFPSS
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("请选择项目！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择项目！", this.Parent as Window);
             }
         }
 
@@ -1221,7 +1221,7 @@ namespace TIOFPSS
                         }
                         else
                         {
-                            Xceed.Wpf.Toolkit.MessageBox.Show("项目已存在！");
+                            TIOFPSS.Resources.MessageBoxX.Error("项目已存在！", this.Parent as Window);
                             return;
                         }
                         for (int i = 0; i < 14; ++i)
@@ -1271,12 +1271,12 @@ namespace TIOFPSS
                 }
                 if (!success)
                 {
-                    TIOFPSS.Resources.MessageBoxX.Warning("请打开项目参数界面！");
+                    TIOFPSS.Resources.MessageBoxX.Warning("请打开项目参数界面！", this.Parent as Window);
                 }
             }
             else
             {
-                TIOFPSS.Resources.MessageBoxX.Warning("请选择当前项目！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择当前项目！", this.Parent as Window);
             }
 
 
@@ -1329,7 +1329,7 @@ namespace TIOFPSS
                     }
                     catch
                     {
-                        Xceed.Wpf.Toolkit.MessageBox.Show("3D模型生成失败！");
+                        TIOFPSS.Resources.MessageBoxX.Error("3D模型生成失败！", this.Parent as Window);
                     }
                     //success = true;
                     //break;
@@ -1337,7 +1337,7 @@ namespace TIOFPSS
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("请选择项目！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择项目！", this.Parent as Window);
             }
             //bool success = false;
             //foreach (var item in DocumentPane.Children)
@@ -1374,7 +1374,7 @@ namespace TIOFPSS
             //        }
             //        catch
             //        {
-            //            Xceed.Wpf.Toolkit.MessageBox.Show("3D模型生成失败！");
+            //            TIOFPSS.Resources.MessageBoxX.Warning("3D模型生成失败！");
             //        }
             //        success = true;
             //        break;
@@ -1382,7 +1382,7 @@ namespace TIOFPSS
             //}
             //if(!success)
             //{
-            //    Xceed.Wpf.Toolkit.MessageBox.Show("请打开项目参数界面！");
+            //    TIOFPSS.Resources.MessageBoxX.Warning("请打开项目参数界面！");
             //}
         }
         //添加库数据
@@ -1405,7 +1405,7 @@ namespace TIOFPSS
             }
             if (!success)
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("请打开项目参数界面！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请打开项目参数界面！", this.Parent as Window);
             }
 
 
@@ -1431,13 +1431,13 @@ namespace TIOFPSS
                 }
                 if (!success)
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("请打开项目参数界面！");
+                    TIOFPSS.Resources.MessageBoxX.Warning("请打开项目参数界面！", this.Parent as Window);
                 }
 
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("请选择项目！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择项目！", this.Parent as Window);
             }
 
             
@@ -1526,7 +1526,7 @@ namespace TIOFPSS
                     {
                         if(xmlPara[i]!=viewPara[i])
                         {
-                            Xceed.Wpf.Toolkit.MessageBox.Show("修改的参数未保存！");
+                            TIOFPSS.Resources.MessageBoxX.Warning("修改的参数未保存！", this.Parent as Window);
                             return null;
                         }
                     }
@@ -1627,6 +1627,12 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
                 string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+                if (!DeleteDongLiXueResult(proj.ProjectPath))
+                {
+                    return;
+                }
+
                 Analysis.WuJieJuWuChaThreadParamter a = new Analysis.WuJieJuWuChaThreadParamter(path, proPath, para);
                 Analysis.WuJieJuWuChaFenXiThread t = new Analysis.WuJieJuWuChaFenXiThread(a);
                 t.CallBackMethod = WuJieJuWuChaFenXiFinish;
@@ -1721,6 +1727,57 @@ namespace TIOFPSS
                 TIOFPSS.Resources.MessageBoxX.Error("噪声分析失败！", this.Parent as Window);
             }
         }
+        private bool DeleteDongLiXueResult(string path)
+        {
+            string tempPath = System.IO.Path.Combine(path, "tempData\\");//@"D:\proj\10.31\tempData\";
+            string proPath = System.IO.Path.Combine(path, "project\\");//+"\\";
+            if(System.IO.File.Exists(proPath+"冲击动力学分析文件\\Dynamic.mat"))
+            {
+                System.IO.File.Delete(proPath + "冲击动力学分析文件\\Dynamic.mat");
+            }
+            
+
+            if(System.IO.Directory.Exists(tempPath+"冲击动力学分析结果"))
+            {
+                try
+                {
+                    System.IO.Directory.Delete(tempPath + "冲击动力学分析结果\\", true);
+                    System.IO.Directory.CreateDirectory(tempPath + "冲击动力学分析结果");
+                }
+                catch
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("删除原结果失败！");
+                    return false;
+                }
+            }
+            if (System.IO.File.Exists(tempPath + "ZhunDongTai\\force+.txt"))
+            {
+                try
+                {
+                    System.IO.File.Delete(tempPath + "ZhunDongTai\\force+.txt");
+                }
+                catch
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("删除原结果失败！");
+                    return false;
+                }
+            }
+            if (System.IO.File.Exists(tempPath + "ZhunDongTai\\force-.txt"))
+            {
+                try
+                {
+                    System.IO.File.Delete(tempPath + "ZhunDongTai\\force-.txt");
+                }
+                catch
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("删除原结果失败！");
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
         private void OnYouJieJuWuChaClick(object sender, RoutedEventArgs e)
         {
             if (nowProjName != null)
@@ -1740,6 +1797,8 @@ namespace TIOFPSS
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
+
+               
                 double[] para = new double[54];
                 para[0] = Convert.ToDouble(proj.TingZhiShiJIan);//0.5   停止时间  1
                 para[1] = Convert.ToDouble(proj.NgChuShiJiaoWeiYi);//0  内毂初始角位移 0
@@ -1807,6 +1866,12 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");//@"D:\proj\10.31\tempData\";
                 string proPath = System.IO.Path.Combine(proj.ProjectPath, "project\\");//+"\\";
+
+                if(!DeleteDongLiXueResult(proj.ProjectPath))
+                {
+                    return;
+                }
+
                 Analysis.WuJieJuWuChaThreadParamter a = new Analysis.WuJieJuWuChaThreadParamter(path, proPath, para);
                 Analysis.YouJieJuWuChaFenXiThread t = new Analysis.YouJieJuWuChaFenXiThread(a);
                 t.CallBackMethod = YouJieJuWuChaFenXiFinish;
@@ -2312,7 +2377,7 @@ namespace TIOFPSS
                 }
                 catch
                 {
-                    MessageBox.Show("wrong");
+                    TIOFPSS.Resources.MessageBoxX.Error("动态分析出错！");
                 }///////////////////////////////////////////////////
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
@@ -2509,10 +2574,12 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\ZhunDongTai");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-                string matPath = proj.ProjectPath + "tempData\\lengthforce+.mat";
-                if (!System.IO.File.Exists(matPath))
+                string matPath = proj.ProjectPath + "tempData\\冲击动力学分析结果\\lengthforce+.mat";
+                string matPath2 = proj.ProjectPath + "tempData\\冲击动力学分析结果\\lengthforce-.mat";
+                if (!System.IO.File.Exists(matPath) || !System.IO.File.Exists(matPath2))
                 {
-                    MessageBox.Show("缺少force文件");
+                    TIOFPSS.Resources.MessageBoxX.Error("缺少force文件");
+                    return;
                 }
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
@@ -2527,8 +2594,8 @@ namespace TIOFPSS
                 //n1 = System.IO.File.ReadAllText(proj.ProjectPath + "\\tempData\\lengthforce+.mat");
                 //n2 = System.IO.File.ReadAllText(proj.ProjectPath + "\\tempData\\lengthforce-.mat");
 
-                Matrix<double> m1 = MatlabReader.Read<double>(proj.ProjectPath + "\\tempData\\lengthforce+.mat");
-                Matrix<double> m2 = MatlabReader.Read<double>(proj.ProjectPath + "\\tempData\\lengthforce-.mat");
+                Matrix<double> m1 = MatlabReader.Read<double>(proj.ProjectPath + "\\tempData\\冲击动力学分析结果\\lengthforce+.mat");
+                Matrix<double> m2 = MatlabReader.Read<double>(proj.ProjectPath + "\\tempData\\冲击动力学分析结果\\lengthforce-.mat");
                 string n1, n2;
                 // double [,] tt = ;
                 n1 = m1.ToArray()[0, 0].ToString();
@@ -3327,7 +3394,7 @@ namespace TIOFPSS
                 }
                 catch
                 {
-                    //Xceed.Wpf.Toolkit.MessageBox.Show("生成报表失败！");
+                    //TIOFPSS.Resources.MessageBoxX.Warning("生成报表失败！");
                     TIOFPSS.Resources.MessageBoxX.Error("生成报表失败！", this.Parent as Window);
                 }
             }
@@ -3409,22 +3476,42 @@ namespace TIOFPSS
             }
             if(picPath==null)
             {
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择一张图片！");
                 return;
             }
             System.Windows.Media.Color lineColor=new Color();
        
-            if(colorPicker.SelectedColor!=null)
+            if(LineColor.SelectedColor!=null)
             {
-                lineColor = (System.Windows.Media.Color)colorPicker.SelectedColor;
+                lineColor = (System.Windows.Media.Color)LineColor.SelectedColor;
             }
-            
+            else
+            {
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择线段颜色！");
+                return;
+            }
             string picName=picPath.Substring(picPath.LastIndexOf("\\")+1);            //"摩擦片冲击力";
             System.Windows.Media.Color fontColor = new Color();
             if(FontColor.SelectedColor!=null)
             {
                 fontColor = (System.Windows.Media.Color)FontColor.SelectedColor;
             }
-           
+            else
+            {
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择字体颜色！");
+                return;
+            }
+            if(xmin.Value==xmax.Value || ymin.Value==ymax.Value)
+            {
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择合适区间！");
+                return;
+            }
+
+            int bold = 1;
+            if(buttonBold.IsChecked==true)
+            {
+                bold = 2;
+            }
 
             double []ii=new double[18];//蓝色和红色
             TextBlock tb = (TextBlock)comboBoxFontSize.SelectedItem;
@@ -3442,7 +3529,7 @@ namespace TIOFPSS
 	        ii[10]=ymax.Value;//Y坐标
 	        ii[11]=5;//<0:细化绘图   0<x<10 保存一张图片  >10 保存所有图片
 	        ii[12]=1;//判断是否需要标题>0 需要 <0不需要
-	        ii[13]=1;//字体加粗选择：1、2、3、4  {'normal','bold','light','demi'}
+            ii[13] = bold;//字体加粗选择：1、2、3、4  {'normal','bold','light','demi'}
             ii[14] = (double)fontColor.R / 255;//字体颜色R
             ii[15] = (double)fontColor.G / 255;//字体颜色G
             ii[16] = (double)fontColor.B / 255;//字体颜色B
@@ -3541,7 +3628,7 @@ namespace TIOFPSS
         //    }
         //    else
         //    {
-        //        Xceed.Wpf.Toolkit.MessageBox.Show("请选择要优化的项目");
+        //        TIOFPSS.Resources.MessageBoxX.Warning("请选择要优化的项目");
         //    }
 
 
@@ -3580,57 +3667,141 @@ namespace TIOFPSS
 
                 //MWArray filename = new MWCharArray("force");
                 draw.HuiTuClass htClass=new draw.HuiTuClass();
-                
+                bool hasCheck = false;
 		            if(mcpcjjCHK.IsChecked==true)
                     {
+                        hasCheck = true;
                         MWArray filename = new MWCharArray("force");
-                        htClass.draw(loc,dra,filename,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                        
                     }
             		if(mcpngxdnzjdCHK.IsChecked==true)
 		            {
+                        hasCheck = true;
 				        MWArray filename2 = new MWCharArray("relative_angle");
-                        htClass.draw(loc,dra,filename2,fontName,typ);
+                        try
+                        {
+                             htClass.draw(loc,dra,filename2,fontName,typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
                     }
                     if(mcpngxdxzsdCHK.IsChecked==true)
                     {
+                        hasCheck = true;
                         MWArray filename3 = new MWCharArray("relative_rotating_velocity");
-                        htClass.draw(loc,dra,filename3,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename3, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
                     }
             		if(ngjjsdCHK.IsChecked==true)
 		            {
+                        hasCheck = true;
 				        MWArray filename4 = new MWCharArray("inner_acceleration");
-                        htClass.draw(loc,dra,filename4,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc,dra,filename4,fontName,typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                        
                     }
                     if(mcpjjsdCHK.IsChecked==true)
                     {
+                        hasCheck = true;
                         MWArray filename5 = new MWCharArray("outer_acceleration");
-                        htClass.draw(loc,dra,filename5,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename5, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                       
                     }
             		if(ngjsdCHK.IsChecked==true)
 		            {
+                        hasCheck = true;
 				        MWArray filename6 = new MWCharArray("inner_speed");
-                        htClass.draw(loc,dra,filename6,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename6, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                        
                     }
                     if(mcpjsdCHK.IsChecked==true)
                     {
+                        hasCheck = true;
                         MWArray filename7 = new MWCharArray("outer_speed");
-                        htClass.draw(loc,dra,filename7,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename7, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                        
                     }
             		if(ngmcpjsdCHK.IsChecked==true)
 		            {
+                        hasCheck = true;
 				        MWArray filename8 = new MWCharArray("speed");
-                        htClass.draw(loc,dra,filename8,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename8, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                        
                     }
                     if(ngmcpjjsdCHK.IsChecked==true)
 		            {
+                        hasCheck = true;
 				        MWArray filename9 = new MWCharArray("acceleration");
-                        htClass.draw(loc,dra,filename9,fontName,typ);
+                        try
+                        {
+                            htClass.draw(loc, dra, filename9, fontName, typ);
+                        }
+                        catch
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("绘图失败！", this.Parent as Window);
+                        }
+                        
                     }
+                if(hasCheck==false)
+                {
+                    TIOFPSS.Resources.MessageBoxX.Warning("请选择要绘图类型！", this.Parent as Window);
+                }
+
                 
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("请选择要绘图的项目");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择要绘图的项目", this.Parent as Window);
             }        
         }
 
@@ -3711,7 +3882,7 @@ namespace TIOFPSS
 
         private void OnTestCommandExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            Xceed.Wpf.Toolkit.MessageBox.Show("Test Module Command");
+            TIOFPSS.Resources.MessageBoxX.Warning("Test Module Command");
         }
     }
 

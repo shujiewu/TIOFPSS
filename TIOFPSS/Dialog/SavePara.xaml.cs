@@ -36,11 +36,11 @@ namespace TIOFPSS.Dialog
             DB.BLLUserProject bll = new DB.BLLUserProject();//实例化BLL层
             if (bll.AddLib(userProject) == true)//将用户信息添加到数据库中，根据返回值判断是否添加成功
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("数据添加成功");
+                TIOFPSS.Resources.MessageBoxX.Info("数据添加成功", this);
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("数据添加失败");
+                TIOFPSS.Resources.MessageBoxX.Error("数据添加失败", this);
             }
         }
 

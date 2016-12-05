@@ -190,8 +190,8 @@
                                Icon="pack://application:,,,/TIOFPSS;component/Images/Help.png"
                                Click="OnHelpClick">
                     <Fluent:Button.ToolTip>
-                        <Fluent:ScreenTip Title="Insert Chart"
-                                          Text="Insert a chart to illustarate and compare data. &#xa;&#xa;Bar, Pie, Line, Area and Surface are same of the available types."
+                        <Fluent:ScreenTip Title="帮助"
+                                          Text="帮助"
                                           Image="pack://application:,,,/TIOFPSS;component\Images/SampleImageForScreenTip.png"
                                           HelpTopic="http:\\fluent.codeplex.com"
                                           DisableReason="Disable reason reason."
@@ -595,12 +595,12 @@
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/contrast.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/contrast.png"
                                    Click="OnProjCmpClick">
-                        <Fluent:Button.ToolTip>
+                        <!--<Fluent:Button.ToolTip>
                             <Fluent:ScreenTip Title="Green"
                                               HelpTopic="Help for Green ScreenTip"
                                               Image="pack://application:,,,/TIOFPSS;component/Images/GreenLarge.png"
                                               Text="This ScreenTip is ribbon aligned. &#x0a;It has the image and handles F1." />
-                        </Fluent:Button.ToolTip>
+                        </Fluent:Button.ToolTip>-->
                     </Fluent:Button>
                     <!--ScreenTip is able to be shown on disabled controls-->
                     <Fluent:Button Header="项目查找"
@@ -608,14 +608,14 @@
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/Search.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/Search.png"
                                    Click="OnProQueryClick">
-                        <Fluent:Button.ToolTip>
+                        <!--<Fluent:Button.ToolTip>
                             <Fluent:ScreenTip Title="Brown"
                                               Width="250"
                                               Image="pack://application:,,,/TIOFPSS;component/Images/BrownLarge.png"
                                               Text="This control is disabled and has fixed width 250px"
                                               HelpTopic="Help for Brown ScreenTip"
                                               DisableReason="This control is disabled to show 'disable reason' section" />
-                        </Fluent:Button.ToolTip>
+                        </Fluent:Button.ToolTip>-->
                     </Fluent:Button>
 
                     <!--<Fluent:Button Header="项目优化"
@@ -651,7 +651,7 @@
             </Fluent:RibbonTabItem>
 
             <Fluent:RibbonTabItem Header="数据管理"
-                                  KeyTip="RS"
+                                  
                                   ReduceOrder="Default,Default,Default,Large,Large,Large,Other,Other,Other">
 
                 <!--All group can be in four state: Large->Middle->Small->Collapsed
@@ -684,11 +684,11 @@
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/refine.png"
                                    Click="OnDetailDrawClick"
                                    x:Name="btnDetailDraw">
-                        <Fluent:Button.ToolTip>
+                        <!--<Fluent:Button.ToolTip>
                             <Fluent:ScreenTip Title="Gray"
                                               IsRibbonAligned="False"
                                               Text="This ScreenTip is NOT aligned to ribbon bottom" />
-                        </Fluent:Button.ToolTip>
+                        </Fluent:Button.ToolTip>-->
                     </Fluent:Button>
                     <Fluent:CheckBox Name="mcpcjjCHK">
                         摩擦片冲击力
@@ -777,16 +777,17 @@
                                 <Fluent:RibbonToolBarRow>
 
                                     <Fluent:RibbonToolBarControlGroupDefinition>
-                                        <Fluent:RibbonToolBarControlDefinition Target="colorName" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="lineColorName" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="buttonLineColor" />
                                         <Fluent:RibbonToolBarControlDefinition Target="xmin" />
                                         <Fluent:RibbonToolBarControlDefinition Target="xmax" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="fontName" />
                                     </Fluent:RibbonToolBarControlGroupDefinition>
 
                                     <Fluent:RibbonToolBarControlDefinition Target="comboBoxFontName"
-                                                                           Width="75" />
-                                    <Fluent:RibbonToolBarControlDefinition Target="comboBoxFontSize"
-                                                                           Width="45" />
-                                    <Fluent:RibbonToolBarControlGroupDefinition>
+                                                                           Width="110" />
+
+                                    <!--<Fluent:RibbonToolBarControlGroupDefinition>
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonGrowFont" />
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonShrinkFont" />
                                     </Fluent:RibbonToolBarControlGroupDefinition>
@@ -795,36 +796,41 @@
                                     </Fluent:RibbonToolBarControlGroupDefinition>
                                     <Fluent:RibbonToolBarControlGroupDefinition>
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonClearFormatting" />
-                                    </Fluent:RibbonToolBarControlGroupDefinition>
+                                    </Fluent:RibbonToolBarControlGroupDefinition>-->
 
                                 </Fluent:RibbonToolBarRow>
                                 <Fluent:RibbonToolBarRow>
 
                                     <Fluent:RibbonToolBarControlGroupDefinition>
-                                        <Fluent:RibbonToolBarControlDefinition Target="colorPicker" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="fontColorName" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="buttonFontColor" />
                                         <Fluent:RibbonToolBarControlDefinition Target="ymin" />
                                         <Fluent:RibbonToolBarControlDefinition Target="ymax" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="fontSize" />
+                                        
                                     </Fluent:RibbonToolBarControlGroupDefinition>
-
+                                    <Fluent:RibbonToolBarControlDefinition Target="comboBoxFontSize"
+                                                                           Width="55" />
                                     <Fluent:RibbonToolBarControlGroupDefinition>
+                                        <Fluent:RibbonToolBarControlDefinition Target="fontBold" />
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonBold" />
-                                        <Fluent:RibbonToolBarControlDefinition Target="buttonItalic" />
+                                        <!--<Fluent:RibbonToolBarControlDefinition Target="buttonItalic" />
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonUnderline" />
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonStrikethrough" />
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonSubscript" />
-                                        <Fluent:RibbonToolBarControlDefinition Target="buttonSuperscript" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="buttonSuperscript" />-->
                                     </Fluent:RibbonToolBarControlGroupDefinition>
-                                    <Fluent:RibbonToolBarControlGroupDefinition>
+                                    <!--<Fluent:RibbonToolBarControlGroupDefinition>
                                         <Fluent:RibbonToolBarControlDefinition Target="buttonTextEffects" />
-                                        <Fluent:RibbonToolBarControlDefinition Target="buttonTextHighlightColor" />
-                                        <Fluent:RibbonToolBarControlDefinition Target="buttonFontColor" />
-                                    </Fluent:RibbonToolBarControlGroupDefinition>
+                                        --><!--<Fluent:RibbonToolBarControlDefinition Target="buttonLineColor" />
+                                        <Fluent:RibbonToolBarControlDefinition Target="buttonFontColor" />--><!--
+                                    </Fluent:RibbonToolBarControlGroupDefinition>-->
 
 
                                 </Fluent:RibbonToolBarRow>
                             </Fluent:RibbonToolBarLayoutDefinition>
 
-                            <Fluent:RibbonToolBarLayoutDefinition Size="Middle">
+                            <!--<Fluent:RibbonToolBarLayoutDefinition Size="Middle">
                                 <Fluent:RibbonToolBarRow>
                                     <Fluent:RibbonToolBarControlDefinition Target="comboBoxFontName"
                                                                            Width="125" />
@@ -859,13 +865,18 @@
                                     </Fluent:RibbonToolBarControlGroupDefinition>
 
                                 </Fluent:RibbonToolBarRow>
-                            </Fluent:RibbonToolBarLayoutDefinition>
+                            </Fluent:RibbonToolBarLayoutDefinition>-->
                         </Fluent:RibbonToolBar.LayoutDefinitions>
 
                         <!--ToolBar Controls-->
-                        <TextBlock Text="线段颜色：" VerticalAlignment="Center" x:Name="colorName" Width="100" Margin="5,0,5,0"/>
-                        <xctk:ColorPicker 
-                           VerticalAlignment="Center"  x:Name="colorPicker" Width="100" Margin="5,0,5,0"/>
+                        <TextBlock Text="线段颜色" VerticalAlignment="Center" x:Name="lineColorName" Width="55" Margin="5,0,0,0"/>
+                        <TextBlock Text="字体颜色" VerticalAlignment="Center" x:Name="fontColorName" Width="55" Margin="5,0,0,0"/>
+
+                        <TextBlock Text="字体" VerticalAlignment="Center" x:Name="fontName" Width="25" Margin="10,0,0,0"/>
+                        <TextBlock Text="字号" VerticalAlignment="Center" x:Name="fontSize" Width="25" Margin="10,0,0,0"/>
+                        <TextBlock Text="加粗" VerticalAlignment="Center" x:Name="fontBold" Width="25" Margin="10,0,0,0"/>
+                        <!--<xctk:ColorPicker 
+                           VerticalAlignment="Center"  x:Name="colorPicker" Width="100" Margin="5,0,5,0"/>-->
                         <Fluent:Spinner KeyTip="KA"
                                     
                                     InputWidth="75"
@@ -960,7 +971,7 @@
                             <TextBlock Text="48" />
                             <TextBlock Text="72" />
                         </Fluent:ComboBox>
-                        <Fluent:Button KeyTip="GF"
+                        <!--<Fluent:Button KeyTip="GF"
                                        x:Name="buttonGrowFont"
                                        Icon="pack://application:,,,/TIOFPSS;component/Images/GrowFont.png"
                                        HorizontalAlignment="Left"
@@ -976,13 +987,13 @@
                         <Fluent:Button x:Name="buttonClearFormatting"
                                        Icon="pack://application:,,,/TIOFPSS;component/Images/ClearFormatting.png"
                                        HorizontalAlignment="Left"
-                                       SizeDefinition="Small" />
+                                       SizeDefinition="Small" />-->
                         <Fluent:ToggleButton KeyTip="B"
                                              x:Name="buttonBold"
                                              Icon="pack://application:,,,/TIOFPSS;component/Images/Bold.png"
                                              HorizontalAlignment="Left"
                                              SizeDefinition="Small" />
-                        <Fluent:ToggleButton x:Name="buttonItalic"
+                        <!--<Fluent:ToggleButton x:Name="buttonItalic"
                                              KeyTip="I"
                                              Icon="pack://application:,,,/TIOFPSS;component/Images/Italic.png"
                                              HorizontalAlignment="Left"
@@ -1002,10 +1013,10 @@
                         <Fluent:Button x:Name="buttonSuperscript"
                                        Icon="pack://application:,,,/TIOFPSS;component/Images/Superscript.png"
                                        HorizontalAlignment="Left"
-                                       SizeDefinition="Small" />
+                                       SizeDefinition="Small" />-->
 
                         <!-- It's possible to create custom icon to present selected color -->
-                        <Fluent:DropDownButton x:Name="buttonTextEffects"
+                        <!--<Fluent:DropDownButton x:Name="buttonTextEffects"
                                                HorizontalAlignment="Left"
                                                SizeDefinition="Small">
                             <Fluent:DropDownButton.Icon>
@@ -1029,7 +1040,7 @@
                                              Header="Custom MenuItem" />
                         </Fluent:DropDownButton>
 
-                        <!-- The following code shows highlight colors mode for color gallery -->
+                        --><!-- The following code shows highlight colors mode for color gallery --><!--
                         <Fluent:DropDownButton x:Name="buttonTextHighlightColor"
                                                HorizontalAlignment="Left"
                                                SizeDefinition="Small">
@@ -1051,7 +1062,7 @@
                             <Fluent:ColorGallery Mode="HighlightColors"
                                                  SelectedColor="{Binding ColorViewModel.HighlightColor, Mode=TwoWay}"
                                                  IsAutomaticColorButtonVisible="False" />
-                        </Fluent:DropDownButton>
+                        </Fluent:DropDownButton>-->
 
                         <!-- The following code shows theme colors mode for color gallery -->
                         <Fluent:DropDownButton x:Name="buttonFontColor"
@@ -1059,7 +1070,7 @@
                                                SizeDefinition="Small"
                                                MaxDropDownHeight="500">
                             <Fluent:DropDownButton.ToolTip>
-                                <Fluent:ScreenTip Text="Test-ScreenTip to test wrong ToolTip appearence when Popup is open" />
+                                <Fluent:ScreenTip Text="字体颜色" />
                             </Fluent:DropDownButton.ToolTip>
                             <Fluent:DropDownButton.Icon>
                                 <Grid>
@@ -1082,6 +1093,40 @@
                                                  Mode="ThemeColors"
                                                  StandardColorGridRows="3"
                                                  Columns="10" x:Name="FontColor"
+                                                 ThemeColorGridRows="5"
+                                                 IsNoColorButtonVisible="True">
+                            </Fluent:ColorGallery>
+                        </Fluent:DropDownButton>
+
+
+                        <Fluent:DropDownButton x:Name="buttonLineColor"
+                                               HorizontalAlignment="Left"
+                                               SizeDefinition="Small"
+                                               MaxDropDownHeight="500">
+                            <Fluent:DropDownButton.ToolTip>
+                                <Fluent:ScreenTip Text="线段颜色" />
+                            </Fluent:DropDownButton.ToolTip>
+                            <Fluent:DropDownButton.Icon>
+                                <Grid>
+                                    <Image Source="pack://application:,,,/TIOFPSS;component/Images/lineColor.png"
+                                           Width="16"
+                                           Height="16"
+                                           SnapsToDevicePixels="True" />
+                                    <Rectangle VerticalAlignment="Bottom"
+                                               Height="4"
+                                               Width="16"
+                                               HorizontalAlignment="Center">
+                                        <Rectangle.Fill>
+                                            <SolidColorBrush Color="{Binding ColorViewModel.LineColor}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Grid>
+                            </Fluent:DropDownButton.Icon>
+                            <Fluent:ColorGallery ThemeColorsSource="{Binding ColorViewModel.LineColors}"
+                                                 SelectedColor="{Binding ColorViewModel.LineColor, Mode=TwoWay}"
+                                                 Mode="ThemeColors"
+                                                 StandardColorGridRows="3"
+                                                 Columns="10" x:Name="LineColor"
                                                  ThemeColorGridRows="5"
                                                  IsNoColorButtonVisible="True">
                             </Fluent:ColorGallery>
@@ -1317,7 +1362,7 @@
                                 <avalon:LayoutDocumentPane   x:Name="DocumentPane">
                                     <avalon:LayoutDocument Title="欢迎" >
                                         <StackPanel  Orientation="Horizontal" Background="White" Margin="0">
-                                            <Image  Source="pack://application:,,,/TIOFPSS;component/Images/xbg.jpg" Width="1000" Height="600"/>
+                                            <Image  Source="pack://application:,,,/TIOFPSS;component/Images/xbg.jpg" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </StackPanel>
                                         
                                     </avalon:LayoutDocument>

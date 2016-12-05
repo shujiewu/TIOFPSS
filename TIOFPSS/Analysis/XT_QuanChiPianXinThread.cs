@@ -129,7 +129,7 @@ new DoTask(Func));
 
                 System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 new DoTask(Func));
-                //Xceed.Wpf.Toolkit.MessageBox.Show("少齿当量静态强度分析完成");
+                //TIOFPSS.Resources.MessageBoxX.Warning("少齿当量静态强度分析完成");
             }
             else
             {
@@ -145,7 +145,7 @@ new DoTask(Func));
                 }
                 System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 new DoTask(Func));
-                //Xceed.Wpf.Toolkit.MessageBox.Show("少齿当量静态强度分析中断");
+                //TIOFPSS.Resources.MessageBoxX.Warning("少齿当量静态强度分析中断");
             }
             
 

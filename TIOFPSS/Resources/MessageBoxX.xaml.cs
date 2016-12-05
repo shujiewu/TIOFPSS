@@ -121,7 +121,7 @@ namespace TIOFPSS.Resources
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
                 MessageBoxX nb = new MessageBoxX(type, mes) { Title = enumHelper.GetDescription(type) };
-                nb.Owner = owner ?? ControlHelper.GetTopWindow();
+                //nb.Owner = owner ?? ControlHelper.GetTopWindow();
                 nb.ShowDialog();
                 res = nb.Result;
             }));

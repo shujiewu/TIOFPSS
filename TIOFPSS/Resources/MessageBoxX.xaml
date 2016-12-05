@@ -1,8 +1,8 @@
 ﻿<Window x:Class="TIOFPSS.Resources.MessageBoxX"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="mb" 
-        Title="MessageBoxX" ShowInTaskbar="False" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
-        xmlns:xly="clr-namespace:TIOFPSS.Resources" WindowStartupLocation="CenterOwner">
+        Title="MessageBoxX" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        xmlns:xly="clr-namespace:TIOFPSS.Resources" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid Margin="5,8,5,5">
             <Grid.RowDefinitions>

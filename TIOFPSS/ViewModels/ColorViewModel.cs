@@ -10,6 +10,10 @@
         private readonly Color[] themeColors = { Colors.Red, Colors.Green, Colors.Blue, Colors.White, Colors.Black, Colors.Purple };
         private Color themeColor;
 
+        private readonly Color[] lineColors = { Colors.Red, Colors.Green, Colors.Blue, Colors.White, Colors.Black, Colors.Purple };
+        private Color lineColor;
+
+
         public ColorViewModel()
         {
             this.StandardColor = Colors.Black;
@@ -49,6 +53,22 @@
             {
                 this.themeColor = value;
                 this.OnPropertyChanged("ThemeColor");
+            }
+        }
+
+
+        public Color[] LineColors
+        {
+            get { return this.lineColors; }
+        }
+
+        public Color LineColor
+        {
+            get { return this.lineColor; }
+            set
+            {
+                this.lineColor = value;
+                this.OnPropertyChanged("LineColor");
             }
         }
     }

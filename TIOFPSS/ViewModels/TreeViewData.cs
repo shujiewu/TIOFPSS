@@ -85,7 +85,7 @@ namespace TIOFPSS.ViewModels
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("加载路径出错！请重新选择项目路径！");
+                TIOFPSS.Resources.MessageBoxX.Error("加载路径出错！请重新选择项目路径！");
                 return false;
             }
 
@@ -140,7 +140,7 @@ namespace TIOFPSS.ViewModels
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("加载路径出错！请重新选择项目路径！");
+                TIOFPSS.Resources.MessageBoxX.Error("加载路径出错！请重新选择项目路径！");
                 return false;
             }
 

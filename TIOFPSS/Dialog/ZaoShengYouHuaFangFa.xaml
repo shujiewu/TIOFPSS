@@ -4,8 +4,51 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              d:DesignHeight="1300" d:DesignWidth="1300">
-    
+    <UserControl.Resources>
+        <Thickness x:Key="WinMargin">12</Thickness>
+        <Thickness x:Key="WinHorizontalMargin">12,0</Thickness>
+        <Color x:Key="WinAccentColor">#709E26</Color>
+        <SolidColorBrush x:Key="WinAccentBrush" Color="{StaticResource WinAccentColor}"/>
+        <Color x:Key="WinForegroundColor">#DE000000</Color>
+        <SolidColorBrush x:Key="WinForegroundBrush" Color="{StaticResource WinForegroundColor}"/>
+        <!-- Font names -->
+        <FontFamily x:Key="WinFontFamilyNormal">Segoe UI</FontFamily>
+        <FontFamily x:Key="WinFontFamilyLight">Segoe UI Light</FontFamily>
+        <FontFamily x:Key="WinFontFamilySemiLight">Segoe UI SemiLight</FontFamily>
+        <FontFamily x:Key="WinFontFamilySemiBold">Segoe UI Semibold</FontFamily>
+        <!-- Font sizes -->
+
+        <!--14pt-->
+        <System:Double x:Key="WinFontSizeSmall">14</System:Double>
+        <!--15pt-->
+        <System:Double x:Key="WinFontSizeNormal">15</System:Double>
+        <!--17pt-->
+        <System:Double x:Key="WinFontSizeMedium">17</System:Double>
+        <!--19pt-->
+        <System:Double x:Key="WinFontSizeMediumLarge">19</System:Double>
+        <!--24pt-->
+        <System:Double x:Key="WinFontSizeLarge">24</System:Double>
+        <!--32pt-->
+        <System:Double x:Key="WinFontSizeExtraLarge">32</System:Double>
+        <!--54pt-->
+        <System:Double x:Key="WinFontSizeExtraExtraLarge">54</System:Double>
+        <!--140pt-->
+        <System:Double x:Key="WinFontSizeHuge">140</System:Double>
+        <Style x:Key="WinTextBlockBase" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource WinFontFamilyNormal}"/>
+            <Setter Property="FontSize" Value="{StaticResource WinFontSizeNormal}"/>
+            <Setter Property="Foreground" Value="{StaticResource WinForegroundBrush}"/>
+            <Setter Property="Margin" Value="{StaticResource WinHorizontalMargin}"/>
+        </Style>
+        <Style x:Key="WinTextTitle2Style" TargetType="TextBlock" BasedOn="{StaticResource WinTextBlockBase}">
+            <Setter Property="FontFamily" Value="{StaticResource WinFontFamilySemiLight}"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Foreground" Value="{StaticResource WinAccentBrush}"/>
+        </Style>
+        <Style x:Key="WinTextNormalStyle" TargetType="TextBlock" BasedOn="{StaticResource WinTextBlockBase}" />
+    </UserControl.Resources>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>

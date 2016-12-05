@@ -51,9 +51,9 @@ namespace TIOFPSS.Dialog
         public Helper.delgateFXXSS CallBackMethod;
         private void OnFXXSSClick(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            if (this.DialogResult.Value && CallBackMethod != null)
-            {
+            //this.DialogResult = true;
+            //if (this.DialogResult.Value && CallBackMethod != null)
+            //{
                 string rowValue1,rowValue2;
                 if(rbA.IsChecked==true)
                 {
@@ -73,17 +73,19 @@ namespace TIOFPSS.Dialog
                     col = _columnValue.Text.ToString(),
                     path = _valueSelectPath.Text.ToString()
                 };
-                if (fileData.row1 != null && fileData.row2 != null && fileData.col != null && fileData.path != null)
+                if (fileData.row1 != "" && fileData.row2 != "" && fileData.col != "" && fileData.path != "")
                 {
                     this.CallBackMethod(fileData);
                     this.Close();
                 }
                 else
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("参数输入有误!");
+                    TIOFPSS.Resources.MessageBoxX.Error("参数输入有误!");
+                    return;
+                    //Xceed.Wpf.Toolkit.MessageBox.Show("参数输入有误!");
                 }
 
-            }
+            //}
         }
         private void radio_Unchecked(object sender, RoutedEventArgs e)
         {

@@ -133,9 +133,6 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TpMetroWpfLibrary">
-      <HintPath>dll\TpMetroWpfLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -282,6 +279,7 @@
     <Compile Include="Resources\MessageBoxX.xaml.cs">
       <DependentUpon>MessageBoxX.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\RelativeAnimatingContentControl.cs" />
     <Compile Include="Resources\WaitingBox.xaml.cs">
       <DependentUpon>WaitingBox.xaml</DependentUpon>
     </Compile>
@@ -469,11 +467,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\RadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\TabControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -670,6 +676,9 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="Images\StarShow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lineColor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -74,7 +74,7 @@ new DoTask(Func));
 new DoTask(Func));
             }           
             
-            //Xceed.Wpf.Toolkit.MessageBox.Show("噪声分析完成");
+            //TIOFPSS.Resources.MessageBoxX.Warning("噪声分析完成");
         }
         public void Func()
         {

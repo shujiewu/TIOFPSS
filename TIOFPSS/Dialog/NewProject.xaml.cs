@@ -90,7 +90,7 @@ namespace TIOFPSS.Dialog
 
                 if (TIOFPSS.Content.loadProj.ContainsKey(this._projectName.Text))
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("项目已存在！");
+                    TIOFPSS.Resources.MessageBoxX.Warning("项目已存在！", this);
                     return;
                 }
 
@@ -103,7 +103,7 @@ namespace TIOFPSS.Dialog
                 }
                 else
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("项目已存在！");
+                    TIOFPSS.Resources.MessageBoxX.Warning("项目已存在！", this);
                     this.Close();
                     return;
                 }
@@ -151,7 +151,7 @@ namespace TIOFPSS.Dialog
                 catch (System.IO.IOException err)
                 {
                     Console.WriteLine(err.Message);
-                    Xceed.Wpf.Toolkit.MessageBox.Show("参数文件创建出错！");
+                    TIOFPSS.Resources.MessageBoxX.Error("参数文件创建出错！", this);
                     this.Close();
                     return;
                 }
@@ -164,7 +164,7 @@ namespace TIOFPSS.Dialog
                 }
                 else
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("创建树目录出错！");
+                    TIOFPSS.Resources.MessageBoxX.Error("创建树目录出错！", this);
                     this.Close();
                 }
 
@@ -172,7 +172,7 @@ namespace TIOFPSS.Dialog
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("项目信息不能为空值");
+                TIOFPSS.Resources.MessageBoxX.Warning("项目信息不能为空值", this);
             }
 
             //if (!System.IO.File.Exists(pathString))
@@ -223,11 +223,11 @@ namespace TIOFPSS.Dialog
             //DB.BLLUserProject bll = new DB.BLLUserProject();//实例化BLL层
             //if (bll.Add(model) == true)//将用户信息添加到数据库中，根据返回值判断是否添加成功
             //{
-            //    Xceed.Wpf.Toolkit.MessageBox.Show("数据添加成功");
+            //    TIOFPSS.Resources.MessageBoxX.Warning("数据添加成功");
             //}
             //else
             //{
-            //    Xceed.Wpf.Toolkit.MessageBox.Show("数据添加失败");
+            //    TIOFPSS.Resources.MessageBoxX.Warning("数据添加失败");
             //}
             this.Close();
         }

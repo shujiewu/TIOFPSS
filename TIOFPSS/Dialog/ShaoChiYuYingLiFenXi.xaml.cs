@@ -31,8 +31,8 @@ namespace TIOFPSS.Dialog
         public Helper.delgateShaoChiYuYingLiFenXiMethod CallBackMethod;
         private void OnOKClick(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            if (this.DialogResult.Value && CallBackMethod != null)
+            //this.DialogResult = true;
+            if (CallBackMethod != null)
             {
                 string Chongjili = chongjili.Text.ToString();
                 string ChiMianYu = chiMianYu.Text.ToString();
@@ -53,7 +53,7 @@ namespace TIOFPSS.Dialog
                 }
                 else
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("参数信息不能为空值！");
+                    TIOFPSS.Resources.MessageBoxX.Warning("参数信息不能为空值！", this);
                 }
             }
         }

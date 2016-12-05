@@ -46,26 +46,26 @@ namespace TIOFPSS.Dialog
         public Helper.delgateFXXSS CallBackMethod;
         private void OnFXXSSClick(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            if (this.DialogResult.Value && CallBackMethod != null)
-            {
+            //this.DialogResult = true;
+            //if (this.DialogResult.Value && CallBackMethod != null)
+            //{
 
                 FXXSSFile fileData = new FXXSSFile(){
                 row=_rowValue.Text.ToString(),
                 col = _columnValue.Text.ToString(),
                 td=_aisleValue.Text.ToString(),
                 path=_valueSelectPath.Text.ToString()};
-                if (fileData.row != null && fileData.col != null && fileData.td != null && fileData.path != null)
+                if (fileData.row != "" && fileData.col != "" && fileData.td != "" && fileData.path != "")
                 {
                     this.CallBackMethod(fileData);
                     this.Close();
                 }
                 else
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("参数输入有误!");
+                    TIOFPSS.Resources.MessageBoxX.Error("参数输入有误!", this); 
                 }
 
-            }
+            //}
         }
     }
     public class FXXSSFile

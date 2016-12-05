@@ -1,7 +1,7 @@
 ﻿<Window x:Class="TIOFPSS.Dialog.FXXSS_ZhunDongTaiJieGuo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Height="160" Width="600"
+        Height="160" Width="570"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Title="非线性损伤分析-准动态结果文件选择"
@@ -48,7 +48,7 @@
                      local:ControlAttachProperty.Label="选择文件路径"
                      MinWidth="100"
                      Grid.Row="1" Grid.Column="0" 
-                     Width="530"
+                     Width="500"
                      Height="25"
                      Margin="20,5,5,5"
                      HorizontalAlignment="Center"
@@ -59,7 +59,7 @@
 
             </Grid>
         </GroupBox>
-        <xly:FButton Grid.Row="1"  Margin="245,5,5,5" FIcon="" Content="开始分析" Width="80" Height="25" Click="OnFXXSSClick"/>
-        <xly:FButton Grid.Row="1" Margin="445,5,5,5" FIcon="" Content="取消" Width="80" Height="25" Click="Cancel_Click"/>
+        <xly:FButton Grid.Row="1"  Margin="215,5,0,5" FIcon="" Content="开始分析" Width="80" Height="25" Click="OnFXXSSClick"/>
+        <xly:FButton Grid.Row="1" Margin="425,5,0,5" FIcon="" Content="取消" Width="80" Height="25" Click="Cancel_Click"/>
     </Grid>
 </Window>

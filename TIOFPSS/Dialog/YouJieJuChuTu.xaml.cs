@@ -43,6 +43,7 @@ namespace TIOFPSS.Dialog
             if(!System.IO.File.Exists(matPath))
             {
                 TIOFPSS.Resources.MessageBoxX.Error("还未进行有节距误差分析！");
+                this.Close();
                 return;
             }
 
@@ -102,7 +103,7 @@ namespace TIOFPSS.Dialog
                 //((CollectionViewSource)this.listView1.DataContext).Source
                 if (selectItem.Contact == "否")
                 {
-                    TIOFPSS.Resources.MessageBoxX.Warning("冲击力为0，不需要出图");
+                    TIOFPSS.Resources.MessageBoxX.Warning("冲击力为0，不需要出图", this);
                     
                     return;
                 }
@@ -130,7 +131,7 @@ namespace TIOFPSS.Dialog
             }
             else
             {
-                TIOFPSS.Resources.MessageBoxX.Warning("未选择齿！");
+                TIOFPSS.Resources.MessageBoxX.Warning("未选择齿！", this);
             }
         }
         private void OnCancelClick(object sender, RoutedEventArgs e)

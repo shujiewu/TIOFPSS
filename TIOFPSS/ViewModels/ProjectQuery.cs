@@ -33,7 +33,7 @@ namespace TIOFPSS.ViewModels
 
             if (result!=null&&result.Tables[0].Rows.Count > 0)
             {
-                //Xceed.Wpf.Toolkit.MessageBox.Show("取值成功");
+                //TIOFPSS.Resources.MessageBoxX.Warning("取值成功");
 
                 foreach (DataRow row in result.Tables[0].Rows)
                 {
@@ -54,7 +54,7 @@ namespace TIOFPSS.ViewModels
             }
             else
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("取值失败");
+                TIOFPSS.Resources.MessageBoxX.Error("取值失败");
             }
         }
         public  UserProject loopSetValue(List<string> value)

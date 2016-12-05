@@ -78,7 +78,7 @@ new DoTask(Func));
 new DoTask(Func));
             }
 
-           // Xceed.Wpf.Toolkit.MessageBox.Show("当量载荷谱分析分析完成");
+           // TIOFPSS.Resources.MessageBoxX.Warning("当量载荷谱分析分析完成");
         }
         public void Func()
         {

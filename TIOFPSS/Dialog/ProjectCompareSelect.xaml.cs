@@ -73,7 +73,7 @@ namespace TIOFPSS.Dialog
             }
             else
             {
-                TIOFPSS.Resources.MessageBoxX.Warning("请选择要移除的项目！");
+                TIOFPSS.Resources.MessageBoxX.Warning("请选择要移除的项目！", this);
             }
         }
         

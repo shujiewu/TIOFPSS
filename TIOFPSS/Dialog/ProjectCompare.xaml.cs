@@ -48,7 +48,7 @@ namespace TIOFPSS.Dialog
             {
                 if (projCmpViewModel.projects[i] == null)
                 {
-                    TIOFPSS.Resources.MessageBoxX.Warning(path[i] + "项目读取出错！");
+                    TIOFPSS.Resources.MessageBoxX.Error(path[i] + "项目读取出错！", this.Parent as Window);
                     path.RemoveAt(i);
                     projCmpViewModel.projects.RemoveAt(i);
                     i--;

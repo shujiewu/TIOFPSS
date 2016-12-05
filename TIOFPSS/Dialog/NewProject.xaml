@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="新建项目" 
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
-        xmlns:TextBox="clr-namespace:TimePunch.Metro.Wpf.Controls.TextBox;assembly=TpMetroWpfLibrary" 
         Height="200" 
         Width="500"
         ResizeMode="NoResize"

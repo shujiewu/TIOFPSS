@@ -87,7 +87,7 @@ new DoTask(Func));
             //System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 //new CallBackMethod(true));
             //this.CallBackMethod(true);
-            //Xceed.Wpf.Toolkit.MessageBox.Show("无节距误差分析完成");
+            //TIOFPSS.Resources.MessageBoxX.Warning("无节距误差分析完成");
         }
         public void Func()
         {
@@ -197,7 +197,7 @@ new DoTask(Func));
 
             //复制结果
 
-            // Xceed.Wpf.Toolkit.MessageBox.Show("有节距误差分析完成");
+            // TIOFPSS.Resources.MessageBoxX.Warning("有节距误差分析完成");
             //if()
             //{
 

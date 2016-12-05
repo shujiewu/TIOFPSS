@@ -275,7 +275,7 @@ namespace TIOFPSS.DB
                     SQLiteDataAdapter command = new SQLiteDataAdapter(SQLString, connection);
                     command.Fill(ds, "ds");
                 }
-                catch (System.Data.SQLite.SQLiteException ex)
+                catch 
                 {
                     //throw new Exception(ex.Message);
                     return null;

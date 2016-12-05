@@ -43,15 +43,29 @@ namespace TIOFPSS.Dialog
 
         private void OnAddFileClick(object sender, RoutedEventArgs e)
         {
-            fileList.Add(new DSFileList()
+            if (_rowValue.Text.ToString() != "" && _columnValue.Text.ToString() != "" && _coefficientValue.Text.ToString() != "" && _valueSelectPath.Text.ToString() != "")
             {
-                row=_rowValue.Text.ToString(),
-                col = _columnValue.Text.ToString(),
-                qhxs = _coefficientValue.Text.ToString(),
-                path=_valueSelectPath.Text.ToString()
+                if (fileList.Count != 0 && (!_rowValue.Text.ToString().Equals(fileList[0].row) ||!_columnValue.Text.ToString().Equals(fileList[0].col)))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("行或列必须与第一个文件相同！");
+                    return;
+                }
+                fileList.Add(new DSFileList()
+                {
+                    row = _rowValue.Text.ToString(),
+                    col = _columnValue.Text.ToString(),
+                    qhxs = _coefficientValue.Text.ToString(),
+                    path = _valueSelectPath.Text.ToString()
 
-            });
-            this.listView1.DataContext = fileList;
+                });
+                this.listView1.DataContext = fileList;
+            }
+            else
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("参数输入有误！");
+            }
+
+
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
@@ -69,8 +83,8 @@ namespace TIOFPSS.Dialog
         public Helper.delgateDLZHP CallBackMethod;
         private void OnDangLiangZaiHePuClick(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            if (this.DialogResult.Value && CallBackMethod != null)
+            //this.DialogResult = true;
+            if (CallBackMethod != null)
             {
 
                 List<DSFileList> fileData = new List<DSFileList>(); ;

@@ -37,7 +37,7 @@
                      HorizontalAlignment="Center"
                      VerticalContentAlignment="Center"
                      Text=""
-                     Style="{StaticResource LabelTextBox}" />
+                     Style="{StaticResource  LabelOpenFolderTextBox}" />
                 <!--<TextBox x:Name="resName"  Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="125,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250"/>
                 <TextBlock HorizontalAlignment="Left" Grid.Row="0" Margin="35,22,0,0" TextWrapping="Wrap" Text="报表名称：" VerticalAlignment="Top" />-->
                 <!--<TextBox x:Name="lujing"  Grid.Row="1" HorizontalAlignment="Left" Height="23" Margin="125,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250"/>

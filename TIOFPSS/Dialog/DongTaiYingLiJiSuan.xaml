@@ -29,8 +29,8 @@
                 <TextBlock HorizontalAlignment="Left" Grid.Row="0" Margin="35,22,0,0" TextWrapping="Wrap" Text="结果文件命名：" VerticalAlignment="Top" />-->
                 <!--<TextBox x:Name="chongjili"  Grid.Row="1" HorizontalAlignment="Left" Height="23" Margin="125,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250"/>
                 <TextBlock HorizontalAlignment="Left" Grid.Row="1" Margin="35,22,0,0" TextWrapping="Wrap" Text="内毂转矩：" VerticalAlignment="Top" />-->
-                <xly:FButton FIcon="" Content="开始计算" Grid.Row="1" HorizontalAlignment="Left" Margin="199,10,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnOKClick"/>
-                <xly:FButton FIcon="" Content="取消"  Grid.Row="1" HorizontalAlignment="Left" Margin="294,10,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnCancelClick"/>
+                <xly:FButton FIcon="" Content="开始计算" Grid.Row="1" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnOKClick"/>
+                <xly:FButton FIcon="" Content="取消"  Grid.Row="1" HorizontalAlignment="Left" Margin="290,10,0,0" VerticalAlignment="Top" Width="80" Height="25" Click="OnCancelClick"/>
 
             </Grid>
         </GroupBox>

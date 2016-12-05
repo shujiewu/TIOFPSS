@@ -23,7 +23,7 @@
     <!--输入组件-->
     <SolidColorBrush x:Key="TextForeground" Color="Black"></SolidColorBrush>
     <SolidColorBrush x:Key="TextBackground" Color="White"></SolidColorBrush>
-    <SolidColorBrush x:Key="TextSelectionBrush" Color="White"></SolidColorBrush>
+    <SolidColorBrush x:Key="TextSelectionBrush" Color="#007ACB"></SolidColorBrush>
     <!--TextBox默认Label颜色-->
     <SolidColorBrush x:Key="TextLabelBackground" Color="#007ACB"></SolidColorBrush>
     <!--输入框-->

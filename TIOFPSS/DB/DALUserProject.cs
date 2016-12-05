@@ -19,7 +19,7 @@ namespace TIOFPSS.DB
             List<string> hasProj = GetModel(model.ProjectPath);
             if (hasProj != null)
             {
-                //Xceed.Wpf.Toolkit.MessageBox.Show("已存在同名参数库，请重新命名");
+                //TIOFPSS.Resources.MessageBoxX.Warning("已存在同名参数库，请重新命名");
                 return false;
             }
             else
@@ -134,7 +134,7 @@ namespace TIOFPSS.DB
             List<string> hasLib=GetLibModel(model.ProjectName);
             if (hasLib!=null)
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("已存在同名参数库，请重新命名");
+                TIOFPSS.Resources.MessageBoxX.Warning("已存在同名参数库，请重新命名");
                 return false;
             }
             else
@@ -241,7 +241,7 @@ namespace TIOFPSS.DB
                     List<string> hasLib = GetModel(model.ProjectPath);
                     if (hasLib == null)
                     {
-                        Xceed.Wpf.Toolkit.MessageBox.Show("数据库中不存在该项目");
+                        TIOFPSS.Resources.MessageBoxX.Error("数据库中不存在该项目");
                         return false;
                     }
 
@@ -318,7 +318,7 @@ namespace TIOFPSS.DB
                     List<string> hasLib = GetModel(model.ProjectPath);
                     if (hasLib != null)
                     {
-                        Xceed.Wpf.Toolkit.MessageBox.Show("数据库已存在该项目");
+                        TIOFPSS.Resources.MessageBoxX.Warning("数据库已存在该项目");
                         return false;
                     }
 

@@ -29,7 +29,7 @@ namespace TIOFPSS.DB
             else
             {
                 TIOFPSS.Resources.MessageBoxX.Error("xml文件读取出错！");
-                //Xceed.Wpf.Toolkit.MessageBox.Show("xml文件读取出错！");
+                //TIOFPSS.Resources.MessageBoxX.Warning("xml文件读取出错！");
                 return false;
             }
 

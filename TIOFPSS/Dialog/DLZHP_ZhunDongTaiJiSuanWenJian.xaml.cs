@@ -43,13 +43,20 @@ namespace TIOFPSS.Dialog
 
         private void OnAddFileClick(object sender, RoutedEventArgs e)
         {
-            fileList.Add(new DSFileList()
+            if ( _coefficientValue.Text.ToString() != "" && _valueSelectPath.Text.ToString() != "")
             {
-                qhxs = _coefficientValue.Text.ToString(),
-                path = _valueSelectPath.Text.ToString()
+                fileList.Add(new DSFileList()
+                {
+                    qhxs = _coefficientValue.Text.ToString(),
+                    path = _valueSelectPath.Text.ToString()
 
-            });
-            this.listView1.DataContext = fileList;
+                });
+                this.listView1.DataContext = fileList;
+            }
+            else
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("参数输入有误！");
+            }
         }
 
         private void OnDeleteClick(object sender, RoutedEventArgs e)
@@ -67,8 +74,8 @@ namespace TIOFPSS.Dialog
         public Helper.delgateDLZHP CallBackMethod;
         private void OnDangLiangZaiHePuClick(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
-            if (this.DialogResult.Value && CallBackMethod != null)
+            //this.DialogResult = true;
+            if (CallBackMethod != null)
             {
 
                 List<DSFileList> fileData = new List<DSFileList>(); ;
