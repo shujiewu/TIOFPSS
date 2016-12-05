@@ -3,7 +3,7 @@
     <!--FIcon-->
     <Style x:Key="FIcon" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="/TIOFPSS;component/Resources/#SF2015"></Setter>
-        <Setter Property="Foreground" Value="{StaticResource TextForeground}"/>
+        <Setter Property="Foreground" Value="{StaticResource TextBackground}"/>
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>

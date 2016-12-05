@@ -4,7 +4,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="{x:Type ToggleButton}" x:Key="ComboToggleButton">
-        <Setter Property="Foreground" Value="{StaticResource TextForeground}" />
+        <Setter Property="Foreground" Value="{StaticResource TextLabelBackground}" />
         <Setter Property="local:ControlAttachProperty.FIconSize" Value="16"/>
         <Setter Property="local:ControlAttachProperty.FIconMargin" Value="0,1,3,1"/>
         <Setter Property="local:ControlAttachProperty.FIcon" Value="&#xe665;"/>
@@ -52,7 +52,7 @@
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Background" Value="{StaticResource TextBackground}"/>
         <Setter Property="MaxLength" Value="2048"/>
         <Setter Property="Foreground" Value="{StaticResource TextForeground}"/>
         <Setter Property="ContextMenu" Value="{DynamicResource TextBoxContextMenu}" />
@@ -91,11 +91,18 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="ItemBackground" Property="Background" Value="{StaticResource ItemSelectedBackground}" />
+                            <Setter TargetName="ItemBackground" Property="Background" Value="{StaticResource WindowBackground}" />
+                            <Setter TargetName="contentPresenter" Property="TextBlock.Foreground" Value="{StaticResource TextBackground}" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ItemBackground" Property="Background" Value="{StaticResource ItemMouseOverBackground}" />
-                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="false" />
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="ItemBackground" Property="Background" Value="{StaticResource ItemMouseOverBackground}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -118,7 +125,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
-        <Setter Property="local:ControlAttachProperty.FocusBackground" Value="{StaticResource FocusBackground}" />
+        <Setter Property="local:ControlAttachProperty.FocusBackground" Value="{StaticResource TextBackground}" />
         <Setter Property="local:ControlAttachProperty.FocusBorderBrush" Value="{StaticResource FocusBorderBrush}" />
         <Setter Property="local:ControlAttachProperty.MouseOverBorderBrush" Value="{StaticResource MouseOverBorderBrush}" />
         <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
@@ -143,7 +150,7 @@
                             </Grid.ColumnDefinitions>
                             <!--Label区域-->
                             <ContentControl x:Name="Label" Template="{TemplateBinding local:ControlAttachProperty.LabelTemplate}" IsTabStop="False" IsHitTestVisible="False"
-                                            Content="{TemplateBinding local:ControlAttachProperty.Label}" Margin="1,1,0,1"/>
+                                            Content="{TemplateBinding local:ControlAttachProperty.Label}" Margin="1,1,0,1" Foreground="White"/>
                             <!--附加内容区域-->
                             <Border x:Name="PART_AttachContent" Panel.ZIndex="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" >
                                 <ContentControl VerticalAlignment="Center" VerticalContentAlignment="Center" Template="{TemplateBinding local:ControlAttachProperty.AttachContent}" />
@@ -249,8 +256,8 @@
         <Setter Property="local:ControlAttachProperty.LabelTemplate" >
             <Setter.Value>
                 <ControlTemplate TargetType="ContentControl">
-                    <Border Width="60" Background="{StaticResource TextLabelBackground}">
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="2" Text="{TemplateBinding Content}"></TextBlock>
+                    <Border Width="70" Background="{StaticResource TextLabelBackground}">
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Text="{TemplateBinding Content}"></TextBlock>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

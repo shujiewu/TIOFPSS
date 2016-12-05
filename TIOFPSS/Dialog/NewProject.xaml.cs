@@ -136,12 +136,17 @@ namespace TIOFPSS.Dialog
                 // Use Path class to manipulate file and directory paths.
                 //string 
                 string destFile = System.IO.Path.Combine(targetPath, "parameter.xml");
-
+                
                 // To copy a file to another location and 
                 // overwrite the destination file if it already exists.
                 try
                 {
                     System.IO.File.Copy(sourceFile, destFile, true);
+                    string inipath = System.IO.Path.Combine(targetPath, "project.ini");
+                    string Section = "analysis";
+                    string text = Convert.ToString(-1);
+                    Configure.IniWriteValue(Section, "FXXSS", text, inipath);
+                    Configure.IniWriteValue(Section, "DLZHP", text, inipath);
                 }
                 catch (System.IO.IOException err)
                 {

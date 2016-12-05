@@ -179,6 +179,7 @@
     <Compile Include="Annotations.cs" />
     <Compile Include="Commanding\IRelayCommand.cs" />
     <Compile Include="Commanding\RelayCommand.cs" />
+    <Compile Include="ControlExtession.cs" />
     <Compile Include="DB\BLLUserProject.cs" />
     <Compile Include="DB\DALUserProject.cs" />
     <Compile Include="DB\SQLiteDBHelper.cs" />
@@ -241,6 +242,9 @@
     <Compile Include="Dialog\ProjectCompare.xaml.cs">
       <DependentUpon>ProjectCompare.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialog\ProjectCompareSelect.xaml.cs">
+      <DependentUpon>ProjectCompareSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialog\ProjectQuery.xaml.cs">
       <DependentUpon>ProjectQuery.xaml</DependentUpon>
     </Compile>
@@ -259,20 +263,11 @@
     <Compile Include="Dialog\ShengChengBaoBiao.xaml.cs">
       <DependentUpon>ShengChengBaoBiao.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialog\UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialog\ViewMoTaiResult.xaml.cs">
       <DependentUpon>ViewMoTaiResult.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialog\ViewResult.xaml.cs">
       <DependentUpon>ViewResult.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialog\Window2.xaml.cs">
-      <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialog\YouJieJuChuTu.xaml.cs">
       <DependentUpon>YouJieJuChuTu.xaml</DependentUpon>
@@ -284,6 +279,15 @@
     <Compile Include="ControlAttachProperty.cs" />
     <Compile Include="Resources\FButton.xaml.cs">
       <DependentUpon>FButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MessageBoxX.xaml.cs">
+      <DependentUpon>MessageBoxX.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\WaitingBox.xaml.cs">
+      <DependentUpon>WaitingBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\WindowBase.xaml.cs">
+      <DependentUpon>WindowBase.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ColorViewModel.cs" />
     <Compile Include="ViewModels\FontsViewModel.cs" />
@@ -379,6 +383,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialog\ProjectCompareSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialog\ProjectQuery.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -403,23 +411,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialog\UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialog\ViewMoTaiResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialog\ViewResult.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialog\Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Dialog\Window2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -470,11 +466,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\MessageBoxX.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\RadioButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\WaitingBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\WindowBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -652,6 +668,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\当量载荷谱.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Images\StarShow.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

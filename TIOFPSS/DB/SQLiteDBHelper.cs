@@ -99,6 +99,7 @@ namespace TIOFPSS.DB
                     catch (System.Data.SQLite.SQLiteException E)
                     {
                         connection.Close();
+                        return -1;
                         throw new Exception(E.Message);
                     }
                 }
@@ -160,6 +161,7 @@ namespace TIOFPSS.DB
                 }
                 catch (System.Data.SQLite.SQLiteException E)
                 {
+                    return -1;
                     throw new Exception(E.Message);
                 }
                 finally
@@ -191,6 +193,7 @@ namespace TIOFPSS.DB
                 }
                 catch (System.Data.SQLite.SQLiteException E)
                 {
+                    return -1;
                     throw new Exception(E.Message);
                 }
                 finally
@@ -228,6 +231,7 @@ namespace TIOFPSS.DB
                     catch (System.Data.SQLite.SQLiteException e)
                     {
                         connection.Close();
+                        return null;
                         throw new Exception(e.Message);
                     }
                 }
@@ -250,6 +254,7 @@ namespace TIOFPSS.DB
             }
             catch (System.Data.SQLite.SQLiteException e)
             {
+                return null;
                 throw new Exception(e.Message);
             }
 
@@ -272,7 +277,8 @@ namespace TIOFPSS.DB
                 }
                 catch (System.Data.SQLite.SQLiteException ex)
                 {
-                    throw new Exception(ex.Message);
+                    //throw new Exception(ex.Message);
+                    return null;
                 }
                 return ds;
             }
@@ -303,6 +309,7 @@ namespace TIOFPSS.DB
                     }
                     catch (System.Data.SQLite.SQLiteException E)
                     {
+                        return -1;
                         throw new Exception(E.Message);
                     }
                 }
@@ -374,6 +381,7 @@ namespace TIOFPSS.DB
                     }
                     catch (System.Data.SQLite.SQLiteException e)
                     {
+                        return null;
                         throw new Exception(e.Message);
                     }
                 }
@@ -398,6 +406,7 @@ namespace TIOFPSS.DB
             }
             catch (System.Data.SQLite.SQLiteException e)
             {
+                return null;
                 throw new Exception(e.Message);
             }
 
@@ -424,6 +433,7 @@ namespace TIOFPSS.DB
                     }
                     catch (System.Data.SQLite.SQLiteException ex)
                     {
+                        return null;
                         throw new Exception(ex.Message);
                     }
                     return ds;

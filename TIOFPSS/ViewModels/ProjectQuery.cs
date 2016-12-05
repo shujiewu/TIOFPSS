@@ -31,7 +31,7 @@ namespace TIOFPSS.ViewModels
 
             result = bll.GetList();
 
-            if (result.Tables[0].Rows.Count > 0)
+            if (result!=null&&result.Tables[0].Rows.Count > 0)
             {
                 //Xceed.Wpf.Toolkit.MessageBox.Show("取值成功");
 

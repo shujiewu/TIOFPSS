@@ -13,7 +13,7 @@ namespace TIOFPSS.Analysis
 
         private XT_ShaoChiDongTaiFenXiThreadParamter threadParamter;
         private Thread thread;
-
+        private bool success;
 
         public XT_ShaoChiDongTaiFenXiThread(XT_ShaoChiDongTaiFenXiThreadParamter threadParamter)
         {

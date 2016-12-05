@@ -14,7 +14,7 @@ namespace TIOFPSS.Analysis
         private Thread thread;
         public Helper.delgateDuCengShaoChiFenXiFinish CallBackMethod;
         private delegate void DoTask();
-
+        private bool success;
         public XT_DuCengShaoChiThread(XT_DuCengShaoChiThreadParamter threadParamter)
         {
             this.threadParamter = threadParamter;
@@ -75,23 +75,37 @@ namespace TIOFPSS.Analysis
             process.StartInfo.CreateNoWindow = true;
 
             process.StartInfo.RedirectStandardOutput = true;
-            bool success = false;
             // process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             // Start the process
-            if (process.Start())
+            try
             {
-                process.WaitForExit();
-
-                if (System.IO.File.Exists(fileLock))
+                if (process.Start())
                 {
-                    success = false;
+                    process.WaitForExit();
 
+                    if (System.IO.File.Exists(fileLock))
+                    {
+                        success = false;
+                        System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+                        return;
+
+                    }
+                    else
+                    {
+                        success = true;
+                    }
                 }
-                else
-                {
-                    success = true;
-                }
+
             }
+            catch
+            {
+                success = false;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+                return;
+            }
+
             if (success)
             {
                 //string source1, source2;
@@ -119,6 +133,9 @@ new DoTask(Func));
                 {
                     System.IO.File.Delete(f2);
                 }
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+                return;
                 //Xceed.Wpf.Toolkit.MessageBox.Show("少齿当量静态强度分析中断");
             }
             // Wait that the process exits
@@ -142,7 +159,7 @@ new DoTask(Func));
         {
             //Window2 aw = new Window2();
             //aw.ShowDialog();
-            this.CallBackMethod(true);
+            this.CallBackMethod(success);
             //使用ui元素            
         }
     }

@@ -46,6 +46,8 @@ namespace TIOFPSS
 
         public delegate void delgateViewMoTaiResultOKMethod(int select,List<int> para);
 
+        public delegate void delgateProjectCompareMethod(List<TIOFPSS.Dialog.ProjectPara> para);
+
         public static string [] str_AnsysTempPath=new string [12]{
 	"ShaoChi",
 	"DuCeng",

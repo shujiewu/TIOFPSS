@@ -17,7 +17,7 @@ namespace TIOFPSS.Analysis
         private Thread thread;
         public Helper.delgateDongTaiYingLiJiSuanFinish CallBackMethod;
         private delegate void DoTask();
-
+        private bool success;
         public XT_DongTaiYingLiThread(XT_DongTaiYingLiThreadParamter threadParamter)
         {
             this.threadParamter = threadParamter;
@@ -67,36 +67,52 @@ namespace TIOFPSS.Analysis
             process.StartInfo.CreateNoWindow = true;
 
             process.StartInfo.RedirectStandardOutput = true;
-            bool success = false;
          
             // Start the process
-            if (process.Start())
-            {
-                process.WaitForExit();
+           try
+           {
+               if (process.Start())
+               {
+                   process.WaitForExit();
 
-                string source1 = path + "\\ZhunDongTai\\MAX_STRESS.csv";
-                string source2 = path + "\\ZhunDongTai\\MIN_STRESS.csv";
+                   string source1 = path + "\\ZhunDongTai\\MAX_STRESS.csv";
+                   string source2 = path + "\\ZhunDongTai\\MIN_STRESS.csv";
 
-                if (!System.IO.File.Exists(source1)||!System.IO.File.Exists(source2))
-                {
-                   // success = false;
+                   if (!System.IO.File.Exists(source1) || !System.IO.File.Exists(source2))
+                   {
+                       success = false;
+                       System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+                       return;
+                   }
 
-                }
-                    
-                else
-                {
-                    //success = true;
-                    MWCharArray loc1 = new MWCharArray(source1);
-                    MWCharArray loc2 = new MWCharArray(source2);
-                    MWCharArray loc3 = new MWCharArray(threadParamter.proPath);
-                    try
-                    {
-                        NIHE.HeBinfWenJianClass t = new HeBinfWenJianClass();
-                        t.NIHE(loc1, loc2, loc3);
-                    }
-                    catch { }
-                }
-            }
+                   else
+                   {
+                       //success = true;
+                       MWCharArray loc1 = new MWCharArray(source1);
+                       MWCharArray loc2 = new MWCharArray(source2);
+                       MWCharArray loc3 = new MWCharArray(threadParamter.proPath);
+                       try
+                       {
+                           NIHE.HeBinfWenJianClass t = new HeBinfWenJianClass();
+                           t.NIHE(loc1, loc2, loc3);
+                           success = true;
+                       }
+                       catch 
+                       {
+                           success = false;
+                       }
+                   }
+               }
+           }
+            catch
+           {
+               success = false;
+               System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+               return;
+           }
+
             if (success)
             {
 
@@ -114,6 +130,8 @@ new DoTask(Func));
             }
             else
             {
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //string f1 = path + "\\ducengyingliyuntu.jpeg";
                 //string f2 = path + "\\ducengweiyiyuntu.jpeg"; ;
                 //if (System.IO.File.Exists(f1))
@@ -133,7 +151,7 @@ new DoTask(Func));
         {
             //Window2 aw = new Window2();
             //aw.ShowDialog();
-            this.CallBackMethod(true);
+            this.CallBackMethod(success);
             //使用ui元素            
         }
     }

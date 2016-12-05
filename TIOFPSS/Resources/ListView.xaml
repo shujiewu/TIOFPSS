@@ -65,7 +65,7 @@
         <Setter Property="MinHeight" Value="25" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Background" Value="White"></Setter>
         <Setter Property="Padding" Value="3,0,0,0"></Setter>
         <Setter Property="Template">
             <Setter.Value>
@@ -84,20 +84,32 @@
                             <Setter TargetName="Bd" Property="Background" Value="{StaticResource ItemSelectedBackground}" />
                             <Setter Property="Foreground" Value="{StaticResource ItemSelectedForeground}" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <!--<Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background" Value="{StaticResource ItemMouseOverBackground}" />
                             <Setter Property="Foreground" Value="{StaticResource ItemMouseOverForeground}" />
-                        </Trigger>
+                        </Trigger>-->
                         <Trigger Property="ItemsControl.AlternationIndex" Value="1">
                             <Setter Property="Background" Value="{StaticResource ItemsAlternationContentBackground}" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="false" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource ItemMouseOverBackground}" />
+                            <Setter Property="Foreground" Value="{StaticResource ItemMouseOverForeground}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
                                 <Condition Property="IsSelected" Value="true" />
                                 <Condition Property="Selector.IsSelectionActive" Value="True" />
                             </MultiTrigger.Conditions>
-                            <Setter Property="Background" Value="{StaticResource ItemSelectedBackground}" />
-                            <Setter Property="Foreground" Value="{StaticResource ItemSelectedForeground}" />
+                            <MultiTrigger.Setters>
+                                <Setter Property="Background" Value="{StaticResource ItemSelectedBackground}" />
+                                <Setter Property="Foreground" Value="{StaticResource ItemSelectedForeground}" />
+                            </MultiTrigger.Setters>
+                            
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -153,7 +165,7 @@
     <!--DefaultListView-->
     <Style x:Key="DefaultListView" TargetType="{x:Type ListView}">
         <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
-        <Setter Property="Background" Value="{StaticResource ItemsContentBackground}" />
+        <Setter Property="Background" Value="White" />
         <Setter Property="BorderThickness" Value="1" />
         <!--False会关闭虚拟化-->
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
@@ -200,7 +212,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border Padding="{TemplateBinding Padding}" Background="Transparent" Margin="0 0 0 2">
+                    <Border Padding="{TemplateBinding Padding}" Background="Transparent" Margin="0 0 0 0">
                         <Rectangle Width="1" Fill="{TemplateBinding Background}" HorizontalAlignment="Center" />
                     </Border>
                 </ControlTemplate>

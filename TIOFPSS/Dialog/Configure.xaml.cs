@@ -46,6 +46,13 @@ namespace TIOFPSS.Dialog
             GetPrivateProfileString(Section, Key, "", temp, 500, inipath);
             return temp.ToString();
         }
+
+        public static string IniReadValueWithPath(string Section, string Key,string Path)
+        {
+            StringBuilder temp = new StringBuilder(500);
+            GetPrivateProfileString(Section, Key, "", temp, 500, Path);
+            return temp.ToString();
+        }
         [System.Runtime.InteropServices.DllImport("kernel32")]
         private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
 
@@ -57,7 +64,7 @@ namespace TIOFPSS.Dialog
         /// <param name="Key">键</param>
         /// <param name="Value">键值</param>
         /// <param name="inipath">物理路径</param>
-        public void IniWriteValue(string Section, string Key, string Value, string inipath)
+        public static void IniWriteValue(string Section, string Key, string Value, string inipath)
         {
             WritePrivateProfileString(Section, Key, Value, inipath);
         }

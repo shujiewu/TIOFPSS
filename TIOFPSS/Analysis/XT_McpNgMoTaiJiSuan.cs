@@ -17,7 +17,7 @@ namespace TIOFPSS.Analysis
         private Thread thread;
         public Helper.delgateMcpNgMoTaiJiSuanFinish CallBackMethod;
         private delegate void DoTask();
-
+        private bool success;
         public XT_McpNgMoTaiJiSuan(XT_McpNgMoTaiJiSuanParamter threadParamter)
         {
             this.threadParamter = threadParamter;
@@ -78,23 +78,37 @@ namespace TIOFPSS.Analysis
             process.StartInfo.CreateNoWindow = true;
 
             process.StartInfo.RedirectStandardOutput = true;
-            bool success=false;
+
             // process.StartInfo.WindowStyle = ProcessWindowStyle.Normal;
             // Start the process
-            if(process.Start())
+            try
             {
-                process.WaitForExit();
-
-                if (System.IO.File.Exists(fileLock))
+                if (process.Start())
                 {
-                    success=false; 
+                    process.WaitForExit();
 
-                }
-                else
-                {
-                    success=true; 
+                    if (System.IO.File.Exists(fileLock))
+                    {
+                        success = false;
+                        System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+                        return;
+
+                    }
+                    else
+                    {
+                        success = true;
+                    }
                 }
             }
+            catch
+            {
+                success = false;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+                return;
+            }
+
             if(success)
             {
 
@@ -112,6 +126,8 @@ new DoTask(Func));
             }
             else
             {
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
                 //string f1 = path + "\\danchiyingliyuntu.jpeg";
                 //string f2 = path + "\\danchiweiyiyuntu.jpeg"; ;
                 //if (System.IO.File.Exists(f1))
@@ -145,7 +161,7 @@ new DoTask(Func));
         {
             //Window2 aw = new Window2();
             //aw.ShowDialog();
-            this.CallBackMethod(true);
+            this.CallBackMethod(success);
             //使用ui元素            
         }
     }

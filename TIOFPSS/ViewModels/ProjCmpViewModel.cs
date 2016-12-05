@@ -34,6 +34,10 @@ namespace TIOFPSS.ViewModels
                     projects.Add(userProject);
                     para.Clear();
                 }
+                else
+                {
+                    projects.Add(null);
+                }
                
             }
             

@@ -33,18 +33,25 @@ namespace TIOFPSS.ViewModels
         public ParaViewModel(string path, string name)
         {
             string paraPath = System.IO.Path.Combine(path, "project\\参数文件\\parameter.xml");
-
+            userProject = new DB.UserProject();
             para.Add("0");
             para.Add(path);
             para.Add(name);
-            DB.XmlHelper.LoadPara(paraPath, para);
-            userProject = new DB.UserProject();
+            if(DB.XmlHelper.LoadPara(paraPath, para))
+            {
+                loopSetValue(para);
+            }
+            else
+            {
+                return;
+            }
+            
             //foreach (string item in para)
             //{
             //    Console.WriteLine(item);
             //}
             //Console.WriteLine(para[3]);
-            loopSetValue(para);
+            
 
         }
         public void saveValue()

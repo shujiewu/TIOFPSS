@@ -222,6 +222,10 @@
 
                 <TabItem Header="非线性损伤结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
                         <StackPanel>
+                            <StackPanel Margin="10,10,0,0" Height="40" Background="#ffd2e7f4" Orientation="Horizontal">
+                                <TextBlock Padding="10 10" Foreground="#FF217cb5" FontSize="15" FontWeight="Bold">分析文件：</TextBlock>
+                                <TextBlock Padding="10 10" Foreground="#FF217cb5" FontSize="15" FontWeight="Bold" Text="{Binding FXXSSFileName}"></TextBlock>
+                            </StackPanel>
                             <Expander Header="摩擦片齿根应力时域波形" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding MoChaPianChiGenYingLiShiYuBoXing}" Margin="30,0,30,0" />
                             </Expander>
@@ -235,6 +239,10 @@
                     </TabItem>
                 <TabItem Header="当量载荷谱结果" Style="{StaticResource WinTabItemStyle}" FontSize="15" >
                         <StackPanel>
+                            <StackPanel Margin="10,10,0,0" Height="40" Background="#ffd2e7f4" Orientation="Horizontal">
+                                <TextBlock Padding="10 10" Foreground="#FF217cb5" FontSize="15" FontWeight="Bold">分析文件：</TextBlock>
+                                <TextBlock Padding="10 10" Foreground="#FF217cb5" FontSize="15" FontWeight="Bold" Text="{Binding DLZHPFileName}"></TextBlock>
+                            </StackPanel>
                             <Expander Header="当量载荷谱" Height="auto" Width="auto" Margin="10,10,0,0" Style="{DynamicResource ExpanderStyle}">
                                 <Image  Source="{Binding DangLiangZaiHePu}" Margin="30,0,30,0" />
                             </Expander>

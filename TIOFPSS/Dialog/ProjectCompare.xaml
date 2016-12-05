@@ -24,6 +24,7 @@
              <Setter Property="FontWeight" Value="Bold" />
              <Setter Property="FontSize" Value="15" />
              <Setter Property="BorderBrush" Value="Black" />
+            
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -926,6 +927,7 @@
                                         <RowDefinition />
                                         <RowDefinition />
                                         <RowDefinition />
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <!--<ColumnDefinition Width="200"/>-->
@@ -933,19 +935,19 @@
                                         <ColumnDefinition/>-->
                                     </Grid.ColumnDefinitions>
                                     <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
-                                    <Expander Header="摩擦片齿根应力时域波形" Name="moChaPianChiGenYingLiShiYuBoXing" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                    <Expander Header="摩擦片齿根应力时域波形" Name="moChaPianChiGenYingLiShiYuBoXing" Grid.Row="2" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianChiGenYingLiShiYuBoXing" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
-                                    <Expander Header="摩擦片齿根应力频域波形" Name="moChaPianChiGenYingLiPinYuBoXing" Grid.Row="2" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                    <Expander Header="摩擦片齿根应力频域波形" Name="moChaPianChiGenYingLiPinYuBoXing" Grid.Row="3" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianChiGenYingLiPinYuBoXing" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
-                                    <Expander Header="摩擦片累计损伤" Name="moChaPianLeiJiSunShang" Grid.Row="3" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                    <Expander Header="摩擦片累计损伤" Name="moChaPianLeiJiSunShang" Grid.Row="4" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=FXXSSHeader}" Name="GridmoChaPianLeiJiSunShang" >
                                         </Grid>
@@ -961,6 +963,7 @@
                                         <RowDefinition  Height="50"/>
                                         <RowDefinition />
                                         <RowDefinition />
+                                        <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <!--<ColumnDefinition Width="200"/>-->
@@ -968,13 +971,13 @@
                                         <ColumnDefinition/>-->
                                     </Grid.ColumnDefinitions>
                                     <!--<Label Grid.Column="0" Grid.Row="0" Style="{StaticResource ProductNameStyle}" Margin="0,10,0,0">图片</Label>-->
-                                    <Expander Header="当量载荷谱" Name="dangLiangZaiHePu" Grid.Row="1" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
+                                    <Expander Header="当量载荷谱" Name="dangLiangZaiHePu" Grid.Row="2" FontSize="15" Style="{DynamicResource ExpanderStyle}" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}"  Margin="0,1,0,0" >
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=DLZHPHeader}" Name="GriddangLiangZaiHePu" >
                                         </Grid>
                                         <!--</Border>-->
                                     </Expander>
-                                    <Expander Header="雨流计数结果" Name="yuLiuJiShuJieGuo" Grid.Row="2" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
+                                    <Expander Header="雨流计数结果" Name="yuLiuJiShuJieGuo" Grid.Row="3" Background="LightBlue" Height="auto" Width="{Binding Path=Width,ElementName=CJDLXHeader}" Style="{DynamicResource ExpanderStyle}"  Margin="0,1,0,0">
                                         <!--<Border BorderBrush="Black" BorderThickness="1">-->
                                         <Grid Width="{Binding Path=ActualWidth,ElementName=DLZHPHeader}" Name="GridyuLiuJiShuJieGuo" >
                                         </Grid>

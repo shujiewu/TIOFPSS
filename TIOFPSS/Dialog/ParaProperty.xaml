@@ -4,7 +4,8 @@
         Title="ParaProperty" Height="543" Width="680" 
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:xly="clr-namespace:TIOFPSS.Resources">
     <Grid>
 
         <DockPanel>
@@ -14,16 +15,16 @@
                         <RowDefinition Height="440"/>
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <ListBox FontFamily="微软雅黑" x:Name="lbxParaLib" Grid.Row="0"  Style="{StaticResource WinChromeListBox}"  ItemContainerStyle="{StaticResource ListBoxContainerStyle}"
+                    <ListBox FontFamily="微软雅黑" x:Name="lbxParaLib" Grid.Row="0"
                   Height="430" ItemsSource="{Binding LibName}" MouseDoubleClick="ListBox_MouseDoubleClick" Margin="5" SelectionChanged="lbxParaLib_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding}" ToolTip="Here is a tooltip!" Style="{StaticResource WinTextNormalStyle}" />
+                                <TextBlock Text="{Binding}"  Height="25" VerticalAlignment="Center" FontSize="15" HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Content="应用参数库" Grid.Row="1" Width="80" Height="25" Margin="54,0,94,0" Click="OnApplyLibClick"/>
-                    <Button Content="删除参数库" Grid.Row="1" Width="80" Height="25" Margin="148,0,0,0" Click="OnDeleteLibClick"/>
+                    <xly:FButton FIcon="&#xe62a;" FIconSize="13" Content="应用" Grid.Row="1" Width="80" Height="25" Margin="54,0,94,0" Click="OnApplyLibClick"/>
+                    <xly:FButton FIcon="&#xe60a;" FIconSize="12" Content="删除" Grid.Row="1" Width="80" Height="25" Margin="148,0,0,0" Click="OnDeleteLibClick"/>
                 </Grid>
             </GroupBox>
             <xctk:PropertyGrid x:Name="_propertyGrid" SelectedObject="{Binding}"  Width="400" Height="485" Margin="0,10,0,0"/>

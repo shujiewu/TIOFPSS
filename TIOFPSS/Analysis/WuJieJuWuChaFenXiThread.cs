@@ -15,7 +15,7 @@ namespace TIOFPSS.Analysis
     {
         private WuJieJuWuChaThreadParamter threadParamter;
         private Thread thread;
-
+        private bool success;
         public Thread _Thread
         {
             get
@@ -34,7 +34,7 @@ namespace TIOFPSS.Analysis
         {
             this.threadParamter = threadParamter;
             _Thread = new Thread(new ThreadStart(Run));
-            _Thread.Name = "ZaoShengFenXiThread";
+            _Thread.Name = "wujiejuThread";
         }
 
         public void Start()
@@ -56,22 +56,34 @@ namespace TIOFPSS.Analysis
 
 
             main_program_v1.WuJieJuWuChaClass wjj = new WuJieJuWuChaClass();
-            wjj.main_program_v1(A, loc, fontName);
 
-            string force_source1 = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\force+.txt"); //inf->path + "force+.txt";
-            string force_source2 = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\force-.txt"); //inf->path + "force-.txt";
-            string dest_s1 = System.IO.Path.Combine(threadParamter.Path, "ZhunDongTai\\force+.txt"); //inf->path + "fdynamic\\force+.txt";
-            string dest_s2 = System.IO.Path.Combine(threadParamter.Path, "ZhunDongTai\\force-.txt"); //inf->path + "fdynamic\\force-.txt";
-            System.IO.File.Copy(force_source1, dest_s1, true);
-            System.IO.File.Copy(force_source2, dest_s2, true);
+            try
+            {
+                wjj.main_program_v1(A, loc, fontName);
 
-            //复制结果
-            string finame = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
-            string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
-            System.IO.File.Copy(finame, newpath, true);
-            //CallBackMethod finish = new CallBackMethod();
-            System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+                string force_source1 = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\force+.txt"); //inf->path + "force+.txt";
+                string force_source2 = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\force-.txt"); //inf->path + "force-.txt";
+                string dest_s1 = System.IO.Path.Combine(threadParamter.Path, "ZhunDongTai\\force+.txt"); //inf->path + "fdynamic\\force+.txt";
+                string dest_s2 = System.IO.Path.Combine(threadParamter.Path, "ZhunDongTai\\force-.txt"); //inf->path + "fdynamic\\force-.txt";
+                System.IO.File.Copy(force_source1, dest_s1, true);
+                System.IO.File.Copy(force_source2, dest_s2, true);
+
+                //复制结果
+                string finame = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
+                string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
+                System.IO.File.Copy(finame, newpath, true);
+                success = true;
+                //CallBackMethod finish = new CallBackMethod();
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+    new DoTask(Func));
+            }
+            catch
+            {
+                success = false;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 new DoTask(Func));
+            }
+
             //System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 //new CallBackMethod(true));
             //this.CallBackMethod(true);
@@ -82,7 +94,7 @@ new DoTask(Func));
             //Window2 aw = new Window2();
             //aw.ShowDialog();
             //使用ui元素    
-            this.CallBackMethod(true);
+            this.CallBackMethod(success);
         }
         
     }
@@ -108,6 +120,7 @@ new DoTask(Func));
         private Thread thread;
         public Helper.delgateYouJieJuWuChaFenXiFinish CallBackMethod;
         private delegate void DoTask();
+        private bool success;
         public Thread _Thread
         {
             get
@@ -138,6 +151,7 @@ new DoTask(Func));
         private void Run()
         {
 
+           
             MWArray A = new MWNumericArray(1, 54, threadParamter.Para);
             MWArray loc = new MWCharArray(threadParamter.Path+"冲击动力学分析结果\\");
 
@@ -145,7 +159,24 @@ new DoTask(Func));
 
 
             pitch.YouJieJuWuChaClass yjj = new YouJieJuWuChaClass();
-            yjj.pitch(A, loc, fontName);
+
+            try
+            {
+                yjj.pitch(A, loc, fontName);
+                string finame = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
+                string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
+                System.IO.File.Copy(finame, newpath, true);
+                success = true;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+    new DoTask(Func));
+            }
+            catch
+            {
+                success = false;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+            }
+           
             //main_program_v1.WuJieJuWuChaClass wjj = new WuJieJuWuChaClass();
             //wjj.main_program_v1(A, loc, fontName);
 
@@ -165,12 +196,7 @@ new DoTask(Func));
             //System.IO.File.Copy(force_source2, dest_s2, true);
 
             //复制结果
-            string finame = System.IO.Path.Combine(threadParamter.Path, "冲击动力学分析结果\\Dynamic.mat"); //inf->path + "Dynamic.mat";//项目临时文件目录
-            string newpath = System.IO.Path.Combine(threadParamter.ProPath, "冲击动力学分析文件\\Dynamic.mat"); //inf->proPath + str_FloderPath[1] + "\\" + "Dynamic.mat";//项目文件保存路径
-            System.IO.File.Copy(finame, newpath, true);
 
-            System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
-new DoTask(Func));
             // Xceed.Wpf.Toolkit.MessageBox.Show("有节距误差分析完成");
             //if()
             //{
@@ -201,7 +227,7 @@ new DoTask(Func));
             //Window2 aw = new Window2();
             //aw.ShowDialog();
             //使用ui元素    
-            this.CallBackMethod(true);
+            this.CallBackMethod(success);
         }
     }
 }

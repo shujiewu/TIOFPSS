@@ -16,6 +16,8 @@
                 <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/FButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/RadioButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/TIOFPSS;component/Resources/ScrollViewer.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
 
@@ -25,11 +27,15 @@
             <!-- Locale Static Resources -->
 
             <!-- Converter -->
+            <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DefaultScrollBar}"></Style>
+            <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource DefaultScrollViewer}"></Style>
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <sys:Double x:Key="DisableOpacity">0.5</sys:Double>
             <!--<Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}"></Style>-->
             <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
             <sys:Double x:Key="FontSize">13</sys:Double>
+            <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBox}"></Style>
+            <!--<Style TargetType="Button" BasedOn="{StaticResource DefaultFButtonStyle}"></Style>-->
             <!--<Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DefaultScrollBar}"></Style>
             <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource DefaultScrollViewer}"></Style>
             <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource DefaultRichTextBox}"/>

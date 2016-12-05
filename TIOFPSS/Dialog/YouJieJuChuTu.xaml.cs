@@ -40,6 +40,12 @@ namespace TIOFPSS.Dialog
             filePath = nowProjPath + "\\tempData\\冲击动力学分析结果\\Dynamic.mat";
 
             string matPath = nowProjPath + "\\tempData\\冲击动力学分析结果\\Pitch.mat";
+            if(!System.IO.File.Exists(matPath))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("还未进行有节距误差分析！");
+                return;
+            }
+
             Matrix<double> pitchLeft = MatlabReader.Read<double>(matPath, "pitchleft");
             Matrix<double> pitchRight = MatlabReader.Read<double>(matPath, "pitchright");
             Matrix<double> pMaxForce = MatlabReader.Read<double>(matPath, "maxforce");
@@ -82,6 +88,9 @@ namespace TIOFPSS.Dialog
                     Contact = strContact
                 });
             }
+            maxChongjili.Text = maxyingli.ToString();
+            jiechugeshu.Text = shinum.ToString();
+            meiyoujiechugeshu.Text = founum.ToString();
             this.DataContext = paraList;
         }
 
@@ -93,7 +102,7 @@ namespace TIOFPSS.Dialog
                 //((CollectionViewSource)this.listView1.DataContext).Source
                 if (selectItem.Contact == "否")
                 {
-                    Xceed.Wpf.Toolkit.MessageBox.Show("冲击力为0，不需要出图");
+                    TIOFPSS.Resources.MessageBoxX.Warning("冲击力为0，不需要出图");
                     
                     return;
                 }
@@ -104,10 +113,31 @@ namespace TIOFPSS.Dialog
 
                 MWArray i = new MWNumericArray(a);
                 jjwc.YouJieJuWuChaChuTuClass yjjct = new jjwc.YouJieJuWuChaChuTuClass();
-                 yjjct.jjwc(locc, loc, i);
+                try
+                {
+                    WaitingBox.Show(() =>
+                    {
+                        yjjct.jjwc(locc, loc, i);
+                    }, "正在出图，请稍后...");
+                    TIOFPSS.Resources.MessageBoxX.Info("出图完成！",this);
+                }
+                catch
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("出图失败！");
+                }
+                 
                 //((System.Collections.ObjectModel.ObservableCollection<DSFileList>)this.listView1.DataContext).RemoveAt(this.listView1.SelectedIndex);
             }
+            else
+            {
+                TIOFPSS.Resources.MessageBoxX.Warning("未选择齿！");
+            }
         }
+        private void OnCancelClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+       
     }
     public class YouJieJuChuTuPara
     {

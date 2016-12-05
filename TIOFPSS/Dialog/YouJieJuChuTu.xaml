@@ -7,42 +7,42 @@
         xmlns:xly="clr-namespace:TIOFPSS.Resources"
         Title="有节距动力学出图">
     <Window.Resources>
-        <SolidColorBrush x:Key="WindowBackground" Color="#093B5D"></SolidColorBrush>
+        <!--<SolidColorBrush x:Key="WindowBackground" Color="#093B5D"></SolidColorBrush>
         <SolidColorBrush x:Key="WindowInnerBackground" Color="Transparent"></SolidColorBrush>
-        <!--<ImageBrush x:Key="WindowInnerBackground" Stretch="Fill"  
+        --><!--<ImageBrush x:Key="WindowInnerBackground" Stretch="Fill"  
                 ImageSource="pack://application:,,,/XLY.Framework.WPFTest;component/Images/back/b2.jpg"  Opacity="1"
-                Viewport="0,0,1,1" ViewportUnits="Absolute" TileMode="Tile" AlignmentX="Left" AlignmentY="Top"/>-->
+                Viewport="0,0,1,1" ViewportUnits="Absolute" TileMode="Tile" AlignmentX="Left" AlignmentY="Top"/>--><!--
 
         <SolidColorBrush x:Key="WindowBorderBrush" Color="#920892"></SolidColorBrush>
         <DropShadowEffect x:Key="WindowDropShadow" Color="#F472F4" BlurRadius="8" ShadowDepth="0" Direction="0" Opacity="0.7" />
         <SolidColorBrush x:Key="CaptionForeground" Color="White"></SolidColorBrush>
-        <!--<LinearGradientBrush x:Key="CaptionBackground" StartPoint="0.5,0" EndPoint="0.5,1">
+        --><!--<LinearGradientBrush x:Key="CaptionBackground" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Color="#571457" Offset="0"/>
         <GradientStop Color="#6A196A" Offset="1"/>
     </LinearGradientBrush>-->
 
 
-        <!--MessageBoxX-->
+        <!--MessageBoxX--><!--
         <SolidColorBrush x:Key="InfoForeground" Color="White"></SolidColorBrush>
         <SolidColorBrush x:Key="QuestionForeground" Color="#74B80C"></SolidColorBrush>
         <SolidColorBrush x:Key="WarningForeground" Color="DarkOrange"></SolidColorBrush>
         <SolidColorBrush x:Key="ErrorForeground" Color="#E74E4E"></SolidColorBrush>
-        <!--WaitingBox-->
+        --><!--WaitingBox--><!--
         <SolidColorBrush x:Key="WaitingBoxBackground" Color="#921692"></SolidColorBrush>
-        <!--边框：Menu-->
+        --><!--边框：Menu--><!--
         <DropShadowEffect x:Key="DefaultDropShadow" Color="Black" BlurRadius="5" ShadowDepth="2" Direction="315" Opacity="0.6" />
-        <!--输入组件-->
+        --><!--输入组件--><!--
         <SolidColorBrush x:Key="TextForeground" Color="White"></SolidColorBrush>
         <SolidColorBrush x:Key="TextBackground" Color="#0D234B"></SolidColorBrush>
         <SolidColorBrush x:Key="TextSelectionBrush" Color="#8F8787"></SolidColorBrush>
-        <!--TextBox默认Label颜色-->
+        --><!--TextBox默认Label颜色--><!--
         <SolidColorBrush x:Key="TextLabelBackground" Color="#508AB6"></SolidColorBrush>
-        <!--输入框-->
+        --><!--输入框--><!--
         <SolidColorBrush x:Key="ControlBorderBrush" Color="#999C9F"></SolidColorBrush>
         <SolidColorBrush x:Key="MouseOverBorderBrush" Color="#F6D1D1"></SolidColorBrush>
         <SolidColorBrush x:Key="FocusBackground" Color="#365080"></SolidColorBrush>
         <SolidColorBrush x:Key="FocusBorderBrush" Color="#EBCECE"></SolidColorBrush>
-        <!--ScrollBar-->
+        --><!--ScrollBar--><!--
         <SolidColorBrush x:Key="ScrollBarForeround" Color="#877F7F"></SolidColorBrush>
         <SolidColorBrush x:Key="ScrollBarBackground" Color="#3E3E42"></SolidColorBrush>
 
@@ -55,25 +55,25 @@
         <SolidColorBrush x:Key="ItemSelectedBackground" Color="#A145F8"></SolidColorBrush>
         <SolidColorBrush x:Key="ItemMouseOverBackground" Color="#BA7DF4"></SolidColorBrush>
         <SolidColorBrush x:Key="ItemMouseOverForeground" Color="White"></SolidColorBrush>
-        <!--高亮：日历Today-->
+        --><!--高亮：日历Today--><!--
         <SolidColorBrush x:Key="ItemHighlighteBackground" Color="Blue"></SolidColorBrush>
         <SolidColorBrush x:Key="ItemHighlighteForeground" Color="White"></SolidColorBrush>
 
-        <!--普通无背景按钮-->
+        --><!--普通无背景按钮--><!--
         <SolidColorBrush x:Key="CheckedForeground" Color="#F7B63E"></SolidColorBrush>
         <SolidColorBrush x:Key="MouseOverForeground" Color="Orange"></SolidColorBrush>
         <SolidColorBrush x:Key="PressedForeground" Color="DarkOrange"></SolidColorBrush>
         <SolidColorBrush x:Key="LinkForeground" Color="#0816BB"></SolidColorBrush>
-        <!--Popup,ComboBox-->
+        --><!--Popup,ComboBox--><!--
         <SolidColorBrush x:Key="PopupBackground" Color="#066EB3"></SolidColorBrush>
-        <!--Button-->
+        --><!--Button--><!--
         <SolidColorBrush x:Key="ButtonBackground" Color="#1D4A9A"></SolidColorBrush>
         <SolidColorBrush x:Key="ButtonForeground" Color="White"></SolidColorBrush>
         <SolidColorBrush x:Key="ButtonMouseOverBackground" Color="Orange"></SolidColorBrush>
         <SolidColorBrush x:Key="ButtonMouseOverForeground" Color="White"></SolidColorBrush>
         <SolidColorBrush x:Key="ButtonPressedBackground" Color="DarkOrange"></SolidColorBrush>
         <SolidColorBrush x:Key="ButtonPressedForeground" Color="White"></SolidColorBrush>
-        <!--Menu-->
+        --><!--Menu--><!--
         <SolidColorBrush x:Key="MenuForeground" Color="#920892"></SolidColorBrush>
         <SolidColorBrush x:Key="MenuBackground" Color="#DDD1D1"></SolidColorBrush>
         <SolidColorBrush x:Key="MenuBorderBrush" Color="DarkBlue"></SolidColorBrush>
@@ -81,7 +81,7 @@
         <SolidColorBrush x:Key="MenuMouseOverForeground" Color="White"></SolidColorBrush>
         <SolidColorBrush x:Key="MenuPressedBackground" Color="#082CA0"></SolidColorBrush>
         <SolidColorBrush x:Key="MenuPressedForeground" Color="White"></SolidColorBrush>
-        <!--State brush-->
+        --><!--State brush--><!--
         <SolidColorBrush x:Key="SuccessfulfaiBrush" Color="#16B32A"></SolidColorBrush>
         <SolidColorBrush x:Key="FailedBrush" Color="#B92222"></SolidColorBrush>
 
@@ -140,7 +140,7 @@
             </Setter>
         </Style>
 
-        <!--DefaultListViewItem-->
+        --><!--DefaultListViewItem--><!--
         <Style x:Key="DefaultListViewItem" TargetType="{x:Type ListViewItem}">
             <Setter Property="Foreground" Value="{StaticResource TextForeground}" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -197,7 +197,7 @@
             </Setter>
         </Style>
 
-        <!--NonSelectableListViewContainerStyle：无选中状态、支持交替色样式-->
+        --><!--NonSelectableListViewContainerStyle：无选中状态、支持交替色样式--><!--
         <Style x:Key="NonSelectableListViewContainerStyle" TargetType="{x:Type ListViewItem}">
             <Setter Property="Foreground" Value="{StaticResource TextForeground}" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -233,18 +233,18 @@
             </Style.Triggers>
         </Style>
 
-        <!--DefaultListView-->
+        --><!--DefaultListView--><!--
         <Style x:Key="DefaultListView" TargetType="{x:Type ListView}">
             <Setter Property="BorderBrush" Value="{StaticResource ControlBorderBrush}" />
             <Setter Property="Background" Value="{StaticResource ItemsContentBackground}" />
             <Setter Property="BorderThickness" Value="1" />
-            <!--False会关闭虚拟化-->
+            --><!--False会关闭虚拟化--><!--
             <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
             <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"></Setter>
             <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling" />
             <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="False" />
             <Setter Property="AlternationCount" Value="2" />
-            <!-- Things taken from the original template. -->
+            --><!-- Things taken from the original template. --><!--
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="OverridesDefaultStyle" Value="true" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -274,9 +274,9 @@
             </Setter>
         </Style>
 
-        <!--ColumnHeader-->
+        --><!--ColumnHeader-->
 
-        <!--GridViewColumnHeaderGripper-->
+        <!--GridViewColumnHeaderGripper--><!--
         <Style x:Key="GridViewColumnHeaderGripper" TargetType="Thumb">
             <Setter Property="Width" Value="18" />
             <Setter Property="Background" Value="{StaticResource HeaderBorderBrush}" />
@@ -291,7 +291,7 @@
             </Setter>
         </Style>
 
-        <!--DefaultGridViewColumnHeader-->
+        --><!--DefaultGridViewColumnHeader--><!--
         <Style x:Key="DefaultGridViewColumnHeader" TargetType="GridViewColumnHeader">
             <Setter Property="Foreground" Value="{StaticResource TextForeground}" />
             <Setter Property="Background" Value="{StaticResource HeaderBackground}"></Setter>
@@ -337,7 +337,7 @@
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
-                <!--Floating 的 Role 值标识当前是拖放操作的对象的列-->
+                --><!--Floating 的 Role 值标识当前是拖放操作的对象的列--><!--
                 <Trigger Property="Role" Value="Floating">
                     <Setter Property="Opacity" Value="0.7" />
                     <Setter Property="Template">
@@ -351,31 +351,41 @@
                     </Setter>
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style>-->
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <GroupBox Header="已选择的文件"  Grid.Row="0" Margin="5" Width="Auto">
-            <ListView Name="listView1" Style="{StaticResource DefaultListView}" ItemsSource="{Binding}" Height="200">
-                <ListView.View>
-                    <GridView ColumnHeaderContainerStyle="{StaticResource DefaultGridViewColumnHeader}">
-                        <GridViewColumn Header="编号" DisplayMemberBinding="{Binding Number}" Width="50"/>
-                        <GridViewColumn Header="节距误差（左）" DisplayMemberBinding="{Binding PitchLeft}" Width="120"/>
-                        <GridViewColumn Header="节距误差（右）" DisplayMemberBinding="{Binding PitchRight}" Width="120"/>
-                        <GridViewColumn Header="是否接触" DisplayMemberBinding="{Binding  Contact}" Width="120"/>
-                        <GridViewColumn Header="最大冲击力" DisplayMemberBinding="{Binding MaxForce}" Width="120"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        
+        <GroupBox Header="数据显示"  Grid.Row="0" Margin="5" Width="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="最大冲击力(N)："  Grid.Row="0" Margin="10"/>
+                <TextBlock Text="" Name="maxChongjili" Grid.Row="0" Margin="100,10,10,10"/>
+                <TextBlock Text="接触个数：" Grid.Row="0" Margin="250,10,10,10"/>
+                <TextBlock Text="" Name="jiechugeshu" Grid.Row="0" Margin="310,10,10,10"/>
+                <TextBlock Text="没有接触个数：" Grid.Row="0" Margin="350,10,10,10"/>
+                <TextBlock Text="" Name="meiyoujiechugeshu" Grid.Row="0" Margin="435,10,10,10"/>
+                <ListView Name="listView1" Grid.Row="1" Style="{StaticResource DefaultListView}" ItemsSource="{Binding}" Height="200">
+                    <ListView.View>
+                        <GridView ColumnHeaderContainerStyle="{StaticResource DefaultGridViewColumnHeader}">
+                            <GridViewColumn Header="编号" DisplayMemberBinding="{Binding Number}" Width="50"/>
+                            <GridViewColumn Header="节距误差（左）" DisplayMemberBinding="{Binding PitchLeft}" Width="120"/>
+                            <GridViewColumn Header="节距误差（右）" DisplayMemberBinding="{Binding PitchRight}" Width="120"/>
+                            <GridViewColumn Header="是否接触" DisplayMemberBinding="{Binding  Contact}" Width="120"/>
+                            <GridViewColumn Header="最大冲击力" DisplayMemberBinding="{Binding MaxForce}" Width="120"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
         </GroupBox>
-        <xly:FButton Grid.Row="4"  Margin="245,5,5,5" Content="出图" Width="90" Height="23" Click="OnChuTuClick"/>
+        <xly:FButton FIcon="" Grid.Row="4"  Margin="245,5,5,5" Content="出图" Width="80" Height="25" Click="OnChuTuClick"/>
 
-        <Button Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="90" Height="23"/>
+        <xly:FButton FIcon="" Grid.Row="4" Margin="445,5,5,5" Content="取消" Width="80" Height="25" Click="OnCancelClick"/>
     </Grid>
 </Window>

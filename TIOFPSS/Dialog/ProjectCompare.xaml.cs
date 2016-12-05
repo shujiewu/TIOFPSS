@@ -43,7 +43,22 @@ namespace TIOFPSS.Dialog
         {
             InitializeComponent();
             ProjCmpViewModel projCmpViewModel = new ProjCmpViewModel(path);
-
+            int count=path.Count;
+            for (int i = 0; i < count;++i )
+            {
+                if (projCmpViewModel.projects[i] == null)
+                {
+                    TIOFPSS.Resources.MessageBoxX.Warning(path[i] + "项目读取出错！");
+                    path.RemoveAt(i);
+                    projCmpViewModel.projects.RemoveAt(i);
+                    i--;
+                    count--;
+                    if(path.Count==0)
+                    {
+                        return;
+                    }
+                }
+            }
 
             MCPSJCS.SetValue(Grid.ColumnSpanProperty, path.Count+1);
             NGSJCS.SetValue(Grid.ColumnSpanProperty, path.Count+1);
@@ -80,6 +95,7 @@ namespace TIOFPSS.Dialog
             
             FXXSSHeader.Width = (path.Count + 1) * 400;
             moChaPianChiGenYingLiShiYuBoXing.SetValue(Grid.ColumnSpanProperty, path.Count);
+            moChaPianChiGenYingLiPinYuBoXing.SetValue(Grid.ColumnSpanProperty, path.Count);
             moChaPianLeiJiSunShang.SetValue(Grid.ColumnSpanProperty, path.Count);
             DLZHPHeader.Width = (path.Count + 1) * 400;
             dangLiangZaiHePu.SetValue(Grid.ColumnSpanProperty, path.Count);
@@ -117,6 +133,36 @@ namespace TIOFPSS.Dialog
                 Grid.SetColumn(lb, i);
                 FXXSSHeader.Children.Add(lb);
 
+
+                Label lb2 = new Label();
+                string FXXSSFileName="";
+
+                string Section = "analysis";
+                string iniPath = path[i]+"\\project\\参数文件\\project.ini";
+                FXXSSFileName = Dialog.Configure.IniReadValueWithPath(Section, "FXXSS", iniPath);
+                if (FXXSSFileName==Convert.ToString(-1))
+                {
+                    FXXSSFileName = "";
+                }
+
+                lb2.Style = myStyle;
+                TextBlock tb = new TextBlock();
+                tb.Text = "分析文件：" + FXXSSFileName;
+                tb.TextWrapping = TextWrapping.Wrap;
+                lb2.Content = tb;
+                if (i == 0)
+                {
+                    lb2.Margin = new Thickness(0, 1, 0, 0);
+                }
+                else
+                {
+                    lb2.Margin = new Thickness(1, 1, 0, 0);
+                }
+                Grid.SetRow(lb2, 1);
+                Grid.SetColumn(lb2, i);
+                FXXSSHeader.Children.Add(lb2);
+
+
                 GridmoChaPianChiGenYingLiShiYuBoXing.ColumnDefinitions.Add(new ColumnDefinition());
                 GridmoChaPianChiGenYingLiPinYuBoXing.ColumnDefinitions.Add(new ColumnDefinition());
                 GridmoChaPianLeiJiSunShang.ColumnDefinitions.Add(new ColumnDefinition());
@@ -143,6 +189,36 @@ namespace TIOFPSS.Dialog
                 Grid.SetColumn(lb, i);
                 DLZHPHeader.Children.Add(lb);
 
+
+
+                Label lb2 = new Label();
+                string DLZHPFileName = "";
+
+                string Section = "analysis";
+                string iniPath = path[i] + "\\project\\参数文件\\project.ini";
+                DLZHPFileName = Dialog.Configure.IniReadValueWithPath(Section, "DLZHP", iniPath);
+                if (DLZHPFileName == Convert.ToString(-1))
+                {
+                    DLZHPFileName = "";
+                }
+
+                lb2.Style = myStyle;
+                TextBlock tb = new TextBlock();
+                tb.Text = "分析文件：" + DLZHPFileName;
+                tb.TextWrapping = TextWrapping.Wrap;
+                lb2.Content = tb;
+                if (i == 0)
+                {
+                    lb2.Margin = new Thickness(0, 1, 0, 0);
+                }
+                else
+                {
+                    lb2.Margin = new Thickness(1, 1, 0, 0);
+                }
+                Grid.SetRow(lb2, 1);
+                Grid.SetColumn(lb2, i);
+                DLZHPHeader.Children.Add(lb2);
+
                 GriddangLiangZaiHePu.ColumnDefinitions.Add(new ColumnDefinition());
                 GridyuLiuJiShuJieGuo.ColumnDefinitions.Add(new ColumnDefinition());
             }
@@ -153,6 +229,7 @@ namespace TIOFPSS.Dialog
 
                 Style myStyle = (Style)this.FindResource("ProductNameStyle");
                 lb.Style = myStyle;
+                
                 lb.Content = projCmpViewModel.projects[i].ProjectName;
                 if (i == 0)
                 {
@@ -201,6 +278,7 @@ namespace TIOFPSS.Dialog
             }
             //666666666666
             GridmoChaPianChiGenYingLiShiYuBoXing.RowDefinitions.Add(new RowDefinition());
+            GridmoChaPianChiGenYingLiPinYuBoXing.RowDefinitions.Add(new RowDefinition());
             GridmoChaPianLeiJiSunShang.RowDefinitions.Add(new RowDefinition());
             for (int i = 0; i < path.Count; i++)
             {

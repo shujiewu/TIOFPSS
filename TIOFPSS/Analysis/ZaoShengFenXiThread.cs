@@ -13,6 +13,7 @@ namespace TIOFPSS.Analysis
     {
         private NoiseThreadParamter threadParamter;
         private Thread thread;
+        private bool success;
         public Thread _Thread
         {
             get
@@ -59,10 +60,20 @@ namespace TIOFPSS.Analysis
             
 
             noise.NoiseClass NoiseAnays = new noise.NoiseClass();
-            NoiseAnays.noise(Wendingshijian,dataname,locc,fontName);
-
-            System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+            try
+            {
+                NoiseAnays.noise(Wendingshijian, dataname, locc, fontName);
+                success = true;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
 new DoTask(Func));
+            }
+            catch
+            {
+                success = false;
+                System.Windows.Application.Current.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal,
+new DoTask(Func));
+            }           
+            
             //Xceed.Wpf.Toolkit.MessageBox.Show("噪声分析完成");
         }
         public void Func()
@@ -70,7 +81,7 @@ new DoTask(Func));
             //Window2 aw = new Window2();
             //aw.ShowDialog();
             //使用ui元素    
-            this.CallBackMethod(true);
+            this.CallBackMethod(success);
         }
     }
     public class NoiseThreadParamter

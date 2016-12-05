@@ -358,6 +358,27 @@ namespace TIOFPSS.ViewModels
             }
         }
 
+        private string DLZHPfileName;
+        public string DLZHPFileName
+        {
+            get { return DLZHPfileName; }
+            set
+            {
+                DLZHPfileName = value;
+                this.OnPropertyChanged("DLZHPFileName");
+            }
+        }
+
+        private string FXXSSfileName;
+        public string FXXSSFileName
+        {
+            get { return FXXSSfileName; }
+            set
+            {
+                FXXSSfileName = value;
+                this.OnPropertyChanged("FXXSSFileName");
+            }
+        }
 
        public static BitmapImage LoadImg(string fileName)
        {
@@ -425,6 +446,20 @@ namespace TIOFPSS.ViewModels
                 //当量载荷谱分析结果
                 DangLiangZaiHePu = LoadImg(PicPath + "\\当量载荷谱分析结果\\当量载荷谱.png");
                 YuLiuJiShuJieGuo = LoadImg(PicPath + "\\当量载荷谱分析结果\\雨流计数结果.png");
+
+                if(System.IO.File.Exists(PicPath + "\\当量载荷谱分析结果\\当量载荷谱.png"))
+                {
+                    string Section = "analysis";
+                    string iniPath = PicPath.Substring(0, PicPath.LastIndexOf("tempData"))+"project\\参数文件\\project.ini";
+                    DLZHPFileName = Dialog.Configure.IniReadValueWithPath(Section, "DLZHP", iniPath);
+                }
+
+                if (System.IO.File.Exists(PicPath + "\\非线性损伤分析结果\\摩擦片齿根应力时域波形.png"))
+                {
+                    string Section = "analysis";
+                    string iniPath = PicPath.Substring(0, PicPath.LastIndexOf("tempData")) + "project\\参数文件\\project.ini";
+                    FXXSSFileName = Dialog.Configure.IniReadValueWithPath(Section, "FXXSS", iniPath);
+                }
             }
             //else
             //{

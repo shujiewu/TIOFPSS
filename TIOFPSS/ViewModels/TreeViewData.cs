@@ -53,7 +53,7 @@ namespace TIOFPSS.ViewModels
         public static bool add(string path,string projectName)
         {
             string fullPath = path;
-            if (fullPath != null && System.IO.Directory.Exists(fullPath))
+            if (fullPath != null && System.IO.Directory.Exists(fullPath) && System.IO.File.Exists(fullPath+"\\参数文件\\parameter.xml"))
             {
                 DirectoryInfo dirs = new DirectoryInfo(fullPath); //获得程序所在路径的目录对象
                 DirectoryInfo[] dir = dirs.GetDirectories();//获得目录下文件夹对象

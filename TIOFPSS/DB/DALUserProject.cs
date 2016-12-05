@@ -522,7 +522,7 @@ namespace TIOFPSS.DB
             //result.Add("0");
             //result.Add("1");
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 //return DataRowToModel(ds.Tables[0].Rows[0]);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -554,7 +554,7 @@ namespace TIOFPSS.DB
             result.Add("0");
             result.Add("1");
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 //return DataRowToModel(ds.Tables[0].Rows[0]);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -581,7 +581,7 @@ namespace TIOFPSS.DB
             List<string> result = new List<string>();
 
 
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds!=null&&ds.Tables[0].Rows.Count > 0)
             {
                 //return DataRowToModel(ds.Tables[0].Rows[0]);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -607,7 +607,7 @@ namespace TIOFPSS.DB
                     new SQLiteParameter[] { new SQLiteParameter("@项目名", projectName) };
             string result=null;
             DataSet ds = SQLiteDBHelper.Query(strSql.ToString(), parameters);
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 //return DataRowToModel(ds.Tables[0].Rows[0]);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -634,7 +634,7 @@ namespace TIOFPSS.DB
 
           
             DataSet ds = SQLiteDBHelper.Query(strSql.ToString(), parameters);
-            if (ds.Tables[0].Rows.Count > 0)
+            if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
                 return true;
             }
@@ -647,26 +647,26 @@ namespace TIOFPSS.DB
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public UserProject DataRowToModel(DataRow row)
-        {
-            UserProject model = new UserProject();
-            if (row != null)
-            {
-                if (row["UserName"] != null)
-                {
-                    model.UserName = row["UserName"].ToString();
-                }
-                if (row["UserPassword"] != null)
-                {
-                    model.UserPassword = row["UserPassword"].ToString();
-                }
-                if (row["UserType"] != null)
-                {
-                    model.UserType = row["UserType"].ToString();
-                }
-            }
-            return model;
-        }
+        //public UserProject DataRowToModel(DataRow row)
+        //{
+        //    UserProject model = new UserProject();
+        //    if (row != null)
+        //    {
+        //        if (row["UserName"] != null)
+        //        {
+        //            model.UserName = row["UserName"].ToString();
+        //        }
+        //        if (row["UserPassword"] != null)
+        //        {
+        //            model.UserPassword = row["UserPassword"].ToString();
+        //        }
+        //        if (row["UserType"] != null)
+        //        {
+        //            model.UserType = row["UserType"].ToString();
+        //        }
+        //    }
+        //    return model;
+        //}
 
         /// <summary>
         /// 获得数据列表
