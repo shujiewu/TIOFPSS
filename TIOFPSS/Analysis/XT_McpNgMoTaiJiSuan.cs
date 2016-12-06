@@ -39,7 +39,7 @@ namespace TIOFPSS.Analysis
             string m_direction, m_outputfile;//ansys软件路径 和 中间文件输出路径
             string path = threadParamter.path;//结果保存路径
             string ansysPath;//
-            string fileLock = path + "\\mcpngmodal\\file.lock";
+            string fileLock = path + "\\MoChaPianNeiGuMoTai\\file.lock";
             //fileLock.Format("%s\\single\\file.lock", path);
             //删除错误文件
             if (System.IO.File.Exists(fileLock))

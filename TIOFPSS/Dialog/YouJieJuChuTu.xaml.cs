@@ -119,6 +119,12 @@ namespace TIOFPSS.Dialog
                     WaitingBox.Show(() =>
                     {
                         yjjct.jjwc(locc, loc, i);
+                        string force_source1 = tempPath+ "force+.txt"; //inf->path + "force+.txt";
+                        string force_source2 = tempPath+ "force-.txt"; //inf->path + "force-.txt";
+                        string dest_s1 = System.IO.Path.Combine(nowProjPath, "tempData\\ZhunDongTai\\force+.txt"); //inf->path + "fdynamic\\force+.txt";
+                        string dest_s2 = System.IO.Path.Combine(nowProjPath, "tempData\\ZhunDongTai\\force-.txt"); //inf->path + "fdynamic\\force-.txt";
+                        System.IO.File.Copy(force_source1, dest_s1, true);
+                        System.IO.File.Copy(force_source2, dest_s2, true);
                     }, "正在出图，请稍后...");
                     TIOFPSS.Resources.MessageBoxX.Info("出图完成！",this);
                 }

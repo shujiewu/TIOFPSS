@@ -1305,32 +1305,39 @@ namespace TIOFPSS
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
+
+                string start = "\"" + startPath + "\\proe\\frictionplate.prt" + "\"";
+                string proePath = "\"" + Configure.IniReadValue("system", "CreoPath") + "\\parametric.bat" + "\"";
                 string para = proj.YaLiJiao + " " +proj.ChiShu + " " +proj.WaiJing + " "
                          +proj.KongJing + " " +proj.NgHouDu + " " +proj.MoShu + " "
                          +proj.NgGFXCDGC + " " +proj.NgChiDingGao + " " +proj.NgChiGenGao + " "
                          +proj.McpChiGenYuanJiao + " " +proj.McpHouDu + " " +proj.MccHouDu + " "
                          +proj.MccJingKuan + " " +proj.McpGFXDGC + " " +proj.McpChiDingGao + " "
-                         +proj.McpChiGenGao + " " +proj.NgChiGenYuanJiao;
+                         + proj.McpChiGenGao + " " + proj.NgChiGenYuanJiao + " " + proePath+" "+start;
+
+                string workPath = proj.ProjectPath + "\\project\\参数文件";
                     Process p = new Process();
 
                     p.StartInfo.FileName = @"Show3DModel.exe";           //程序名
-
+                    p.StartInfo.WorkingDirectory = workPath;
                     p.StartInfo.Arguments = para;    //程式执行参数
                     p.StartInfo.UseShellExecute = false;
-                    p.StartInfo.CreateNoWindow = true;
+                    //p.StartInfo.CreateNoWindow = true;
+                    btnView3DModel.IsEnabled = false;
                     try
                     {
                         WaitingBox.Show(() =>
                         {
                             p.Start();
-                            System.Threading.Thread.Sleep(3000);
+                            p.WaitForExit();
                         }, "正在生成模型，请稍后...");
-                        //TIOFPSS.Resources.MessageBoxX.Question("已经完了？");                       
+                        TIOFPSS.Resources.MessageBoxX.Info("3D模型生成成功！", this.Parent as Window);
                     }
                     catch
                     {
                         TIOFPSS.Resources.MessageBoxX.Error("3D模型生成失败！", this.Parent as Window);
                     }
+                    btnView3DModel.IsEnabled = true;
                     //success = true;
                     //break;
                 
@@ -1750,6 +1757,10 @@ namespace TIOFPSS
                     return false;
                 }
             }
+            else
+            {
+                System.IO.Directory.CreateDirectory(tempPath + "冲击动力学分析结果");
+            }
             if (System.IO.File.Exists(tempPath + "ZhunDongTai\\force+.txt"))
             {
                 try
@@ -1916,7 +1927,7 @@ namespace TIOFPSS
         {
             List<string> fileContent = new List<string>();
             int i = 0;
-            using (System.IO.StreamReader file = new System.IO.StreamReader(fileName, Encoding.Default))
+            using (System.IO.StreamReader file = new System.IO.StreamReader(fileName, Encoding.GetEncoding("GB2312")))
             {              
                 string line;                
                 while((line=file.ReadLine())!=null)
@@ -1929,7 +1940,7 @@ namespace TIOFPSS
                     fileContent.Add(line);
                 }             
             }
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName))
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(fileName,false,Encoding.GetEncoding("GB2312")))
             {
                 foreach(string line in fileContent)
                 {
@@ -2402,9 +2413,9 @@ namespace TIOFPSS
                         file.WriteLine(dataname[i]);
                     }
 
-                    temp = "fzsj=" + para[2] + "*1000/n3/rd1    !仿真时间";
+                    temp = "fzsj=" + para[2]+"    !仿真时间";
                     file.WriteLine(temp);
-                    temp = "MASSoNG=" + para[3] + "*1000/n3/rd1    !与内毂连接轴的质量";
+                    temp = "MASSoNG=" + para[3] + "    !与内毂连接轴的质量";
                     file.WriteLine(temp);
                     temp = "jobname=\'" + resName + "\'    !结果文件命名名称";
                     file.WriteLine(temp);
@@ -2574,8 +2585,8 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\ZhunDongTai");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-                string matPath = proj.ProjectPath + "tempData\\冲击动力学分析结果\\lengthforce+.mat";
-                string matPath2 = proj.ProjectPath + "tempData\\冲击动力学分析结果\\lengthforce-.mat";
+                string matPath = proj.ProjectPath + "\\tempData\\冲击动力学分析结果\\lengthforce+.mat";
+                string matPath2 = proj.ProjectPath + "\\tempData\\冲击动力学分析结果\\lengthforce-.mat";
                 if (!System.IO.File.Exists(matPath) || !System.IO.File.Exists(matPath2))
                 {
                     TIOFPSS.Resources.MessageBoxX.Error("缺少force文件");
@@ -2773,7 +2784,7 @@ namespace TIOFPSS
                 string moTaiJieShu = para[0];
                 string resName = para[1];
                 string APDLPath, tempPath;
-                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\mcpngmodal");
+                tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\MoChaPianNeiGuMoTai");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
 
@@ -3375,9 +3386,12 @@ namespace TIOFPSS
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
-                string LuJing = para[0];
-                string resName = para[1];
-                string xmlPath = proj.ProjectPath + "\\";
+                string LuJing = "\"" + para[0] + "\"";
+                string resName = "\"" + para[1] + "\"";
+                string xmlPath = "\"" + proj.ProjectPath + "\"";
+                //string LuJing = para[0];
+                //string resName = para[1];
+                //string xmlPath = proj.ProjectPath + "\\";
                 string fileparameter = xmlPath + " " + LuJing + " " + resName;
 
                 Process p = new Process();
@@ -3387,16 +3401,24 @@ namespace TIOFPSS
                 p.StartInfo.Arguments = fileparameter;    //程式执行参数
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.CreateNoWindow = true;
-                p.Start();
+                //p.Start();
                 try
                 {
-                    p.Start();
+                    btnShengChengBaoBiao.IsEnabled = false;
+                    WaitingBox.Show(() =>
+                    {
+                        p.Start();
+                        p.WaitForExit();
+                    }, "正在生成报表，请稍后...");
+                    TIOFPSS.Resources.MessageBoxX.Info("报表生成成功！", this.Parent as Window);
+
                 }
                 catch
                 {
                     //TIOFPSS.Resources.MessageBoxX.Warning("生成报表失败！");
-                    TIOFPSS.Resources.MessageBoxX.Error("生成报表失败！", this.Parent as Window);
+                    TIOFPSS.Resources.MessageBoxX.Error("报表生成失败！", this.Parent as Window);
                 }
+                btnShengChengBaoBiao.IsEnabled = true;
             }
         }
         private void OnConfigureClick(object sender, RoutedEventArgs e)

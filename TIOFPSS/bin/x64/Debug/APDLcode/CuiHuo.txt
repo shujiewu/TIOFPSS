@@ -1,5 +1,5 @@
 !/CLEAR
-/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !è·¯å¾„
+/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !Â·¾¶
 /CWD,filepath
 /FILNAME,jobname,0
 /PREP7 
@@ -14,11 +14,11 @@ angle2=180.0/z
 angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi     
 angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi     
 
-!å®šä¹‰å•å…ƒç±»åž‹
+!¶¨Òåµ¥ÔªÀàÐÍ
 ET,1,SOLID185 
 ET,10,SHELL181     
 
-!å®šä¹‰å†…æ¯‚ææ–™å‚æ•°
+!¶¨ÒåÄÚì±²ÄÁÏ²ÎÊý
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,1,,ex1
@@ -27,7 +27,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,1,,dens1
 
-!å®šä¹‰èŠ¯æ¿ææ–™å‚æ•°
+!¶¨ÒåÐ¾°å²ÄÁÏ²ÎÊý
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,2,,ex2
@@ -37,7 +37,7 @@ MPTEMP,1,0
 MPDATA,DENS,2,,dens2
 MPDATA,C,2,,273.15+tquench1 
 
-!å®šä¹‰æ‘©æ“¦å±‚ææ–™å‚æ•°
+!¶¨ÒåÄ¦²Á²ã²ÄÁÏ²ÎÊý
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,3,,ex3
@@ -46,7 +46,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,3,,dens3
 
-!å®šä¹‰é•€å±‚ææ–™å‚æ•°
+!¶¨Òå¶Æ²ã²ÄÁÏ²ÎÊý
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,4,,ex4
@@ -55,7 +55,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,4,,dens4
 
-!å®šä¹‰æ‘©æ“¦ç‰‡é½¿éƒ¨ææ–™å‚æ•°
+!¶¨ÒåÄ¦²ÁÆ¬³Ý²¿²ÄÁÏ²ÎÊý
 MPTEMP,,,,,,,,      
 MPTEMP,1,0  
 MPDATA,EX,5,,ex2
@@ -65,7 +65,7 @@ MPTEMP,1,0
 MPDATA,DENS,5,,dens2
 MPDATA,C,5,,273.15+tquench2 
 
-!è·ç¦»
+!¾àÀë
 /prep7
 csys,4                               
 wprot,-angle3,0,0      
@@ -88,7 +88,7 @@ NUMCMP,KP
 
 LGEN,2,1, , ,0,0,10, ,0   
 CSYS,1 
-LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !æŒ‰é½¿ä¾§é—´éš™åç§»æ¸å¼€çº¿ 
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !°´³Ý²à¼äÏ¶Æ«ÒÆ½¥¿ªÏß 
 LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0
 LDELE,1,2 ,1 ,1
 NUMCMP,KP   
@@ -108,7 +108,7 @@ gky1=ky(4)
 gky2=ky(5)
 gky=gky1-gky2
 LDELE,1,2,1,1
-!å»ºç«‹å†…æ¯‚æ¨¡åž‹
+!½¨Á¢ÄÚì±Ä£ÐÍ
 WPCSYS,-1,0 
 csys,4                 
 wprot,-angle3,0,0      
@@ -129,7 +129,7 @@ bsplin,,p51x
 KDELE,3,101,1          
 NUMCMP,KP             
 
-!ç”¨äºŽè°ƒæ•´é½¿ä¾§é—´éš™
+!ÓÃÓÚµ÷Õû³Ý²à¼äÏ¶
 LGEN,2,1, , ,0,0,10, ,0   
 csys,1
 LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0
@@ -176,7 +176,7 @@ NUMCMP,KP
  
 circle,1,rf1
 circle,1,rd1
-circle,1,rf1-1.2    !é½¿éƒ¨åŸºä½“åˆ†ç¦»çº¿
+circle,1,rf1-1.2    !³Ý²¿»ùÌå·ÖÀëÏß
 LSTR,       5,       1  
 LSTR,       1,       3  
 LSBL,       4,      16  
@@ -234,12 +234,12 @@ NUMCMP,line
 NUMCMP,KP
 NUMCMP,AREA 
 NUMCMP,VOLU 
-VGEN,2,1, 2,1 , , , , ,0 !å¤åˆ¶ï¼Œé‡æŽ’çº¿å·
+VGEN,2,1, 2,1 , , , , ,0 !¸´ÖÆ£¬ÖØÅÅÏßºÅ
 Vdele,1,2,1,1
 NUMCMP,line
 NUMCMP,KP
 NUMCMP,VOLU 
-*do,t,1,2,1          !é˜µåˆ—æˆä¸‰ä¸ªé½¿
+*do,t,1,2,1          !ÕóÁÐ³ÉÈý¸ö³Ý
 wprot,-angle2,0,0  
 VSYMM,Y,1, 2,1 , ,0,0
 *enddo
@@ -249,7 +249,7 @@ NUMCMP,line
 NUMCMP,AREA
 NUMCMP,VOLU 
 
-!å»ºç«‹æ‘©æ“¦ç‰‡
+!½¨Á¢Ä¦²ÁÆ¬
 
 VSEL,U, , ,ALL  
 ALLSEL,BELOW,VOLU   
@@ -323,13 +323,13 @@ LSEL,S,LOC,X,rf2
 LSEL,R,LOC,Y,0,0.1  
 WPCSYS,-1,0 
 wpro,,90.000000,
-LSBW,lnub+2     !å‡ºé”™LSBW,all              
+LSBW,lnub+2     !³ö´íLSBW,all              
 ALLSEL,ALL  
 *GET,VMN1,VOLU,,NUM,MIN 
 *GET,VMX1,VOLU,,NUM,Max 
 CSYS,1 
 
-circle,kzx,rf2+quench   !ç”Ÿæˆæ·¬ç«å±‚
+circle,kzx,rf2+quench   !Éú³É´ã»ð²ã
 
 LSEL,S,LOC,X,rf2
 LSEL,A,LOC,X,rdc
@@ -339,7 +339,7 @@ LSEL,R,LOC,Y,angle4,60
 WPCSYS,-1,0 
 wprot,2*angle2,0,0  
 wpro,,90.000000,
-LSBW,all     !å‡ºé”™LSBW,all
+LSBW,all     !³ö´íLSBW,all
 ALLSEL,ALL  
 NUMCMP,line 
 NUMCMP,KP   
@@ -352,7 +352,7 @@ NUMCMP,KP
 
 LSEL,S,,,lnub,lnub+8,1  
 larc,kpnub1,kpnub1+2,kzx,ra2
-lfillt,lnub,lnub+2,rff2     !å€’è§’
+lfillt,lnub,lnub+2,rff2     !µ¹½Ç
 lfillt,lnub+1,lnub+3,rff2
 lcomb,lnub+2,lnub+8,0
 lcomb,lnub+3,lnub+9,0
@@ -365,7 +365,7 @@ LSTR,kpnub1+7,kpnub1+4
 LSTR,kpnub1+4,kpnub1+5 
 CSYS,1  
 LSEL,R,LOC,X,ra2,rf2+quench
-AL,ALL    !å·²å®šä¹‰çš„çº¿ç”Ÿæˆé¢  
+AL,ALL    !ÒÑ¶¨ÒåµÄÏßÉú³ÉÃæ  
 ALLSEL,ALL  
 LSEL,s,LOC,X,rdc,rd2
 AL,ALL    
@@ -408,7 +408,7 @@ NUMCMP,VOLU
 *GET,VMX2,VOLU,,NUM,Max 
 
 
-!!!å¯¹å†…æ¯‚è¿›è¡Œç½‘æ ¼åˆ’åˆ† 
+!!!¶ÔÄÚì±½øÐÐÍø¸ñ»®·Ö 
 VSEL,S,,,1,6,1           
 ALLSEL,BELOW,VOLU 
 CSYS,1 
@@ -444,8 +444,8 @@ ASEL,S,LOC,X,rd1+1,rf1-1.3
 ASEL,R,LOC,Z,0
 AMESH,ALL 
 
-TYPE,   1   !æŒ‡å®šå•å…ƒç±»åž‹å·
-MAT,       1    !æŒ‡å®šå•å…ƒææ–™ç¼–å·
+TYPE,   1   !Ö¸¶¨µ¥ÔªÀàÐÍºÅ
+MAT,       1    !Ö¸¶¨µ¥Ôª²ÄÁÏ±àºÅ
 VSWEEP,1
 VSWEEP,2
 VSWEEP,3
@@ -457,36 +457,36 @@ NUMCMP,KP
 NUMCMP,AREA 
 NUMCMP,VOLU 
 
-!å¯¹æ‘©æ“¦ç‰‡è¿›è¡Œç½‘æ ¼åˆ’åˆ† 
-ALLSEL,ALL          !ç½‘æ ¼åˆ’åˆ†å°ºå¯¸è®¾å®š   
+!¶ÔÄ¦²ÁÆ¬½øÐÐÍø¸ñ»®·Ö 
+ALLSEL,ALL          !Íø¸ñ»®·Ö³ß´çÉè¶¨   
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
 CSYS,1  
 LSEL,R,LOC,X,ra2-1,rdc-0.1  
-LESIZE,ALL,0.5, , , ,1, , ,1,      !é½¿éƒ¨
+LESIZE,ALL,0.5, , , ,1, , ,1,      !³Ý²¿
 ALLSEL,ALL  
 VSEL,U, , ,1,VMX1,1 
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,X,rdc-0.01,rdc+0.01
-LESIZE,ALL,0.5, , , ,1, , ,1,      !æ‘©æ“¦å±‚å†…å¾„
+LESIZE,ALL,0.5, , , ,1, , ,1,      !Ä¦²Á²ãÄÚ¾¶
 ALLSEL,ALL  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,X,rd2
-LESIZE,ALL,0.5, , , ,1, , ,1,       !å¤–å¾„å¤„
+LESIZE,ALL,0.5, , , ,1, , ,1,       !Íâ¾¶´¦
 ALLSEL,ALL  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU   
 LSEL,R,LOC,X,rdc+1,rd2-1
-LESIZE,ALL,0.5, , , ,1, , ,1,          !åŸºä½“
+LESIZE,ALL,0.5, , , ,1, , ,1,          !»ùÌå
 ALLSEL,ALL  
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU   
 CSYS,1  
 LSEL,R,LOC,Z,bc+0.6,bc+bx+0.4   
-LESIZE,ALL,1.2, , , ,1, , ,1,        !é½¿å®½
+LESIZE,ALL,1.2, , , ,1, , ,1,        !³Ý¿í
 VSEL,R,LOC,Z,bc+0.6,bc+bx+0.4   
 ALLSEL,BELOW,VOLU   
 VSEL,R,LOC,X,rdc,rd2
@@ -545,13 +545,13 @@ ALLSEL,BELOW,VOLU
 CSYS,4 
 VGEN, ,1,6, 1, , ,BC+0.5-(B1-BX)/2, , ,1
 
-!åˆ›å»ºå†…æ¯‚çº¦æŸèŠ‚ç‚¹é›†åˆ
+!´´½¨ÄÚì±Ô¼Êø½Úµã¼¯ºÏ
 CSYS,1
 ALLSEL,ALL       
 ALLSEL,BELOW,VOLU
 NSEL,S,LOC,x,rd1
 CM,FORCE,NODE 
-!åˆ›å»ºå†…æ¯‚é½¿é¢èŠ‚ç‚¹é›†åˆ
+!´´½¨ÄÚì±³ÝÃæ½Úµã¼¯ºÏ
 ALLSEL,ALL       
 VSEL,S, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
@@ -560,7 +560,7 @@ ASEL,U,LOC,z,BC+0.5-(B1-BX)/2
 ASEL,U,LOC,z,b1+BC+0.5-(B1-BX)/2
 NSLA,S,1
 CM,NEIGU_CHIMIAN,NODE
-!åˆ›å»ºæ‘©æ“¦ç‰‡é½¿é¢èŠ‚ç‚¹é›†åˆ
+!´´½¨Ä¦²ÁÆ¬³ÝÃæ½Úµã¼¯ºÏ
 ALLSEL,ALL       
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
@@ -569,8 +569,8 @@ ASEL,U,LOC,z,BC+0.5
 ASEL,U,LOC,z,bx+bc+0.5
 NSLA,S,1
 CM,mocapian_CHIMIAN,NODE
-!!!è¾¹ç•Œæ¡ä»¶è®¾ç½®
-!å»ºç«‹æŽ¥è§¦
+!!!±ß½çÌõ¼þÉèÖÃ
+!½¨Á¢½Ó´¥
 CM,_NODECM,NODE       
 CM,_ELEMCM,ELEM 
 CM,_KPCM,KP 
@@ -656,7 +656,7 @@ RMORE,,,0, 0,0,
 RMORE,,,,,, 
 RMORE,,,,,  
 
-!æ‘©æ“¦ç‰‡çº¦æŸçš„æ–½åŠ 
+!Ä¦²ÁÆ¬Ô¼ÊøµÄÊ©¼Ó
 ALLSEL,ALL 
 VSEL,S,,,1,6,1 
 ALLSEL,BELOW,VOLU      
@@ -673,13 +673,13 @@ CSYS,1
 ALLSEL,ALL
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
-ASEL,S,LOC,Z,BC+0.5   !çº¦æŸæ›´æ”¹
+ASEL,S,LOC,Z,BC+0.5   !Ô¼Êø¸ü¸Ä
 ASEL,A,LOC,Z,BC+0.5+BX
 ASEL,U,LOC,x,ra2+0.1,rdC-0.1
 NSLA,S,1
 D,ALL,ALL
 ALLSEL,ALL
-!å†…æ¯‚æ–½åŠ è½½è·
+!ÄÚì±Ê©¼ÓÔØºÉ
 CMSEL,S,FORCE     
 CSYS,1
 NROTAT,ALL
@@ -701,7 +701,7 @@ ALLSEL,ALL
 SAVE
 FINISH 
 
-!æ±‚è§£
+!Çó½â
 /SOLU
 SOLVE       
 FINISH
@@ -712,18 +712,18 @@ FINISH
 /REPLOT 
 FINISH 
 
-!!!åŽå¤„ç†
+!!!ºó´¦Àí
 /POST1
 /DSCALE,ALL,1.0 
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, S,EQV, 0,1.0     !ç­‰æ•ˆåº”åŠ›æ˜¾ç¤º
+PLNSOL, S,EQV, 0,1.0     !µÈÐ§Ó¦Á¦ÏÔÊ¾
 /show,close 
 /RENAME,%jobname%000.JPG,,,cuihuoyingliyuntu.jpeg
 
 ALLSEL,ALL
-RSYS,1     !ä»¥æŸ±åæ ‡è¾“å‡ºç»“æžœ
+RSYS,1     !ÒÔÖù×ø±êÊä³ö½á¹û
 AVPRIN,0
 AVRES,2,
 /EFACET,1   
@@ -734,7 +734,7 @@ FORCE,TOTAL
 /EFACET,1 
 /GRAPHICS,POWER 
 /show,jpeg,,
-PLNSOL, U,Y, 0,1.0       !å‘¨å‘ä½ç§»æ˜¾ç¤º
+PLNSOL, U,Y, 0,1.0       !ÖÜÏòÎ»ÒÆÏÔÊ¾
 /show,close 
 /RENAME,%jobname%000.JPG,,,cuihuoweiyiyuntu.jpeg
 !*  
@@ -751,24 +751,24 @@ WPCSYS,-1,0
 CSYS,4
 ALLSEL,BELOW,VOLU
 NSEL,R,LOC,z,0.5+bx+bc
-*GET,Nnod,NODE,0,COUNTã€€ã€€ã€€ã€€ã€€  ã€€!å¾—åˆ°æ‰€é€‰æ‹©çš„èŠ‚ç‚¹æ€»æ•°      
-*DIM,Xyz,ARRAY,NNOD,5               !å®šä¹‰æ•°ç»„              
-*GET,Nd,NODE,0,NUM,MIN              !å¾—åˆ°æœ€å°çš„èŠ‚ç‚¹ç¼–å·      
+*GET,Nnod,NODE,0,COUNT¡¡¡¡¡¡¡¡¡¡  ¡¡!µÃµ½ËùÑ¡ÔñµÄ½Úµã×ÜÊý      
+*DIM,Xyz,ARRAY,NNOD,5               !¶¨ÒåÊý×é              
+*GET,Nd,NODE,0,NUM,MIN              !µÃµ½×îÐ¡µÄ½Úµã±àºÅ      
 *cfopen,nodexyz,txt,,append
-*do,t,1,Nnod,1                      !å¯¹èŠ‚ç‚¹æ•°è¿›è¡Œå¾ªçŽ¯             
-Xyz(t,1)=Nd                           !æå–èŠ‚ç‚¹ç¼–å·           
-Xyz(t,2)=NX(Nd)                     !å–å‡ºèŠ‚ç‚¹çš„Xåæ ‡             
-Xyz(t,3)=NY(Nd)                    !å–å‡ºèŠ‚ç‚¹çš„Yåæ ‡               
+*do,t,1,Nnod,1                      !¶Ô½ÚµãÊý½øÐÐÑ­»·             
+Xyz(t,1)=Nd                           !ÌáÈ¡½Úµã±àºÅ           
+Xyz(t,2)=NX(Nd)                     !È¡³ö½ÚµãµÄX×ø±ê             
+Xyz(t,3)=NY(Nd)                    !È¡³ö½ÚµãµÄY×ø±ê               
 Xyz(t,4)=NZ(Nd)
 *GET,Xyz(t,5),NODE,ND,S,EQV
-unn=Xyz(t,1)                     !å–å‡ºèŠ‚ç‚¹çš„Zåæ ‡ 
-uxn=Xyz(t,2)                  !  è¯»å–èŠ‚ç‚¹ t çš„ Uxï¼Œä¸‹åŒ
+unn=Xyz(t,1)                     !È¡³ö½ÚµãµÄZ×ø±ê 
+uxn=Xyz(t,2)                  !  ¶ÁÈ¡½Úµã t µÄ Ux£¬ÏÂÍ¬
 uyn=Xyz(t,3)
 uzn=Xyz(t,4)
 sss=Xyz(t,5)
 *vwrite,unn, uxn, uyn, uzn, sss
 (F10.0,3F15.4,3F15.4)
-Nd=NDNEXT(Nd)                   !è¯»å‡ºä¸‹ä¸€ä¸ªèŠ‚ç‚¹ç¼–å·               
+Nd=NDNEXT(Nd)                   !¶Á³öÏÂÒ»¸ö½Úµã±àºÅ               
 *enddo
 *cfclos
 save

@@ -1,24 +1,24 @@
 !/CLEAR
-/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !路径
+/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !·��
 /CWD,filepath
 /FILNAME,jobname,0
 /PREP7 
-!鏈▼搴忛噰鐢ㄦ绫冲崟浣嶅埗杩涜缂栧啓 (MCP5涔嬪悗鍔犲叆榻夸晶闂撮殭)
-!鍐呮瘋鍙傛暟瀹氫箟
+!��������ú��׵�λ�ƽ��б�д (MCP5֮�����ݲ��϶)
+!��챲�������
 pi=3.14159265358979
-r=0.5*m*z             !鍒嗗害鍦嗗崐寰?
-rb=r*cos(angle1)       !鍩哄渾鍗婂緞
-ra1=0.5*(z*m+2*ha1)     !鍐呮瘋榻块《鍦嗗崐寰?
-rf1=0.5*(z*m-2*c1)  !鍐呮瘋榻挎牴鍦嗗崐寰? 
-!鎽╂摝鐗囧弬鏁板畾涔?
-ra2=0.5*(z*m-2*ha2)     !鎽╂摝鐗囬娇椤跺渾鍗婂緞
-rf2=0.5*(z*m+2*c2)  !鎽╂摝鐗囬娇鏍瑰渾鍗婂緞  
+r=0.5*m*z             !�ֶ�Բ�뾶
+rb=r*cos(angle1)       !��Բ�뾶
+ra1=0.5*(z*m+2*ha1)     !��챳ݶ�Բ�뾶
+rf1=0.5*(z*m-2*c1)  !��챳ݸ�Բ�뾶  
+!Ħ��Ƭ��������
+ra2=0.5*(z*m-2*ha2)     !Ħ��Ƭ�ݶ�Բ�뾶
+rf2=0.5*(z*m+2*c2)  !Ħ��Ƭ�ݸ�Բ�뾶  
 
-angle2=180.0/z        !闀滃儚鏃嬭浆瑙?  
-angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !鍒濆鐨勫亸杞(鍏跺€间笉鑳芥敼鍙橈級  
-angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !瀵圭О鍋忚浆瑙? 
+angle2=180.0/z        !������ת��   
+angle3=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !��ʼ��ƫת��(��ֵ���ܸı䣩  
+angle4=(pi/2.0/z+tan(angle1)-angle1)*180.0/pi   !�Գ�ƫת��  
  
-ET,1,SOLID185     !瀹氫箟鍗曞厓绫诲瀷
+ET,1,SOLID185     !���嵥Ԫ����
 ET,2,SHELL181 
 sect,1,shell,,  
 secdata, 0.1,1,0.0,3
@@ -26,7 +26,7 @@ secoffset,MID
 seccontrol,,,, , , ,
  
 
-MPTEMP,,,,,,,,     !瀹氫箟鍐呮瘋鏉愭枡鍙傛暟
+MPTEMP,,,,,,,,     !������챲��ϲ���
 MPTEMP,1,0  
 MPDATA,EX,1,,ex1
 MPDATA,PRXY,1,,prxy1
@@ -34,7 +34,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,1,,dens1
 
-MPTEMP,,,,,,,,     !瀹氫箟鑺澘鏉愭枡鍙傛暟
+MPTEMP,,,,,,,,     !����о����ϲ���
 MPTEMP,1,0  
 MPDATA,EX,2,,ex2
 MPDATA,PRXY,2,,prxy2
@@ -42,7 +42,7 @@ MPTEMP,,,,,,,,
 MPTEMP,1,0  
 MPDATA,DENS,2,,dens2
 
-MPTEMP,,,,,,,,     !瀹氫箟鎽╂摝灞傛潗鏂欏弬鏁?
+MPTEMP,,,,,,,,     !����Ħ������ϲ���
 MPTEMP,1,0  
 MPDATA,EX,3,,ex3
 MPDATA,PRXY,3,,prxy3
@@ -51,7 +51,7 @@ MPTEMP,1,0
 MPDATA,DENS,3,,dens3
 
 /prep7
-csys,4               !鑾峰緱鍐呮瘋鏃嬭浆瑙掑害                 
+csys,4               !��������ת�Ƕ�                 
 wprot,-angle3,0,0      
 K,1,0,0                
  
@@ -72,7 +72,7 @@ NUMCMP,KP
 
 LGEN,2,1, , ,0,0,10, ,0   
 csys,1
-LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !鎸夐娇渚ч棿闅欏亸绉绘笎寮€绾?
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !���ݲ��϶ƫ�ƽ����� 
 LGEN,2,1, , ,0,-gap2/(m*z/2)*180/pi,0, ,0
 LDELE,1,2 ,1 ,1
 NUMCMP,KP   
@@ -93,7 +93,7 @@ gky2=ky(5)
 gky=gky1-gky2
 LDELE,1,2,1,1
 
-!寤虹珛鍐呮瘋妯″瀷 
+!�������ģ�� 
 WPCSYS,-1,0 
 csys,4  
 wprot,-angle3,0,0   
@@ -112,7 +112,7 @@ KDELE,3,101,1
 NUMCMP,KP   
 LGEN,2,1, , ,0,0,10, ,0 
 csys,1
-LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !鎸夐娇渚ч棿闅欏亸绉绘笎寮€绾?
+LGEN,2,1, , ,0,gap1/(m*z/2)*180/pi,0, ,0   !���ݲ��϶ƫ�ƽ����� 
 ldele,1,2,1 
 kdele,2,5,1 
 NUMCMP,KP   
@@ -200,7 +200,7 @@ CSYS,4
 WPCSYS,-1,0 
 VOFFST,1,-b1
 VOFFST,2,b1 
-!!!瀵瑰唴姣傝繘琛岀綉鏍煎垝鍒? 
+!!!����챽������񻮷�  
 VSEL,S,,,1,2,1  
 ALLSEL,BELOW,VOLU   
 CSYS,1  
@@ -251,7 +251,7 @@ NUMCMP,line
 NUMCMP,KP  
 NUMCMP,VOLU
 
-!寤虹珛鎽╂摝鐗?
+!����Ħ��Ƭ
 VSEL,U, , ,ALL  
 ALLSEL,BELOW,VOLU   
 K, ,,,, 
@@ -275,7 +275,7 @@ KDELE,kpnub1+1,kpnub2-1,1
 NUMCMP,KP   
 *GET,lnub,line,,NUM,max 
 CSYS,1 
-LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0    !鎸夐娇渚ч棿闅欏亸绉绘笎寮€绾?
+LGEN,2,lnub, , ,0,-gap2/(m*z/2)*180/pi,0, ,0    !���ݲ��϶ƫ�ƽ����� 
 ldele,lnub  
 kdele,kpnub1,kpnub1+1,1 
 NUMCMP,KP   
@@ -324,7 +324,7 @@ LSEL,S,LOC,X,rf2
 LSEL,R,LOC,Y,0,0.1  
 WPCSYS,-1,0 
 wpro,,90.000000,
-LSBW,lnub+2     !鍑洪敊LSBW,all              
+LSBW,lnub+2     !����LSBW,all              
 ALLSEL,ALL  
 *GET,VMN1,VOLU,,NUM,MIN 
 *GET,VMX1,VOLU,,NUM,Max 
@@ -337,7 +337,7 @@ LSEL,R,LOC,Y,angle4,60
 WPCSYS,-1,0 
 wprot,2*angle2,0,0  
 wpro,,90.000000,
-LSBW,lnub+5     !鍑洪敊LSBW,all
+LSBW,lnub+5     !����LSBW,all
 LSBW,lnub+6
 LSBW,lnub+10
 ALLSEL,ALL  
@@ -351,7 +351,7 @@ NUMCMP,line
 NUMCMP,KP   
 LSEL,S,,,lnub,lnub+6,1  
 larc,kpnub1,kpnub1+2,kzx,ra2
-lfillt,lnub,lnub+4,rff2     !鍊掕
+lfillt,lnub,lnub+4,rff2     !����
 lfillt,lnub+1,lnub+5,rff2
 lcomb,lnub+8,lnub+5,0
 lcomb,lnub+7,lnub+4,0
@@ -361,8 +361,8 @@ LSTR,kpnub1+5,kpnub1+4
 LSTR,kpnub1+4,kpnub1+6  
 CSYS,1  
 LSEL,R,LOC,X,ra2,rdc
-AL,ALL    !宸插畾涔夌殑绾跨敓鎴愰潰  
-ALLSEL,ALL  !閫夋嫨鎵€鏈夊疄浣擄細鐐圭嚎闈綋
+AL,ALL    !�Ѷ������������  
+ALLSEL,ALL  !ѡ������ʵ�壺��������
 LSEL,s,LOC,X,rdc,rd2
 AL,ALL     
 ALLSEL,ALL  
@@ -397,8 +397,8 @@ NUMCMP,AREA
 NUMCMP,VOLU 
 *GET,VMN2,VOLU,,NUM,MIN 
 *GET,VMX2,VOLU,,NUM,Max 
-!瀵规懇鎿︾墖杩涜缃戞牸鍒掑垎 
-ALLSEL,ALL          !缃戞牸鍒掑垎灏哄璁惧畾   
+!��Ħ��Ƭ�������񻮷� 
+ALLSEL,ALL          !���񻮷ֳߴ��趨   
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
 CSYS,1  
@@ -465,9 +465,9 @@ VSYMM,Y,VMN2,VMX2,1 , ,0,0
 !VSYMM,Y,VMX2+1+(t-1)*4,VMX2+4+(t-1)*4,1 , ,0,0  
 *enddo  
 CSYS,1  
-ALLSEL,ALL          !缃戞牸鍒掑垎灏哄璁惧畾   
+ALLSEL,ALL          !���񻮷ֳߴ��趨   
 VSEL,S, , ,1 ,VMX1,1
-VGEN, ,1,VMX1,1, ,gky, , , ,1   !璋冩暣鎺ヨЕ 
+VGEN, ,1,VMX1,1, ,gky, , , ,1   !�����Ӵ� 
 ALLSEL,ALL            
 VSEL,S, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
@@ -478,19 +478,19 @@ CSYS,1
 ALLSEL,ALL
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
-ASEL,S,LOC,Z,BC+0.5   !绾︽潫鏇存敼
+ASEL,S,LOC,Z,BC+0.5   !Լ������
 ASEL,A,LOC,Z,BC+0.5+BX
 ASEL,U,LOC,x,ra2+0.1,rdC-0.1
 NSLA,S,1
 CM,yueshu,NODE 
 
-ALLSEL,ALL         !鍒涘缓鍐呮瘋绾︽潫鑺傜偣闆嗗悎
+ALLSEL,ALL         !�������Լ���ڵ㼯��
 ALLSEL,BELOW,VOLU
 NSEL,S,LOC,x,rd1
 CM,FORCE,NODE 
 
 
-ALLSEL,ALL       !鍒涘缓鍐呮瘋榻块潰鑺傜偣闆嗗悎
+ALLSEL,ALL       !������챳���ڵ㼯��
 VSEL,S, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
 ASEL,R,LOC,X,rf1+0.1,ra1-0.1
@@ -499,7 +499,7 @@ ASEL,U,LOC,z,b1+BC+0.5-(B1-BX)/2
 NSLA,S,1
 CM,NEIGU_CHIMIAN,NODE
 
-ALLSEL,ALL       !鍒涘缓鎽╂摝鐗囬娇闈㈣妭鐐归泦鍚?
+ALLSEL,ALL       !����Ħ��Ƭ����ڵ㼯��
 VSEL,U, , ,1 ,VMX1,1
 ALLSEL,BELOW,VOLU
 ASEL,R,LOC,X,ra2+0.1,rf2-0.1
@@ -628,10 +628,10 @@ EPLOT
 NUMMRG,NODE, ,0.1, ,LOW 
 ALLSEL,ALL  
 
-CMSEL,S,YUESHU     !鎽╂摝鐗囩害鏉熺殑鏂藉姞
+CMSEL,S,YUESHU     !Ħ��ƬԼ����ʩ��
 D,ALL,ALL
 
-CMSEL,S,FORCE     !鍐呮瘋鏂藉姞杞借嵎
+CMSEL,S,FORCE     !���ʩ���غ�
 CSYS,12
 NROTAT,ALL
 *GET,NGNUM,NODE,,COUNT
@@ -646,7 +646,7 @@ FINISH
 
 
 
-!濡傛灉鍥剧墖鏈夐棶棰樻妸鍘熸潵鐨勫悗澶勭悊澶嶅埗杩囨潵 
+!���ͼƬ�������ԭ���ĺ������ƹ��� 
 /RGB,INDEX,100,100,100, 0   
 /RGB,INDEX, 80, 80, 80,13   
 /RGB,INDEX, 60, 60, 60,14   
@@ -659,11 +659,11 @@ FINISH
 /EFACET,1
 /GRAPHICS,POWER 
 /show,jpeg,, 
-PLNSOL, S,EQV, 0,1.0     !绛夋晥搴斿姏鏄剧ず
+PLNSOL, S,EQV, 0,1.0     !��ЧӦ����ʾ
 /show,close 
 /RENAME,%jobname%000.JPG,,,pianxinyingliyuntu.jpeg 
 ALLSEL,ALL
-RSYS,1     !浠ユ煴鍧愭爣杈撳嚭缁撴灉
+RSYS,1     !��������������
 AVPRIN,0
 AVRES,2,
 /EFACET,1   
@@ -674,7 +674,7 @@ FORCE,TOTAL
 /EFACET,1 
 /GRAPHICS,POWER 
 /show,jpeg,,
-PLNSOL, U,Y, 0,1.0       !鍛ㄥ悜浣嶇Щ鏄剧ず
+PLNSOL, U,Y, 0,1.0       !����λ����ʾ
 /show,close 
 /RENAME,%jobname%000.JPG,,,pianxinweiyiyuntu.jpeg  
 !*   
@@ -692,24 +692,24 @@ CSYS,4
 ALLSEL,BELOW,VOLU
 NSEL,R,LOC,z,0.5+bx+bc
 /POST1 
-*GET,Nnod,NODE,0,COUNT銆€銆€銆€銆€銆€  銆€!寰楀埌鎵€閫夋嫨鐨勮妭鐐规€绘暟      
-*DIM,Xyz,ARRAY,NNOD,5               !瀹氫箟鏁扮粍              
-*GET,Nd,NODE,0,NUM,MIN              !寰楀埌鏈€灏忕殑鑺傜偣缂栧彿      
+*GET,Nnod,NODE,0,COUNT����������  ��!�õ���ѡ��Ľڵ�����      
+*DIM,Xyz,ARRAY,NNOD,5               !��������              
+*GET,Nd,NODE,0,NUM,MIN              !�õ���С�Ľڵ���      
 *cfopen,nodexyz,txt,,append
-*do,t,1,Nnod,1                      !瀵硅妭鐐规暟杩涜寰幆                        
-Xyz(t,1)=Nd                           !鎻愬彇鑺傜偣缂栧彿           
-Xyz(t,2)=NX(Nd)                     !鍙栧嚭鑺傜偣鐨刋鍧愭爣                     
-Xyz(t,3)=NY(Nd)                    !鍙栧嚭鑺傜偣鐨刌鍧愭爣                     
+*do,t,1,Nnod,1                      !�Խڵ�������ѭ��                        
+Xyz(t,1)=Nd                           !��ȡ�ڵ���           
+Xyz(t,2)=NX(Nd)                     !ȡ���ڵ��X����                     
+Xyz(t,3)=NY(Nd)                    !ȡ���ڵ��Y����                     
 Xyz(t,4)=NZ(Nd)
 *GET,Xyz(t,5),NODE,ND,S,EQV
-unn=Xyz(t,1)                     !鍙栧嚭鑺傜偣鐨刏鍧愭爣 
-uxn=Xyz(t,2)                  !  璇诲彇鑺傜偣 t 鐨?Ux锛屼笅鍚?
+unn=Xyz(t,1)                     !ȡ���ڵ��Z���� 
+uxn=Xyz(t,2)                  !  ��ȡ�ڵ� t �� Ux����ͬ
 uyn=Xyz(t,3)
 uzn=Xyz(t,4)
 sss=Xyz(t,5)
 *vwrite,unn, uxn, uyn, uzn, sss
 (F10.0,3F15.4,3F15.4)
-Nd=NDNEXT(Nd)                   !璇诲嚭涓嬩竴涓妭鐐圭紪鍙?                 
+Nd=NDNEXT(Nd)                   !������һ���ڵ���                  
 *enddo
 *cfclos
 save

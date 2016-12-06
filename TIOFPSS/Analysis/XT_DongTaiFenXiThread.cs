@@ -51,14 +51,14 @@ namespace TIOFPSS.Analysis
             string workPath = path + "\\DongTai";
 
             string sCommondLine;
-            sCommondLine = m_direction + " -b -p ane3fl -i " + m_inputfile + " -o " + m_outputfile;
+            sCommondLine = m_direction + " -b -p ane3flds* -i " + m_inputfile + " -o " + m_outputfile;
 
 
 
             Process process = new Process();
             string appPath = m_direction;
             process.StartInfo.FileName = appPath;
-            process.StartInfo.Arguments = " -b -p ane3fl -i " + m_inputfile + " -o " + m_outputfile;
+            process.StartInfo.Arguments = sCommondLine;
             process.StartInfo.WorkingDirectory = workPath;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;

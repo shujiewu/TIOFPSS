@@ -1,5 +1,5 @@
 !/CLEAR
-/INPUT,'parameter','txt','D:\abc\APDLcode\',, 0   !路径
+/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !路径
 /CWD,filepath
 /FILNAME,jobname,0
 !本程序采用毫米单位制进行编写
