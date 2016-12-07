@@ -63,7 +63,7 @@ namespace TIOFPSS.Dialog
             }
             else
             {
-                TIOFPSS.Resources.MessageBoxX.Error("参数输入有误！");
+                TIOFPSS.Resources.MessageBoxX.Warning("参数输入有误！");
             }
         }
 
@@ -91,8 +91,16 @@ namespace TIOFPSS.Dialog
                 {
                     fileData.Add(item);
                 }
-                this.CallBackMethod(fileData);
-                this.Close();
+                if (fileData.Count != 0)
+                {
+                    this.CallBackMethod(fileData);
+                    this.Close();
+                }
+                else
+                {
+                    TIOFPSS.Resources.MessageBoxX.Warning("参数输入有误!");
+                    return;
+                }
             }
         }
     }

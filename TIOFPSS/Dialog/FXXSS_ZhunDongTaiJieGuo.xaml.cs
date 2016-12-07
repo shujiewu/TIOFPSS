@@ -61,7 +61,7 @@ namespace TIOFPSS.Dialog
                 }
                 else
                 {
-                    TIOFPSS.Resources.MessageBoxX.Error("参数输入有误!", this);
+                    TIOFPSS.Resources.MessageBoxX.Warning("参数输入有误!", this);
                 }
 
             //}

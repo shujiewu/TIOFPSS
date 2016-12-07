@@ -17,24 +17,29 @@
     <SolidColorBrush x:Key="SelectedMouseMoveOutBorderBrush" Color="#E1E1E1"/>
     <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
         <Setter Property="Focusable" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#ff000000"/>
+        <Setter Property="BorderBrush" Value="#FF1BBBFA"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border Width="9" Height="9">
+                    <Border Width="12" Height="12" BorderThickness="0.3">
                         <Path x:Name="ExpandPath" HorizontalAlignment="Left" VerticalAlignment="Center"
-                            Fill="Transparent" Stroke="#ff4D4D4D" Data="M 2 2 L 7 7 L 2 12 Z" />
+                            Fill="{TemplateBinding Background}" Stroke="{TemplateBinding Foreground}" Data="M2,1 L6.5,5.5 2,10 z" />
                     </Border>
+                    
                     <ControlTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsChecked" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="Stroke" TargetName="ExpandPath" Value="#FF1BBBFA"/>
+                            <Setter Property="Stroke" TargetName="ExpandPath" Value="{Binding Path=BorderBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="Fill" TargetName="ExpandPath" Value="#FFFFFFFF"/>
                         </MultiTrigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Data" TargetName="ExpandPath" Value="M 1 10 L 7 3 L 7 10 Z"/>
-                            <Setter Property="Fill" TargetName="ExpandPath" Value="#FF000000"/>
+                            <Setter Property="Fill" TargetName="ExpandPath" Value="{Binding RelativeSource={RelativeSource Self},Path=Stroke}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -123,6 +128,9 @@
                         <Trigger Property="IsSelected"  Value="true">
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                            <Setter TargetName="Expander" Property="Background" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            <Setter TargetName="Expander" Property="Foreground" Value="#ffffffff"/>
+                            <Setter TargetName="Expander" Property="BorderBrush" Value="#ffffffff"/>
                         </Trigger>
 
                         <MultiTrigger>
@@ -146,7 +154,9 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-
+                            <Setter TargetName="Expander" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="Expander" Property="Foreground" Value="#ff000000"/>
+                            <Setter TargetName="Expander" Property="BorderBrush" Value="#FF1BBBFA"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>

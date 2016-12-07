@@ -40,12 +40,12 @@ namespace TIOFPSS.Dialog
             filePath = nowProjPath + "\\tempData\\冲击动力学分析结果\\Dynamic.mat";
 
             string matPath = nowProjPath + "\\tempData\\冲击动力学分析结果\\Pitch.mat";
-            if(!System.IO.File.Exists(matPath))
-            {
-                TIOFPSS.Resources.MessageBoxX.Error("还未进行有节距误差分析！");
-                this.Close();
-                return;
-            }
+            //if(!System.IO.File.Exists(matPath))
+            //{
+            //    TIOFPSS.Resources.MessageBoxX.Error("还未进行有节距误差分析！");
+            //    //this.Close();
+            //    return;
+            //}
 
             Matrix<double> pitchLeft = MatlabReader.Read<double>(matPath, "pitchleft");
             Matrix<double> pitchRight = MatlabReader.Read<double>(matPath, "pitchright");
@@ -97,6 +97,12 @@ namespace TIOFPSS.Dialog
 
         private void OnChuTuClick(object sender, RoutedEventArgs e)
         {
+            if (!System.IO.File.Exists(System.Windows.Forms.Application.StartupPath + "\\jjwc.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("缺少jjwc.dll！");
+                //this.Close();
+                return;
+            }
             YouJieJuChuTuPara selectItem = this.listView1.SelectedItem as YouJieJuChuTuPara;
             if (selectItem != null)
             {
@@ -144,6 +150,8 @@ namespace TIOFPSS.Dialog
         {
             this.Close();
         }
+
+
        
     }
     public class YouJieJuChuTuPara

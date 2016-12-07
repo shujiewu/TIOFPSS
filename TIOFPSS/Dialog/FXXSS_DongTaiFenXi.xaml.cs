@@ -80,7 +80,7 @@ namespace TIOFPSS.Dialog
                 }
                 else
                 {
-                    TIOFPSS.Resources.MessageBoxX.Error("参数输入有误!");
+                    TIOFPSS.Resources.MessageBoxX.Warning("参数输入有误!");
                     return;
                     //Xceed.Wpf.Toolkit.MessageBox.Show("参数输入有误!");
                 }

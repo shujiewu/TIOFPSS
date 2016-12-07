@@ -546,6 +546,7 @@ namespace TIOFPSS
                 document.Title = "项目参数";
                 document.Content = new TIOFPSS.Dialog.InputPara(pathString, projectName);
                 document.IsActive = true;
+                document.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
                 DocumentPane.Children.Add(document);
                 btnTrue();
             }
@@ -577,6 +578,11 @@ namespace TIOFPSS
                 }
 
                 string projectReadPath = System.IO.Path.Combine(projectPath, "project");
+                if (!System.IO.File.Exists(projectReadPath + "\\参数文件\\parameter.xml"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("xml文件读取出错！");
+                    return;
+                }
                 if(TIOFPSS.ViewModels.TreeViewData.add(projectReadPath, projectName))
                 {
                     loadProj.Add(projectName, projectPath);  //上面保证了不会加载到已经存在的项目
@@ -588,6 +594,7 @@ namespace TIOFPSS
                         document.Title = "项目参数";
                         document.Content = new TIOFPSS.Dialog.InputPara(projectPath, projectName);
                         document.IsActive = true;
+                        document.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
                         DocumentPane.Children.Add(document);
                         btnTrue();
 
@@ -648,6 +655,14 @@ namespace TIOFPSS
             if(projectPath!=null)
             {
                 string projectReadPath = System.IO.Path.Combine(projectPath, "project");
+
+                if (!System.IO.File.Exists(projectReadPath + "\\参数文件\\parameter.xml"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("xml文件读取出错！");
+                    bll.DeleteLatestProject(projectName);
+                    mainViewModel.LatestProjectViewModel = new LatestProjectViewModel();
+                    return;
+                }
                 if(TIOFPSS.ViewModels.TreeViewData.add(projectReadPath, projectName))
                 {
                     loadProj.Add(projectName, projectPath);
@@ -659,6 +674,7 @@ namespace TIOFPSS
                         document.Title = "项目参数";
                         document.Content = new TIOFPSS.Dialog.InputPara(projectPath, projectName);
                         document.IsActive = true;
+                        document.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
                         DocumentPane.Children.Add(document);
                         btnTrue();
 
@@ -897,75 +913,149 @@ namespace TIOFPSS
                     }
                 }
                 string oldPath = null;
+                string newpath = null;
+                string oldName = null;
+                UserProject userProject = new UserProject();
                 if (changeItemName.Contains("（当前项目）"))
                 {
                     newName = newName.Substring(0, newName.LastIndexOf("（当前项目）"));
-
                     oldPath = loadProj[nowProjName];
-
-                    string newpath = loadProj[nowProjName];
-
-                    loadProj.Remove(nowProjName);
-                    nowProjName = newName;
-
-
-
-                    newpath = newpath.Substring(0, newpath.LastIndexOf("\\"));
-                    newpath = newpath + "\\" + newName;
-                    loadProj.Add(newName, newpath);
+                    oldName = nowProjName;
+                    userProject = GetProjectPara(oldPath, nowProjName);
                 }
                 else
                 {
-                    string newpath = loadProj[changeItemName];
-
-                    oldPath = newpath;
-
-                    loadProj.Remove(changeItemName);
-
-
-
-                    newpath = newpath.Substring(0, newpath.LastIndexOf("\\"));
-                    newpath = newpath + "\\" + newName;
-                    loadProj.Add(newName, newpath);
-                    //改的哪个
+                    oldPath=loadProj[changeItemName];
+                    oldName = changeItemName;
+                    userProject=GetProjectPara(oldPath,changeItemName);
+                }
+                newpath = oldPath.Substring(0, oldPath.LastIndexOf("\\"));
+                newpath = newpath + "\\" + newName;
+                userProject.ProjectName = newName;
+                userProject.ProjectPath = newpath;
+                if(loadProj.ContainsKey(newName))
+                {
+                    tempTextBlock.Text = changeItemName;
+                    //MyComputer.FileSystem.RenameDirectory(newpath, oldPath);
+                    TIOFPSS.Resources.MessageBoxX.Warning("重命名冲突！", this.Parent as Window);
+                    return;
                 }
 
-                foreach (var item in DocumentPane.Children)
+                Microsoft.VisualBasic.Devices.Computer MyComputer = new Microsoft.VisualBasic.Devices.Computer();
+                if (System.IO.Directory.Exists(oldPath) && !System.IO.Directory.Exists(newpath))
                 {
-                    if (item.Title == "项目参数")
+                    try
                     {
-                        UserProject userProject = new UserProject();
-                        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                        //int i = 1;
+                        //string[] sDirectories = Directory.GetDirectories(oldPath);
+                        //foreach (string sDirectory in sDirectories)
+                        //{
+                        //    string sDirectoryName = Path.GetFileName(sDirectory);
+                        //    string sNewDirectoryName = string.Format(newpath, i++);
+                        //    string sNewDirectory = Path.Combine(oldPath, sNewDirectoryName);
+                        //    Directory.Move(sDirectory, sNewDirectory);
+                        //}
+                        
+                        //System.IO.Directory.Move(oldPath, newpath);
 
-                        userProject = tempPara.UserProject;
-                        userProject.ProjectName = newName;
-                        userProject.ProjectPath = loadProj[newName];
-
-                        tempPara.UserProject = userProject;
-                        //tempPara.UserProject.ProjectName = newName;
-                        //tempPara.UserProject.ProjectPath = loadProj[newName];
-
-                
-                        if (UpdateDB(tempPara.UserProject, oldPath))
+                        MyComputer.FileSystem.RenameDirectory(oldPath, newName);
+                        if (UpdateDB(userProject, oldPath))
                         {
                             TIOFPSS.Resources.MessageBoxX.Info("保存成功！", this.Parent as Window);
                             //changeItemName = null;
-                            break;
                         }
                         else
                         {
                             tempTextBlock.Text = changeItemName;
+                            MyComputer.FileSystem.RenameDirectory(newpath,oldName);
                             TIOFPSS.Resources.MessageBoxX.Warning("重命名不合法！", this.Parent as Window);
                             return;
                         }
                     }
+                    catch
+                    {
+                        tempTextBlock.Text = changeItemName;
+                        //MyComputer.FileSystem.RenameDirectory(newpath, oldPath);
+                        TIOFPSS.Resources.MessageBoxX.Warning("重命名出错！", this.Parent as Window);
+                        return;
+                    }
+                    if (changeItemName.Contains("（当前项目）"))
+                    {
+                        loadProj.Remove(nowProjName);
+                        nowProjName = newName;
+                        loadProj.Add(newName, newpath);
+                    }
+                    else
+                    {
+                        loadProj.Remove(changeItemName);
+                        loadProj.Add(newName, newpath);
+                        //改的哪个
+                    }
+                    foreach (var paneItem in DocumentPane.Children)
+                    {
+                        if (paneItem.Title == "项目参数")
+                        {
+                            paneItem.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
+                            paneItem.IsActive = true;
+                            paneItem.IsSelected = true;
+                            //paneItem.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
+                            //;
+                            //break;
+                        }
+                        if (paneItem.Title == "分析结果")
+                        {
+                            string path = loadProj[nowProjName] + "\\tempData";
+                            paneItem.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, path);
+                            paneItem.IsActive = true;
+                        }
+                    }
+                }
+                else
+                {
+                    tempTextBlock.Text = changeItemName;
+                    //MyComputer.FileSystem.RenameDirectory(newpath, oldPath);
+                    TIOFPSS.Resources.MessageBoxX.Warning("重命名冲突！", this.Parent as Window);
+                    return;
                 }
 
-                if (System.IO.Directory.Exists(oldPath))
-                {
-                    System.IO.Directory.Move(oldPath, loadProj[newName]);
-                }
+
+
+
+
+
+                //foreach (var item in DocumentPane.Children)
+                //{
+                //    if (item.Title == "项目参数")
+                //    {
+                //        UserProject userProject = new UserProject();
+                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+
+                //        userProject = tempPara.UserProject;
+                //        userProject.ProjectName = newName;
+                //        userProject.ProjectPath = loadProj[newName];
+
+                //        tempPara.UserProject = userProject;
+                //        //tempPara.UserProject.ProjectName = newName;
+                //        //tempPara.UserProject.ProjectPath = loadProj[newName];
+
+                
+                //        if (UpdateDB(tempPara.UserProject, oldPath))
+                //        {
+                //            TIOFPSS.Resources.MessageBoxX.Info("保存成功！", this.Parent as Window);
+                //            //changeItemName = null;
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            tempTextBlock.Text = changeItemName;
+                //            TIOFPSS.Resources.MessageBoxX.Warning("重命名不合法！", this.Parent as Window);
+                //            return;
+                //        }
+                //    }
+                //}
+
+
             }
         }
         string changeItemName = null;
@@ -1036,6 +1126,11 @@ namespace TIOFPSS
                 if (itemName.Equals(nowProjName + "（当前项目）"))
                 {
                     itemName = itemName.Substring(0, itemName.LastIndexOf("（当前项目）"));
+                }
+                if (!System.IO.File.Exists(loadProj[itemName] + "\\project\\参数文件\\parameter.xml"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("xml文件读取出错！");
+                    return;
                 }
                 TIOFPSS.ViewModels.TreeViewData.update(loadProj[itemName]+"\\project",itemName);
             }
@@ -1130,6 +1225,7 @@ namespace TIOFPSS
                             paneItem.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
                             paneItem.IsActive = true;
                             paneItem.IsSelected = true;
+                            //paneItem.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
                             //;
                             //break;
                         }
@@ -1164,6 +1260,8 @@ namespace TIOFPSS
                         paneItem.IsActive = true;
                         hasParaPane = true;
                         paneItem.IsSelected = true;
+                        //paneItem.Closing
+                        paneItem.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
                         //;
                         break;
                     }
@@ -1174,6 +1272,7 @@ namespace TIOFPSS
                     document.Title = "项目参数";
                     document.Content = new TIOFPSS.Dialog.InputPara(loadProj[nowProjName], nowProjName);
                     document.IsActive = true;
+                    document.Closing += new EventHandler<System.ComponentModel.CancelEventArgs>(OnCloseParaView);
                     DocumentPane.Children.Add(document);
                     //;
                 }
@@ -1184,7 +1283,42 @@ namespace TIOFPSS
                 TIOFPSS.Resources.MessageBoxX.Warning("请选择项目！", this.Parent as Window);
             }
         }
+        private void OnCloseParaView(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            LayoutContent item = sender as LayoutContent;
+            DB.UserProject proj = new UserProject();
+            ViewModels.ParaViewModel Para = new ViewModels.ParaViewModel(loadProj[nowProjName], nowProjName);
+            List<string> viewPara = new List<string>();
+            List<string> xmlPara = new List<string>();
+            xmlPara = Para.loopGetValue();
+            proj = Para.UserProject;
+            //foreach (var item in DocumentPane.Children)
+            //{
+                if (item.Title == "项目参数")
+                {
+                    TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
+                    ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
+                    viewPara = tempPara.loopGetValue();
+                    for (int i = 0; i < xmlPara.Count; i++)
+                    {
+                        if (xmlPara[i] != viewPara[i])
+                        {
+                            if(TIOFPSS.Resources.MessageBoxX.Question("还有修改的参数未保存，确定退出？", this.Parent as Window))
+                            {
+                                e.Cancel = false;
+                            }
+                            else
+                            {
+                                e.Cancel = true;
+                            }
 
+                        }
+                    }
+                    //proj = tempPara.UserProject;
+                    //break;
+                }
+            //}
+        }
         //保存参数
         private void OnSubmitClick(object sender, RoutedEventArgs e)
         {
@@ -1305,6 +1439,16 @@ namespace TIOFPSS
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
+                if(!System.IO.File.Exists(startPath+"\\Show3DModel.exe"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到Show3DModel.exe！", this.Parent as Window);
+                    return;
+                }
+                if (!System.IO.File.Exists(startPath + "\\proe\\frictionplate.prt"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到frictionplate.prt！", this.Parent as Window);
+                    return;
+                }
 
                 string start = "\"" + startPath + "\\proe\\frictionplate.prt" + "\"";
                 string proePath = "\"" + Configure.IniReadValue("system", "CreoPath") + "\\parametric.bat" + "\"";
@@ -1322,7 +1466,7 @@ namespace TIOFPSS
                     p.StartInfo.WorkingDirectory = workPath;
                     p.StartInfo.Arguments = para;    //程式执行参数
                     p.StartInfo.UseShellExecute = false;
-                    //p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.CreateNoWindow = true;
                     btnView3DModel.IsEnabled = false;
                     try
                     {
@@ -1330,67 +1474,28 @@ namespace TIOFPSS
                         {
                             p.Start();
                             p.WaitForExit();
+                            
                         }, "正在生成模型，请稍后...");
-                        TIOFPSS.Resources.MessageBoxX.Info("3D模型生成成功！", this.Parent as Window);
+                        if(p.ExitCode != 0)
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Error("3D模型生成失败！", this.Parent as Window);
+                        }
+                        else
+                        {
+                            TIOFPSS.Resources.MessageBoxX.Info("3D模型生成成功！", this.Parent as Window);
+                        }
+                        
                     }
                     catch
                     {
                         TIOFPSS.Resources.MessageBoxX.Error("3D模型生成失败！", this.Parent as Window);
                     }
                     btnView3DModel.IsEnabled = true;
-                    //success = true;
-                    //break;
-                
             }
             else
             {
                 TIOFPSS.Resources.MessageBoxX.Warning("请选择项目！", this.Parent as Window);
             }
-            //bool success = false;
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
-
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        tempPara.saveValue();
-            //        string para = tempPara.UserProject.YaLiJiao + " " + tempPara.UserProject.ChiShu + " " + tempPara.UserProject.WaiJing + " "
-            //             + tempPara.UserProject.KongJing + " " + tempPara.UserProject.NgHouDu + " " + tempPara.UserProject.MoShu + " "
-            //             + tempPara.UserProject.NgGFXCDGC + " " + tempPara.UserProject.NgChiDingGao + " " + tempPara.UserProject.NgChiGenGao + " "
-            //             + tempPara.UserProject.McpChiGenYuanJiao + " " + tempPara.UserProject.McpHouDu + " " + tempPara.UserProject.MccHouDu + " "
-            //             + tempPara.UserProject.MccJingKuan + " " + tempPara.UserProject.McpGFXDGC + " " + tempPara.UserProject.McpChiDingGao + " "
-            //             + tempPara.UserProject.McpChiGenGao + " " + tempPara.UserProject.NgChiGenYuanJiao;
-            //        Process p = new Process();
-
-            //        p.StartInfo.FileName = @"Show3DModel.exe";           //程序名
-
-            //        p.StartInfo.Arguments = para;    //程式执行参数
-            //        p.StartInfo.UseShellExecute = false;
-            //        p.StartInfo.CreateNoWindow = true;
-            //        try
-            //        {
-            //            WaitingBox.Show(() =>
-            //            {
-            //                p.Start();
-            //                //System.Threading.Thread.Sleep(3000);
-            //            }, "正在生成模型，请稍后...");
-            //            //TIOFPSS.Resources.MessageBoxX.Question("已经完了？");
-                        
-
-            //        }
-            //        catch
-            //        {
-            //            TIOFPSS.Resources.MessageBoxX.Warning("3D模型生成失败！");
-            //        }
-            //        success = true;
-            //        break;
-            //    }
-            //}
-            //if(!success)
-            //{
-            //    TIOFPSS.Resources.MessageBoxX.Warning("请打开项目参数界面！");
-            //}
         }
         //添加库数据
         private void OnSaveParaClick(object sender, RoutedEventArgs e)
@@ -1512,6 +1617,16 @@ namespace TIOFPSS
                 }
             }
         }
+        UserProject GetProjectPara(string projPath,string projName)
+        {
+            DB.UserProject proj = new UserProject();
+            ViewModels.ParaViewModel Para = new ViewModels.ParaViewModel(projPath, projName);
+            List<string> viewPara = new List<string>();
+            List<string> xmlPara = new List<string>();
+            xmlPara = Para.loopGetValue();
+            proj = Para.UserProject;
+            return proj;
+        }
         UserProject GetNowProjectPara()
         {
             DB.UserProject proj = new UserProject(); 
@@ -1548,30 +1663,15 @@ namespace TIOFPSS
             if(nowProjName!=null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        item.IsSelected = true;
-                //        //break;
-                //    }
-                //    if (item.Title == "分析结果")
-                //    {
-                //        item.IsSelected = false;
-                        
-                //        //item.Content = new TIOFPSS.Dialog.ViewResult(nowProjName, null);
-                //        //item.IsActive = false;
-                //        //item.IsSelected = false;
-                //    }  
-                //}
 
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
+                if (!System.IO.File.Exists(startPath + "\\main_program_v1.dll"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到main_program_v1.dll！", this.Parent as Window);
+                    return;
+                }
 
                 double[] para = new double[54];
                 para[0] = Convert.ToDouble(proj.TingZhiShiJIan);//0.5   停止时间  1
@@ -1676,22 +1776,15 @@ namespace TIOFPSS
             if(nowProjName!=null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
-                //string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");//@"D:\proj\10.31\tempData\";
-                //string proPath = System.IO.Path.Combine(proj.ProjectPath, "project");//+"\\";
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
+                if (!System.IO.File.Exists(startPath + "\\noise.dll"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到noise.dll！", this.Parent as Window);
+                    return;
+                }
+
                 string tempDataPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\");
                 string dynmicMat = System.IO.Path.Combine(tempDataPath, "冲击动力学分析结果\\Dynamic.mat");
 
@@ -1713,10 +1806,6 @@ namespace TIOFPSS
                 AddMonitor();
                 ((AnalysisMonitor)anchorable.Content).zaoSheng_start();
                 btnzsfx.IsEnabled = false;
-                //if (t._Thread.ThreadState == System.Threading.ThreadState.Stopped)
-                //{
-                //    MessageBox.Show("线程结束");
-                //}
             }
         }
         private void ZaoShengFenXiFinish(bool finish)
@@ -1794,17 +1883,11 @@ namespace TIOFPSS
             if (nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
+                if (!System.IO.File.Exists(startPath + "\\pitch.dll"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到pitch.dll！", this.Parent as Window);
+                    return;
+                }
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -1923,8 +2006,13 @@ namespace TIOFPSS
 
         }
         string startPath=System.Windows.Forms.Application.StartupPath;
-        private void ModifyParaPath(string fileName)
+        private bool ModifyParaPath(string fileName)
         {
+            if (!System.IO.File.Exists(fileName))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到" + fileName, this.Parent as Window);
+                return false;
+            }
             List<string> fileContent = new List<string>();
             int i = 0;
             using (System.IO.StreamReader file = new System.IO.StreamReader(fileName, Encoding.GetEncoding("GB2312")))
@@ -1947,6 +2035,7 @@ namespace TIOFPSS
                     file.WriteLine(line);
                 }                
             }
+            return true;
         }
 
         private void OnJingTaiQiangDuFenXiClick(object sender, RoutedEventArgs e)
@@ -1960,17 +2049,7 @@ namespace TIOFPSS
             if(para!=null&&nowProjName!=null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
 
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -1980,6 +2059,12 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\ShaoChi");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
+
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
 
                 string []dataname={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2011,6 +2096,10 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\ShaoChi.txt";
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
                 string proPath = proj.ProjectPath + "\\" + Helper.str_FloderPath[6];
                 Analysis.XT_jiangTaiQiangDuThreadParamter threadPara = new Analysis.XT_jiangTaiQiangDuThreadParamter(null, path, apdlfilepath, proPath);
                 Analysis.XT_jiangTaiQiangDuThread t = new Analysis.XT_jiangTaiQiangDuThread(threadPara);
@@ -2018,7 +2107,7 @@ namespace TIOFPSS
                 t.CallBackMethod = JingTaiQiangDuFenXiFinish;
                 AddMonitor();
 
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).JingTaiQiangDuFenXi_start();
                 btnJingTaiQiangDuFenXi.IsEnabled = false;
@@ -2054,17 +2143,7 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
 
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -2074,6 +2153,12 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\DuCeng");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
+
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
 
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
@@ -2109,12 +2194,15 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\DuCeng.txt";
-
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
                 Analysis.XT_DuCengShaoChiThreadParamter threadPara = new Analysis.XT_DuCengShaoChiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_DuCengShaoChiThread t = new Analysis.XT_DuCengShaoChiThread(threadPara);
                 t.CallBackMethod = DuCengFenXiFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).DuCengFenXi_start();
 
@@ -2148,17 +2236,6 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -2171,7 +2248,11 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\CuiHuo");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
                 string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
@@ -2211,12 +2292,15 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\CuiHuo.txt";
-
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
                 Analysis.XT_ShaoChiYuYingLiThreadParamter threadPara = new Analysis.XT_ShaoChiYuYingLiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_ShaoChiYuYingLiThread t = new Analysis.XT_ShaoChiYuYingLiThread(threadPara);
                 t.CallBackMethod = ShaoChiYuYingLiFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).YuYingLiFenXi_start();
 
@@ -2250,17 +2334,6 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -2271,7 +2344,11 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\QuanChi");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
                 string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
@@ -2303,12 +2380,15 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\QuanChi.txt";
-
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
                 Analysis.XT_QuanChiPianXinThreadParamter threadPara = new Analysis.XT_QuanChiPianXinThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_QuanChiPianXinThread t = new Analysis.XT_QuanChiPianXinThread(threadPara);
                 t.CallBackMethod = QuanChiPianXinJiSuanFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).QuanChiPianXin_start();
 
@@ -2343,22 +2423,11 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
-                // string chongjili = para[0];
 
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
+
                 double zengsushijian = Convert.ToDouble(para[0]);
                 MWNumericArray zenSuShiJian = new MWNumericArray(zengsushijian);
 
@@ -2392,7 +2461,11 @@ namespace TIOFPSS
                 }///////////////////////////////////////////////////
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
                 string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
@@ -2426,12 +2499,15 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\DongTai.txt";
-
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
                 Analysis.XT_DongTaiFenXiThreadParamter threadPara = new Analysis.XT_DongTaiFenXiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_DongTaiFenXiThread t = new Analysis.XT_DongTaiFenXiThread(threadPara);
                 t.CallBackMethod = DongTaiFenXiFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).DongTaiFenXi_start();
                 btnDongTaiFenXi.IsEnabled = false;
@@ -2453,107 +2529,6 @@ namespace TIOFPSS
                 TIOFPSS.Resources.MessageBoxX.Error("动态分析失败！", this.Parent as Window);
             }
         }
-        //public void OnShaoChiDongTaiFenXiClick(object sender, RoutedEventArgs e)
-        //{
-        //    Dialog.ShaoChiDongTaiFenXi aw = new Dialog.ShaoChiDongTaiFenXi();
-        //    aw.CallBackMethod = ShaoChiDongTaiFenXi;
-        //    aw.ShowDialog();
-        //}
-        //private void ShaoChiDongTaiFenXi(List<string> para)
-        //{
-        //    if (para != null && nowProjName != null)
-        //    {
-        //        DB.UserProject proj = new UserProject();
-        //        foreach (var item in DocumentPane.Children)
-        //        {
-        //            if (item.Title == "项目参数")
-        //            {
-
-        //                TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-        //                ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-        //                proj = tempPara.UserProject;
-        //                break;
-        //            }
-        //        }
-        //        // string chongjili = para[0];
-        //        //double zengsushijian = Convert.ToDouble(para[0]);
-        //        //MWNumericArray zenSuShiJian = new MWNumericArray(zengsushijian);
-
-        //        //double wendingshijian = Convert.ToDouble(para[1]);
-        //        //MWNumericArray wendingShiJian = new MWNumericArray(wendingshijian);
-        //        double tingzhishijian = Convert.ToDouble(para[0]);
-        //        MWNumericArray tingZhiShiJian = new MWNumericArray(tingzhishijian);
-        //        //double neiguzhuansu = Convert.ToDouble(proj.NgZhuanSu);
-        //        //MWNumericArray neiGuZhuanSu = new MWNumericArray(neiguzhuansu);
-        //        double neiguzhenfu = Convert.ToDouble(proj.NgZhenFu);
-        //        MWNumericArray neiGuZhenFu = new MWNumericArray(neiguzhenfu);
-        //        double neiguzhenpin = Convert.ToDouble(proj.NgZhenPin);
-        //        MWNumericArray neiGuZhenPin = new MWNumericArray(neiguzhenpin);
-
-
-
-        //        string resName = para[2];
-        //        string APDLPath, tempPath;
-        //        tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\sdynamic");
-
-        //        string location = tempPath;    ///////////////////////////////////////////路径如何设置
-        //        MWCharArray locc = new MWCharArray(location);//
-        //        try
-        //        {
-
-        //            zsbd.ShengChengShuJuClass z = new ShengChengShuJuClass();
-        //            z.zsbd(tingZhiShiJian, neiGuZhenFu, neiGuZhenPin, locc);
-        //        }
-        //        catch
-        //        {
-
-        //            MessageBox.Show("wrong");
-        //        }///////////////////////////////////////////////////
-        //        APDLPath = @"D:\abc\APDL0320";
-        //        string praa = APDLPath + "\\para_gear122.txt";
-
-        //        string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
-        //"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","偏心量"};
-        //        string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
-        //"bx="+proj.McpHouDu,"gap1="+proj.NgGFXCDGC+"*cos("+proj.YaLiJiao+"*2*pi/360)*(-1)/2","gap2="+proj.McpGFXDGC+"*cos("+proj.YaLiJiao+"*2*pi/360)/2","ex1="+proj.NgTXML+"e3","prxy1="+proj.NgBSB,"dens1="+proj.NgCLMD+"e-12",
-        //"ex2="+proj.McpTXML+"e3","prxy2="+proj.McpBSB,"dens2="+proj.McpCLMD+"e-12","ex3="+proj.MccTXML+"e3","prxy3="+proj.MccBSB,
-        //"dens3="+proj.MccCLMD+"e-12","ex4="+proj.DcTXML+"e3","prxy4="+proj.DcBSB,"dens4="+proj.DcCLMD+"e-12","rd1="+proj.KongJing+"/2","rd2="+proj.WaiJing+"/2","rdc=rd2-"+proj.MccJingKuan,"bc="+proj.MccHouDu,"rff1="+proj.NgChiGenYuanJiao,"rff2="+proj.McpChiGenYuanJiao,"pxl="+proj.PianXinJu};
-
-        //        //string ducenghoudu = proj.DuCengHouDu;
-        //        using (System.IO.StreamWriter file = new System.IO.StreamWriter(praa))
-        //        {
-        //            string temp;
-        //            temp = "pi=3.14159265358979";
-        //            file.WriteLine(temp);
-        //            for (int i = 0; i < 30; ++i)
-        //            {
-        //                file.Write(filename[i]);
-        //                file.Write("        !");
-        //                file.WriteLine(dataname[i]);
-        //            }
-
-        //            temp = "fzsj=" + para[0] + "*1000/n3/rd1    !仿真时间";
-        //            file.WriteLine(temp);
-        //            temp = "MASSoNG=" + para[1] + "*1000/n3/rd1    !与内毂连接轴的质量";
-        //            file.WriteLine(temp);
-        //            temp = "jobname=\'" + resName + "\'    !结果文件命名名称";
-        //            file.WriteLine(temp);
-        //            temp = "filepath=\'" + tempPath + "\'  !计算结果路径";
-        //            file.WriteLine(temp);
-        //            file.Close();
-        //        }
-
-        //        string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
-        //        string apdlfilepath = APDLPath + "\\dongtai\\sdynamic.txt";
-
-        //        Analysis.XT_ShaoChiDongTaiFenXiThreadParamter threadPara = new Analysis.XT_ShaoChiDongTaiFenXiThreadParamter(null, path, apdlfilepath, null);
-        //        Analysis.XT_ShaoChiDongTaiFenXiThread t = new Analysis.XT_ShaoChiDongTaiFenXiThread(threadPara);
-        //        t.Start();
-        //        //Window2.dongLiXue_start();
-
-
-        //    }
-        //}
 
         public void OnDongTaiYingLiJiSuanClick(object sender, RoutedEventArgs e)
         {
@@ -2566,17 +2541,6 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -2585,6 +2549,16 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\ZhunDongTai");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
+                if (!System.IO.File.Exists(startPath + "\\NIHE.dll"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到NIHE.dll", this.Parent as Window);
+                    return;
+                }
                 string matPath = proj.ProjectPath + "\\tempData\\冲击动力学分析结果\\lengthforce+.mat";
                 string matPath2 = proj.ProjectPath + "\\tempData\\冲击动力学分析结果\\lengthforce-.mat";
                 if (!System.IO.File.Exists(matPath) || !System.IO.File.Exists(matPath2))
@@ -2637,12 +2611,16 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\ZhunDongTai.txt";
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
 
-                Analysis.XT_DongTaiYingLiThreadParamter threadPara = new Analysis.XT_DongTaiYingLiThreadParamter(null, path, apdlfilepath, null);
+                string proPath = proj.ProjectPath + "\\project\\协同分析\\准动态分析文件\\";
+                Analysis.XT_DongTaiYingLiThreadParamter threadPara = new Analysis.XT_DongTaiYingLiThreadParamter(null, path, apdlfilepath, proPath);
                 Analysis.XT_DongTaiYingLiThread t = new Analysis.XT_DongTaiYingLiThread(threadPara);
                 t.CallBackMethod = DongTaiYingLiJiSuanFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).DongTaiYingLiJiSuan_start();
                 btnDongTaiYingLiJiSuan.IsEnabled = false;
@@ -2678,17 +2656,6 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -2698,7 +2665,11 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\MoChaPianMoTai");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角"};
                 string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
@@ -2728,13 +2699,16 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\MoChaPianMoTai.txt";
-
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
 
                 Analysis.XT_MoCaPianMoTaiThreadParamter threadPara = new Analysis.XT_MoCaPianMoTaiThreadParamter(null, path, apdlfilepath, null);
                 Analysis.XT_MoCaPianMoTaiThread t = new Analysis.XT_MoCaPianMoTaiThread(threadPara);
                 t.CallBackMethod = MoCaPianMoTaiJiSuanFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).McpModel_start();
                 btnMoCaPianMoTaiJiSuan.IsEnabled = false;
@@ -2767,17 +2741,6 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -2787,7 +2750,11 @@ namespace TIOFPSS
                 tempPath = System.IO.Path.Combine(proj.ProjectPath, "tempData\\MoChaPianNeiGuMoTai");
                 APDLPath = startPath + "\\APDLcode";
                 string praa = APDLPath + "\\parameter.txt";
-
+                if (!System.IO.File.Exists(praa))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到parameter.txt", this.Parent as Window);
+                    return;
+                }
                 string[] dataname ={"模数","齿数","压力角","内毂齿顶高","摩擦片齿顶高","内毂齿根高","摩擦片齿根高","内毂厚度","摩擦片厚度","内毂齿厚单边削薄量","摩擦片齿厚单边削薄量","内毂弹性模量","内毂泊松比",
 		"内毂材料密度","摩擦片弹性模量","摩擦片泊松比","摩擦片材料密度","摩擦层弹性模量","摩擦层泊松比","摩擦层密度","镀层弹性模量","镀层泊松比","镀层密度","内毂孔径","摩擦片外径","摩擦层内径","摩擦层厚度","内毂齿根圆角","摩擦片齿根圆角","实际接触齿数"};
                 string[] filename ={"m="+proj.MoShu,"z="+proj.ChiShu,"angle1="+proj.YaLiJiao+"*pi/180.0","ha1="+proj.NgChiDingGao,"ha2="+proj.McpChiDingGao,"c1="+proj.NgChiGenGao,"c2="+proj.McpChiGenGao,"b1="+proj.NgHouDu,
@@ -2817,12 +2784,15 @@ namespace TIOFPSS
 
                 string path = System.IO.Path.Combine(proj.ProjectPath, "tempData");
                 string apdlfilepath = APDLPath + "\\MoChaPianNeiGuMoTai.txt";
-
+                if (!ModifyParaPath(apdlfilepath))
+                {
+                    return;
+                }
                 Analysis.XT_McpNgMoTaiJiSuanParamter threadPara = new Analysis.XT_McpNgMoTaiJiSuanParamter(null, path, apdlfilepath, null);
                 Analysis.XT_McpNgMoTaiJiSuan t = new Analysis.XT_McpNgMoTaiJiSuan(threadPara);
                 t.CallBackMethod = McpNgMoTaiJiSuanFinish;
                 AddMonitor();
-                ModifyParaPath(apdlfilepath);
+
                 t.Start();
                 ((AnalysisMonitor)anchorable.Content).McpNgModel_start();
                 btnMcpNgMoTaiJiSuan.IsEnabled = false;
@@ -2850,27 +2820,46 @@ namespace TIOFPSS
         {
             if(nowProjName!=null)
             {
+                string matPath = loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果\\Pitch.mat";
+                if (!System.IO.File.Exists(matPath))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("还未进行有节距误差分析！");
+                    //this.Close();
+                    return;
+                }
                 YouJieJuChuTu aw = new YouJieJuChuTu(loadProj[nowProjName]);
                 aw.ShowDialog();
             }
         }
         private void FSywj_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!System.IO.File.Exists(startPath + "\\fatigue_final.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到fatigue_final.dll", this.Parent as Window);
+                return;
+            }
             FXXSS_ShiYanWenJian aw = new FXXSS_ShiYanWenJian();
             aw.CallBackMethod = FSywjAnalysis;
             aw.ShowDialog();
         }
         private void FDTFXJG_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!System.IO.File.Exists(startPath + "\\fatigue_final.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到fatigue_final.dll", this.Parent as Window);
+                return;
+            }
             FXXSS_DongTaiFenXi aw = new FXXSS_DongTaiFenXi();
             aw.CallBackMethod = FDTJGAnalysis;
             aw.ShowDialog();
         }
         private void FZDTFXJG_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!System.IO.File.Exists(startPath + "\\fatigue_final.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到fatigue_final.dll", this.Parent as Window);
+                return;
+            }
             FXXSS_ZhunDongTaiJieGuo aw = new FXXSS_ZhunDongTaiJieGuo();
             aw.CallBackMethod = FZDTJSAnalysis;
             aw.ShowDialog();
@@ -2880,19 +2869,10 @@ namespace TIOFPSS
         {
             FXXSSfileList = "";
             DB.UserProject proj = new UserProject();
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
-
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        proj = tempPara.UserProject;
-            //    }
-            //}
             proj = GetNowProjectPara();
             if (proj == null)
                 return;
+
             int isShiYanFile = 1;//shiyanwenjian
 
             string row = "21";
@@ -2956,16 +2936,6 @@ namespace TIOFPSS
         {
             FXXSSfileList = "";
             DB.UserProject proj = new UserProject();
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
-
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        proj = tempPara.UserProject;
-            //    }
-            //}
             proj = GetNowProjectPara();
             if (proj == null)
                 return;
@@ -3032,16 +3002,7 @@ namespace TIOFPSS
         {
             FXXSSfileList = "";
             DB.UserProject proj = new UserProject();
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
 
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        proj = tempPara.UserProject;
-            //    }
-            //}
             proj = GetNowProjectPara();
             if (proj == null)
                 return;
@@ -3106,13 +3067,14 @@ namespace TIOFPSS
             if (finish == true)
             {
                 ((AnalysisMonitor)anchorable.Content).FXXSS_stop(fileType);
+                string inipath = loadProj[nowProjName] + "\\project\\参数文件\\project.ini";
+                string Section = "analysis";
+                Configure.IniWriteValue(Section, "FXXSS", FXXSSfileList, inipath);
                 UpdateResultPane();
                 btnfxxssfx.IsEnabled = true;
                 TIOFPSS.Resources.MessageBoxX.Info("非线性损伤" + fileType + "分析完成！",this.Parent as Window);
 
-                string inipath = loadProj[nowProjName] + "\\project\\参数文件\\project.ini";
-                string Section = "analysis";
-                Configure.IniWriteValue(Section, "FXXSS", FXXSSfileList, inipath);
+
             }
             else
             {
@@ -3125,7 +3087,11 @@ namespace TIOFPSS
 
         private void DSywj_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!System.IO.File.Exists(startPath + "\\final_loadspectrumprograming_2.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到final_loadspectrumprograming_2.dll", this.Parent as Window);
+                return;
+            }
             DLZHP_ShiYanWenjian aw = new DLZHP_ShiYanWenjian();
             aw.CallBackMethod = DSywjAnalysis;
             aw.ShowDialog();
@@ -3134,7 +3100,11 @@ namespace TIOFPSS
 
         private void DDTFXJG_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!System.IO.File.Exists(startPath + "\\final_loadspectrumprograming_2.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到final_loadspectrumprograming_2.dll", this.Parent as Window);
+                return;
+            }
             DLZHP_DongTaiFenXiJieGuo aw = new DLZHP_DongTaiFenXiJieGuo();
             aw.CallBackMethod = DDTJGAnalysis;
             aw.ShowDialog();
@@ -3142,7 +3112,11 @@ namespace TIOFPSS
 
         private void DZDTFXJG_Click(object sender, RoutedEventArgs e)
         {
-
+            if (!System.IO.File.Exists(startPath + "\\final_loadspectrumprograming_2.dll"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到final_loadspectrumprograming_2.dll", this.Parent as Window);
+                return;
+            }
             DLZHP_ZhunDongTaiJiSuanWenJian aw = new DLZHP_ZhunDongTaiJiSuanWenJian();
             aw.CallBackMethod = DZDTJSAnalysis;
             aw.ShowDialog();
@@ -3153,16 +3127,6 @@ namespace TIOFPSS
         {
             DLZHPfileList = "";
             DB.UserProject proj = new UserProject();
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
-
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        proj = tempPara.UserProject;
-            //    }
-            //}
             proj = GetNowProjectPara();
             if (proj == null)
                 return;
@@ -3208,16 +3172,6 @@ namespace TIOFPSS
         {
             DLZHPfileList = "";
             DB.UserProject proj = new UserProject();
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
-
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        proj = tempPara.UserProject;
-            //    }
-            //}
             proj = GetNowProjectPara();
             if (proj == null)
                 return;
@@ -3260,16 +3214,6 @@ namespace TIOFPSS
         {
             DLZHPfileList = "";
             DB.UserProject proj = new UserProject();
-            //foreach (var item in DocumentPane.Children)
-            //{
-            //    if (item.IsSelected == true && item.Title == "项目参数")
-            //    {
-
-            //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-            //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-            //        proj = tempPara.UserProject;
-            //    }
-            //}
             proj = GetNowProjectPara();
             if (proj == null)
                 return;
@@ -3313,13 +3257,14 @@ namespace TIOFPSS
             if (finish == true)
             {
                 ((AnalysisMonitor)anchorable.Content).DLZHP_stop(fileType);
+                string inipath = loadProj[nowProjName] + "\\project\\参数文件\\project.ini";
+                string Section = "analysis";
+                Configure.IniWriteValue(Section, "DLZHP", DLZHPfileList, inipath);
                 UpdateResultPane();
                 btndlzhpfx.IsEnabled = true;
                 TIOFPSS.Resources.MessageBoxX.Info("当量载荷谱" + fileType + "分析完成！", this.Parent as Window);
 
-                string inipath = loadProj[nowProjName] + "\\project\\参数文件\\project.ini";
-                string Section = "analysis";
-                Configure.IniWriteValue(Section, "DLZHP", DLZHPfileList, inipath);
+
             }
             else
             {
@@ -3372,17 +3317,11 @@ namespace TIOFPSS
             if (para != null && nowProjName != null)
             {
                 DB.UserProject proj = new UserProject();
-                //foreach (var item in DocumentPane.Children)
-                //{
-                //    if (item.Title == "项目参数")
-                //    {
-
-                //        TIOFPSS.Dialog.InputPara temp = ((TIOFPSS.Dialog.InputPara)(item.Content));
-                //        ViewModels.ParaViewModel tempPara = (ViewModels.ParaViewModel)(temp.DataContext);
-                //        proj = tempPara.UserProject;
-                //        break;
-                //    }
-                //}
+                if (!System.IO.File.Exists(startPath + "\\Report.exe"))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("找不到Report.exe", this.Parent as Window);
+                    return;
+                }
                 proj = GetNowProjectPara();
                 if (proj == null)
                     return;
@@ -3423,6 +3362,11 @@ namespace TIOFPSS
         }
         private void OnConfigureClick(object sender, RoutedEventArgs e)
         {
+            if (!System.IO.File.Exists(startPath + "\\config.ini"))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("找不到config.ini", this.Parent as Window);
+                return;
+            }
             Dialog.Configure conWindow = new Dialog.Configure();
             conWindow.ShowDialog();
         }
@@ -3441,46 +3385,18 @@ namespace TIOFPSS
         {
             var selectItem = sender as Fluent.MenuItem;
             string picName = selectItem.Header.ToString();
-            PictureEdit picEdit = new PictureEdit(loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果\\" + picName + ".png");
-            //if (picName.Equals("摩擦片冲击力"))
-            //{
-                
-            //}
-            //else if (picName.Equals("摩擦片与内毂相对扭转角度"))
-            //{
-
-            //}
-            //else if (picName.Equals("摩擦片与内毂相对旋转速度"))
-            //{
-
-            //}
-            //else if (picName.Equals("内毂角加速度"))
-            //{
-
-            //}
-            //else if (picName.Equals("摩擦片角加速度"))
-            //{
-
-            //}
-            //else if (picName.Equals("内毂角速度"))
-            //{
-
-            //}
-            //else if (picName.Equals("摩擦片角速度"))
-            //{
-
-            //}
-            //else
-            //{
-            //    return;
-            //}
+            string picPath = loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果\\" + picName + ".png";
+            if (!System.IO.File.Exists(picPath))
+            {
+                TIOFPSS.Resources.MessageBoxX.Error("还未进行冲击动力学分析！", this.Parent as Window);
+                return;
+            }
+            PictureEdit picEdit = new PictureEdit(picPath);
             Xceed.Wpf.AvalonDock.Layout.LayoutDocument document = new Xceed.Wpf.AvalonDock.Layout.LayoutDocument();
             document.Title = "图片修改";
             document.Content = picEdit;
             document.IsActive = true;
             DocumentPane.Children.Add(document);
-
-            //;
         }
         private void OnPicEditOKClick(object sender, RoutedEventArgs e)
         {
@@ -3501,6 +3417,7 @@ namespace TIOFPSS
                 TIOFPSS.Resources.MessageBoxX.Warning("请选择一张图片！");
                 return;
             }
+
             System.Windows.Media.Color lineColor=new Color();
        
             if(LineColor.SelectedColor!=null)
@@ -3639,27 +3556,17 @@ namespace TIOFPSS
             //DocumentPane.Children.Add(document);
             
         }
-        //private void OnProOptimiseClick(object sender, RoutedEventArgs e)
-        //{
-        //    if(nowProjName!=null)
-        //    {
-        //        string path = loadProj[nowProjName] + "\\project\\参数文件\\parameter.xml";
-        //        NewProject aw = new NewProject(false, path);
-        //        aw.CallBackMethod = NewProjOKClick;
-        //        aw.ShowDialog();
-        //    }
-        //    else
-        //    {
-        //        TIOFPSS.Resources.MessageBoxX.Warning("请选择要优化的项目");
-        //    }
-
-
-        //}
         private void OnDetailDrawClick(object sender, RoutedEventArgs e)
         {
             if (nowProjName != null)
             {
                 string path = loadProj[nowProjName] + "\\project\\冲击动力学分析文件\\Dynamic.mat";
+                if (!System.IO.File.Exists(path))
+                {
+                    TIOFPSS.Resources.MessageBoxX.Error("还未进行冲击动力学分析！", this.Parent as Window);
+                    return;
+                }
+
                 MWArray loc = new MWCharArray(path);
                 string picPath = loadProj[nowProjName] + "\\tempData\\冲击动力学分析结果";
                 MWArray dra = new MWCharArray(picPath);

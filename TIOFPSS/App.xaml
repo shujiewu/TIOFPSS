@@ -37,6 +37,7 @@
             <FontFamily x:Key="FontFamily" >Microsoft YaHei</FontFamily>
             <sys:Double x:Key="FontSize">13</sys:Double>
             <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBox}"></Style>
+            <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}"></Style>
             <!--<Style TargetType="Button" BasedOn="{StaticResource DefaultFButtonStyle}"></Style>-->
             <!--<Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource DefaultScrollBar}"></Style>
             <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource DefaultScrollViewer}"></Style>

@@ -243,7 +243,7 @@ namespace TIOFPSS.Dialog
             private string _chiShu;//齿数
             [Category("摩擦片设计参数")]
             [DisplayName("齿数")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片齿数与内毂齿数相同")]
             [PropertyOrder(0)]
             public string ChiShu
             {
@@ -253,7 +253,7 @@ namespace TIOFPSS.Dialog
             private string _moShu;//模数
             [Category("摩擦片设计参数")]
             [DisplayName("模数")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片模数与内毂模数相同")]
             [PropertyOrder(1)]
             public string MoShu
             {
@@ -263,7 +263,7 @@ namespace TIOFPSS.Dialog
             private string _yaLiJiao;//压力角
             [Category("摩擦片设计参数")]
             [DisplayName("压力角")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片压力角与内毂压力角相同")]
             [PropertyOrder(2)]
             public string YaLiJiao
             {
@@ -273,7 +273,7 @@ namespace TIOFPSS.Dialog
             private string _mcpChiDingGao;//摩擦片齿顶高
             [Category("摩擦片设计参数")]
             [DisplayName("摩擦片齿顶高")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("齿顶高=齿顶高系数×模数,直接输入齿顶高的值")]
             [PropertyOrder(3)]
             public string McpChiDingGao
             {
@@ -283,7 +283,7 @@ namespace TIOFPSS.Dialog
             private string _mcpChiGenGao;//摩擦片齿根高
             [Category("摩擦片设计参数")]
             [DisplayName("摩擦片齿根高")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("齿根高=齿根高系数×模数,直接输入齿根高的值")]
             [PropertyOrder(4)]
             public string McpChiGenGao
             {
@@ -294,7 +294,7 @@ namespace TIOFPSS.Dialog
             [PropertyOrder(5)]
             [Category("摩擦片设计参数")]
             [DisplayName("摩擦片齿根圆角")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片齿根圆角与内毂齿根圆角相同")]
             public string McpChiGenYuanJiao
             {
                 set { _mcpChiGenYuanJiao = value; }
@@ -303,8 +303,9 @@ namespace TIOFPSS.Dialog
             private string _waiJing;//外径
             [Category("摩擦片设计参数")]
             [DisplayName("外径")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片外径参数输入时，必须满足摩擦层内径大于摩擦片齿根圆半径")]
             [PropertyOrder(6)]
+           
             public string WaiJing
             {
                 set { _waiJing = value; }
@@ -313,7 +314,7 @@ namespace TIOFPSS.Dialog
             private string _mcpGFXDGC;//摩擦片公法线长度公差
             [Category("摩擦片设计参数")]
             [DisplayName("公法线长度公差")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("两个异侧齿面相切的两平行平面间的距离的公差（摩擦片公法线长度公差为正时，摩擦片齿厚削薄，反之增厚。内毂公法线长度公差为负时，内毂齿厚削薄，反之增厚）")]
             [PropertyOrder(7)]
             public string McpGFXDGC
             {
@@ -323,7 +324,7 @@ namespace TIOFPSS.Dialog
             private string _mcpHouDu;//摩擦片厚度
             [Category("摩擦片设计参数")]
             [DisplayName("厚度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片上除去摩擦层的厚度")]
             [PropertyOrder(8)]
             public string McpHouDu
             {
@@ -333,7 +334,7 @@ namespace TIOFPSS.Dialog
             private string _chiCeJianXi;//尺侧间隙
             [Category("摩擦片设计参数")]
             [DisplayName("齿侧间隙")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片齿面与内毂两齿轮的工作齿面互相接触时，其非工作齿面之间的距离；齿侧间隙=摩擦片公法线长度公差/(cos(压力角))-内毂公法线长度公差/(cos(压力角))")]
             [PropertyOrder(9)]
             public string ChiCeJianXi
             {
@@ -344,7 +345,7 @@ namespace TIOFPSS.Dialog
             private string _ngChiDingGao;//内毂齿顶高
             [Category("内毂设计参数")]
             [DisplayName("内毂齿顶高")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("齿顶高=齿顶高系数×模数,直接输入齿顶高的值")]
             [PropertyOrder(0)]
             public string NgChiDingGao
             {
@@ -354,7 +355,7 @@ namespace TIOFPSS.Dialog
             private string _ngChiGenGao;//内毂齿根高
             [Category("内毂设计参数")]
             [DisplayName("内毂齿根高")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("齿根高=齿根高系数×模数,直接输入齿根高的值")]
             [PropertyOrder(1)]
             public string NgChiGenGao
             {
@@ -364,7 +365,7 @@ namespace TIOFPSS.Dialog
             private string _ngChiGenYuanJiao;//内毂齿根圆角
             [Category("内毂设计参数")]
             [DisplayName("内毂齿根圆角")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片齿根圆角与内毂齿根圆角相同")]
             [PropertyOrder(2)]
             public string NgChiGenYuanJiao
             {
@@ -374,7 +375,7 @@ namespace TIOFPSS.Dialog
             private string _kongJing;//孔径
             [Category("内毂设计参数")]
             [DisplayName("孔径")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂与轴配合的内圆表面的半径")]
             [PropertyOrder(3)]
             public string KongJing
             {
@@ -384,7 +385,7 @@ namespace TIOFPSS.Dialog
             private string _ngGFXCDGC;//内毂公法线长度公差
             [Category("内毂设计参数")]
             [DisplayName("内毂公法线长度公差")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("两个异侧齿面相切的两平行平面间的距离的公差（摩擦片公法线长度公差为正时，摩擦片齿厚削薄，反之增厚。内毂公法线长度公差为负时，内毂齿厚削薄，反之增厚）")]
             [PropertyOrder(4)]
             public string NgGFXCDGC
             {
@@ -394,7 +395,7 @@ namespace TIOFPSS.Dialog
             private string _ngHouDu;//内毂厚度
             [Category("内毂设计参数")]
             [DisplayName("内毂厚度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂轴向的厚度")]
             [PropertyOrder(5)]
             public string NgHouDu
             {
@@ -405,7 +406,7 @@ namespace TIOFPSS.Dialog
             private string _mccHouDu;//摩擦层厚度
             [Category("摩擦片强度参数")]
             [DisplayName("摩擦层厚度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦层轴向的厚度")]
             [PropertyOrder(0)]
             public string MccHouDu
             {
@@ -415,7 +416,7 @@ namespace TIOFPSS.Dialog
             private string _mccJingKuan;//摩擦层径宽
             [Category("摩擦片强度参数")]
             [DisplayName("摩擦层径宽")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片外径（半径）与摩擦层内径（半径）之差")]
             [PropertyOrder(1)]
             public string MccJingKuan
             {
@@ -425,7 +426,7 @@ namespace TIOFPSS.Dialog
             private string _duCengHouDu;//镀层厚度
             [Category("摩擦片强度参数")]
             [DisplayName("镀层厚度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("齿面镀层的厚度")]
             [PropertyOrder(2)]
             public string DuCengHouDu
             {
@@ -436,7 +437,7 @@ namespace TIOFPSS.Dialog
             private string _mcpTXML;//摩擦片弹性模量
             [Category("材料参数")]
             [DisplayName("摩擦片弹性模量")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由摩擦片所用材料决定")]
             [PropertyOrder(0)]
             public string McpTXML
             {
@@ -446,7 +447,7 @@ namespace TIOFPSS.Dialog
             private string _mcpCLMD;//摩擦片材料密度
             [Category("材料参数")]
             [DisplayName("摩擦片材料密度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由摩擦片所用材料决定")]
             [PropertyOrder(1)]
             public string McpCLMD
             {
@@ -456,7 +457,7 @@ namespace TIOFPSS.Dialog
             private string _mcpBSB;//摩擦片泊松比
             [Category("材料参数")]
             [DisplayName("摩擦片泊松比")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由摩擦片所用材料决定")]
             [PropertyOrder(2)]
             public string McpBSB
             {
@@ -466,7 +467,7 @@ namespace TIOFPSS.Dialog
             private string _kangLaQDJX;//抗拉强度极限
             [Category("材料参数")]
             [DisplayName("抗拉强度极限")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("根据测试材料的抗拉强度极限取值。输入单位为Mpa")]
             [PropertyOrder(3)]
             public string KangLaQDJX
             {
@@ -476,7 +477,7 @@ namespace TIOFPSS.Dialog
             private string _piLaoJiXian;//疲劳极限
             [Category("材料参数")]
             [DisplayName("疲劳极限")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("")]
             [PropertyOrder(4)]
             public string PiLaoJiXian
             {
@@ -486,7 +487,7 @@ namespace TIOFPSS.Dialog
             private string _ngTXML;//内毂弹性模量
             [Category("材料参数")]
             [DisplayName("内毂弹性模量")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由内毂所用材料决定")]
             [PropertyOrder(5)]
             public string NgTXML
             {
@@ -496,7 +497,7 @@ namespace TIOFPSS.Dialog
             private string _ngCLMD;//内毂材料密度
             [Category("材料参数")]
             [DisplayName("内毂材料密度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由内毂所用材料决定")]
             [PropertyOrder(6)]
             public string NgCLMD
             {
@@ -506,7 +507,7 @@ namespace TIOFPSS.Dialog
             private string _ngBSB;//内毂泊松比
             [Category("材料参数")]
             [DisplayName("内毂泊松比")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由内毂所用材料决定")]
             [PropertyOrder(7)]
             public string NgBSB
             {
@@ -516,7 +517,7 @@ namespace TIOFPSS.Dialog
             private string _mccTXML;//摩擦层弹性模量
             [Category("材料参数")]
             [DisplayName("摩擦层弹性模量")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由摩擦层所用材料决定")]
             [PropertyOrder(8)]
             public string MccTXML
             {
@@ -526,7 +527,7 @@ namespace TIOFPSS.Dialog
             private string _mccCLMD;//摩擦层材料密度
             [Category("材料参数")]
             [DisplayName("摩擦层材料密度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由摩擦层所用材料决定")]
             [PropertyOrder(9)]
             public string MccCLMD
             {
@@ -536,7 +537,7 @@ namespace TIOFPSS.Dialog
             private string _mccBSB;//摩擦层泊松比
             [Category("材料参数")]
             [DisplayName("摩擦层泊松比")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由摩擦层所用材料决定")]
             [PropertyOrder(10)]
             public string MccBSB
             {
@@ -546,7 +547,7 @@ namespace TIOFPSS.Dialog
             private string _dcTXML;//镀层弹性模量
             [Category("材料参数")]
             [DisplayName("镀层弹性模量")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由镀层所用材料决定")]
             [PropertyOrder(11)]
             public string DcTXML
             {
@@ -556,7 +557,7 @@ namespace TIOFPSS.Dialog
             private string _dcCLMD;//镀层材料密度
             [Category("材料参数")]
             [DisplayName("镀层材料密度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由镀层所用材料决定")]
             [PropertyOrder(12)]
             public string DcCLMD
             {
@@ -566,7 +567,7 @@ namespace TIOFPSS.Dialog
             private string _dcBSB;//镀层泊松比
             [Category("材料参数")]
             [DisplayName("镀层泊松比")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("由镀层所用材料决定")]
             [PropertyOrder(13)]
             public string DcBSB
             {
@@ -577,7 +578,7 @@ namespace TIOFPSS.Dialog
             private string _ngChuShiJiaoWeiYi;//内毂初始角位移
             [Category("仿真参数")]
             [DisplayName("内毂初始角位移")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("在开始计算前，内毂的初始角位移，默认为0。输入单位为rad")]
             [PropertyOrder(0)]
             public string NgChuShiJiaoWeiYi
             {
@@ -589,7 +590,7 @@ namespace TIOFPSS.Dialog
             private string _ngChuShiSuDu;//内毂初始速度
             [Category("仿真参数")]
             [DisplayName("内毂初始速度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("在开始计算前，内毂的初始角速度，默认为0。输入单位为rad/s")]
             [PropertyOrder(1)]
             public string NgChuShiSuDu
             {
@@ -599,7 +600,7 @@ namespace TIOFPSS.Dialog
             private string _mcpChuShiJiaoWeiYi;//摩擦片初始角位移
             [Category("仿真参数")]
             [DisplayName("摩擦片初始角位移")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("在开始计算前，摩擦片的初始角位移，默认为0。输入单位为rad")]
             [PropertyOrder(2)]
             public string McpChuShiJiaoWeiYi
             {
@@ -609,7 +610,7 @@ namespace TIOFPSS.Dialog
             private string _mcpChuShiSuDu;//摩擦片初始速度
             [Category("仿真参数")]
             [DisplayName("摩擦片初始速度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("在开始计算前，摩擦片的初始角速度，默认为0。输入单位为rad/s")]
             [PropertyOrder(3)]
             public string McpChuShiSuDu
             {
@@ -619,7 +620,7 @@ namespace TIOFPSS.Dialog
             private string _youMoHouDu;//油膜厚度
             [Category("仿真参数")]
             [DisplayName("油膜厚度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("在润滑条件下的油膜厚度，取值范围为0.1~0.001。输入单位为mm")]
             [PropertyOrder(4)]
             public string YouMoHouDu
             {
@@ -629,7 +630,7 @@ namespace TIOFPSS.Dialog
             private string _youYeNianDu;//油液黏度
             [Category("仿真参数")]
             [DisplayName("油膜黏度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("在润滑条件下的油膜黏度，默认为289.1。输入单位为Pa·s")]
             [PropertyOrder(5)]
             public string YouYeNianDu
             {
@@ -639,7 +640,7 @@ namespace TIOFPSS.Dialog
             private string _wenDu;//温度
             [Category("仿真参数")]
             [DisplayName("温度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("仿真环境下的温度，默认为25。输入单位为°C")]
             [PropertyOrder(6)]
             public string WenDu
             {
@@ -650,7 +651,7 @@ namespace TIOFPSS.Dialog
             private string _shiJiJieChuChiShu;//实际接触齿数
             [Category("计算条件")]
             [DisplayName("实际接触齿数")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("仿真计算时实际接触的齿数，取值范围为1~全齿数。输入单位为个")]
             [PropertyOrder(0)]
             public string ShiJiJieChuChiShu
             {
@@ -660,7 +661,7 @@ namespace TIOFPSS.Dialog
             private string _fanTanXiShu;//反弹系数
             [Category("计算条件")]
             [DisplayName("反弹系数")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("碰撞前后的能量损失系数，默认为0.8")]
             [PropertyOrder(1)]
             public string FanTanXiShu
             {
@@ -670,7 +671,7 @@ namespace TIOFPSS.Dialog
             private string _ngZhuanSu;//内毂转速
             [Category("计算条件")]
             [DisplayName("内毂转速")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂的旋转速度。输入单位为r/min")]
             [PropertyOrder(2)]
             public string NgZhuanSu
             {
@@ -680,7 +681,7 @@ namespace TIOFPSS.Dialog
             private string _ngZhenFu;//内毂振幅
             [Category("计算条件")]
             [DisplayName("内毂振幅")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂的转速波动幅值。输入单位为rad/s")]
             [PropertyOrder(3)]
             public string NgZhenFu
             {
@@ -690,7 +691,7 @@ namespace TIOFPSS.Dialog
             private string _ngZhenPin;//内毂振频
             [Category("计算条件")]
             [DisplayName("内毂振频")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂的转速波动频率，即激励频率。输入单位为Hz")]
             [PropertyOrder(4)]
             public string NgZhenPin
             {
@@ -700,7 +701,7 @@ namespace TIOFPSS.Dialog
             private string _jieGouZuNi;//结构阻尼
             [Category("计算条件")]
             [DisplayName("结构阻尼")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片的结构阻尼，默认为0。输入单位为N·s/m")]
             [PropertyOrder(5)]
             public string JieGouZuNi
             {
@@ -710,7 +711,7 @@ namespace TIOFPSS.Dialog
             private string _mcpZhuanDongGuanLiang;//摩擦片转动惯量
             [Category("计算条件")]
             [DisplayName("摩擦片转动惯量")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片的转动惯量。输入单位为kg.m2")]
             [PropertyOrder(6)]
             public string McpZhuanDongGuanLiang
             {
@@ -720,7 +721,7 @@ namespace TIOFPSS.Dialog
             private string _ngZhuanDongGuanLiang;//内毂转动惯量
             [Category("计算条件")]
             [DisplayName("内毂转动惯量")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂的转动惯量。输入单位为kg.m2")]
             [PropertyOrder(7)]
             public string NgZhuanDongGuanLiang
             {
@@ -730,7 +731,7 @@ namespace TIOFPSS.Dialog
             private string _jieChuQuJinXiangChuangDu;//接触区径向长度
             [Category("计算条件")]
             [DisplayName("接触区径向长度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂与摩擦片碰撞的接触区域沿内毂直径方向的长度，默认为10。输入单位为mm")]
             [PropertyOrder(8)]
             public string JieChuQuJinXiangChuangDu
             {
@@ -740,7 +741,7 @@ namespace TIOFPSS.Dialog
             private string _jieChuQuZhouXiangChangDu;//接触区轴向长度
             [Category("计算条件")]
             [DisplayName("接触区轴向长度")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("内毂与摩擦片碰撞的接触区域沿轴方向的长度，默认为4。输入单位为mm")]
             [PropertyOrder(9)]
             public string JieChuQuZhouXiangChangDu
             {
@@ -750,7 +751,7 @@ namespace TIOFPSS.Dialog
             private string _zuNiCaoChang;//阻尼槽长
             [Category("计算条件")]
             [DisplayName("阻尼槽长")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("矩形阻尼槽长度。输入单位为mm")]
             [PropertyOrder(10)]
             public string ZuNiCaoChang
             {
@@ -760,7 +761,7 @@ namespace TIOFPSS.Dialog
             private string _zuNiCaoKuan;//阻尼槽宽
             [Category("计算条件")]
             [DisplayName("阻尼槽宽")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("矩形阻尼宽度。输入单位为mm")]
             [PropertyOrder(11)]
             public string ZuNiCaoKuan
             {
@@ -770,7 +771,7 @@ namespace TIOFPSS.Dialog
             private string _zuNiCaoBanJing;//阻尼槽半径
             [Category("计算条件")]
             [DisplayName("阻尼槽半径")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("圆形阻尼槽半径。输入单位为mm")]
             [PropertyOrder(12)]
             public string ZuNiCaoBanJing
             {
@@ -780,7 +781,7 @@ namespace TIOFPSS.Dialog
             private string _qiDongShiJian;//启动时间
             [Category("计算条件")]
             [DisplayName("启动时间")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("仿真计算的启动时间，即电机的响应时间。输入单位为s")]
             [PropertyOrder(13)]
             public string QiDongShiJian
             {
@@ -790,7 +791,7 @@ namespace TIOFPSS.Dialog
             private string _zengSuShiJian;//增速时间
             [Category("计算条件")]
             [DisplayName("增速时间")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("仿真计算的增速时间，即电机达到预定转速的增速时间。输入单位为s")]
             [PropertyOrder(14)]
             public string ZengSuShiJian
             {
@@ -800,7 +801,7 @@ namespace TIOFPSS.Dialog
             private string _wenDingShiJian;//稳定时间
             [Category("计算条件")]
             [DisplayName("稳定时间")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("仿真计算的稳定时间，即电机达到预定转速后的稳定时间。输入单位为s")]
             [PropertyOrder(15)]
             public string WenDingShiJian
             {
@@ -810,7 +811,7 @@ namespace TIOFPSS.Dialog
             private string _tingZhiShiJIan;//停止时间
             [Category("计算条件")]
             [DisplayName("停止时间")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("仿真计算的总时间，即电机的停止时间。输入单位为s")]
             [PropertyOrder(16)]
             public string TingZhiShiJIan
             {
@@ -821,7 +822,7 @@ namespace TIOFPSS.Dialog
             private string _pianXinJu;//偏心距
             [Category("误差条件")]
             [DisplayName("偏心距")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片的偏心距。输入单位为mm")]
             [PropertyOrder(0)]
             public string PianXinJu
             {
@@ -831,7 +832,7 @@ namespace TIOFPSS.Dialog
             private string _jieJuZuiDaWuCha;//节距最大误差
             [Category("误差条件")]
             [DisplayName("节距最大误差")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片节距的最大误差。输入单位为mm")]
             [PropertyOrder(1)]
             public string JieJuZuiDaWuCha
             {
@@ -841,7 +842,7 @@ namespace TIOFPSS.Dialog
             private string _jieJuZuiXiaoWuCha;//节距最小误差
             [Category("误差条件")]
             [DisplayName("节距最小误差")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("摩擦片节距的最小误差。输入单位为mm")]
             [PropertyOrder(2)]
             public string JieJuZuiXiaoWuCha
             {
@@ -852,7 +853,7 @@ namespace TIOFPSS.Dialog
             private string _caiYangPinLv;//采样频率
             [Category("实验数据标定与转换系数")]
             [DisplayName("采样频率")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("根据应变测试实际采样频率取值，不知采样频率时可默认为1，输入单位为Hz")]
             [PropertyOrder(0)]
             public string CaiYangPinLv
             {
@@ -862,7 +863,7 @@ namespace TIOFPSS.Dialog
             private string _yinLiYingBianZhuanHuanXiShu;//应力应变转换系数
             [Category("实验数据标定与转换系数")]
             [DisplayName("应力应变转换系数")]
-            [Description("This property uses a TextBox as the default editor.")]
+            [Description("应变转换为应力的转换系数；仿真计算结果为应力，此时标定系数为1。输入单位为Mpa/ε")]
             [PropertyOrder(1)]
             public string YinLiYingBianZhuanHuanXiShu
             {

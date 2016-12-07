@@ -1,5 +1,5 @@
 !/CLEAR
-/INPUT,'parameter','txt','D:\WorkSpaceFor2013\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !Â·¾¶
+/INPUT,'parameter','txt','E:\TIOFPSS\TIOFPSS\bin\x64\Debug\APDLcode\',, 0   !Â·¾¶
 /CWD,filepath
 /FILNAME,jobname,0
 /PREP7 

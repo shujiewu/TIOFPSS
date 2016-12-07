@@ -18,27 +18,27 @@
   </item>
   <item>
     <name>齿顶高</name>
-    <val>0.500000</val>
+    <val>0.5</val>
     <strname>chiDingGao</strname>
   </item>
   <item>
     <name>齿根高</name>
-    <val>1.5</val>
+    <val>405</val>
     <strname>chiGenGao</strname>
   </item>
   <item>
     <name>齿根圆角</name>
-    <val>3.75</val>
+    <val>0.851342</val>
     <strname>chiGenYuanJiao</strname>
   </item>
   <item>
     <name>外径</name>
-    <val>0.6</val>
+    <val>1.5</val>
     <strname>WaiJing</strname>
   </item>
   <item>
     <name>齿测间隙</name>
-    <val>405</val>
+    <val>3.75</val>
     <strname>chiCeJianXi</strname>
   </item>
   <item>
@@ -58,7 +58,7 @@
   </item>
   <item>
     <name>镀层厚度</name>
-    <val>0.3</val>
+    <val>0.003</val>
     <strname>duCengHouDu</strname>
   </item>
   <item>
@@ -68,12 +68,12 @@
   </item>
   <item>
     <name>摩擦片材料密度</name>
-    <val>7850</val>
+    <val>0.3</val>
     <strname>moChaPianCLMD</strname>
   </item>
   <item>
     <name>摩擦片泊松比</name>
-    <val>0.3</val>
+    <val>7850</val>
     <strname>moChaPianBSB</strname>
   </item>
   <item>
@@ -168,7 +168,7 @@
   </item>
   <item>
     <name>实际接触齿数</name>
-    <val>115</val>
+    <val>60</val>
     <strname>shiJiJieChuChiShu</strname>
   </item>
   <item>
@@ -248,7 +248,7 @@
   </item>
   <item>
     <name>节距最小误差</name>
-    <val>0.5</val>
+    <val>0</val>
     <strname>jieJuZuiXiaoWuCha</strname>
   </item>
   <item>
@@ -258,7 +258,7 @@
   </item>
   <item>
     <name>应力应变转换系数</name>
-    <val>0.23</val>
+    <val>0.2</val>
     <strname>yingLiYingBianZhuanHuanXiSu</strname>
   </item>
   <item>
@@ -273,7 +273,7 @@
   </item>
   <item>
     <name>内毂齿顶高</name>
-    <val>1.45</val>
+    <val>1.5</val>
     <strname>55neiguChiDingGao</strname>
   </item>
   <item>
@@ -283,27 +283,27 @@
   </item>
   <item>
     <name>摩擦片公法线长度公差</name>
-    <val>0.2</val>
+    <val>0.4</val>
     <strname>57mochaPianGongFaXianCDGC</strname>
   </item>
   <item>
     <name>内毂公法线长度公差</name>
-    <val>0.3</val>
+    <val>-0.4</val>
     <strname>58neiGuGongFaXianCDGC</strname>
   </item>
   <item>
     <name>阻尼槽长</name>
-    <val>50</val>
+    <val>0</val>
     <strname>59zuNiCaoBanJing</strname>
   </item>
   <item>
     <name>阻尼槽宽</name>
-    <val>51</val>
+    <val>0</val>
     <strname>60zuNiCaoKuang</strname>
   </item>
   <item>
     <name>阻尼槽半径</name>
-    <val>52</val>
+    <val>0</val>
     <strname>61zuNiCaoBanJing</strname>
   </item>
   <item>

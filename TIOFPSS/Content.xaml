@@ -162,13 +162,19 @@
                         </Fluent:ApplicationMenu.RightPaneContent>
                         <Fluent:MenuItem Header="新建项目" 
                                             Icon="pack://application:,,,/TIOFPSS;component/Images/new.png" 
+                                         >
+                            <Fluent:MenuItem Header="新建空白项目"  Height="40" 
+                                           Icon="pack://application:,,,/TIOFPSS;component/Images/new.png" 
                                          Click="NewProject_Click"/>
-                        <Fluent:MenuItem Header="新建项目(基于参数库)" 
-                                            Icon="pack://application:,,,/TIOFPSS;component/Images/Library.png" 
+                            <Fluent:MenuItem Header="新建项目(基于参数库)" Height="40" 
+                                           Icon="pack://application:,,,/TIOFPSS;component/Images/Library.png"
                                          Click="NewLibProject_Click"/>
-                        <Fluent:MenuItem Header="新建项目(基于当前项目)" 
-                                            Icon="pack://application:,,,/TIOFPSS;component/Images/优化.png" 
+                            <!--Icon="pack://application:,,,/TIOFPSS;component/Images/Library.png"-->
+                            <Fluent:MenuItem Header="新建项目(基于当前项目)"  Height="40" 
+                                           Icon="pack://application:,,,/TIOFPSS;component/Images/优化.png"
                                          Click="NewNowProject_Click"/>
+                        </Fluent:MenuItem>
+                        <!--Icon="pack://application:,,,/TIOFPSS;component/Images/优化.png"-->
                         <Fluent:MenuItem Header="打开项目"
                                             Icon="pack://application:,,,/TIOFPSS;component/Images/open.png" 
                                          Click="OpenProject_Click">
@@ -191,13 +197,13 @@
                                Click="OnHelpClick">
                     <Fluent:Button.ToolTip>
                         <Fluent:ScreenTip Title="帮助"
-                                          Text="帮助"
-                                          Image="pack://application:,,,/TIOFPSS;component\Images/SampleImageForScreenTip.png"
-                                          HelpTopic="http:\\fluent.codeplex.com"
+                                          Text="帮助"                              
                                           DisableReason="Disable reason reason."
                                           Width="190"
                                           IsRibbonAligned="True" />
                     </Fluent:Button.ToolTip>
+                    <!--HelpTopic="http:\\fluent.codeplex.com"-->
+                    <!--Image="pack://application:,,,/TIOFPSS;component\Images/SampleImageForScreenTip.png"-->
                 </Fluent:Button>
             </Fluent:Ribbon.ToolBarItems>
 
@@ -365,7 +371,7 @@
                     <Fluent:Button Header="有节距动力学出图"
                                    Icon="pack://application:,,,/TIOFPSS;component/Images/Line_Chart.png"
                                    LargeIcon="pack://application:,,,/TIOFPSS;component/Images/Line_Chart.png"
-                                   ToolTip="Regular Tooltip" 
+                                   
                                    Width="70"
                                    Click="OnYouJieJuChuTuClick"
                                    x:Name="btnYouJieJuChuTu"/>
@@ -1068,10 +1074,11 @@
                         <Fluent:DropDownButton x:Name="buttonFontColor"
                                                HorizontalAlignment="Left"
                                                SizeDefinition="Small"
-                                               MaxDropDownHeight="500">
-                            <Fluent:DropDownButton.ToolTip>
+                                               MaxDropDownHeight="500"
+                                               ToolTip="字体颜色" >
+                            <!--<Fluent:DropDownButton.ToolTip>
                                 <Fluent:ScreenTip Text="字体颜色" />
-                            </Fluent:DropDownButton.ToolTip>
+                            </Fluent:DropDownButton.ToolTip>-->
                             <Fluent:DropDownButton.Icon>
                                 <Grid>
                                     <Image Source="pack://application:,,,/TIOFPSS;component/Images/FontColor.png"
@@ -1102,10 +1109,12 @@
                         <Fluent:DropDownButton x:Name="buttonLineColor"
                                                HorizontalAlignment="Left"
                                                SizeDefinition="Small"
+                                               ToolTip="线段颜色" 
+                                               
                                                MaxDropDownHeight="500">
-                            <Fluent:DropDownButton.ToolTip>
+                            <!--<Fluent:DropDownButton.ToolTip>
                                 <Fluent:ScreenTip Text="线段颜色" />
-                            </Fluent:DropDownButton.ToolTip>
+                            </Fluent:DropDownButton.ToolTip>-->
                             <Fluent:DropDownButton.Icon>
                                 <Grid>
                                     <Image Source="pack://application:,,,/TIOFPSS;component/Images/lineColor.png"
@@ -1417,7 +1426,7 @@
         <Fluent:StatusBar HorizontalAlignment="Stretch"
                           VerticalAlignment="Bottom"
                           Grid.Row="2">
-            <Fluent:StatusBarItem Title="Words Width"
+            <!--<Fluent:StatusBarItem Title="Words Width"
                                   Value="150"
                                   HorizontalAlignment="Left">
                 <TextBlock Text="150 px" />
@@ -1440,7 +1449,7 @@
                         IsDirectionReversed="False"
                         Style="{DynamicResource ZoomSliderStyle}"
                         Value="100" />
-            </Fluent:StatusBarItem>
+            </Fluent:StatusBarItem>-->
         </Fluent:StatusBar>
     </Grid>
 </UserControl>

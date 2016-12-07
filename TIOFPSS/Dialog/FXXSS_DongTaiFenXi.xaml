@@ -87,8 +87,8 @@
                      Margin="10,10,5,5"
                      HorizontalAlignment="Left"
                      Text="" />
-                <RadioButton Margin="10" x:Name="rbA" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">默认区间</RadioButton>
-                <RadioButton Margin="10"  x:Name="rbB" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">自定义区间</RadioButton>
+                <RadioButton Margin="10,15,10,10" x:Name="rbA" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">默认区间</RadioButton>
+                <RadioButton Margin="10,15,10,10"  x:Name="rbB" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">自定义区间</RadioButton>
                 <!--<TextBlock Grid.Row="2" Grid.Column="0" 
                        Text="行数据：" 
                        Margin="20,10,5,5"/>-->
